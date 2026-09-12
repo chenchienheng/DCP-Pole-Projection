@@ -1,4 +1,11 @@
 {
+  "repository_id": 1125976757,
+  "repository_full_name": "chenchienheng/DCP-Pole-Projection",
+  "repository_lineage_aliases": [
+    "chenchienheng/DCP-Framework",
+    "chenchienheng/XuanLing-00-Foundation-DCP"
+  ],
+  "reader_order_owner": "CURRENT-SURFACE-MANIFEST.json",
   "repository_role": "PUBLIC_DCP_POLE_PROJECTION_CARRIER",
   "projection_focus": "DCP",
   "runtime": false,
