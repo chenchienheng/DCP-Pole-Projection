@@ -6,7 +6,55 @@
   "native_source_root": false,
   "repo_is_pole_authority": false,
   "tri_pole_architecture": true,
-  "reader_priority": ["README.md", "CURRENT-SURFACE-MANIFEST.json", "LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md", "PUBLIC-SURFACE-POLICY.md", "STATUS.md"],
+  "reader_priority": ["README.md","CURRENT-SURFACE-MANIFEST.json","SEMANTIC-CONTROL-PLANE.json","FAILURE-EVOLUTION-POLICY.md","LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md","PUBLIC-SURFACE-POLICY.md","STATUS.md"],
+  "current_public_surfaces": {
+    "human_zh_tw": [
+      "README.md",
+      "STATUS.md"
+    ],
+    "professional_en": [
+      "README.md",
+      "PUBLIC-SURFACE-POLICY.md"
+    ],
+    "canonical_machine": [
+      "CURRENT-SURFACE-MANIFEST.json",
+      "SEMANTIC-CONTROL-PLANE.json"
+    ],
+    "failure_evolution": [
+      "FAILURE-EVOLUTION-POLICY.md"
+    ]
+  },
+  "semantic_control_plane": {
+    "mode": "BOUNDARY_FIRST_FEASIBLE_WITHIN_BOUNDARY",
+    "forbidden_inference": [
+      "CARRIER_TO_IDENTITY",
+      "CAPABILITY_TO_AUTHORITY",
+      "HISTORICAL_TO_CURRENT",
+      "SEARCH_HIT_TO_ADMISSION",
+      "RETURN_WRITTEN_TO_RECEIVER_REBUILT",
+      "PROJECTION_TO_TRUTH",
+      "PUBLIC_SAFE_TO_PUBLIC_APPROVED",
+      "BUILDREADY_TO_RUNTIME"
+    ],
+    "no_explicit_dependency": "KEEP",
+    "equivalent_semantic_delta": "DEDUPE_LINEAGE_ONLY",
+    "disjoint_delta": "COMMUTE_AND_MERGE",
+    "material_conflict": "LOCAL_CONFLICT_HOLD",
+    "blocked_unchanged": "MEMOIZED_SLEEP_UNTIL_TRIGGER"
+  },
+  "failure_evolution": {
+    "success_rate_is_primary_kpi": false,
+    "required": [
+      "cause",
+      "affected_scope",
+      "correction",
+      "regression",
+      "reentry",
+      "successor_pointer"
+    ],
+    "known_failure_recurrence_requires_regression": true,
+    "release_is_evidence_freeze_point_not_final_form": true
+  },
   "classification_model": {
     "primary": "STABLE_EXISTENCE_AND_LIFECYCLE_RELATIONS",
     "core_chain": ["identity", "dependency", "source_carrier", "state", "authority", "evidence_claim_ceiling", "materiality", "judgment", "gate_dispatch", "action_effect", "consequence_responsibility", "return", "reconciliation", "reentry_rebuild", "metabolism"],

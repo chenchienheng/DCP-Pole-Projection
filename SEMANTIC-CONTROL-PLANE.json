@@ -1,0 +1,11 @@
+{
+  "schema_version": "R1-00",
+  "mode": "BOUNDARY_FIRST_FEASIBLE_WITHIN_BOUNDARY",
+  "runtime": false,
+  "canon": false,
+  "forbidden_inference": ["CARRIER_TO_IDENTITY","CAPABILITY_TO_AUTHORITY","HISTORICAL_TO_CURRENT","SEARCH_HIT_TO_ADMISSION","RETURN_WRITTEN_TO_RECEIVER_REBUILT","PROJECTION_TO_TRUTH","PUBLIC_SAFE_TO_PUBLIC_APPROVED","BUILDREADY_TO_RUNTIME"],
+  "routing": {"no_material_effect":"QUIET_KEEP","no_explicit_dependency":"KEEP","equivalent_semantic_delta":"DEDUPE_LINEAGE_ONLY","disjoint_delta":"COMMUTE_AND_MERGE","material_conflict":"LOCAL_CONFLICT_HOLD","blocked_unchanged":"MEMOIZED_SLEEP_UNTIL_TRIGGER"},
+  "failure_record_required":["cause","affected_scope","correction","regression","reentry","successor_pointer"],
+  "release_semantics":"EVIDENCE_FREEZE_POINT_NOT_FINAL_FORM",
+  "receiver_rule":"RETURN_EXISTENCE_DOES_NOT_IMPLY_RECONCILIATION"
+}
