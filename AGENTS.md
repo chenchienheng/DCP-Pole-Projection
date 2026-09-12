@@ -110,6 +110,15 @@ If an old artifact is absent from the successor branch:
 - proven live caller/rebuild dependency to the absent artifact is a broken-live-reference failure;
 - otherwise retain provenance/successor pointers as needed.
 
+## Repository Maintenance Review Gates
+
+For repository or pull-request maintenance, also resolve:
+- repository full name, selected ref, actual head, and the named environment when one is used;
+- the pull request's current base separately from its recorded base;
+- the exact target branch or pull request, in-scope and out-of-scope files, current-main content that must be preserved, and the minimum safe patch.
+
+Out-of-scope changes are reported and removed from the proposed diff; they are not rewritten without applicable scope. A conflict with current main must preserve already merged content and remains on `INTEGRATION_HOLD` until separately resolved. Wording that implies runtime, API, database, or background automation is kept at candidate/documentation level unless corresponding authority and evidence exist. A blocker holds only its dependent action; independent lawful work may continue. Final merge approval remains with the user.
+
 ## Output / Claim Ceiling
 
 Report material state only:
