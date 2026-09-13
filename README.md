@@ -10,9 +10,7 @@
 
 ## Current Reader Entry
 
-正常讀取：
-
-`CURRENT-SURFACE-MANIFEST.json → LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md → PUBLIC-SURFACE-POLICY.md → STATUS.md`
+本 README 只提供人類入口；後續精確 reader order 唯一由 `CURRENT-SURFACE-MANIFEST.json` 的現行 `reader_priority` 決定。本段不複製後續清單，避免兩個入口的順序漂移。
 
 舊 Master／MotherTree／W0／AXIS／固定 Agent／Scheduler／Folder topology 只在 conflict、audit、unique evidence/failure 或 explicit re-entry 時 bounded read。
 
