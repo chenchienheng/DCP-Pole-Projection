@@ -1,23 +1,17 @@
-# Qinyi Task Packet
+# Legacy Qinyi Task Packet — Compatibility Pointer Only
 
-## Task Name
+> Lifecycle: HISTORICAL_COMPATIBILITY
+> Current task authority: none
+> Normal use: deprecated
 
-## Lane
-(structural_cleanup / dependency_link / state_register_update)
+This filename remains temporarily for compatibility and provenance. `Qinyi` is not a permanent task owner, command surface, or authority root.
 
-## Scope
+For new bounded work, use:
 
-## Constraints
-- no doctrine change
-- no architecture rewrite
-- no merge
+[Capability Task Packet](capability_task_packet.md)
 
-## Deliverables
-- summary
-- affected files
-- mismatch_or_gap
-- unresolved risks
-- next recommended action
+The successor template resolves work by:
 
-## Stop Condition
-- open PR and stop
+`Stable Need → Required Capability → Eligible Actor/Carrier → Authority/Scope → Affected Cone → Effect → Return → Rebuild/Re-entry`
+
+Do not infer Current, Authority, execution permission, merge permission, Runtime, or receiver ACK from this legacy filename.
