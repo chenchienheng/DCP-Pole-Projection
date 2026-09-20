@@ -70,6 +70,38 @@ class CarrierBindingTests(unittest.TestCase):
         self.assertIn("RETURN_PATH_UNSUPPORTED", result.excluded["visual-tool"])
         self.assertIn("FIDELITY_NOT_PROVEN", result.excluded["visual-tool"])
 
+    def test_multiple_eligible_carriers_remain_unselected_without_need_policy(self) -> None:
+        need = CarrierNeed("GUI-LU", "store", "store_projection", "GLMODEL")
+        a = CarrierCandidate(
+            carrier_id="chat-carrier",
+            carrier_class=CarrierClass.INTERACTIVE_EXECUTION,
+            capabilities=("store_projection",),
+            authority_valid=True,
+            rights_valid=True,
+            evidence_available=True,
+            return_supported=True,
+            fidelity_supported=True,
+            risk_allowed=True,
+        )
+        b = CarrierCandidate(
+            carrier_id="work-carrier",
+            carrier_class=CarrierClass.INTERACTIVE_EXECUTION,
+            capabilities=("store_projection",),
+            authority_valid=True,
+            rights_valid=True,
+            evidence_available=True,
+            return_supported=True,
+            fidelity_supported=True,
+            risk_allowed=True,
+        )
+        result = resolve_carrier_binding(need, (a, b))
+        self.assertEqual(result.decision, Decision.HOLD)
+        self.assertIsNone(result.carrier)
+        self.assertIn(
+            "MULTIPLE_ELIGIBLE_CARRIERS_REQUIRE_EXPLICIT_SELECTION_POLICY",
+            result.reasons,
+        )
+
     def test_carrier_substitution_preserves_same_life(self) -> None:
         decision, reasons = validate_carrier_substitution(
             stable_life_id_before="GUI-LU",
