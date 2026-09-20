@@ -337,19 +337,17 @@ def build_reentry_state(
     if closure.state not in rebuild_resolved_states:
         raise ValueError("REENTRY_REQUIRES_RECEIVER_REBUILD_RESOLUTION")
 
+    unresolved_after_rebuild = closure.outstanding_debt
     return ReentryState(
         stable_life_id=stable_life.life_id,
         invariant_core_id=stable_life.invariant_core.identity_anchor,
+        tri_root_revision=receiver_tri_root_revision or tri_root.source_revision,
         current_revision=receiver_rebuild_revision,
-        tri_root_revision=receiver_tri_root_revision or tri_root.revision,
-        authority_ceiling=stable_life.authority_ceiling,
         last_good_revision=last_good_revision or receiver_rebuild_revision,
         active_need=active_need,
-        blockers=blockers,
-        last_ack_state=closure.state,
+        blockers=tuple(dict.fromkeys(blockers + unresolved_after_rebuild)),
+        pending_returns=(),
         cursor=cursor,
-        pending_material_returns=(),
-        return_target=closure.receiver,
         ack_owner=ack_owner or closure.receiver,
     )
 
@@ -374,14 +372,23 @@ def complete_fixture_loop(
         return PlatformLoopResult(plan.decision, plan, closure, None, ("WORK_CONTRACT_NOT_AVAILABLE",))
 
     closure = ReturnClosure(return_id=return_id, receiver=receiver)
-    closure.advance(ReturnState.ROUTED, actor="DCP_ROUTER")
-    closure.advance(ReturnState.ACTUAL_READ, actor=receiver)
-    closure.advance(ReturnState.MATERIALITY_RESOLVED, actor=receiver)
-    closure.advance(ReturnState.RECEIVER_NATIVE_DISPOSITION, actor=receiver)
-    closure.advance(ReturnState.RECONCILED, actor=receiver)
-    closure.advance(ReturnState.REBUILD_APPLIED_OR_NO_REBUILD_WITH_REASON, actor=receiver)
-    closure.advance(ReturnState.BEHAVIOR_DELTA_OBSERVED, actor=receiver)
-    closure.advance(ReturnState.RETESTED, actor=receiver)
+    closure = closure.advance(ReturnState.ROUTED)
+    closure = closure.advance(ReturnState.ACTUAL_READ, receiver_actual_read=True)
+    closure = closure.advance(ReturnState.MATERIALITY_RESOLVED)
+    closure = closure.advance(
+        ReturnState.RECEIVER_NATIVE_DISPOSITION,
+        native_disposition="FIXTURE_ACCEPTED",
+    )
+    closure = closure.advance(ReturnState.RECONCILED)
+    closure = closure.advance(
+        ReturnState.REBUILD_APPLIED_OR_NO_REBUILD_WITH_REASON,
+        rebuild_applied=True,
+    )
+    closure = closure.advance(
+        ReturnState.BEHAVIOR_DELTA_OBSERVED,
+        behavior_delta_observed=True,
+    )
+    closure = closure.advance(ReturnState.RETESTED, retested=True)
 
     reentry = build_reentry_state(
         stable_life=stable_life,
