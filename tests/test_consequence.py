@@ -63,6 +63,66 @@ class ConsequenceTests(unittest.TestCase):
         self.assertIn("side_effect:service_route_shift", result.next_dependencies)
         self.assertIn("RESULT_COMPILED_AS_NEXT_CONDITION", result.reasons)
 
+    def test_closed_return_without_material_gap_does_not_create_next_need(self) -> None:
+        result = derive_next_condition(
+            ConsequenceInput(
+                transition_id="T-STOP",
+                observed_effect="requested correction is complete",
+                evidence_refs=("E-STOP",),
+                affected_receivers=("GLMODEL",),
+                responsibility_owner="WORLD-ACTOR",
+                return_state=ReturnState.RETESTED,
+                receiver_disposition="USE",
+                rebuild_revision="WORLD-R4",
+                behavior_delta="requested state observed",
+                retest_result="need satisfied",
+                material_gap_after_return=False,
+            )
+        )
+        self.assertEqual(result.decision, Decision.PASS)
+        self.assertTrue(result.next_condition_ready)
+        self.assertFalse(result.next_need_required)
+        self.assertIn("RETURN_CLOSED_NO_NEXT_NEED", result.reasons)
+
+    def test_material_gap_after_return_requires_next_need(self) -> None:
+        result = derive_next_condition(
+            ConsequenceInput(
+                transition_id="T-NEXT",
+                observed_effect="partial correction observed",
+                evidence_refs=("E-NEXT",),
+                affected_receivers=("GLMODEL",),
+                responsibility_owner="WORLD-ACTOR",
+                return_state=ReturnState.RETESTED,
+                receiver_disposition="REBUILD",
+                rebuild_revision="WORLD-R5",
+                behavior_delta="partial improvement",
+                retest_result="material gap remains",
+                material_gap_after_return=True,
+            )
+        )
+        self.assertEqual(result.decision, Decision.PASS)
+        self.assertTrue(result.next_need_required)
+        self.assertIn("MATERIAL_GAP_REQUIRES_NEXT_NEED", result.reasons)
+
+    def test_closed_return_with_unknown_gap_does_not_invent_next_need(self) -> None:
+        result = derive_next_condition(
+            ConsequenceInput(
+                transition_id="T-UNKNOWN",
+                observed_effect="effect observed",
+                evidence_refs=("E-UNKNOWN",),
+                affected_receivers=("GLMODEL",),
+                responsibility_owner="WORLD-ACTOR",
+                return_state=ReturnState.RETESTED,
+                receiver_disposition="USE",
+                rebuild_revision="WORLD-R6",
+                behavior_delta="behavior changed",
+                retest_result="retested",
+            )
+        )
+        self.assertEqual(result.decision, Decision.PASS)
+        self.assertIsNone(result.next_need_required)
+        self.assertIn("NEXT_NEED_MATERIALITY_UNKNOWN", result.reasons)
+
     def test_action_responsibility_contract_binds_same_transition_and_blast_radius(self) -> None:
         binding = CapabilityBinding(
             capability_id="PARAMETRIC",
