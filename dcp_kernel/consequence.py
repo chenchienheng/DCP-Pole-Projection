@@ -34,6 +34,7 @@ class ConsequenceInput:
     rebuild_revision: str | None = None
     behavior_delta: str | None = None
     retest_result: str | None = None
+    material_gap_after_return: bool | None = None
 
 
 @dataclass(frozen=True)
@@ -42,6 +43,7 @@ class ConsequenceAssessment:
     transition_id: str
     next_condition_ready: bool
     next_dependencies: tuple[str, ...]
+    next_need_required: bool | None
     reasons: tuple[str, ...]
 
 
@@ -115,13 +117,28 @@ def derive_next_condition(item: ConsequenceInput) -> ConsequenceAssessment:
             transition_id=item.transition_id,
             next_condition_ready=False,
             next_dependencies=tuple(dict.fromkeys(next_dependencies)),
+            next_need_required=None,
             reasons=tuple(reasons),
         )
+
+    if item.material_gap_after_return is True:
+        next_need_required: bool | None = True
+        terminal_reason = "MATERIAL_GAP_REQUIRES_NEXT_NEED"
+    elif item.material_gap_after_return is False:
+        next_need_required = False
+        terminal_reason = "RETURN_CLOSED_NO_NEXT_NEED"
+    else:
+        next_need_required = None
+        terminal_reason = "NEXT_NEED_MATERIALITY_UNKNOWN"
 
     return ConsequenceAssessment(
         decision=Decision.PASS,
         transition_id=item.transition_id,
         next_condition_ready=True,
         next_dependencies=tuple(dict.fromkeys(next_dependencies)),
-        reasons=("RESULT_COMPILED_AS_NEXT_CONDITION",),
+        next_need_required=next_need_required,
+        reasons=(
+            "RESULT_COMPILED_AS_NEXT_CONDITION",
+            terminal_reason,
+        ),
     )

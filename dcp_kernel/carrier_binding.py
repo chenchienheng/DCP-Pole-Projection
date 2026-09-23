@@ -90,12 +90,23 @@ def resolve_carrier_binding(
             excluded=excluded,
         )
 
-    # Vendor labels and historical activation order are intentionally excluded from ranking.
-    eligible.sort(key=lambda item: (item.carrier_class.value, item.carrier_id))
+    # Capability/boundary eligibility does not itself define a preference policy.
+    # Choosing the lexicographically first carrier would silently turn carrier identity
+    # into routing authority.  Multiple lawful options therefore remain Freedom until a
+    # Need-specific selection policy (resource, cost, locality, fidelity, etc.) resolves
+    # the tie in a higher layer.
+    if len(eligible) > 1:
+        return CarrierResolution(
+            decision=Decision.HOLD,
+            carrier=None,
+            reasons=("MULTIPLE_ELIGIBLE_CARRIERS_REQUIRE_EXPLICIT_SELECTION_POLICY",),
+            excluded=excluded,
+        )
+
     return CarrierResolution(
         decision=Decision.PASS,
         carrier=eligible[0],
-        reasons=("CARRIER_SELECTED_BY_CAPABILITY_AND_BOUNDARY",),
+        reasons=("SOLE_ELIGIBLE_CARRIER_SELECTED_BY_CAPABILITY_AND_BOUNDARY",),
         excluded=excluded,
     )
 
