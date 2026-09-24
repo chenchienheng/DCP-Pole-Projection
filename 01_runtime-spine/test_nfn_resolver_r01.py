@@ -68,5 +68,63 @@ class NFNResolverR01Tests(unittest.TestCase):
         self.assertEqual(set(result.tri_pole), {"Ideas", "DCP", "GLModel"})
 
 
+class ReceiverIterableRegressionTests(unittest.TestCase):
+    """The receiver representation must not change the selected receiver set."""
+
+    def setUp(self):
+        self.current = Current("OBJECT-1", "NEED-1", "SOURCE-1", "UNCHANGED")
+        self.candidates = ("Reader-A", "Reader-B", "Unrelated")
+        self.receivers = ("Reader-A", "Reader-B")
+
+    def assert_receiver_equivalence(self, event, **kwargs):
+        expected = resolve_event(
+            event, self.current, relevant_receivers=self.receivers, **kwargs
+        )
+        actual = resolve_event(
+            event, self.current,
+            relevant_receivers=(item for item in self.receivers), **kwargs
+        )
+        self.assertEqual(expected.executable_affected, self.receivers)
+        self.assertEqual(actual, expected)
+        self.assertEqual(actual.current, self.current)
+
+    def test_generator_receivers_preserve_affected_branch(self):
+        event = Event("EVENT-1", "RETURN", "OBJECT-1", "NEED-1", "SOURCE-1",
+                      "SCOPE-A", self.candidates)
+        self.assert_receiver_equivalence(event)
+
+    def test_generator_receivers_preserve_review_branch(self):
+        event = Event("EVENT-2", "RETURN", "OBJECT-1", "NEED-1", "SOURCE-2",
+                      "SCOPE-A", self.candidates, applicable=False)
+        self.assert_receiver_equivalence(event)
+
+    def test_generator_receivers_preserve_conflict_branch(self):
+        event = Event("EVENT-3", "CANDIDATE", "OBJECT-1", "NEED-1", "SOURCE-1",
+                      "SCOPE-A", self.candidates, conflicts_with="EVENT-4")
+        peer = Event("EVENT-4", "CANDIDATE", "OBJECT-1", "NEED-1", "SOURCE-1",
+                     "SCOPE-B", conflicts_with="EVENT-3")
+        self.assert_receiver_equivalence(event, concurrent_events=(peer,))
+
+    def test_duplicate_does_not_consume_receiver_iterator(self):
+        def forbidden():
+            raise AssertionError("duplicate must remain an early no-op")
+            yield "never"
+        event = Event("EVENT-5", "RETURN", "OBJECT-1", "NEED-1", "SOURCE-1",
+                      "SCOPE-A", self.candidates, duplicate_of="EVENT-1")
+        actual = resolve_event(event, self.current, relevant_receivers=forbidden())
+        self.assertEqual(actual.disposition, Disposition.QUIET)
+        self.assertEqual(actual.current, self.current)
+
+    def test_empty_candidates_do_not_consume_receiver_iterator(self):
+        def forbidden():
+            raise AssertionError("empty candidates must not read receivers")
+            yield "never"
+        event = Event("EVENT-6", "RETURN", "OBJECT-1", "NEED-1", "SOURCE-1",
+                      "SCOPE-A")
+        actual = resolve_event(event, self.current, relevant_receivers=forbidden())
+        self.assertEqual(actual.executable_affected, ())
+        self.assertEqual(actual.current, self.current)
+
+
 if __name__ == "__main__":
     unittest.main()
