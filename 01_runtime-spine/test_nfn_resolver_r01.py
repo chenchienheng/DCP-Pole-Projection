@@ -4,8 +4,10 @@ from nfn_resolver_r01 import (
     Current,
     Disposition,
     Event,
+    InteractionEvidence,
     Need,
     ProviderCandidate,
+    qualify_interaction,
     resolve_event,
     route_provider,
 )
@@ -65,6 +67,41 @@ class NFNResolverR01Tests(unittest.TestCase):
     def test_every_resolution_has_three_pole_projection(self):
         event = Event("EV-C", "REALITY_DELTA", "OBJ-PUMP-001", "Need-C", "SITE-1", "OBSERVATION", ("GLModel",))
         result = resolve_event(event, self.current, relevant_receivers=("GLModel",))
+        self.assertEqual(set(result.tri_pole), {"Ideas", "DCP", "GLModel"})
+
+
+class InteractionQualificationTests(unittest.TestCase):
+    def setUp(self):
+        self.current = Current("OBJECT-1", "NEED-1", "SOURCE-1", "UNCHANGED")
+
+    def test_unqualified_caller_holds(self):
+        evidence = InteractionEvidence("caller", "NEED-1", "I-1", False)
+        self.assertEqual(qualify_interaction(evidence, self.current).disposition, Disposition.CANNOT_HOLD)
+
+    def test_same_interaction_lineage_is_quiet(self):
+        evidence = InteractionEvidence("caller", "NEED-1", "I-1", True, independent_interaction=False)
+        self.assertEqual(qualify_interaction(evidence, self.current).disposition, Disposition.QUIET)
+
+    def test_observed_committed_effect_is_not_replayed(self):
+        evidence = InteractionEvidence("caller", "NEED-1", "I-1", True, committed_effect_id="E-1", effect_observed=True)
+        self.assertEqual(qualify_interaction(evidence, self.current).disposition, Disposition.QUIET)
+
+    def test_unknown_committed_effect_holds(self):
+        evidence = InteractionEvidence("caller", "NEED-1", "I-1", True, committed_effect_id="E-1", effect_observed=None)
+        self.assertEqual(qualify_interaction(evidence, self.current).disposition, Disposition.CANNOT_HOLD)
+
+    def test_pure_ack_is_quiet(self):
+        evidence = InteractionEvidence("caller", "NEED-1", "I-1", True, return_kind="ACK")
+        self.assertEqual(qualify_interaction(evidence, self.current).disposition, Disposition.QUIET)
+
+    def test_material_return_reenters_resolution(self):
+        evidence = InteractionEvidence("caller", "NEED-1", "I-1", True, return_kind="RETURN", material_delta=True)
+        self.assertEqual(qualify_interaction(evidence, self.current).disposition, Disposition.AFFECTED)
+
+    def test_qualified_pre_effect_interaction_is_affected(self):
+        evidence = InteractionEvidence("caller", "NEED-1", "I-1", True)
+        result = qualify_interaction(evidence, self.current)
+        self.assertEqual(result.disposition, Disposition.AFFECTED)
         self.assertEqual(set(result.tri_pole), {"Ideas", "DCP", "GLModel"})
 
 
