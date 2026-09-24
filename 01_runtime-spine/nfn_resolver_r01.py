@@ -92,11 +92,14 @@ def resolve_event(
             ),
         )
 
+    # Snapshot one-shot iterables once, without reading unused receivers.
+    receiver_set = frozenset(relevant_receivers) if event.affected_candidates else frozenset()
+
     if not event.applicable:
         return Resolution(
             Disposition.REVIEW,
             current,
-            executable_affected=tuple(r for r in event.affected_candidates if r in set(relevant_receivers)),
+            executable_affected=tuple(r for r in event.affected_candidates if r in receiver_set),
             reasons=("newer source is a freshness signal, not Current-for-purpose",),
             tri_pole=_tri(
                 "Latest source does not replace the Need's intended use.",
@@ -116,7 +119,7 @@ def resolve_event(
         return Resolution(
             Disposition.CONFLICT_HOLD,
             current,
-            executable_affected=tuple(r for r in event.affected_candidates if r in set(relevant_receivers)),
+            executable_affected=tuple(r for r in event.affected_candidates if r in receiver_set),
             reasons=("cross-authority candidates coexist; last-write-wins is prohibited",),
             tri_pole=_tri(
                 "One stable object keeps one identity while candidate meanings remain distinct.",
@@ -125,7 +128,7 @@ def resolve_event(
             ),
         )
 
-    affected = tuple(r for r in event.affected_candidates if r in set(relevant_receivers))
+    affected = tuple(r for r in event.affected_candidates if r in receiver_set)
     return Resolution(
         Disposition.AFFECTED,
         current,
