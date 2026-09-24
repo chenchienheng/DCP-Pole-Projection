@@ -59,6 +59,24 @@ class Current:
 
 
 @dataclass(frozen=True)
+class InteractionEvidence:
+    """Pre-effect/return evidence for one real caller interaction.
+
+    effect_observed is tri-state: True=observed, False=checked absent,
+    None=unknown. Unknown effects must never be replayed speculatively.
+    """
+    caller_id: str
+    need_id: str
+    interaction_id: str
+    caller_qualified: bool
+    independent_interaction: bool = True
+    committed_effect_id: str | None = None
+    effect_observed: bool | None = None
+    return_kind: str | None = None
+    material_delta: bool = False
+
+
+@dataclass(frozen=True)
 class Resolution:
     disposition: Disposition
     current: Current
@@ -138,6 +156,83 @@ def resolve_event(
             "Reader relevance follows the Need, not global broadcast.",
             "Dependency/authority/precondition narrow the executable set.",
             "Only affected object/relation edges require revalidation.",
+        ),
+    )
+
+
+def qualify_interaction(evidence: InteractionEvidence, current: Current) -> Resolution:
+    """Qualify caller/effect/return evidence before any repeated side effect."""
+    if evidence.need_id != current.need_id or not evidence.caller_qualified:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=("caller/Need qualification is not proven",),
+            tri_pole=_tri(
+                "An unqualified caller cannot redefine the active Need.",
+                "Authority/admission is missing, so no effect is eligible.",
+                "World state remains unchanged.",
+            ),
+        )
+
+    if not evidence.independent_interaction:
+        return Resolution(
+            Disposition.QUIET,
+            current,
+            reasons=("same interaction lineage does not create a second action",),
+            tri_pole=_tri(
+                "Repeated carrier contact does not create a new human/world intent.",
+                "Interaction identity deduplicates before execution.",
+                "No duplicate world effect is emitted.",
+            ),
+        )
+
+    if evidence.committed_effect_id:
+        if evidence.effect_observed is True:
+            return Resolution(
+                Disposition.QUIET,
+                current,
+                reasons=("committed effect is already observed; replay is prohibited",),
+                tri_pole=_tri(
+                    "The Need keeps one consequence rather than duplicating it.",
+                    "Idempotency closes the already-effective action edge.",
+                    "Observed effect is retained without a second mutation.",
+                ),
+            )
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=("committed effect exists but its actual effect is not proven",),
+            tri_pole=_tri(
+                "Uncertain consequence is not treated as a new request.",
+                "Unknown/contradictory effect state holds replay until evidence resolves it.",
+                "World refuses speculative duplicate mutation.",
+            ),
+        )
+
+    if (evidence.return_kind or "").upper() == "ACK" and not evidence.material_delta:
+        return Resolution(
+            Disposition.QUIET,
+            current,
+            reasons=("pure ACK carries no material Need/effect delta",),
+            tri_pole=_tri(
+                "Acknowledgement alone does not change meaning or intent.",
+                "Receipt visibility is not dispatch or new work.",
+                "World state remains unchanged.",
+            ),
+        )
+
+    return Resolution(
+        Disposition.AFFECTED,
+        current,
+        reasons=(
+            "material Return re-enters affected resolution"
+            if evidence.material_delta
+            else "qualified independent interaction has no committed effect yet"
+        ,),
+        tri_pole=_tri(
+            "A qualified interaction may affect the same Need without changing its identity.",
+            "Admission/effect/idempotency gates passed; downstream execution still needs its own authority.",
+            "Only the affected consequence edge may proceed or revalidate.",
         ),
     )
 
