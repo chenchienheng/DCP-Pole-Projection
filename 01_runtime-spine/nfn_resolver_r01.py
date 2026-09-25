@@ -90,6 +90,7 @@ class SourceClosureEvidence:
     source_read_observed: bool
     via_human_courier: bool = False
     need_id: str | None = None
+    source_endpoint_observed: bool | None = None
 
 
 @dataclass(frozen=True)
@@ -268,6 +269,63 @@ def qualify_interaction(evidence: InteractionEvidence, current: Current) -> Reso
             "A qualified interaction may affect the same Need without changing its identity.",
             "Admission/effect/idempotency gates passed; downstream execution still needs its own authority.",
             "Only the affected consequence edge may proceed or revalidate.",
+        ),
+    )
+
+
+def qualify_source_acquisition(
+    evidence: SourceClosureEvidence,
+    current: Current,
+    *,
+    expected_source_id: str,
+    expected_closure_id: str,
+) -> Resolution:
+    """Prove source acquisition/read without overclaiming the transport actor/path."""
+    binding_errors: list[str] = []
+    if evidence.source_id != expected_source_id:
+        binding_errors.append("source binding mismatch")
+    if evidence.need_id != current.need_id:
+        binding_errors.append("Need binding mismatch")
+    if evidence.closure_id != expected_closure_id:
+        binding_errors.append("closure binding mismatch")
+    if binding_errors:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=tuple(binding_errors),
+            tri_pole=_tri(
+                "Another occurrence cannot satisfy this source acquisition.",
+                "Exact source/Need/closure binding precedes acquisition qualification.",
+                "The intended source acquisition remains open.",
+            ),
+        )
+
+    if not evidence.closure_created:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=("source closure has not been created",),
+        )
+    if evidence.source_endpoint_observed is not True:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=("message at exact source endpoint is not proven",),
+        )
+    if not evidence.source_read_observed:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=("source read is not proven",),
+        )
+    return Resolution(
+        Disposition.QUIET,
+        current,
+        reasons=("exact source acquisition and read are proven; transport attribution remains a separate claim",),
+        tri_pole=_tri(
+            "Source awareness can close without inventing a transport actor.",
+            "Acquisition/read evidence is separated from direct-route attribution.",
+            "World records receipt without overclaiming the carrier path.",
         ),
     )
 
