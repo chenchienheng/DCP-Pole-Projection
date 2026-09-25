@@ -7,7 +7,11 @@ from nfn_resolver_r01 import (
     InteractionEvidence,
     Need,
     ProviderCandidate,
+    ResourceReleaseEvidence,
+    SourceClosureEvidence,
     qualify_interaction,
+    qualify_resource_release,
+    qualify_source_closure,
     resolve_event,
     route_provider,
 )
@@ -103,6 +107,69 @@ class InteractionQualificationTests(unittest.TestCase):
         result = qualify_interaction(evidence, self.current)
         self.assertEqual(result.disposition, Disposition.AFFECTED)
         self.assertEqual(set(result.tri_pole), {"Ideas", "DCP", "GLModel"})
+
+
+class SourceClosureAndReleaseGateTests(unittest.TestCase):
+    def setUp(self):
+        self.current = Current("WORLD-1", "NEED-1", "SOURCE-1", "UNCHANGED")
+
+    def test_human_courier_does_not_prove_direct_source_delivery(self):
+        evidence = SourceClosureEvidence(
+            "World", "CLOSE-1", True, False, True, via_human_courier=True
+        )
+        result = qualify_source_closure(evidence, self.current)
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("direct source delivery is not proven", result.reasons[0])
+
+    def test_direct_delivery_without_source_read_holds(self):
+        evidence = SourceClosureEvidence(
+            "World", "CLOSE-2", True, True, False
+        )
+        self.assertEqual(
+            qualify_source_closure(evidence, self.current).disposition,
+            Disposition.CANNOT_HOLD,
+        )
+
+    def test_direct_delivery_and_source_read_close_without_new_work(self):
+        evidence = SourceClosureEvidence(
+            "World", "CLOSE-3", True, True, True
+        )
+        self.assertEqual(
+            qualify_source_closure(evidence, self.current).disposition,
+            Disposition.QUIET,
+        )
+
+    def test_resource_release_holds_before_required_effect(self):
+        evidence = ResourceReleaseEvidence(
+            "browser-tab-1", "ACTION-1", effect_observed=None
+        )
+        self.assertEqual(
+            qualify_resource_release(evidence, self.current).disposition,
+            Disposition.CANNOT_HOLD,
+        )
+
+    def test_resource_release_holds_when_delivery_is_required_but_unobserved(self):
+        evidence = ResourceReleaseEvidence(
+            "browser-tab-2", "ACTION-2",
+            effect_observed=True,
+            delivery_required=True,
+            delivery_observed=False,
+        )
+        result = qualify_resource_release(evidence, self.current)
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("required delivery is not observed", result.reasons)
+
+    def test_resource_release_becomes_recompose_candidate_after_all_required_evidence(self):
+        evidence = ResourceReleaseEvidence(
+            "browser-tab-3", "ACTION-3",
+            effect_observed=True,
+            delivery_required=True,
+            delivery_observed=True,
+            persistence_required=True,
+            persistence_observed=True,
+        )
+        result = qualify_resource_release(evidence, self.current)
+        self.assertEqual(result.disposition, Disposition.RECOMPOSE)
 
 
 class ReceiverIterableRegressionTests(unittest.TestCase):
