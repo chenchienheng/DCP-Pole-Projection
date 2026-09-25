@@ -89,6 +89,7 @@ class SourceClosureEvidence:
     direct_delivery_observed: bool
     source_read_observed: bool
     via_human_courier: bool = False
+    need_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -106,6 +107,8 @@ class ResourceReleaseEvidence:
     delivery_observed: bool | None = None
     persistence_required: bool = False
     persistence_observed: bool | None = None
+    need_id: str | None = None
+    allocation_id: str | None = None
 
 
 @dataclass(frozen=True)
@@ -269,8 +272,33 @@ def qualify_interaction(evidence: InteractionEvidence, current: Current) -> Reso
     )
 
 
-def qualify_source_closure(evidence: SourceClosureEvidence, current: Current) -> Resolution:
-    """Require source-endpoint evidence; do not confuse relayed content with direct delivery."""
+def qualify_source_closure(
+    evidence: SourceClosureEvidence,
+    current: Current,
+    *,
+    expected_source_id: str,
+    expected_closure_id: str,
+) -> Resolution:
+    """Require exact source/Need/closure binding before accepting closure evidence."""
+    binding_errors: list[str] = []
+    if evidence.source_id != expected_source_id:
+        binding_errors.append("source binding mismatch")
+    if evidence.need_id != current.need_id:
+        binding_errors.append("Need binding mismatch")
+    if evidence.closure_id != expected_closure_id:
+        binding_errors.append("closure binding mismatch")
+    if binding_errors:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=tuple(binding_errors),
+            tri_pole=_tri(
+                "Another occurrence cannot close this source relation.",
+                "Exact source/Need/closure binding precedes closure qualification.",
+                "The intended source closure remains open.",
+            ),
+        )
+
     if not evidence.closure_created:
         return Resolution(
             Disposition.CANNOT_HOLD,
@@ -319,8 +347,36 @@ def qualify_source_closure(evidence: SourceClosureEvidence, current: Current) ->
     )
 
 
-def qualify_resource_release(evidence: ResourceReleaseEvidence, current: Current) -> Resolution:
-    """Block premature resource release until every required downstream effect is observed."""
+def qualify_resource_release(
+    evidence: ResourceReleaseEvidence,
+    current: Current,
+    *,
+    expected_resource_id: str,
+    expected_action_id: str,
+    expected_allocation_id: str,
+) -> Resolution:
+    """Bind release evidence to this Need/action/resource/allocation before release."""
+    binding_errors: list[str] = []
+    if evidence.need_id != current.need_id:
+        binding_errors.append("Need binding mismatch")
+    if evidence.resource_id != expected_resource_id:
+        binding_errors.append("resource binding mismatch")
+    if evidence.action_id != expected_action_id:
+        binding_errors.append("action binding mismatch")
+    if evidence.allocation_id != expected_allocation_id:
+        binding_errors.append("allocation binding mismatch")
+    if binding_errors:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=tuple(binding_errors),
+            tri_pole=_tri(
+                "Evidence from another occurrence cannot release this resource.",
+                "Exact Need/action/resource/allocation binding precedes release eligibility.",
+                "The current allocation remains held.",
+            ),
+        )
+
     missing: list[str] = []
     if evidence.effect_required and evidence.effect_observed is not True:
         missing.append("required effect is not observed")
