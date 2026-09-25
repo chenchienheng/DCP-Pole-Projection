@@ -115,36 +115,83 @@ class SourceClosureAndReleaseGateTests(unittest.TestCase):
 
     def test_human_courier_does_not_prove_direct_source_delivery(self):
         evidence = SourceClosureEvidence(
-            "World", "CLOSE-1", True, False, True, via_human_courier=True
+            "WORLD-1", "CLOSE-1", True, False, True,
+            via_human_courier=True, need_id="NEED-1"
         )
-        result = qualify_source_closure(evidence, self.current)
+        result = qualify_source_closure(
+            evidence, self.current,
+            expected_source_id="WORLD-1", expected_closure_id="CLOSE-1"
+        )
         self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
         self.assertIn("direct source delivery is not proven", result.reasons[0])
 
     def test_direct_delivery_without_source_read_holds(self):
         evidence = SourceClosureEvidence(
-            "World", "CLOSE-2", True, True, False
+            "WORLD-1", "CLOSE-2", True, True, False, need_id="NEED-1"
         )
         self.assertEqual(
-            qualify_source_closure(evidence, self.current).disposition,
+            qualify_source_closure(
+                evidence, self.current,
+                expected_source_id="WORLD-1", expected_closure_id="CLOSE-2"
+            ).disposition,
             Disposition.CANNOT_HOLD,
         )
 
     def test_direct_delivery_and_source_read_close_without_new_work(self):
         evidence = SourceClosureEvidence(
-            "World", "CLOSE-3", True, True, True
+            "WORLD-1", "CLOSE-3", True, True, True, need_id="NEED-1"
         )
         self.assertEqual(
-            qualify_source_closure(evidence, self.current).disposition,
+            qualify_source_closure(
+                evidence, self.current,
+                expected_source_id="WORLD-1", expected_closure_id="CLOSE-3"
+            ).disposition,
             Disposition.QUIET,
         )
 
+    def test_all_true_closure_from_other_need_does_not_close(self):
+        evidence = SourceClosureEvidence(
+            "WORLD-1", "CLOSE-X", True, True, True, need_id="OTHER-NEED"
+        )
+        result = qualify_source_closure(
+            evidence, self.current,
+            expected_source_id="WORLD-1", expected_closure_id="CLOSE-X"
+        )
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("Need binding mismatch", result.reasons)
+
+    def test_all_true_release_from_other_allocation_does_not_release(self):
+        evidence = ResourceReleaseEvidence(
+            "browser-tab-1", "ACTION-1",
+            effect_observed=True,
+            delivery_required=True,
+            delivery_observed=True,
+            persistence_required=True,
+            persistence_observed=True,
+            need_id="NEED-1",
+            allocation_id="OTHER-ALLOC",
+        )
+        result = qualify_resource_release(
+            evidence, self.current,
+            expected_resource_id="browser-tab-1",
+            expected_action_id="ACTION-1",
+            expected_allocation_id="ALLOC-1",
+        )
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("allocation binding mismatch", result.reasons)
+
     def test_resource_release_holds_before_required_effect(self):
         evidence = ResourceReleaseEvidence(
-            "browser-tab-1", "ACTION-1", effect_observed=None
+            "browser-tab-1", "ACTION-1", effect_observed=None,
+            need_id="NEED-1", allocation_id="ALLOC-1"
         )
         self.assertEqual(
-            qualify_resource_release(evidence, self.current).disposition,
+            qualify_resource_release(
+                evidence, self.current,
+                expected_resource_id="browser-tab-1",
+                expected_action_id="ACTION-1",
+                expected_allocation_id="ALLOC-1",
+            ).disposition,
             Disposition.CANNOT_HOLD,
         )
 
@@ -154,8 +201,15 @@ class SourceClosureAndReleaseGateTests(unittest.TestCase):
             effect_observed=True,
             delivery_required=True,
             delivery_observed=False,
+            need_id="NEED-1",
+            allocation_id="ALLOC-2",
         )
-        result = qualify_resource_release(evidence, self.current)
+        result = qualify_resource_release(
+            evidence, self.current,
+            expected_resource_id="browser-tab-2",
+            expected_action_id="ACTION-2",
+            expected_allocation_id="ALLOC-2",
+        )
         self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
         self.assertIn("required delivery is not observed", result.reasons)
 
@@ -167,8 +221,15 @@ class SourceClosureAndReleaseGateTests(unittest.TestCase):
             delivery_observed=True,
             persistence_required=True,
             persistence_observed=True,
+            need_id="NEED-1",
+            allocation_id="ALLOC-3",
         )
-        result = qualify_resource_release(evidence, self.current)
+        result = qualify_resource_release(
+            evidence, self.current,
+            expected_resource_id="browser-tab-3",
+            expected_action_id="ACTION-3",
+            expected_allocation_id="ALLOC-3",
+        )
         self.assertEqual(result.disposition, Disposition.RECOMPOSE)
 
 
