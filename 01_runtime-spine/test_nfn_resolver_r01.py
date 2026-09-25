@@ -11,6 +11,7 @@ from nfn_resolver_r01 import (
     SourceClosureEvidence,
     qualify_interaction,
     qualify_resource_release,
+    qualify_source_acquisition,
     qualify_source_closure,
     resolve_event,
     route_provider,
@@ -112,6 +113,30 @@ class InteractionQualificationTests(unittest.TestCase):
 class SourceClosureAndReleaseGateTests(unittest.TestCase):
     def setUp(self):
         self.current = Current("WORLD-1", "NEED-1", "SOURCE-1", "UNCHANGED")
+
+    def test_exact_source_acquisition_can_close_while_transport_actor_is_unknown(self):
+        evidence = SourceClosureEvidence(
+            "WORLD-1", "CLOSE-R2", True, False, True,
+            need_id="NEED-1", source_endpoint_observed=True
+        )
+        result = qualify_source_acquisition(
+            evidence, self.current,
+            expected_source_id="WORLD-1", expected_closure_id="CLOSE-R2"
+        )
+        self.assertEqual(result.disposition, Disposition.QUIET)
+        self.assertIn("transport attribution remains a separate claim", result.reasons[0])
+
+    def test_source_acquisition_without_exact_endpoint_observation_holds(self):
+        evidence = SourceClosureEvidence(
+            "WORLD-1", "CLOSE-R2", True, False, True,
+            need_id="NEED-1", source_endpoint_observed=None
+        )
+        result = qualify_source_acquisition(
+            evidence, self.current,
+            expected_source_id="WORLD-1", expected_closure_id="CLOSE-R2"
+        )
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("exact source endpoint", result.reasons[0])
 
     def test_human_courier_does_not_prove_direct_source_delivery(self):
         evidence = SourceClosureEvidence(
