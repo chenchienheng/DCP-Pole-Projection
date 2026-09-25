@@ -77,6 +77,38 @@ class InteractionEvidence:
 
 
 @dataclass(frozen=True)
+class SourceClosureEvidence:
+    """Evidence that a reconciled cross-Native subject actually reached its source.
+
+    A human-carried copy can prove content availability/read, but it must not be
+    upgraded into proof of a direct Root→source wake/delivery edge.
+    """
+    source_id: str
+    closure_id: str
+    closure_created: bool
+    direct_delivery_observed: bool
+    source_read_observed: bool
+    via_human_courier: bool = False
+
+
+@dataclass(frozen=True)
+class ResourceReleaseEvidence:
+    """Evidence required before a temporary resource may be released/reallocated.
+
+    Believed completion is insufficient. Required effects, deliveries, and
+    persistence must be observed before release becomes eligible.
+    """
+    resource_id: str
+    action_id: str
+    effect_required: bool = True
+    effect_observed: bool | None = None
+    delivery_required: bool = False
+    delivery_observed: bool | None = None
+    persistence_required: bool = False
+    persistence_observed: bool | None = None
+
+
+@dataclass(frozen=True)
 class Resolution:
     disposition: Disposition
     current: Current
@@ -233,6 +265,90 @@ def qualify_interaction(evidence: InteractionEvidence, current: Current) -> Reso
             "A qualified interaction may affect the same Need without changing its identity.",
             "Admission/effect/idempotency gates passed; downstream execution still needs its own authority.",
             "Only the affected consequence edge may proceed or revalidate.",
+        ),
+    )
+
+
+def qualify_source_closure(evidence: SourceClosureEvidence, current: Current) -> Resolution:
+    """Require source-endpoint evidence; do not confuse relayed content with direct delivery."""
+    if not evidence.closure_created:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=("source closure has not been created",),
+            tri_pole=_tri(
+                "The source cannot metabolize a closure that does not yet exist.",
+                "Return-path completion is not inferred from receiver reconciliation.",
+                "World/source state remains open for closure.",
+            ),
+        )
+
+    if evidence.via_human_courier or not evidence.direct_delivery_observed:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=("direct source delivery is not proven; relayed content is not a wake/delivery receipt",),
+            tri_pole=_tri(
+                "Content identity can survive relay without proving the transport edge.",
+                "Human courier use cannot be upgraded into direct delivery authority/evidence.",
+                "Source awareness may exist while the direct routing edge remains open.",
+            ),
+        )
+
+    if not evidence.source_read_observed:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=("direct delivery occurred but source read is not proven",),
+            tri_pole=_tri(
+                "Arrival alone does not prove source assimilation.",
+                "Delivery and Read/Use remain distinct stages.",
+                "Closure remains pending at the source endpoint.",
+            ),
+        )
+
+    return Resolution(
+        Disposition.QUIET,
+        current,
+        reasons=("direct source closure delivery and source read are proven",),
+        tri_pole=_tri(
+            "The source receives the reconciled consequence without changing identity.",
+            "The bounded return path is closed without creating a new dispatch.",
+            "No extra world mutation is implied by closure receipt.",
+        ),
+    )
+
+
+def qualify_resource_release(evidence: ResourceReleaseEvidence, current: Current) -> Resolution:
+    """Block premature resource release until every required downstream effect is observed."""
+    missing: list[str] = []
+    if evidence.effect_required and evidence.effect_observed is not True:
+        missing.append("required effect is not observed")
+    if evidence.delivery_required and evidence.delivery_observed is not True:
+        missing.append("required delivery is not observed")
+    if evidence.persistence_required and evidence.persistence_observed is not True:
+        missing.append("required persistence/readback is not observed")
+
+    if missing:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=tuple(missing),
+            tri_pole=_tri(
+                "Believed completion does not equal completed consequence.",
+                "Resource release is gated by observed required effects, not task narration.",
+                "The resource remains eligible to stay allocated until the evidence gate closes.",
+            ),
+        )
+
+    return Resolution(
+        Disposition.RECOMPOSE,
+        current,
+        reasons=("all required release evidence is observed; release/reallocation is eligible",),
+        tri_pole=_tri(
+            "Resource identity is not tied to one task after its required consequence closes.",
+            "Release eligibility permits bounded recomposition without claiming provider release receipt.",
+            "The world may reallocate capacity while preserving the completed effect evidence.",
         ),
     )
 
