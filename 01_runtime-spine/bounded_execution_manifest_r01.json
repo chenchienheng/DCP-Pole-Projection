@@ -25,9 +25,13 @@
     {
       "module": "test_carrier_current_resolver_r01",
       "definition_count": 10
+    },
+    {
+      "module": "test_environment_field_r01",
+      "definition_count": 8
     }
   ],
-  "expected_definition_total": 81,
+  "expected_definition_total": 89,
   "execution_evidence_required": [
     "head_sha",
     "runner_exit_code",
