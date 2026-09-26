@@ -49,6 +49,23 @@ def risk(**kw):
     return ActionRiskProfile(**base)
 
 
+def execution():
+    return QualificationExecution(
+        depth_used=QualificationDepth.LIGHT,
+        evidence_items=1,
+        independent_check_observed=False,
+        human_confirmation_observed=False,
+        resource_units_used=1.0,
+    )
+
+
+def current_candidate(carrier=CarrierKind.DRIVE, locator="world-thin"):
+    return CarrierCurrentCandidate(
+        carrier, locator, "WORLD", "CONSTRUCTION_CURRENT",
+        True, True, True, True, True, "2026-09-26T18:00:00+08:00"
+    )
+
+
 class R2OperationalSpineR01Tests(unittest.TestCase):
     def test_reentry_uses_qualified_drive_current_not_memory_retrieval_order(self):
         memory = CarrierCurrentCandidate(
@@ -126,16 +143,39 @@ class R2OperationalSpineR01Tests(unittest.TestCase):
         self.assertEqual(result.disposition, RouteDisposition.HOLD)
 
     def test_low_risk_legal_route_can_pass_with_light_minimum(self):
-        result = pre_action_gate(
-            route(),
-            risk(),
-            QualificationExecution(
-                depth_used=QualificationDepth.LIGHT,
-                evidence_items=1,
-                independent_check_observed=False,
-                human_confirmation_observed=False,
-                resource_units_used=1.0,
+        result = pre_action_gate(route(), risk(), execution())
+        self.assertTrue(result.executable)
+
+    def test_current_hold_blocks_same_dependent_action(self):
+        current = resolve_reentry_current(
+            (
+                current_candidate(CarrierKind.DRIVE, "world-thin"),
+                current_candidate(CarrierKind.GITHUB, "pr391"),
             ),
+            stable_referent="WORLD",
+            purpose="CONSTRUCTION_CURRENT",
+        )
+        result = pre_action_gate(
+            route(), risk(), execution(), current=current, require_current=True
+        )
+        self.assertFalse(result.executable)
+        self.assertIn("CURRENT_HOLD_BLOCKS_DEPENDENT_ACTION", result.reasons)
+
+    def test_required_current_missing_blocks_dependent_action(self):
+        result = pre_action_gate(
+            route(), risk(), execution(), require_current=True
+        )
+        self.assertFalse(result.executable)
+        self.assertIn("CURRENT_REQUIRED_BUT_NOT_RESOLVED", result.reasons)
+
+    def test_resolved_current_allows_qualified_dependent_action(self):
+        current = resolve_reentry_current(
+            (current_candidate(),),
+            stable_referent="WORLD",
+            purpose="CONSTRUCTION_CURRENT",
+        )
+        result = pre_action_gate(
+            route(), risk(), execution(), current=current, require_current=True
         )
         self.assertTrue(result.executable)
 
