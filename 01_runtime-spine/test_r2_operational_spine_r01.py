@@ -71,7 +71,7 @@ class R2OperationalSpineR01Tests(unittest.TestCase):
         result = assess_carrier_continuity(
             CarrierObservation(
                 stable_identity="QINYI_WORLD_MODELING_CONTINUITY",
-                observed_title="Gmail 自動整理",
+                observed_title="Automation result title",
                 observed_ui_mode=None,
                 backend_mode_proven=False,
             )
