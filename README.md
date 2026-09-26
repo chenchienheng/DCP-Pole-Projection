@@ -32,6 +32,16 @@ Cross-repository continuity should travel through bounded pointer / receipt / re
 
 Start with `CURRENT-SURFACE-MANIFEST.json`. Legacy root-layer families remain Historical／Compatibility unless explicitly re-admitted; repository location, filename, recency, or searchability does not establish Current.
 
+## Continuity and replaceable carriers / 連續性與可替換載體
+
+Repository, model, tool, and storage locations are **replaceable carriers**, not permanent topology. For a bounded Need, continuity depends on re-qualifying Stable Identity / Need, Current-for-purpose, Authority, Evidence, Return and Rebuild relations when a carrier changes. A newer location, successful write, clean merge, or available capability does not by itself prove continuity, admission, delivery, or use.
+
+Repository、模型、工具與儲存位置都是**可替換載體**，不是永久拓撲。對一個有界 Need 而言，載體變更時必須重新資格化 Stable Identity／Need、Current-for-purpose、Authority、Evidence、Return 與 Rebuild 關係。較新的位置、寫入成功、可乾淨合併或能力可用，都不能單獨證明連續性、Admission、Delivery 或 Use。
+
+DCP-oriented maturity is therefore measured by whether dependency/state/authority/evidence/return relations remain recoverable and correctly bounded across interruption or carrier replacement, not by repository, artifact, PR, model or tool count.
+
+因此 DCP 極向的成熟度，以中斷或載體替換後，Dependency／State／Authority／Evidence／Return 關係能否正確重取、恢復並維持邊界來衡量，而不是以 Repository／Artifact／PR／Model／Tool 數量衡量。
+
 ## Representation architecture / 三極語
 
 - **Human zh-TW** — 人類理解、判斷、風險與下一步。
