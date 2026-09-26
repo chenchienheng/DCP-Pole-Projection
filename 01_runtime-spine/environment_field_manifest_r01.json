@@ -428,5 +428,58 @@
     "retirement_candidates": [],
     "retirement_action_taken": false,
     "rule": "Do not retire an open PR merely because one visible purpose was superseded; require all unique capability/evidence deltas to be absorbed or explicitly retired."
+  },
+  "capability_absorption_batch": {
+    "observed_at": "2026-09-27T06:56+08:00",
+    "graph": "01_runtime-spine/capability_absorption_graph_r01.json",
+    "absorbed_and_retired": [
+      {
+        "source_pr": 392,
+        "successor_pr": 404,
+        "merge_sha": "1269d753746103212e2bc46d118e91c669c2efef",
+        "state": "CLOSED_UNMERGED_HISTORICAL_EVIDENCE"
+      },
+      {
+        "source_pr": 386,
+        "successor_pr": 405,
+        "merge_sha": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
+        "state": "CLOSED_UNMERGED_HISTORICAL_EVIDENCE"
+      }
+    ],
+    "kernel_dependency_cluster": {
+      "substrate_pr": 324,
+      "dependent_prs": [
+        384,
+        387,
+        393,
+        395,
+        396,
+        397
+      ],
+      "observation": "current main has no dcp_kernel paths for these candidate heads; leaf integration must not bypass substrate qualification",
+      "overlap_edge": "PR397 reality_intake blob equals PR396 reality_intake blob; PR397 adds unique vision_provider/tests"
+    },
+    "mixed_holds": [
+      383,
+      "GLModel#8",
+      "Ideas#7"
+    ],
+    "retirement_gate": {
+      "boundary": "ARTIFACT_TO_RETIRED",
+      "requires": [
+        "stable_binding",
+        "unique_delta_inventoried",
+        "successor_coverage_observed",
+        "evidence_preserved",
+        "retirement_authority_qualified"
+      ],
+      "positive_specimens": [
+        392,
+        386
+      ],
+      "negative_specimen": 397
+    },
+    "bounded_suite_definition_total": 121,
+    "execution_status": "DEFINITIONS_ONLY_NOT_PASS"
   }
 }
