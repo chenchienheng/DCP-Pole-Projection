@@ -1,0 +1,40 @@
+{
+  "artifact_role": "TRANSLATION_FAMILY_METABOLISM_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "family": "02_translation-layer",
+  "current_architecture_role": "NONE_AS_PERMANENT_LAYER",
+  "normal_reader_required": false,
+  "observed_dispositions": [
+    {
+      "path": "02_translation-layer/CLOUD_OVER_CLOUD_CONTROL_CENTER_SPEC.md",
+      "state": "RETIRED_ABSENT",
+      "retired": ["Gemini/Jules/Codex fixed relay roles", "control center ontology", "AXIS-01/05 mandatory routing", "registry submission as closure"]
+    },
+    {
+      "path": "02_translation-layer/BRIDGE_DRILL_TEMPLATE_v0_1.md",
+      "state": "RETIRED_ABSENT",
+      "retired": ["MotherTree/CoreTri fixed return target", "Translation layer as permanent gate surface"]
+    },
+    {
+      "path": "02_translation-layer/README.md",
+      "state": "LEGACY_PATH_ALIAS",
+      "current_architecture_role": "NONE",
+      "normal_reader": false,
+      "retained": ["stable identity across representation", "authority/evidence boundary", "transform/loss record", "fidelity check", "receiver return/reconciliation"]
+    }
+  ],
+  "successor_interpretation": "Stable Existence -> Representation Need -> Authority/Evidence Boundary -> Transform/Carrier -> Fidelity/Loss Check -> Return/Reconciliation",
+  "invariants": [
+    "TRANSLATION_SUCCESS_DOES_NOT_PROVE_FIDELITY",
+    "REPRESENTATION_DOES_NOT_BECOME_SOURCE_OR_TRUTH",
+    "CARRIER_OR_FORMAT_CHANGE_DOES_NOT_CREATE_IDENTITY_OR_ONTOLOGY",
+    "TRANSLATION_CAPABILITY_DOES_NOT_REQUIRE_A_PERMANENT_TRANSLATION_LAYER",
+    "RETURN_TARGET_IS_RECEIVER_SPECIFIC_NOT_MOTHERTREE_OR_CORETRI_BY_DEFAULT"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "REBUILD_DEPENDENCY_WITHDRAWAL",
+    "POOLED_RECLAIM_REVIEW"
+  ]
+}

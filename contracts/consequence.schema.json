@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/consequence.schema.json",
+  "title": "DCP Consequence Observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "transition_id",
+    "observed_effect",
+    "impact",
+    "cost",
+    "side_effects",
+    "evidence_refs",
+    "affected_receivers",
+    "responsibility_owner",
+    "return_state",
+    "receiver_disposition",
+    "rebuild_revision",
+    "behavior_delta",
+    "retest_result"
+  ],
+  "properties": {
+    "transition_id": {"type": "string", "minLength": 1},
+    "observed_effect": {"type": ["string", "null"]},
+    "impact": {"type": "array", "items": {"type": "string"}},
+    "cost": {"type": "array", "items": {"type": "string"}},
+    "side_effects": {"type": "array", "items": {"type": "string"}},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "affected_receivers": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "responsibility_owner": {"type": ["string", "null"]},
+    "return_state": {"type": "string"},
+    "receiver_disposition": {"type": ["string", "null"]},
+    "rebuild_revision": {"type": ["string", "null"]},
+    "behavior_delta": {"type": ["string", "null"]},
+    "retest_result": {"type": ["string", "null"]}
+  },
+  "x-invariants": [
+    "RESULT_IS_NEXT_CONDITION_NOT_TERMINAL_STATE",
+    "RETURN_WRITTEN_IS_NOT_ABSORPTION",
+    "ACTION_WITHOUT_RESPONSIBILITY_IS_INCOMPLETE",
+    "FAILURE_MAY_BECOME_HIGH_VALUE_NEXT_CONDITION"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

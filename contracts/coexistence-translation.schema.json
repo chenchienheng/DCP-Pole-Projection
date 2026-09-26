@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/coexistence-translation.schema.json",
+  "title": "DCP Cross-Native Coexistence Candidate",
+  "type": "object",
+  "required": ["left_model_id", "right_model_id"],
+  "properties": {
+    "left_model_id": {"type": "string", "minLength": 1},
+    "right_model_id": {"type": "string", "minLength": 1},
+    "common_source_id": {"type": ["string", "null"]},
+    "translation_available": {"type": "boolean"},
+    "compatibility_conditions_known": {"type": "boolean"},
+    "shared_evidence_interface": {"type": "boolean"},
+    "contradiction_identified": {"type": "boolean"},
+    "forced_identity_merge_requested": {"type": "boolean"},
+    "authority_merge_requested": {"type": "boolean"}
+  },
+  "x-invariants": [
+    "SAME_SOURCE_DOES_NOT_IMPLY_SAME_IDENTITY",
+    "DIFFERENT_LOGIC_DOES_NOT_IMPLY_CONFLICT_BY_DEFAULT",
+    "COEXISTENCE_DOES_NOT_REQUIRE_MERGE",
+    "INTEGRATION_DOES_NOT_CREATE_CENTRAL_AUTHORITY",
+    "CROSS_MODEL_CLAIMS_REQUIRE_TRANSLATION_COMPATIBILITY_AND_EVIDENCE"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

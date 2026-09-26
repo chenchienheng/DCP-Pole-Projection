@@ -1,0 +1,74 @@
+{
+  "fixture_id": "DCP-FAMILY-CALLER-REBUILD-CENSUS-002",
+  "claim_ceiling": "BOUNDED_SUCCESSOR_REVIEW_STATE_ONLY",
+  "runtime": false,
+  "promotion": false,
+  "destructive_action_authorized": false,
+  "families": [
+    {
+      "family": "01_runtime-spine",
+      "artifact_count_observed": 5,
+      "artifact_listing_complete": true,
+      "current_surface_reference": false,
+      "normal_reader_role": false,
+      "successor_review_complete": true,
+      "unique_evidence_review_complete": true,
+      "unique_evidence_debt_count": 0,
+      "caller_audit_complete": false,
+      "rebuild_audit_complete": false,
+      "reader_routing_wake_withdrawal_proven": false,
+      "family_state": "SUCCESSOR_REVIEW_COMPLETE_CALLER_REBUILD_PENDING",
+      "detail_fixture": "01_runtime-spine non-truncated five-artifact branch tree"
+    },
+    {
+      "family": "03_field-governance",
+      "artifact_count_observed": 22,
+      "artifact_listing_complete": true,
+      "current_surface_reference": false,
+      "normal_reader_role": false,
+      "successor_review_complete": true,
+      "unique_evidence_review_complete": true,
+      "unique_evidence_debt_count": 1,
+      "unique_evidence_debt": "TW_STRATEGY_MOTHERTREE_FEEDBACK historical branch-return provenance retention review",
+      "caller_audit_complete": false,
+      "rebuild_audit_complete": false,
+      "reader_routing_wake_withdrawal_proven": false,
+      "family_state": "SUCCESSOR_REVIEW_COMPLETE_CALLER_REBUILD_PENDING",
+      "detail_fixture": "fixtures/repository/03-field-governance-review.json"
+    },
+    {
+      "family": "04_adapter-layer",
+      "artifact_count_observed": 13,
+      "artifact_listing_complete": true,
+      "current_surface_reference": false,
+      "normal_reader_role": false,
+      "successor_review_complete": true,
+      "unique_evidence_review_complete": true,
+      "unique_evidence_debt_count": 1,
+      "unique_evidence_debt": "gemini_gas_sheet_bridge historical GAS/schema provenance review",
+      "caller_audit_complete": false,
+      "rebuild_audit_complete": false,
+      "reader_routing_wake_withdrawal_proven": false,
+      "family_state": "SUCCESSOR_REVIEW_COMPLETE_CALLER_REBUILD_PENDING",
+      "detail_fixture": "fixtures/repository/04-adapter-layer-review.json"
+    }
+  ],
+  "shared_gates_before_reclaim": [
+    "execute reproducible successor-branch live caller census",
+    "execute rebuild dependency census",
+    "prove normal reader/routing/wake withdrawal",
+    "resolve family-specific provenance retention debts",
+    "perform pooled reclaim review"
+  ],
+  "invariants": [
+    "CURRENT_SURFACE_ABSENCE_DOES_NOT_PROVE_CALLER_ABSENCE",
+    "SUCCESSOR_COVERAGE_DOES_NOT_PROVE_REBUILD_INDEPENDENCE",
+    "UNKNOWN_DEPENDENCY_IS_HOLD_NOT_DELETE_AUTHORITY",
+    "RECLAIM_REQUIRES_CALLER_REBUILD_AND_RETENTION_EVIDENCE"
+  ],
+  "notes": [
+    "This fixture corrects stale sampled-review state. 01, 03 and 04 successor body reviews are complete at their declared artifact counts.",
+    "No family is reclaim-ready because live caller, rebuild dependency and reader/routing/wake withdrawal remain unproven.",
+    "No rename, move, delete, merge, promotion, Receiver ACK or Runtime claim is authorized by this fixture."
+  ]
+}

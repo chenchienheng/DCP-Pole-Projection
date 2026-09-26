@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.example/contracts/stable-life.schema.json",
+  "title": "DCP Stable Life Candidate Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "life_id",
+    "invariant_core",
+    "native_owner",
+    "current_revision",
+    "last_good_revision",
+    "tri_root_state"
+  ],
+  "properties": {
+    "life_id": {"type": "string", "minLength": 1},
+    "invariant_core": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity_anchor", "meaning_anchor"],
+      "properties": {
+        "identity_anchor": {"type": "string", "minLength": 1},
+        "meaning_anchor": {"type": "string", "minLength": 1},
+        "world_truth_id": {"type": ["string", "null"]}
+      }
+    },
+    "native_owner": {"type": "string", "minLength": 1},
+    "current_revision": {"type": "string", "minLength": 1},
+    "last_good_revision": {"type": "string", "minLength": 1},
+    "tri_root_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "meaning_preserved",
+        "dependencies_resolved",
+        "source_revision"
+      ],
+      "properties": {
+        "meaning_preserved": {"type": "boolean"},
+        "dependencies_resolved": {"type": "boolean"},
+        "world_id": {"type": ["string", "null"]},
+        "source_revision": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

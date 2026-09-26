@@ -1,0 +1,71 @@
+{
+  "fixture_id": "DCP-PHYSICAL-RETIREMENT-OBS-001",
+  "claim_ceiling": "BOUNDED_BRANCH_OBSERVATION_ONLY",
+  "runtime": false,
+  "promotion": false,
+  "branch": "ideas/6d-dispatch-projection-20260816",
+  "items": [
+    {
+      "artifact_path": "WORLD_CHAIN_MASTER_AXIS.md",
+      "artifact_present": false,
+      "provenance_retained": true,
+      "active_reference": false,
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "successor_pointer": "WORLD_RELATION_LINEAGE_SPECIMEN.md+dcp_kernel/transition.py",
+      "expected_state": "PHYSICALLY_RETIRED_PROVENANCE_RETAINED"
+    },
+    {
+      "artifact_path": "03_field-governance/COMMANDER_CARD_v0_1.md",
+      "artifact_present": false,
+      "provenance_retained": true,
+      "active_reference": false,
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "successor_pointer": "03_field-governance/CAPABILITY_BOUNDARY_CARD_SPECIMEN.md+dcp_kernel/resolution.py",
+      "expected_state": "PHYSICALLY_RETIRED_PROVENANCE_RETAINED"
+    },
+    {
+      "artifact_path": "03_field-governance/RECOMPOSITION_ENGINE_v0_1.md",
+      "artifact_present": true,
+      "provenance_retained": true,
+      "active_reference": false,
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "successor_pointer": "LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md+dcp_kernel/platform.py",
+      "expected_state": "ACTIVE_ARTIFACT"
+    },
+    {
+      "artifact_path": "SCHEDULING_EFFECT_REGISTER.md",
+      "artifact_present": true,
+      "provenance_retained": true,
+      "active_reference": false,
+      "rebuild_dependency": false,
+      "caller_audit_complete": false,
+      "rebuild_audit_complete": false,
+      "successor_pointer": null,
+      "expected_state": "ACTIVE_ARTIFACT"
+    },
+    {
+      "artifact_path": "REPOSITORY_CORPUS_INDEX.md",
+      "artifact_present": true,
+      "provenance_retained": true,
+      "active_reference": true,
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "successor_pointer": "CURRENT-SURFACE-MANIFEST.json",
+      "expected_state": "ACTIVE_ARTIFACT"
+    }
+  ],
+  "evidence_notes": [
+    "WORLD_CHAIN_MASTER_AXIS.md and COMMANDER_CARD_v0_1.md are absent from the successor branch while explicit lineage specimens describe their retirement and successor direction.",
+    "RECOMPOSITION_ENGINE_v0_1.md remains physically present but self-declares no standalone Engine/Runtime eligibility.",
+    "SCHEDULING_EFFECT_REGISTER.md remains physically present as a public research/reference contract; caller/rebuild coverage remains a separate audit question.",
+    "REPOSITORY_CORPUS_INDEX.md remains physically present as a historical discovery surface with CURRENT-SURFACE-MANIFEST.json declared as successor entry.",
+    "Physical absence or presence does not itself grant deletion, Current, Authority, Runtime or Native disposition."
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/carrier-binding.schema.json",
+  "title": "DCP Carrier Binding Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "carrier_id",
+    "carrier_class",
+    "capabilities",
+    "authority_valid",
+    "rights_valid",
+    "evidence_available",
+    "return_supported",
+    "fidelity_supported",
+    "risk_allowed",
+    "available"
+  ],
+  "properties": {
+    "carrier_id": {"type": "string", "minLength": 1},
+    "carrier_class": {
+      "enum": ["STORAGE", "TEMPORAL", "MESSAGE_EVENT", "REPRESENTATION", "INTERACTIVE_EXECUTION", "API_SERVICE", "MODEL_GEOMETRY", "OTHER"]
+    },
+    "capabilities": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "authority_valid": {"type": "boolean"},
+    "rights_valid": {"type": "boolean"},
+    "evidence_available": {"type": "boolean"},
+    "return_supported": {"type": "boolean"},
+    "fidelity_supported": {"type": "boolean"},
+    "risk_allowed": {"type": "boolean"},
+    "available": {"type": "boolean"},
+    "vendor_labels": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "x-invariants": [
+    "TOOL_NAME_IS_NOT_TAXONOMY",
+    "TOOL_AVAILABILITY_IS_NOT_AUTHORITY",
+    "CARRIER_SUBSTITUTION_MUST_PRESERVE_STABLE_IDENTITY",
+    "CARRIER_CAPABILITY_IS_NOT_NATIVE_AUTHORITY",
+    "SUCCESSFUL_EXECUTION_IS_NOT_ADMISSION_OR_APPROVAL"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

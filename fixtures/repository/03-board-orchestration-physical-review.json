@@ -1,0 +1,39 @@
+{
+  "artifact_role": "BOARD_ORCHESTRATION_PHYSICAL_REVIEW",
+  "runtime": false,
+  "promotion": false,
+  "family": "03_board-orchestration",
+  "current_architecture_role": "NONE_AS_ORCHESTRATION_FAMILY",
+  "normal_reader_required": false,
+  "observed_absent": [
+    "03_board-orchestration/README.md",
+    "03_board-orchestration/window_binding_registry_01_07.md",
+    "03_board-orchestration/window_delta_mapping_template.md",
+    "03_board-orchestration/runtime-spine/xuanling-calendar-time-window-adapter-contract-2026-04-19-v0-1.md",
+    "03_board-orchestration/routing-logs/00-consolidation/.gitkeep",
+    "03_board-orchestration/routing-logs/05-time-window/.gitkeep",
+    "03_board-orchestration/routing-logs/cross-window-exceptions/.gitkeep"
+  ],
+  "remaining_live_body": [
+    {
+      "path": "03_board-orchestration/runtime-spine/xuanling-gmail-bridge-intake-gate-contract-2026-04-19-v0-1.md",
+      "role": "HISTORICAL_IMPLEMENTATION_SPECIMEN",
+      "current_eligibility": false,
+      "executable_authority": false,
+      "retained_reason": "carrier-specific predecessor/failure/implementation lineage until pooled reclaim review"
+    }
+  ],
+  "invariants": [
+    "WINDOW_MAPPING_DOES_NOT_CREATE_AUTHORITY",
+    "ROUTING_LOG_DIRECTORY_DOES_NOT_CREATE_RUNTIME_TOPOLOGY",
+    "BOARD_ORCHESTRATION_FAMILY_IS_NOT_A_CURRENT_CONTROL_PLANE",
+    "REMAINING_GMAIL_SPECIMEN_DOES_NOT_CREATE_A_MOTHER_GATE",
+    "FAMILY_PATH_CAN_BE_RECLAIM_CANDIDATE_ONLY_AFTER_CALLER_REBUILD_AND_POINTER_CHECK"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "REBUILD_DEPENDENCY_WITHDRAWAL",
+    "POINTER_STABILITY_CHECK",
+    "POOLED_RECLAIM_REVIEW"
+  ]
+}

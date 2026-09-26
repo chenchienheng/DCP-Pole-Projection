@@ -1,0 +1,39 @@
+{
+  "family": "04_adapter-layer",
+  "artifact_count": 13,
+  "listing_complete": true,
+  "tree_truncated": false,
+  "current_surface_reference": false,
+  "normal_reader_role": false,
+  "review_state": "SUCCESSOR_REVIEW_COMPLETE_CALLER_REBUILD_PENDING",
+  "artifacts": [
+    {"path":"04_adapter-layer/README.md","role":"LEGACY_PATH_ALIAS","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/reader_policy.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/SOURCE_POINTER_TRACEABILITY_SPECIMEN.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/reader_policy.py","dcp_kernel/resolution.py","dcp_kernel/retirement.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/VIDEO_OUTPUT_NODE_SPEC.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/composition.py","dcp_kernel/evidence.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/activation_order.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/action_gate.py","dcp_kernel/decision_chain.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/calendar-adapter.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/schedule_effect.py","dcp_kernel/return_state.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/drive-adapter.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/reader_policy.py","dcp_kernel/evidence.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/gamma_entry_spec.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/composition.py","dcp_kernel/evidence.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/gemini_gas_sheet_bridge_spec.md","role":"SUCCESSOR_COVERED_HISTORICAL_IMPLEMENTATION_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/write_intent.py","dcp_kernel/action_gate.py","dcp_kernel/evidence.py"],"unique_evidence_debt":false,"provenance_evidence":{"git_history_sufficient":true,"initial_commit":"37ef230d2ba68772012919f12b7a79413d8324ed","refresh_commit":"73b1c672449a1b465545a2d7a41bca9815bd8bdf","merged_commit":"ddecd99d9e73088483d9e4b309922d77d2fb5bcd","later_optimization_commit":"d9f12587e6d2b6de2193cea912a0a56df12af150","reason":"historical GAS/schema implementation and evolution remain recoverable from Git history; live stub is not the unique evidence carrier"}},
+    {"path":"04_adapter-layer/google_ecosystem_absorption_schema.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/learning.py","dcp_kernel/return_state.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/line_entry_chain_spec.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/learning.py","dcp_kernel/evidence.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/replit_relay_spec.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/action_gate.py","dcp_kernel/write_intent.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/writeback_gate_spec.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/write_intent.py","dcp_kernel/action_gate.py","dcp_kernel/consequence.py"],"unique_evidence_debt":false},
+    {"path":"04_adapter-layer/writeback_packet_contract.md","role":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/write_intent.py","dcp_kernel/consequence.py","dcp_kernel/return_state.py"],"unique_evidence_debt":false}
+  ],
+  "summary": {
+    "successor_covered_or_alias": 13,
+    "unique_evidence_debt_count": 0,
+    "provenance_debt_closed_count": 1,
+    "active_vendor_authority_count": 0,
+    "active_w0_chatgpt_github_writeback_contract_count": 0
+  },
+  "remaining_gates": [
+    "execute successor-branch caller census",
+    "execute rebuild dependency census",
+    "confirm reader/routing/wake withdrawal",
+    "pooled reclaim review only after gates close"
+  ],
+  "claim_ceiling": "BOUNDED_SUCCESSOR_AND_PROVENANCE_REVIEW_ONLY",
+  "destructive_reclaim_authorized": false
+}

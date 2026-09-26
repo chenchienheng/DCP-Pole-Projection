@@ -1,0 +1,93 @@
+{
+  "fixture_id": "DCP-LEGACY-SUCCESSOR-COVERAGE-SEED-001",
+  "claim_ceiling": "BOUNDED_AUDIT_FIXTURE_ONLY",
+  "runtime": false,
+  "promotion": false,
+  "items": [
+    {
+      "artifact_path": "LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md",
+      "successor_id": "dcp_kernel/platform.py+dcp_kernel/transition.py+dcp_kernel/return_state.py",
+      "successor_executable_or_machine": true,
+      "active_callers": [],
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "unique_evidence": true,
+      "normal_reader_wake": true,
+      "current_routing_reference": true,
+      "expected_state": "PARTIAL_READER_WITHDRAWAL"
+    },
+    {
+      "artifact_path": "03_field-governance/RECOMPOSITION_ENGINE_v0_1.md",
+      "successor_id": "dcp_kernel/platform.py",
+      "successor_executable_or_machine": true,
+      "active_callers": [],
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "unique_evidence": true,
+      "normal_reader_wake": false,
+      "current_routing_reference": false,
+      "expected_state": "COVERED_EVIDENCE_ONLY"
+    },
+    {
+      "artifact_path": "03_field-governance/COMMANDER_CARD_v0_1.md",
+      "successor_id": "03_field-governance/CAPABILITY_BOUNDARY_CARD_SPECIMEN.md+dcp_kernel/resolution.py",
+      "successor_executable_or_machine": true,
+      "active_callers": [],
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "unique_evidence": true,
+      "normal_reader_wake": false,
+      "current_routing_reference": false,
+      "expected_state": "COVERED_EVIDENCE_ONLY"
+    },
+    {
+      "artifact_path": "SCHEDULING_EFFECT_REGISTER.md",
+      "successor_id": "contracts/schedule-effect.schema.json+dcp_kernel/schedule_effect.py",
+      "successor_executable_or_machine": true,
+      "active_callers": [],
+      "rebuild_dependency": false,
+      "caller_audit_complete": false,
+      "rebuild_audit_complete": false,
+      "unique_evidence": true,
+      "normal_reader_wake": false,
+      "current_routing_reference": false,
+      "expected_state": "AUDIT_INCOMPLETE"
+    },
+    {
+      "artifact_path": "WORLD_CHAIN_MASTER_AXIS.md",
+      "successor_id": "WORLD_RELATION_LINEAGE_SPECIMEN.md+dcp_kernel/transition.py",
+      "successor_executable_or_machine": true,
+      "active_callers": [],
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "unique_evidence": true,
+      "normal_reader_wake": false,
+      "current_routing_reference": false,
+      "expected_state": "COVERED_EVIDENCE_ONLY"
+    },
+    {
+      "artifact_path": "REPOSITORY_CORPUS_INDEX.md",
+      "successor_id": "CURRENT-SURFACE-MANIFEST.json",
+      "successor_executable_or_machine": true,
+      "active_callers": [],
+      "rebuild_dependency": false,
+      "caller_audit_complete": true,
+      "rebuild_audit_complete": true,
+      "unique_evidence": true,
+      "normal_reader_wake": false,
+      "current_routing_reference": false,
+      "expected_state": "COVERED_EVIDENCE_ONLY"
+    }
+  ],
+  "notes": [
+    "Seed values are bounded successor-branch observations, not Native disposition or deletion authorization.",
+    "Physical retirement is evaluated separately by physical-retirement-observations.json; a missing predecessor is not revived by this semantic fixture.",
+    "SCHEDULING_EFFECT_REGISTER now has a machine/executable successor, but caller/rebuild audits remain incomplete, so it stays HOLD/AUDIT_INCOMPLETE.",
+    "Only proven active callers or rebuild dependency without adequate successor coverage may establish ZOMBIE_DEPENDENCY.",
+    "Covered evidence-only means behavior is successor-covered and normal wake is withdrawn; it does not authorize physical deletion."
+  ]
+}
