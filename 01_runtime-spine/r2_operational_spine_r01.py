@@ -12,6 +12,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 
+from carrier_current_resolver_r01 import (
+    CarrierCurrentCandidate,
+    CurrentResolution,
+    resolve_current,
+)
 from field_feedback_r01 import FieldFeedbackAssessment, LocalFieldObservation, project_field_feedback
 from qualification_budget_r01 import (
     ActionRiskProfile,
@@ -77,6 +82,20 @@ class PreActionAssessment:
     qualification: QualificationAssessment | None
     executable: bool
     reasons: tuple[str, ...]
+
+
+def resolve_reentry_current(
+    candidates: tuple[CarrierCurrentCandidate, ...],
+    *,
+    stable_referent: str,
+    purpose: str,
+) -> CurrentResolution:
+    """Resolve qualified Current before route/action work begins."""
+    return resolve_current(
+        candidates,
+        stable_referent=stable_referent,
+        purpose=purpose,
+    )
 
 
 def assess_carrier_continuity(
