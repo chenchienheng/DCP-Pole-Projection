@@ -1,0 +1,51 @@
+{
+  "id": "DCP_KERNEL_CAPABILITY_ABSORPTION_R1_20260927",
+  "state": "INTEGRATION_CANDIDATE",
+  "base_main": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
+  "base_lineage": {
+    "pr": 324,
+    "head": "00999341ff600a65ab3de641e4ce5615d6e9690d",
+    "role": "coherent kernel/contracts/tests/fixtures base"
+  },
+  "overlays": [
+    {
+      "pr": 384,
+      "role": "capability activation + decoupled stewardship/authority"
+    },
+    {
+      "pr": 387,
+      "role": "Current/Affected Cone/Return regression evidence"
+    },
+    {
+      "pr": 393,
+      "role": "Return→re-entry schema drift fix"
+    },
+    {
+      "pr": 395,
+      "role": "carrier choice + consequence/Return→Need semantics"
+    },
+    {
+      "pr": 396,
+      "role": "reality intake"
+    },
+    {
+      "pr": 397,
+      "role": "vision provider bridge; reality_intake duplicate intentionally not overlaid twice"
+    }
+  ],
+  "source_pr_retirement": "NOT_YET_QUALIFIED",
+  "validation_required": [
+    "import/collection succeeds",
+    "tests execute on exact candidate head",
+    "overlap between PR396/397 remains semantically compatible",
+    "current public entry boundaries remain unchanged",
+    "no Runtime/Authority/Canon promotion"
+  ],
+  "claim_ceiling": [
+    "CANDIDATE",
+    "NOT_RUNTIME",
+    "NOT_CANON",
+    "NO_PROVIDER_PASS",
+    "NO_AUTOMATIC_SOURCE_PR_RETIREMENT"
+  ]
+}
