@@ -66,7 +66,7 @@ def assess_resource_effect(
     for name in ("evidence_gain", "risk_before", "risk_after", "useful_effect"):
         _bounded(name, getattr(observation, name))
 
-    risk_reduction = max(0.0, observation.risk_before - observation.risk_after)
+    risk_reduction = observation.risk_before - observation.risk_after
 
     if not observation.authority_valid or not observation.qualification_sufficient:
         return ResourceEffectAssessment(
@@ -106,7 +106,7 @@ def assess_resource_effect(
     if not baseline.effect_observed or not baseline.current_for_purpose:
         raise ValueError("baseline effect must be current and observed")
 
-    baseline_risk_reduction = max(0.0, baseline.risk_before - baseline.risk_after)
+    baseline_risk_reduction = baseline.risk_before - baseline.risk_after
     d_resource = observation.resource_units - baseline.resource_units
     d_evidence = observation.evidence_gain - baseline.evidence_gain
     d_risk = risk_reduction - baseline_risk_reduction
