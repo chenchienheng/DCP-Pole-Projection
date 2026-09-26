@@ -20,14 +20,14 @@
     },
     {
       "module": "test_r2_operational_spine_r01",
-      "definition_count": 10
+      "definition_count": 13
     },
     {
       "module": "test_carrier_current_resolver_r01",
-      "definition_count": 7
+      "definition_count": 10
     }
   ],
-  "expected_definition_total": 68,
+  "expected_definition_total": 74,
   "execution_evidence_required": [
     "head_sha",
     "runner_exit_code",
