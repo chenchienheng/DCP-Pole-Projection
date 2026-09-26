@@ -94,6 +94,23 @@ class SourceClosureEvidence:
 
 
 @dataclass(frozen=True)
+class CallerReturnEvidence:
+    """Evidence that an observed effect actually returned to the original caller.
+
+    Native completion, persistence, or Root reconciliation cannot substitute for
+    caller delivery/read. Caller Use remains a separate disposition claim.
+    """
+    caller_id: str
+    need_id: str
+    return_id: str
+    effect_observed: bool | None
+    return_delivered_observed: bool | None
+    caller_read_observed: bool | None
+    caller_endpoint_observed: bool | None = None
+    caller_use_observed: bool | None = None
+
+
+@dataclass(frozen=True)
 class ResourceReleaseEvidence:
     """Evidence required before a temporary resource may be released/reallocated.
 
@@ -401,6 +418,66 @@ def qualify_source_closure(
             "The source receives the reconciled consequence without changing identity.",
             "The bounded return path is closed without creating a new dispatch.",
             "No extra world mutation is implied by closure receipt.",
+        ),
+    )
+
+
+def qualify_caller_return(
+    evidence: CallerReturnEvidence,
+    current: Current,
+    *,
+    expected_caller_id: str,
+    expected_return_id: str,
+) -> Resolution:
+    """Close a bounded Need only when its effect has returned to the real caller."""
+    binding_errors: list[str] = []
+    if evidence.caller_id != expected_caller_id:
+        binding_errors.append("caller binding mismatch")
+    if evidence.need_id != current.need_id:
+        binding_errors.append("Need binding mismatch")
+    if evidence.return_id != expected_return_id:
+        binding_errors.append("return binding mismatch")
+    if binding_errors:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=tuple(binding_errors),
+            tri_pole=_tri(
+                "Another caller/Need cannot inherit this Return closure.",
+                "Exact caller/Need/return binding precedes closure.",
+                "The original caller Return remains open.",
+            ),
+        )
+
+    missing: list[str] = []
+    if evidence.effect_observed is not True:
+        missing.append("effect is not observed")
+    if evidence.caller_endpoint_observed is not True:
+        missing.append("exact caller endpoint is not observed")
+    if evidence.return_delivered_observed is not True:
+        missing.append("caller Return delivery is not observed")
+    if evidence.caller_read_observed is not True:
+        missing.append("caller read is not observed")
+    if missing:
+        return Resolution(
+            Disposition.CANNOT_HOLD,
+            current,
+            reasons=tuple(missing),
+            tri_pole=_tri(
+                "Native completion does not equal caller receipt.",
+                "Persistence/reconciliation cannot substitute for caller delivery/read.",
+                "The Need stays open only on the missing Return edge.",
+            ),
+        )
+
+    return Resolution(
+        Disposition.QUIET,
+        current,
+        reasons=("effect and exact caller Return delivery/read are proven; caller Use remains separate",),
+        tri_pole=_tri(
+            "The caller receives the consequence without creating a new Need.",
+            "Bounded caller Return closes without forcing adoption.",
+            "No extra world mutation is implied by caller receipt.",
         ),
     )
 
