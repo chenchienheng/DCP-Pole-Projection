@@ -1,0 +1,195 @@
+{
+  "graph_id": "DCP_CAPABILITY_ABSORPTION_GRAPH_R01_20260927",
+  "observed_at": "2026-09-27T06:54+08:00",
+  "current_main": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
+  "rule": "PR/artifact age or superseded reader text is insufficient for retirement; unique capability/evidence delta must be inventoried and covered by current-main successor or explicit retirement.",
+  "nodes": [
+    {
+      "pr": 324,
+      "state": "OPEN",
+      "role": "KERNEL_SUBSTRATE_LINEAGE",
+      "unique": [
+        "dcp_kernel base",
+        "contracts",
+        "fixtures",
+        "tests",
+        "workflow",
+        "existence-first lifecycle"
+      ],
+      "depends_on": [],
+      "disposition": "KEEP_HOLD_INTEGRATION"
+    },
+    {
+      "pr": 383,
+      "state": "OPEN",
+      "role": "MIXED_READER_ROUTING_DELTA",
+      "unique": [
+        "routing",
+        "adapter",
+        "register deltas beyond reader cleanup"
+      ],
+      "depends_on": [],
+      "absorbed": [
+        "ordinary README/STATUS/current-manifest reader semantics via later main PRs"
+      ],
+      "disposition": "PARTIAL_SUCCESSOR_HOLD"
+    },
+    {
+      "pr": 384,
+      "state": "OPEN",
+      "role": "CAPABILITY_ACTIVATION",
+      "unique": [
+        "capability_activation",
+        "decoupled stewardship/authority activation",
+        "tests"
+      ],
+      "depends_on": [
+        324
+      ],
+      "disposition": "UNIQUE_LIVE"
+    },
+    {
+      "pr": 386,
+      "state": "CLOSED_UNMERGED",
+      "role": "FALSIFICATION_EVIDENCE",
+      "unique": [],
+      "absorbed_by": {
+        "pr": 405,
+        "merge": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0"
+      },
+      "disposition": "ABSORBED_BY_SUCCESSOR_HISTORICAL_EVIDENCE"
+    },
+    {
+      "pr": 387,
+      "state": "OPEN",
+      "role": "CURRENT_AFFECTED_RETURN_REGRESSION",
+      "unique": [
+        "test_native_backlog_retest"
+      ],
+      "depends_on": [
+        324
+      ],
+      "disposition": "UNIQUE_LIVE"
+    },
+    {
+      "pr": 391,
+      "state": "OPEN_DRAFT",
+      "role": "WORLD_NFN_EXECUTABLE_SUBSTRATE",
+      "unique": [
+        "bounded runtime-spine resolver/guards/environment-field/semantic verifier"
+      ],
+      "depends_on": [],
+      "disposition": "ACTIVE_EXECUTABLE_CANDIDATE"
+    },
+    {
+      "pr": 392,
+      "state": "CLOSED_UNMERGED",
+      "role": "CAPABILITY_BASED_GITHUB_ENTRY",
+      "unique": [],
+      "absorbed_by": {
+        "pr": 404,
+        "merge": "1269d753746103212e2bc46d118e91c669c2efef"
+      },
+      "disposition": "ABSORBED_BY_SUCCESSOR_HISTORICAL_EVIDENCE"
+    },
+    {
+      "pr": 393,
+      "state": "OPEN",
+      "role": "RETURN_REENTRY_SCHEMA_FIX",
+      "unique": [
+        "platform return/reentry fix",
+        "schema-drift regression test"
+      ],
+      "depends_on": [
+        324
+      ],
+      "disposition": "UNIQUE_LIVE"
+    },
+    {
+      "pr": 395,
+      "state": "OPEN",
+      "role": "CARRIER_AND_CONSEQUENCE_SEMANTICS",
+      "unique": [
+        "carrier binding",
+        "action consequence/next-condition",
+        "tests"
+      ],
+      "depends_on": [
+        324
+      ],
+      "disposition": "UNIQUE_LIVE"
+    },
+    {
+      "pr": 396,
+      "state": "OPEN",
+      "role": "REALITY_INTAKE",
+      "unique": [
+        "reality_intake",
+        "tests"
+      ],
+      "depends_on": [
+        324,
+        395
+      ],
+      "disposition": "UNIQUE_LIVE"
+    },
+    {
+      "pr": 397,
+      "state": "OPEN",
+      "role": "VISION_PROVIDER_REALITY_BRIDGE",
+      "unique": [
+        "vision_provider",
+        "vision tests"
+      ],
+      "overlap": [
+        "reality_intake identical blob to PR396"
+      ],
+      "depends_on": [
+        324,
+        396
+      ],
+      "disposition": "PARTIAL_OVERLAP_HOLD"
+    },
+    {
+      "repo": "GLModel",
+      "pr": 8,
+      "state": "OPEN_DRAFT",
+      "role": "BROAD_CARRIER_BOUNDARY_TRANSITION",
+      "absorbed": [
+        "ordinary reader/status boundary"
+      ],
+      "unique": [
+        "semantic-core verifier/rebuild changes",
+        "broad corpus transition evidence"
+      ],
+      "disposition": "PARTIAL_SUCCESSOR_HOLD"
+    },
+    {
+      "repo": "Ideas",
+      "pr": 7,
+      "state": "OPEN_DRAFT",
+      "role": "BROAD_CARRIER_BOUNDARY_TRANSITION",
+      "absorbed": [
+        "ordinary reader/status boundary"
+      ],
+      "unique": [
+        "world/placement transition evidence",
+        "broad corpus transition evidence"
+      ],
+      "disposition": "PARTIAL_SUCCESSOR_HOLD"
+    }
+  ],
+  "next_absorption_order": [
+    "Resolve PR324 kernel substrate integration/acceptance before kernel-dependent leaves.",
+    "After kernel substrate is current-main qualified, reassess 384/387/393/395/396 and then 397 overlap.",
+    "Keep 391 independent: its runtime-spine candidate must not silently substitute for dcp_kernel lineage.",
+    "Reassess 383/GLModel8/Ideas7 family deltas only with successor coverage evidence, not reader supersession alone."
+  ],
+  "claim_ceiling": [
+    "WORKING_GRAPH",
+    "NOT_RUNTIME",
+    "NOT_CANON",
+    "NO_AUTO_MERGE",
+    "NO_AUTO_RETIRE"
+  ]
+}
