@@ -25,8 +25,8 @@
       ],
       "repository": "chenchienheng/DCP-Pole-Projection",
       "pull_request": 391,
-      "head": "df2dea6ed91e12df6234fd47a0f18a791b2c97ea",
-      "authority_claim": false
+      "authority_claim": false,
+      "head_basis_before_field_manifest": "df2dea6ed91e12df6234fd47a0f18a791b2c97ea"
     },
     {
       "carrier": "LIBRARY",
@@ -51,7 +51,7 @@
     "Carrier loss or replacement must not silently replace stable Need/Identity"
   ],
   "currently_proven": [
-    "Drive thin Current points to the same World continuity and current PR391 head",
+    "Drive thin Current points to the same World continuity and PR391 executable head basis",
     "GitHub stores versioned executable candidate/test definitions for the same bounded Need",
     "Library stable re-entry points to the same current head and named durable sources",
     "Cross-carrier Current resolver and caller-return guard exist as bounded executable candidates",
