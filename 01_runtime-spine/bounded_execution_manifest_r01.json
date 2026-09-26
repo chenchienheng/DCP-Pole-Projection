@@ -33,9 +33,13 @@
     {
       "module": "test_integration_drift_r01",
       "definition_count": 5
+    },
+    {
+      "module": "test_entry_surface_verifier_r01",
+      "definition_count": 7
     }
   ],
-  "expected_definition_total": 94,
+  "expected_definition_total": 101,
   "execution_evidence_required": [
     "head_sha",
     "runner_exit_code",
