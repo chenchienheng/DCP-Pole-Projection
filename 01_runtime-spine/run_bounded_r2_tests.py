@@ -18,6 +18,7 @@ TEST_MODULES = (
     "test_carrier_current_resolver_r01",
     "test_environment_field_r01",
     "test_integration_drift_r01",
+    "test_entry_surface_verifier_r01",
 )
 
 
