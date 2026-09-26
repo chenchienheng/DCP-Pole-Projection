@@ -130,5 +130,20 @@
     ],
     "no_close_delete_merge_authority_inferred": true,
     "next_rule": "Before opening a new adjacent PR, first check whether the capability belongs in an existing active candidate or whether an older PR is superseded-for-purpose."
+  },
+  "natural_field_observation": {
+    "observed_at": "2026-09-27T00:34+08:00",
+    "carrier": "LIBRARY",
+    "event": "re-entry update after environment-field executable qualification",
+    "write_receipt": "SUCCEEDED",
+    "immediate_list_readback": "STALE_V7_VISIBLE",
+    "immediate_search_readback": "NEW_HEAD_NOT_VISIBLE",
+    "disposition": "HOLD_LIBRARY_READBACK_EDGE_ONLY",
+    "interpretation": [
+      "write receipt does not equal discoverability/readback",
+      "Library lag does not invalidate GitHub head or Drive Thin Current",
+      "do not retry blindly while the same persistence edge may be converging",
+      "do not promote the intended Library content to Current evidence until readback observes it"
+    ]
   }
 }
