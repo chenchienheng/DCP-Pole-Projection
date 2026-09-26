@@ -1,0 +1,82 @@
+{
+  "successor_id": "DCP_KERNEL_SUCCESSOR_R01_20260927",
+  "status": "EXECUTABLE_CANDIDATE_UNEXECUTED",
+  "base_main": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
+  "candidate_commit_before_manifest": "8038355e5c690f1d83488a23c7744709b15548da",
+  "composition": {
+    "baseline": {
+      "pr": 324,
+      "scope": [
+        "pyproject.toml",
+        "contracts/**",
+        "dcp_kernel/**",
+        "fixtures/**",
+        "tests/**"
+      ],
+      "blob_count_before_overlays": 125,
+      "excluded": "legacy governance/docs deletion and broad corpus rewrite"
+    },
+    "overlays": [
+      {
+        "pr": 384,
+        "capability": "capability activation + decoupled activation",
+        "paths": 4
+      },
+      {
+        "pr": 387,
+        "capability": "native backlog regression",
+        "paths": 1
+      },
+      {
+        "pr": 393,
+        "capability": "Return→re-entry schema drift fix",
+        "paths": 2
+      },
+      {
+        "pr": 395,
+        "capability": "carrier-binding + consequence semantics",
+        "paths": 4
+      },
+      {
+        "pr": 396,
+        "capability": "reality intake",
+        "paths": 3
+      },
+      {
+        "pr": 397,
+        "capability": "vision provider",
+        "paths": 2,
+        "note": "reality_intake blob identical to PR396 and not duplicated"
+      }
+    ],
+    "unique_executable_blob_paths_before_manifest": 135
+  },
+  "successor_coverage": {
+    "324": "PARTIAL_EXECUTABLE_SUBSET_ONLY",
+    "384": "FULL_PATH_ABSORPTION_CANDIDATE",
+    "387": "FULL_PATH_ABSORPTION_CANDIDATE",
+    "393": "FULL_PATH_ABSORPTION_CANDIDATE",
+    "395": "FULL_PATH_ABSORPTION_CANDIDATE",
+    "396": "FULL_PATH_ABSORPTION_CANDIDATE",
+    "397": "PARTIAL_OVERLAP_RESOLVED_REALITY_INTAKE_PLUS_FULL_VISION_PATHS"
+  },
+  "verification": {
+    "branch_compare": "ahead_only_1_commit_before_manifest",
+    "provider_workflow_runs": 0,
+    "local_execution": "CANNOT_CONTAINER_NETWORK_NO_REPOSITORY_MATERIALIZATION_PATH",
+    "definitions_or_file_presence_not_pass": true,
+    "required_before_merge": [
+      "actual test execution",
+      "regression result",
+      "source-coverage readback",
+      "no unexpected current-main conflict"
+    ]
+  },
+  "retirement_rule": "Do not close source PRs until successor execution passes and each source's unique capability/evidence delta is proven absorbed or explicitly retained elsewhere.",
+  "claim_ceiling": [
+    "NOT_RUNTIME",
+    "NOT_CANON",
+    "NO_PROVIDER_PASS",
+    "NO_AUTOMATIC_RETIREMENT"
+  ]
+}
