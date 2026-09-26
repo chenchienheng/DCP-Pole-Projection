@@ -15,6 +15,7 @@ from enum import Enum
 from carrier_current_resolver_r01 import (
     CarrierCurrentCandidate,
     CurrentResolution,
+    CurrentResolutionDisposition,
     resolve_current,
 )
 from field_feedback_r01 import FieldFeedbackAssessment, LocalFieldObservation, project_field_feedback
@@ -152,7 +153,15 @@ def pre_action_gate(
     route: RouteCandidate,
     risk: ActionRiskProfile,
     execution: QualificationExecution,
+    *,
+    current: CurrentResolution | None = None,
+    require_current: bool = False,
 ) -> PreActionAssessment:
+    """Gate one caller's action without turning the spine into a global workflow.
+
+    Callers whose action depends on mutable Current set require_current=True and
+    pass the resolved Current. A supplied HOLD can never be ignored.
+    """
     route_result = qualify_route(route)
     if route_result.disposition is RouteDisposition.HOLD:
         return PreActionAssessment(
@@ -160,6 +169,22 @@ def pre_action_gate(
             None,
             False,
             ("PATH_DISCOVERY_DOES_NOT_OVERRIDE_ROUTE_QUALIFICATION",),
+        )
+
+    if require_current and current is None:
+        return PreActionAssessment(
+            route_result,
+            None,
+            False,
+            ("CURRENT_REQUIRED_BUT_NOT_RESOLVED",),
+        )
+
+    if current is not None and current.disposition is not CurrentResolutionDisposition.RESOLVED:
+        return PreActionAssessment(
+            route_result,
+            None,
+            False,
+            ("CURRENT_HOLD_BLOCKS_DEPENDENT_ACTION",) + current.reasons,
         )
 
     budget = derive_qualification_budget(risk)
