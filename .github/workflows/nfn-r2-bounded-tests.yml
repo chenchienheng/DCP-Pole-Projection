@@ -1,0 +1,32 @@
+name: NFN R2 bounded tests
+
+on:
+  push:
+    branches:
+      - world/nfn-resolver-r01-20260916
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-r2-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout candidate branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run bounded R2 regression surfaces
+        working-directory: 01_runtime-spine
+        run: |
+          python -m unittest -v \
+            test_nfn_resolver_r01 \
+            test_field_feedback_r01 \
+            test_qualification_budget_r01 \
+            test_resource_effect_accounting_r01
