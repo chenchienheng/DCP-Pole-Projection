@@ -6,9 +6,10 @@
     {"module": "test_field_feedback_r01", "definition_count": 6},
     {"module": "test_qualification_budget_r01", "definition_count": 7},
     {"module": "test_resource_effect_accounting_r01", "definition_count": 9},
-    {"module": "test_r2_operational_spine_r01", "definition_count": 8}
+    {"module": "test_r2_operational_spine_r01", "definition_count": 8},
+    {"module": "test_carrier_current_resolver_r01", "definition_count": 7}
   ],
-  "expected_definition_total": 59,
+  "expected_definition_total": 66,
   "execution_evidence_required": [
     "head_sha",
     "runner_exit_code",
