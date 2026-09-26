@@ -29,9 +29,13 @@
     {
       "module": "test_environment_field_r01",
       "definition_count": 8
+    },
+    {
+      "module": "test_integration_drift_r01",
+      "definition_count": 5
     }
   ],
-  "expected_definition_total": 89,
+  "expected_definition_total": 94,
   "execution_evidence_required": [
     "head_sha",
     "runner_exit_code",
