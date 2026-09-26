@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - world/nfn-resolver-r01-20260916
+  pull_request:
   workflow_dispatch:
 
 permissions:
