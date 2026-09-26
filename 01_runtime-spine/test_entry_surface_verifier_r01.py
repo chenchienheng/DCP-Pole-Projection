@@ -72,6 +72,10 @@ class SemanticPromotionBatchTests(unittest.TestCase):
             explicit_use_observed=True,
             capability_observed=True,
             data_boundary_qualified=True,
+            unique_delta_inventoried=True,
+            successor_coverage_observed=True,
+            evidence_preserved=True,
+            retirement_authority_qualified=True,
         )
         values.update(changes)
         return qualify_semantic_promotion(SemanticPromotionEvidence(**values))
@@ -152,6 +156,32 @@ class SemanticPromotionBatchTests(unittest.TestCase):
     def test_capability_to_authority_can_qualify_with_all_scoped_evidence(self):
         self.assertEqual(
             self.qualify(SemanticBoundary.CAPABILITY_TO_AUTHORITY).disposition,
+            EntryDisposition.QUALIFIED_CANDIDATE,
+        )
+
+
+    def test_artifact_cannot_retire_from_superseded_reader_text_alone(self):
+        result = self.qualify(SemanticBoundary.ARTIFACT_TO_RETIRED, successor_coverage_observed=False)
+        self.assertEqual(result.disposition, EntryDisposition.HOLD)
+        self.assertIn("MISSING_SUCCESSOR_COVERAGE_OBSERVED", result.reasons)
+
+    def test_artifact_retirement_requires_unique_delta_inventory(self):
+        result = self.qualify(SemanticBoundary.ARTIFACT_TO_RETIRED, unique_delta_inventoried=False)
+        self.assertEqual(result.disposition, EntryDisposition.HOLD)
+
+    def test_artifact_retirement_requires_evidence_preservation_and_authority(self):
+        result = self.qualify(
+            SemanticBoundary.ARTIFACT_TO_RETIRED,
+            evidence_preserved=False,
+            retirement_authority_qualified=False,
+        )
+        self.assertEqual(result.disposition, EntryDisposition.HOLD)
+        self.assertIn("MISSING_EVIDENCE_PRESERVED", result.reasons)
+        self.assertIn("MISSING_RETIREMENT_AUTHORITY_QUALIFIED", result.reasons)
+
+    def test_absorbed_successor_can_qualify_artifact_retirement(self):
+        self.assertEqual(
+            self.qualify(SemanticBoundary.ARTIFACT_TO_RETIRED).disposition,
             EntryDisposition.QUALIFIED_CANDIDATE,
         )
 
