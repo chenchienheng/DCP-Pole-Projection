@@ -1,0 +1,64 @@
+{
+  "artifact_id": "DCP_KERNEL_INTEGRATION_SUCCESSOR_R01_20260927",
+  "lifecycle_state": "CANDIDATE",
+  "runtime": false,
+  "promotion": false,
+  "native_source_root": false,
+  "repo_is_authority_root": false,
+  "base_main": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
+  "substrate": {
+    "pr": 324,
+    "head": "00999341ff600a65ab3de641e4ce5615d6e9690d",
+    "selected_executable_entries": 127
+  },
+  "leaf_deltas": [
+    {
+      "pr": 384,
+      "capability": "capability activation + decoupled stewardship/authority",
+      "paths": 4
+    },
+    {
+      "pr": 387,
+      "capability": "Current/Affected Cone/Return regression",
+      "paths": 1
+    },
+    {
+      "pr": 393,
+      "capability": "Return→re-entry schema drift fix",
+      "paths": 2
+    },
+    {
+      "pr": 395,
+      "capability": "carrier binding + consequence/next-condition semantics",
+      "paths": 4
+    },
+    {
+      "pr": 396,
+      "capability": "reality intake",
+      "paths": 2,
+      "note": "__init__.py whole-file override intentionally omitted to avoid regressing later substrate exports"
+    },
+    {
+      "pr": 397,
+      "capability": "vision-provider adapter",
+      "paths": 2,
+      "note": "reality_intake duplicate reused from PR396"
+    }
+  ],
+  "composition_rule": "substrate tree first; leaf module/test overrides only; no whole-branch merge; no old __init__ regression",
+  "verification": {
+    "structural_composition_observed": true,
+    "current_main_based": true,
+    "workflow_run_observed": false,
+    "local_test_execution_observed": false,
+    "provider_ci_pass": false
+  },
+  "required_before_merge_or_runtime_claim": [
+    "execute full candidate test suite on this exact head or successor",
+    "reconcile any failing tests against current-main semantics",
+    "review workflow/instruction compatibility",
+    "confirm no leaf regression from omitted/overridden exports",
+    "explicit merge acceptance"
+  ],
+  "claim_ceiling": "INTEGRATED_EXECUTABLE_CANDIDATE_NOT_PASS_NOT_RUNTIME"
+}
