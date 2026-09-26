@@ -1,0 +1,22 @@
+{
+  "evidence_id": "GUI-LU-MOBILITY-OWNER-EXIT-OBS-001",
+  "stable_life_id": "GUI-LU",
+  "failure_family": "mobility-envelope intrusion",
+  "receiver": "GLMODEL",
+  "mode": "OBSERVED_PROJECTION",
+  "receiver_actual_read": false,
+  "native_disposition_recorded": false,
+  "rebuild_applied_or_reasoned": false,
+  "behavior_delta_observed": false,
+  "retested": false,
+  "manual_interventions": [],
+  "source_fixture": "fixtures/gui-lu/mobility-envelope-intrusion.json",
+  "claim_ceiling": "PILOT_OBSERVATION_SEED_ONLY",
+  "runtime": false,
+  "promotion": false,
+  "notes": [
+    "This object intentionally does not inherit simulated truth from the protocol fixture.",
+    "Receiver actual-read, native disposition, rebuild, behavior delta and retest must be written from receiver-owned evidence before they become true.",
+    "A DCP-produced return or GitHub write does not authorize DCP to set GLModel Native state."
+  ]
+}

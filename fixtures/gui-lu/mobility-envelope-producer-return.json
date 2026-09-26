@@ -1,0 +1,43 @@
+{
+  "return_id": "RET-GUI-LU-MOBILITY-PRODUCER-001",
+  "stable_life_id": "GUI-LU",
+  "failure_family": "mobility-envelope intrusion",
+  "producer": "DCP",
+  "receiver": "GLMODEL",
+  "evidence_mode": "OBSERVED_PROJECTION",
+  "producer_state": "ROUTED_PENDING_RECEIVER_NATIVE_EVIDENCE",
+  "material_delta": {
+    "need": "rebuild mobility envelope without vehicle-path intrusion",
+    "affected_receivers": ["GLMODEL", "PARAMETRIC", "PROJECT_WORK"],
+    "excluded_receiver": "PUBLIC",
+    "claim_ceiling": "PRODUCER_ROUTING_AND_DEPENDENCY_DELTA_ONLY"
+  },
+  "producer_can_assert": {
+    "return_produced": true,
+    "receiver_routed": true,
+    "affected_dependency_cone_compiled": true,
+    "receiver_actual_read": false,
+    "native_disposition_recorded": false,
+    "rebuild_applied_or_reasoned": false,
+    "behavior_delta_observed": false,
+    "retested": false
+  },
+  "receiver_native_debt": [
+    "ACTUAL_READ",
+    "MATERIALITY_RESOLVED",
+    "RECEIVER_NATIVE_DISPOSITION",
+    "RECONCILED",
+    "REBUILD_APPLIED_OR_NO_REBUILD_WITH_REASON",
+    "BEHAVIOR_DELTA_OBSERVED",
+    "RETESTED"
+  ],
+  "manual_interventions": [],
+  "runtime": false,
+  "promotion": false,
+  "autonomy_proven": false,
+  "notes": [
+    "DCP may produce and route this Return but may not fill GLModel Native closure fields.",
+    "Repository writeback is producer evidence only; it is not Receiver actual-read or absorption.",
+    "A later Receiver-owned artifact may satisfy debt stages, but this producer fixture itself can never be upgraded by inference."
+  ]
+}

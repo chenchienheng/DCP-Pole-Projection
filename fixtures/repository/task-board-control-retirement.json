@@ -1,0 +1,55 @@
+{
+  "artifact_role": "TASK_BOARD_CONTROL_RETIREMENT_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "taskboard_is_current_authority": false,
+  "pulse_is_scheduler_authority": false,
+  "blocker_board_is_global_state": false,
+  "observed_dispositions": [
+    {
+      "path": "02_runtime-ops/task_follow_up.md",
+      "state": "RETIRED_ABSENT",
+      "retired": ["W0 task authority", "ChatGPT platform writer", "fixed Gamma/Replit/Google next actions", "single follow-up list as Current"]
+    },
+    {
+      "path": "02_runtime-ops/TASK_TRACE_LINEAGE_SPECIMEN.md",
+      "state": "HISTORICAL_LINEAGE",
+      "current_task_authority": false,
+      "retained": ["dependency", "state", "next action", "evidence", "return trace"]
+    },
+    {
+      "path": "01_native-board/board_index.md",
+      "state": "METABOLIZED_HISTORICAL_STUB",
+      "current_eligibility": false,
+      "retained": ["bounded reader entry", "blocker/task traceability", "mutation target/authority/evidence/return"]
+    },
+    {
+      "path": "01_native-board/pulse_rollup.md",
+      "state": "RETIRED_ABSENT",
+      "retired": ["Window 00 as rollup authority", "GitHub delta as universal pulse source", "per-window next-single-action orchestration"]
+    },
+    {
+      "path": "01_native-board/blockers.md",
+      "state": "RETIRED_ABSENT",
+      "retired": ["global blocker board as Current state", "board update as prerequisite for new rules"]
+    },
+    {
+      "path": "01_native-board/permissions/claude-google-calendar-controlled-permission-2026-04-16-v0-1.md",
+      "state": "RETIRED_ABSENT",
+      "retired": ["fixed window mapping for permission event", "return_to_00", "00 mainbone promotion gate"]
+    }
+  ],
+  "current_interpretation": [
+    "TASK_STATE_BELONGS_TO_OWNING_PROJECT_LANE_OR_CONTRACT",
+    "WORK_ITEM_CARRIER_DOES_NOT_CREATE_CURRENT_OR_AUTHORITY",
+    "BLOCKER_IS_A_TYPED_DEPENDENCY_OR_GATE_CONDITION_NOT_A_BOARD_SOVEREIGNTY",
+    "PULSE_IS_EVENT_SIGNAL_NOT_SCHEDULER_AUTHORITY",
+    "NO_ACTION_IS_A_LEGITIMATE_DECISION_AND_DOES_NOT_REQUIRE_WORK_CONTRACT",
+    "OUTPUT_OR_MERGE_OR_LEDGER_DOES_NOT_CLOSE_RECEIVER_DEBT"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "REBUILD_DEPENDENCY_WITHDRAWAL",
+    "PHYSICAL_WAKE_REVIEW_FOR_LEGACY_TEMPLATES"
+  ]
+}

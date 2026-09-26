@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/owner-exit-evidence.schema.json",
+  "title": "DCP Owner Exit Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "receiver",
+    "mode",
+    "receiver_actual_read",
+    "native_disposition_recorded",
+    "rebuild_applied_or_reasoned",
+    "behavior_delta_observed",
+    "retested",
+    "manual_interventions"
+  ],
+  "properties": {
+    "evidence_id": {"type": "string", "minLength": 1},
+    "receiver": {"type": "string", "minLength": 1},
+    "mode": {
+      "enum": ["SYNTHETIC_FIXTURE", "OBSERVED_PROJECTION", "RECEIVER_NATIVE"]
+    },
+    "receiver_actual_read": {"type": "boolean"},
+    "native_disposition_recorded": {"type": "boolean"},
+    "rebuild_applied_or_reasoned": {"type": "boolean"},
+    "behavior_delta_observed": {"type": "boolean"},
+    "retested": {"type": "boolean"},
+    "manual_interventions": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"mode": {"const": "SYNTHETIC_FIXTURE"}}},
+      "then": {
+        "description": "Synthetic data may exercise the protocol but cannot establish receiver absorption, behavior delta, retest, autonomy or runtime."
+      }
+    }
+  ],
+  "x-claim-ceiling": "BOUNDED_EVIDENCE_CONTRACT_ONLY",
+  "x-runtime": false,
+  "x-promotion": false
+}

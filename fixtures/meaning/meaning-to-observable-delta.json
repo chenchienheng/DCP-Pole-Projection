@@ -1,0 +1,44 @@
+{
+  "fixture_id": "DCP-MEANING-TO-OBSERVABLE-001",
+  "claim_ceiling": "DETERMINISTIC_COMPILATION_FIXTURE_ONLY",
+  "runtime": false,
+  "promotion": false,
+  "cases": [
+    {
+      "name": "same-source-not-same-identity",
+      "meaning_statement": "同源可以分化，道可容道而不吞。",
+      "primitive": "COEXISTENCE_WITH_BOUNDARY",
+      "relation": "A and B retain Native identity while sharing a higher-order relation",
+      "constraint": "same source must not merge identity or authority",
+      "gate": "identity-authority separation gate",
+      "action_delta": "hold any merge that collapses distinct Native identities",
+      "evidence_requirement": "two distinct identities remain addressable after integration",
+      "return_target": "affected Native receivers",
+      "rebuild_effect": "next resolver state preserves both identities and a legal translation edge"
+    },
+    {
+      "name": "capability-without-authority",
+      "meaning_statement": "有能力不等於有權，能做更多不等於應做更多。",
+      "primitive": "BOUNDED_CAPABILITY",
+      "relation": "capability availability is subordinate to authority and minimum necessary effect",
+      "constraint": "capability without authority remains HOLD",
+      "gate": "action gate",
+      "action_delta": "proposed mutation is held when authority is missing or effect exceeds need",
+      "evidence_requirement": "gate assessment localizes the missing authority or excess effect",
+      "return_target": "responsibility owner and affected receiver",
+      "rebuild_effect": "next action proposal uses a lower effect ceiling or valid authority"
+    },
+    {
+      "name": "result-becomes-next-condition",
+      "meaning_statement": "種因得果，而因成果啟。",
+      "primitive": "RECURSIVE_CONSEQUENCE",
+      "relation": "result becomes a next condition only through receiver-owned return and rebuild",
+      "constraint": "output alone cannot become learning evidence",
+      "gate": "return-rebuild closure gate",
+      "action_delta": "hold next-condition promotion until disposition, rebuild, behavior delta and retest exist",
+      "evidence_requirement": "receiver-owned closure evidence",
+      "return_target": "Native receiver",
+      "rebuild_effect": "resolved consequence becomes next dependency input"
+    }
+  ]
+}

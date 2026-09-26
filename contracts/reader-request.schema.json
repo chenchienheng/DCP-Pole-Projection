@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/reader-request.schema.json",
+  "title": "DCP Bounded Reader Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "stable_identity_known",
+    "authority_scope_known",
+    "lifecycle_state_known",
+    "receiver_affected",
+    "material_delta",
+    "current_surface",
+    "conflict",
+    "missing_evidence",
+    "historical",
+    "native_body_copy_requested"
+  ],
+  "properties": {
+    "stable_identity_known": {"type": "boolean"},
+    "authority_scope_known": {"type": "boolean"},
+    "lifecycle_state_known": {"type": "boolean"},
+    "receiver_affected": {"type": "boolean"},
+    "material_delta": {"type": "boolean"},
+    "current_surface": {"type": "boolean"},
+    "conflict": {"type": "boolean"},
+    "missing_evidence": {"type": "boolean"},
+    "historical": {"type": "boolean"},
+    "reentry_purpose": {
+      "type": ["string", "null"],
+      "enum": [null, "PROVENANCE", "AUDIT", "FAILURE_LEARNING", "REGRESSION", "REBUILD", "SUCCESSOR_VALIDATION"]
+    },
+    "native_body_copy_requested": {"type": "boolean"}
+  },
+  "x-invariants": [
+    "BOUNDED_READ_BEFORE_ESCALATION",
+    "HISTORICAL_REENTRY_REQUIRES_PURPOSE",
+    "NATIVE_BODY_COPY_PROHIBITED",
+    "NO_MATERIAL_DELTA_NO_WAKE",
+    "READER_ORDER_IS_NOT_WINDOW_TOPOLOGY"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

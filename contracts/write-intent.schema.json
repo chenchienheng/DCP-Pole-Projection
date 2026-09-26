@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/write-intent.schema.json",
+  "title": "DCP Write Intent Candidate",
+  "type": "object",
+  "required": [
+    "intent_id", "stable_life_id", "source_identity", "target_carrier_id",
+    "mutation_kind", "authority_valid", "rights_valid", "purpose_valid",
+    "affected_scope_resolved", "fidelity_check_present", "evidence_plan_present"
+  ],
+  "properties": {
+    "intent_id": {"type": "string", "minLength": 1},
+    "stable_life_id": {"type": "string", "minLength": 1},
+    "source_identity": {"type": "string", "minLength": 1},
+    "target_carrier_id": {"type": "string", "minLength": 1},
+    "mutation_kind": {"enum": ["CREATE", "UPDATE", "DELETE", "APPEND", "SYNC_STATE"]},
+    "authority_valid": {"type": "boolean"},
+    "rights_valid": {"type": "boolean"},
+    "purpose_valid": {"type": "boolean"},
+    "affected_scope_resolved": {"type": "boolean"},
+    "expected_revision": {"type": ["string", "null"]},
+    "fidelity_check_present": {"type": "boolean"},
+    "evidence_plan_present": {"type": "boolean"},
+    "responsibility_owner": {"type": ["string", "null"]},
+    "rollback_or_recovery_present": {"type": "boolean"},
+    "return_target": {"type": ["string", "null"]},
+    "target_exists": {"type": ["boolean", "null"]}
+  },
+  "x-invariants": [
+    "CARRIER_DOES_NOT_GRANT_WRITE_AUTHORITY",
+    "AGENT_OR_PLATFORM_IDENTITY_DOES_NOT_GRANT_WRITE_AUTHORITY",
+    "SUCCESSFUL_WRITE_DOES_NOT_PROVE_NATIVE_ABSORPTION",
+    "REVISION_SENSITIVE_MUTATION_REQUIRES_EXPECTED_REVISION",
+    "MUTATION_REQUIRES_RESPONSIBILITY_EVIDENCE_AND_RETURN"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

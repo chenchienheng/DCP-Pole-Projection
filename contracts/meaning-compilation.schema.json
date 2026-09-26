@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/meaning-compilation.schema.json",
+  "title": "DCP Meaning Compilation Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source_id", "meaning_statement"],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 1},
+    "meaning_statement": {"type": "string", "minLength": 1},
+    "primitive": {"type": ["string", "null"]},
+    "relation": {"type": ["string", "null"]},
+    "constraint": {"type": ["string", "null"]},
+    "gate": {"type": ["string", "null"]},
+    "action_delta": {"type": ["string", "null"]},
+    "evidence_requirement": {"type": ["string", "null"]},
+    "return_target": {"type": ["string", "null"]},
+    "rebuild_effect": {"type": ["string", "null"]}
+  },
+  "x-compilation-path": "Meaning -> Primitive -> Relation -> Constraint -> Gate -> Action -> Evidence -> Return -> Rebuild",
+  "x-invariants": [
+    "ABSTRACT_MEANING_IS_SOURCE_NOT_RUNTIME_INSTRUCTION",
+    "NO_OBSERVABLE_BEHAVIOR_DIFFERENCE_NO_CAPABILITY_CLAIM",
+    "WORLD_FAILURE_RETURNS_TO_REBUILD",
+    "SAME_SOURCE_DOES_NOT_IMPLY_SAME_IDENTITY"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

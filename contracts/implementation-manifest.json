@@ -1,0 +1,123 @@
+{
+  "artifact_id": "DCP-EXECUTABLE-KERNEL-CANDIDATE-R1",
+  "artifact_role": "EXECUTABLE_CANDIDATE_MANIFEST",
+  "lifecycle_state": "CANDIDATE",
+  "runtime": false,
+  "promotion": false,
+  "native_source_root": false,
+  "repo_is_authority_root": false,
+  "canonical_model": {
+    "invariant_core": "determines same-life identity and meaning continuity",
+    "three_pole_generation": ["MEANING", "DEPENDENCY", "WORLD"],
+    "outer_poles": "need-driven capability expressions",
+    "inner_motion_interpretation": "eight observations of one transition; not eight independent controllers",
+    "causal_rebirth": "action -> consequence -> responsibility -> return -> rebuild -> behavior delta -> retest -> next condition",
+    "judgment_sovereignty": "capability, expertise, execution, judgment and authority are independent dimensions",
+    "representation_integrity": "different carriers must back-map to the same resolved existence; representation never creates a second truth",
+    "living_loop": "external request -> bounded gateway -> resolved relation -> judgment/capability/action -> evidence -> return -> receiver rebuild -> new state -> retest"
+  },
+  "modules": {
+    "core": [
+      "dcp_kernel/models.py",
+      "dcp_kernel/meaning_compile.py",
+      "dcp_kernel/judgment.py",
+      "dcp_kernel/decision_chain.py",
+      "dcp_kernel/resolution.py",
+      "dcp_kernel/action_gate.py",
+      "dcp_kernel/transition.py",
+      "dcp_kernel/consequence.py",
+      "dcp_kernel/return_state.py"
+    ],
+    "carrier_and_execution": [
+      "dcp_kernel/carrier_binding.py",
+      "dcp_kernel/write_intent.py",
+      "dcp_kernel/platform.py",
+      "dcp_kernel/schedule_effect.py"
+    ],
+    "learning_and_coexistence": [
+      "dcp_kernel/learning.py",
+      "dcp_kernel/coexistence.py",
+      "dcp_kernel/composition.py",
+      "dcp_kernel/feedback_synthesis.py"
+    ],
+    "world_relation_and_birth": [
+      "dcp_kernel/relation_semantics.py",
+      "dcp_kernel/reception_gateway.py",
+      "dcp_kernel/public_encounter.py",
+      "dcp_kernel/operable_birth.py",
+      "dcp_kernel/living_loop.py"
+    ],
+    "metabolism_and_withdrawal": [
+      "dcp_kernel/reader_policy.py",
+      "dcp_kernel/successor.py",
+      "dcp_kernel/retirement.py",
+      "dcp_kernel/metabolism.py",
+      "dcp_kernel/family_metabolism.py",
+      "dcp_kernel/reference_census.py"
+    ],
+    "evidence": ["dcp_kernel/evidence.py"]
+  },
+  "machine_contracts": [
+    "contracts/stable-life.schema.json",
+    "contracts/transition.schema.json",
+    "contracts/work-contract.schema.json",
+    "contracts/action-gate.schema.json",
+    "contracts/action-responsibility.schema.json",
+    "contracts/consequence.schema.json",
+    "contracts/return.schema.json",
+    "contracts/reentry.schema.json",
+    "contracts/cross-pole-learning.schema.json",
+    "contracts/reader-request.schema.json",
+    "contracts/carrier-binding.schema.json",
+    "contracts/write-intent.schema.json",
+    "contracts/owner-exit-evidence.schema.json",
+    "contracts/schedule-effect.schema.json",
+    "contracts/successor-coverage.schema.json",
+    "contracts/family-metabolism.schema.json",
+    "contracts/meaning-compilation.schema.json",
+    "contracts/coexistence-translation.schema.json",
+    "contracts/composition.schema.json",
+    "contracts/judgment.schema.json"
+  ],
+  "current_behavioral_gates": {
+    "identity_gap": "IDENTITY_RESOLUTION_GAP",
+    "thin_relation": "STATIC_RELATION_ONLY",
+    "return_without_rebuild": "RETURN_NOT_REBUILT",
+    "birth_regression": "BIRTH_REGRESSION",
+    "public_candidate_is_release": false,
+    "understanding_transfers_authority": false,
+    "single_success_is_maturity": false,
+    "non_material_event_wakes_everyone": false
+  },
+  "legacy_family_state": {
+    "01_runtime-spine": "SUCCESSOR_REVIEW_COMPLETE_CALLER_REBUILD_PENDING",
+    "03_field-governance": "SUCCESSOR_REVIEW_COMPLETE_CALLER_REBUILD_PENDING",
+    "04_adapter-layer": "SUCCESSOR_REVIEW_COMPLETE_PROVENANCE_CALLER_REBUILD_PENDING",
+    "reclaim_rule": "NO_FAMILY_RECLAIM_BEFORE_CALLER_REBUILD_WAKE_WITHDRAWAL_AND_RETENTION_REVIEW"
+  },
+  "owner_exit_pilot": {
+    "producer_state": "ROUTED_PENDING_RECEIVER_NATIVE_EVIDENCE",
+    "receiver_actual_read": false,
+    "native_disposition": false,
+    "behavior_delta": false,
+    "retest": false,
+    "claim": "producer routing/dependency delta only; receiver Native closure remains receiver-owned"
+  },
+  "verification": {
+    "branch_file_writeback": true,
+    "current_surface_manifest_aligned": true,
+    "living_loop_composed": true,
+    "latest_github_actions_run_observed": false,
+    "latest_test_pass_claim": false
+  },
+  "claim_ceiling": "BOUNDED_EXECUTABLE_CANDIDATE_WITHOUT_RUNTIME_OR_AUTONOMY_PROOF",
+  "required_before_higher_claim": [
+    "latest branch test execution or CI evidence",
+    "full caller/rebuild/wake withdrawal evidence",
+    "receiver-owned Native disposition",
+    "observable behavior delta",
+    "retest",
+    "runtime environment evidence if Runtime is claimed",
+    "applicable authority for promotion or release"
+  ]
+}

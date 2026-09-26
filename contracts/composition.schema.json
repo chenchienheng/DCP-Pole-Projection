@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/composition.schema.json",
+  "title": "DCP Bounded Composition Candidate",
+  "type": "object",
+  "required": ["composition_id", "required_effect", "receiver", "units"],
+  "properties": {
+    "composition_id": {"type": "string", "minLength": 1},
+    "required_effect": {"type": "string", "minLength": 1},
+    "receiver": {"type": "string", "minLength": 1},
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["unit_id", "source_id", "lifecycle_state", "authority_allowed", "rights_allowed", "evidence_sufficient", "compatible", "fidelity_preserved", "claim_ceiling"],
+        "properties": {
+          "unit_id": {"type": "string"},
+          "source_id": {"type": "string"},
+          "lifecycle_state": {"type": "string"},
+          "authority_allowed": {"type": "boolean"},
+          "rights_allowed": {"type": "boolean"},
+          "evidence_sufficient": {"type": "boolean"},
+          "compatible": {"type": "boolean"},
+          "fidelity_preserved": {"type": "boolean"},
+          "claim_ceiling": {"type": "string"}
+        }
+      }
+    }
+  },
+  "x-invariants": [
+    "RIGHTS_OR_AUTHORITY_VIOLATION_IS_EXCLUDED",
+    "INSUFFICIENT_EVIDENCE_OR_COMPATIBILITY_IS_HELD",
+    "HISTORICAL_OR_PENDING_STATE_IS_NOT_SILENTLY_PROMOTED",
+    "OUTPUT_FORMAT_DOES_NOT_CHANGE_CLAIM_CEILING",
+    "LOCAL_COMPOSITION_DOES_NOT_IMPLY_GLOBAL_CLOSURE"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

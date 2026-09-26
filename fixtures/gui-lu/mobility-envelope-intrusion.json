@@ -1,0 +1,134 @@
+{
+  "fixture_id": "GUI-LU-MOBILITY-ENVELOPE-R1",
+  "claim_ceiling": "PLATFORM_SKELETON_CANDIDATE_FIXTURE_ONLY",
+  "runtime": false,
+  "promotion": false,
+  "stable_life": {
+    "life_id": "GUI-LU",
+    "invariant_core": {
+      "identity_anchor": "GUI-LU",
+      "meaning_anchor": "family-home-and-working-base",
+      "world_truth_id": "WORLD-GUI-LU-001"
+    },
+    "native_owner": "GLMODEL",
+    "current_revision": "WORLD-R1",
+    "last_good_revision": "WORLD-R1"
+  },
+  "tri_root_state": {
+    "meaning_preserved": true,
+    "dependencies_resolved": true,
+    "world_id": "WORLD-GUI-LU-001",
+    "source_revision": "WORLD-R2"
+  },
+  "need": {
+    "need_id": "N-MOBILITY-ENVELOPE",
+    "required_capability": "parametric_reconstruction",
+    "receiver": "GLMODEL"
+  },
+  "capability_candidates": [
+    {
+      "capability_id": "parametric_reconstruction",
+      "actor_id": "parametric-01",
+      "carrier_id": "local-bim",
+      "authority_granted": true,
+      "rights_allowed": true,
+      "evidence_available": true,
+      "return_target": "GLMODEL",
+      "native_internalized": true
+    }
+  ],
+  "current_candidates": [
+    {
+      "stable_life_id": "GUI-LU",
+      "revision": "WORLD-R3",
+      "lifecycle_state": "CANDIDATE",
+      "successor_of": null,
+      "authority_valid": false,
+      "evidence_valid": false,
+      "receiver_reconciled": false,
+      "reader_eligible": true,
+      "timestamp": "2026-08-22T01:00:00Z"
+    },
+    {
+      "stable_life_id": "GUI-LU",
+      "revision": "WORLD-R2",
+      "lifecycle_state": "CANDIDATE",
+      "successor_of": "WORLD-R1",
+      "authority_valid": true,
+      "evidence_valid": true,
+      "receiver_reconciled": true,
+      "reader_eligible": true,
+      "timestamp": "2026-08-22T00:00:00Z"
+    }
+  ],
+  "changed_nodes": ["mobility-envelope"],
+  "dependency_graph": {
+    "mobility-envelope": [
+      "GLMODEL",
+      "PARAMETRIC",
+      "PROJECT_WORK",
+      "PUBLIC"
+    ]
+  },
+  "eligible_receivers": [
+    "GLMODEL",
+    "PARAMETRIC",
+    "PROJECT_WORK"
+  ],
+  "transition": {
+    "transition_id": "T-MOBILITY-R2",
+    "stable_life_id": "GUI-LU",
+    "need": "rebuild mobility envelope",
+    "state_before": "CURRENT",
+    "proposed_effect": "bounded driveway envelope update",
+    "capability_id": "parametric_reconstruction",
+    "source_revision": "WORLD-R2",
+    "world_receiver_authorized": true,
+    "world_id_before": "WORLD-GUI-LU-001",
+    "world_id_after": "WORLD-GUI-LU-001"
+  },
+  "return": {
+    "return_id": "RET-MOBILITY-R2",
+    "receiver": "GLMODEL",
+    "manual_interventions": [],
+    "progression": [
+      {"state": "ROUTED"},
+      {
+        "state": "ACTUAL_READ",
+        "updates": {"receiver_actual_read": true}
+      },
+      {"state": "MATERIALITY_RESOLVED"},
+      {
+        "state": "RECEIVER_NATIVE_DISPOSITION",
+        "updates": {"native_disposition": "REBUILD_REQUIRED"}
+      },
+      {"state": "RECONCILED"},
+      {
+        "state": "REBUILD_APPLIED_OR_NO_REBUILD_WITH_REASON",
+        "updates": {"rebuild_applied": true}
+      },
+      {
+        "state": "BEHAVIOR_DELTA_OBSERVED",
+        "updates": {"behavior_delta_observed": true}
+      },
+      {
+        "state": "RETESTED",
+        "updates": {"retested": true}
+      }
+    ]
+  },
+  "rebuild": {
+    "receiver_rebuild_revision": "WORLD-R3",
+    "receiver_tri_root_revision": "WORLD-R3",
+    "cursor": "GUI-LU-CURSOR-R3",
+    "ack_owner": "GLMODEL"
+  },
+  "expected": {
+    "plan_decision": "PASS",
+    "loop_decision": "PASS",
+    "selected_current_revision": "WORLD-R2",
+    "reentry_current_revision": "WORLD-R3",
+    "reentry_last_good_revision": "WORLD-R2",
+    "pending_returns": []
+  }
+}

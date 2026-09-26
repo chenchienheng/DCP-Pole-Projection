@@ -1,0 +1,59 @@
+{
+  "artifact_role": "TOPOLOGY_FAMILY_METABOLISM_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "topology_is_world_truth": false,
+  "topology_is_authority": false,
+  "fixed_topology_required_for_rebuild": false,
+  "family": "05_topology",
+  "observed_dispositions": [
+    {
+      "path": "05_topology/ten-ring-definition-v0-1.md",
+      "state": "RETIRED_ABSENT",
+      "retired": ["fixed Ten-Ring ontology", "seven-judgment court", "eight-domain threshold", "nine-board mapping", "time sovereignty as topology authority"]
+    },
+    {
+      "path": "05_topology/TOPOLOGY_LINEAGE_SPECIMEN.md",
+      "state": "HISTORICAL_LINEAGE",
+      "current_eligibility": false,
+      "retained": ["revision context", "identity/relation back-map", "failure re-entry", "projection does not replace stable identity"]
+    },
+    {
+      "path": "05_topology/triad-closed-loop-topology.md",
+      "state": "RETAINED_PRIMITIVE_REINTERPRETED",
+      "current_as_fixed_triad": false,
+      "retained": ["return-closed relation", "affected-branch failure isolation", "reconciliation", "rebuild/re-entry"]
+    },
+    {
+      "path": "05_topology/consistent-triad-principle.md",
+      "state": "RETAINED_PRIMITIVE_REINTERPRETED",
+      "current_as_fixed_three_node_topology": false,
+      "retained": ["asymmetric mutual verification", "non-single-point collapse", "role separation", "cross-check"]
+    },
+    {
+      "path": "05_topology/feasible-domain-and-responsibility.md",
+      "state": "RETAINED_PRIMITIVE_CURRENT_RELEVANT",
+      "runtime": false,
+      "retained": ["feasible domain", "responsibility owner", "authority/evidence boundary", "receiver/return requirement"]
+    },
+    {
+      "path": "05_topology/time-sovereignty.md",
+      "state": "RETAINED_PRIMITIVE_REINTERPRETED",
+      "current_as_sovereign_time_layer": false,
+      "retained": ["temporal context", "revision window", "freshness evidence", "retention/expiry", "re-entry timing"]
+    }
+  ],
+  "current_interpretation": [
+    "TOPOLOGY_IS_RELATION_PROJECTION_NOT_WORLD_TRUTH",
+    "RELATION_CAN_BE_N_NODE_AND_HETEROGENEOUS",
+    "CLOSED_LOOP_DOES_NOT_REQUIRE_FORCED_CONSENSUS",
+    "TEMPORAL_CONTEXT_DOES_NOT_CREATE_AUTHORITY",
+    "FEASIBLE_DOMAIN_AND_RESPONSIBILITY_REMAIN_VALID_DCP_PRIMITIVES",
+    "REBUILD_MUST_NOT_REQUIRE_RETIRED_TOPOLOGY"
+  ],
+  "claim_boundary": [
+    "FAMILY_REVIEW_DOES_NOT_PROVE_FULL_BRANCH_CALLER_WITHDRAWAL",
+    "RETAINED_PRIMITIVE_DOES_NOT_CREATE_A_NEW_TOPOLOGY_LAYER",
+    "THIS_EVIDENCE_DOES_NOT_AUTHORIZE_DESTRUCTIVE_RECLAIM"
+  ]
+}

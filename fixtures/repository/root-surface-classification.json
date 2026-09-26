@@ -1,0 +1,71 @@
+{
+  "artifact_role": "ROOT_SURFACE_CLASSIFICATION_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "destructive_reclaim_authorized": false,
+  "retired_absent": [
+    "MULTI_CHAIN_DISPATCH_GOVERNANCE.md",
+    "REVIEW_CHAIN_MASTER_LAYER.md",
+    "TIME_CHAIN_MASTER_LAYER.md",
+    "SPACE_CHAIN_MASTER_LAYER.md",
+    "XUANLING_OPERATIONAL_MODEL_CORE.md",
+    "MOTHER_TREE_CLEARANCE_REPORT.md",
+    "CORETRI_MASTER_CONSOLIDATION_REVIEW.md",
+    "XUANLING_LINGLUO_MASTER_MAP.md",
+    "00_mother-law/existence-chain-master-layer.md",
+    "UNIFIED_ARTIFACT_REGISTER.md",
+    "TASK_ORCHESTRATION_BRIDGE_SPEC.md",
+    "WORK_OS_CHAIN_INTEGRATION_SPEC.md",
+    "WORLD_CHAIN_MASTER_AXIS.md",
+    "AXIS_TO_EXTERNAL_ABSORPTION_HANDOFF.md",
+    "FULL_REPOSITORY_TOPOLOGY_ALIGNMENT.md",
+    "GOVERNANCE_PROPOSAL_CONSOLIDATION_REPORT.md",
+    "LABEL_TOPOLOGY_MAP.md",
+    "MERGE_LAW_PROPOSAL.md",
+    "SNAPSHOT_MECHANISM_PROPOSAL.md"
+  ],
+  "retained_deentitled": [
+    {
+      "path": "REPOSITORY_CORPUS_INDEX.md",
+      "role": "HISTORICAL_DISCOVERY_ONLY",
+      "current_authority": false,
+      "normal_reader_required": false,
+      "reason": "bounded predecessor discovery without recreating taxonomy or registry truth"
+    },
+    {
+      "path": "SIX_DIMENSION_REPOSITORY_PROJECTION.md",
+      "role": "OPTIONAL_COMPATIBILITY_VIEW",
+      "current_authority": false,
+      "normal_reader_required": false,
+      "reason": "bounded dispatch questions only when material; no fixed order or ontology"
+    },
+    {
+      "path": "LEGACY-DESIGN-DISPOSITION.json",
+      "role": "RETIREMENT_AND_REENTRY_BOUNDARY_EVIDENCE",
+      "current_authority": false,
+      "normal_reader_required": false,
+      "reason": "prevents retired generations from silently regaining Current while preserving gated lineage/reentry"
+    },
+    {
+      "path": "REDUNDANT_LOAD_REDUCTION_SPEC.md",
+      "role": "METABOLIZED_READER_ECONOMY_STUB",
+      "current_authority": false,
+      "normal_reader_required": false,
+      "reason": "retains bounded delta/revision/evidence/escalation primitives while retiring GitHub-register-AXIS and single-review assumptions"
+    }
+  ],
+  "invariants": [
+    "HIGH_VISIBILITY_NAME_DOES_NOT_REQUIRE_RETIREMENT_WHEN_ROLE_IS_EXPLICITLY_DEENTITLED",
+    "DISCOVERY_SURFACE_DOES_NOT_CREATE_CURRENT",
+    "COMPATIBILITY_VIEW_DOES_NOT_CREATE_ONTOLOGY",
+    "RETIREMENT_EVIDENCE_DOES_NOT_CREATE_RETIREMENT_AUTHORITY",
+    "METABOLIZED_STUB_MAY_RETAIN_PRIMITIVE_WITHOUT_RETAINING_OLD_CONTROL_TOPOLOGY",
+    "ABSENT_CONTROL_SURFACE_MUST_NOT_BE_RECREATED_FROM_HISTORICAL_POINTER"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "NON_TEXT_RUNTIME_DEPENDENCY_AUDIT",
+    "REBUILD_DEPENDENCY_WITHDRAWAL",
+    "LEGACY_QINYI_TEMPLATE_PHYSICAL_WAKE"
+  ]
+}
