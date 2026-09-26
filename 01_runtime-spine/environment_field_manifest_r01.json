@@ -78,5 +78,55 @@
     "NOT_RUNTIME",
     "NO_GLOBAL_TOPOLOGY",
     "NO_PROVIDER_PASS"
-  ]
+  ],
+  "repository_metabolism_observation": {
+    "observed_at": "2026-09-26T23:55+08:00",
+    "scope": "bounded known DCP lineage only; not all repository PRs",
+    "pull_requests": [
+      {
+        "pr": 324,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "KEEP_CAPABILITY_LINEAGE_HOLD_INTEGRATION",
+        "reason": "still referenced by Architecture as executable/kernel lineage; successor reuse does not prove full absorption"
+      },
+      {
+        "pr": 391,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "ACTIVE_EXECUTABLE_CANDIDATE",
+        "reason": "current World NFN substrate construction surface"
+      },
+      {
+        "pr": 392,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "KEEP_REUSE_CANDIDATE",
+        "reason": "capability-based Issue/PR entry template candidate; main adoption not proven"
+      },
+      {
+        "pr": 395,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "KEEP_SEMANTIC_CANDIDATE",
+        "reason": "carrier choice and Return→Need semantics remain evidence/candidate lineage"
+      },
+      {
+        "pr": 396,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "KEEP_REALITY_INTAKE_CANDIDATE",
+        "reason": "bounded Need compilation remains adjacent capability evidence"
+      },
+      {
+        "pr": 397,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "HOLD_OVERLAP_REVIEW",
+        "reason": "vision-provider normalization may overlap adjacent observation normalization; compare contracts before permanent seam"
+      },
+      {
+        "pr": 400,
+        "state": "MERGED",
+        "disposition": "ABSORBED_IN_MAIN_RETAIN_EVIDENCE",
+        "reason": "authority/evidence scope qualification merged; PR remains historical evidence, not active construction surface"
+      }
+    ],
+    "no_close_delete_merge_authority_inferred": true,
+    "next_rule": "Before opening a new adjacent PR, first check whether the capability belongs in an existing active candidate or whether an older PR is superseded-for-purpose."
+  }
 }
