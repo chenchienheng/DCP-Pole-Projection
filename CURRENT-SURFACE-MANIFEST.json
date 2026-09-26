@@ -5,12 +5,30 @@
   "native_source_root": false,
   "repo_is_pole_authority": false,
   "tri_pole_architecture": true,
-  "reader_priority": ["README.md", "CURRENT-SURFACE-MANIFEST.json", "SEMANTIC-CONTROL-PLANE.json", "FAILURE-EVOLUTION-POLICY.md", "PUBLIC-SURFACE-POLICY.md", "STATUS.md"],
+  "reader_priority": [
+    "README.md",
+    "CURRENT-SURFACE-MANIFEST.json",
+    "SEMANTIC-CONTROL-PLANE.json",
+    "FAILURE-EVOLUTION-POLICY.md",
+    "PUBLIC-SURFACE-POLICY.md",
+    "STATUS.md"
+  ],
   "current_public_surfaces": {
-    "human_zh_tw": ["README.md", "STATUS.md"],
-    "professional_en": ["README.md", "PUBLIC-SURFACE-POLICY.md"],
-    "canonical_machine": ["CURRENT-SURFACE-MANIFEST.json", "SEMANTIC-CONTROL-PLANE.json"],
-    "failure_evolution": ["FAILURE-EVOLUTION-POLICY.md"]
+    "human_zh_tw": [
+      "README.md",
+      "STATUS.md"
+    ],
+    "professional_en": [
+      "README.md",
+      "PUBLIC-SURFACE-POLICY.md"
+    ],
+    "canonical_machine": [
+      "CURRENT-SURFACE-MANIFEST.json",
+      "SEMANTIC-CONTROL-PLANE.json"
+    ],
+    "failure_evolution": [
+      "FAILURE-EVOLUTION-POLICY.md"
+    ]
   },
   "tri_repository_projection_map": {
     "DCP-Pole-Projection": "dependency_state_authority_return_rebuild_weighted",
@@ -20,12 +38,29 @@
   "shared_belt_semantics": {
     "is_fourth_pole": false,
     "is_authority_root": false,
-    "allowed": ["pointer", "receipt", "receiver_state", "return", "reconciliation_status", "reentry_pointer", "rebuild_pointer"],
+    "allowed": [
+      "pointer",
+      "receipt",
+      "receiver_state",
+      "return",
+      "reconciliation_status",
+      "reentry_pointer",
+      "rebuild_pointer"
+    ],
     "native_body_copy_default": false
   },
   "semantic_control_plane": {
     "mode": "BOUNDARY_FIRST_FEASIBLE_WITHIN_BOUNDARY",
-    "forbidden_inference": ["CARRIER_TO_IDENTITY", "CAPABILITY_TO_AUTHORITY", "HISTORICAL_TO_CURRENT", "SEARCH_HIT_TO_ADMISSION", "RETURN_WRITTEN_TO_RECEIVER_REBUILT", "PROJECTION_TO_TRUTH", "PUBLIC_SAFE_TO_PUBLIC_APPROVED", "BUILDREADY_TO_RUNTIME"],
+    "forbidden_inference": [
+      "CARRIER_TO_IDENTITY",
+      "CAPABILITY_TO_AUTHORITY",
+      "HISTORICAL_TO_CURRENT",
+      "SEARCH_HIT_TO_ADMISSION",
+      "RETURN_WRITTEN_TO_RECEIVER_REBUILT",
+      "PROJECTION_TO_TRUTH",
+      "PUBLIC_SAFE_TO_PUBLIC_APPROVED",
+      "BUILDREADY_TO_RUNTIME"
+    ],
     "no_explicit_dependency": "KEEP",
     "equivalent_semantic_delta": "DEDUPE_LINEAGE_ONLY",
     "disjoint_delta": "COMMUTE_AND_MERGE",
@@ -34,13 +69,52 @@
   },
   "failure_evolution": {
     "success_rate_is_primary_kpi": false,
-    "required": ["cause", "affected_scope", "correction", "regression", "reentry", "successor_pointer"],
+    "required": [
+      "cause",
+      "affected_scope",
+      "correction",
+      "regression",
+      "reentry",
+      "successor_pointer"
+    ],
     "known_failure_recurrence_requires_regression": true,
     "release_is_evidence_freeze_point_not_final_form": true
   },
-  "legacy_root_families": ["00_meta", "00_mother-law", "01_native-board", "01_runtime-spine", "02_runtime-ops", "02_translation-layer", "03_board-orchestration", "03_field-governance", "04_adapter-layer", "04_interface-layer", "05_XLEN_Reserve_Unenabled", "05_topology"],
+  "legacy_root_families": [
+    "00_meta",
+    "00_mother-law",
+    "01_native-board",
+    "01_runtime-spine",
+    "02_runtime-ops",
+    "02_translation-layer",
+    "03_board-orchestration",
+    "03_field-governance",
+    "04_adapter-layer",
+    "04_interface-layer",
+    "05_XLEN_Reserve_Unenabled",
+    "05_topology"
+  ],
   "legacy_interpretation": "HISTORICAL_OR_COMPATIBILITY_UNLESS_EXPLICITLY_RE-ADMITTED",
   "promotion_rule": "REPOSITORY_LOCATION_NAME_OR_RECENCY_DOES_NOT_ESTABLISH_CURRENT_OR_AUTHORITY",
   "release_rule": "PUBLIC_SAFE_AND_RELEASE_APPROVED_ONLY",
-  "claim_ceiling": "Public DCP-oriented CoreTri projection; not DCP Native Body, runtime, canon, or authority root"
+  "claim_ceiling": "Public DCP-oriented CoreTri projection; not DCP Native Body, runtime, canon, or authority root",
+  "continuity_semantics": {
+    "topology": "NEED_RELATIVE_NOT_PERMANENT",
+    "carriers": "REPLACEABLE_NOT_IDENTITY_OR_AUTHORITY",
+    "continuity_requires": [
+      "stable_identity_or_existence",
+      "need_or_purpose",
+      "current_requalification",
+      "authority_requalification",
+      "evidence_scope",
+      "return_or_rebuild"
+    ],
+    "local_blocker": "HOLD_AFFECTED_EDGE_ONLY",
+    "write_receipt_is_readback": false,
+    "delivery_is_use": false,
+    "capability_is_authority": false,
+    "maturity_measure": "REOBTAINABLE_COMPOSABLE_VERIFIABLE_RECOVERABLE_OPTIONALITY",
+    "projection_specific": "dependency_state_authority_evidence_return_rebuild_recoverable_across_replaceable_carriers",
+    "claim_ceiling": "PUBLIC_PROJECTION_SEMANTICS_NOT_RUNTIME_OR_NATIVE_ADOPTION"
+  }
 }
