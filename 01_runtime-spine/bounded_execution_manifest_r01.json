@@ -4,7 +4,7 @@
   "test_modules": [
     {
       "module": "test_nfn_resolver_r01",
-      "definition_count": 29
+      "definition_count": 36
     },
     {
       "module": "test_field_feedback_r01",
@@ -27,7 +27,7 @@
       "definition_count": 10
     }
   ],
-  "expected_definition_total": 74,
+  "expected_definition_total": 81,
   "execution_evidence_required": [
     "head_sha",
     "runner_exit_code",
