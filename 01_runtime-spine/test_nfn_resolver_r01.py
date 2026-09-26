@@ -1,6 +1,7 @@
 import unittest
 
 from nfn_resolver_r01 import (
+    CallerReturnEvidence,
     Current,
     Disposition,
     Event,
@@ -9,6 +10,7 @@ from nfn_resolver_r01 import (
     ProviderCandidate,
     ResourceReleaseEvidence,
     SourceClosureEvidence,
+    qualify_caller_return,
     qualify_interaction,
     qualify_resource_release,
     qualify_source_acquisition,
@@ -108,6 +110,67 @@ class InteractionQualificationTests(unittest.TestCase):
         result = qualify_interaction(evidence, self.current)
         self.assertEqual(result.disposition, Disposition.AFFECTED)
         self.assertEqual(set(result.tri_pole), {"Ideas", "DCP", "GLModel"})
+
+
+class CallerReturnGateTests(unittest.TestCase):
+    def setUp(self):
+        self.current = Current("WORLD-1", "NEED-1", "SOURCE-1", "UNCHANGED")
+
+    def evidence(self, **changes):
+        values = dict(
+            caller_id="QINYI_WORLD_MODELING_CONTINUITY",
+            need_id="NEED-1",
+            return_id="RETURN-1",
+            effect_observed=True,
+            return_delivered_observed=True,
+            caller_read_observed=True,
+            caller_endpoint_observed=True,
+        )
+        values.update(changes)
+        return CallerReturnEvidence(**values)
+
+    def qualify(self, evidence):
+        return qualify_caller_return(
+            evidence,
+            self.current,
+            expected_caller_id="QINYI_WORLD_MODELING_CONTINUITY",
+            expected_return_id="RETURN-1",
+        )
+
+    def test_other_caller_cannot_close_return(self):
+        result = self.qualify(self.evidence(caller_id="OTHER"))
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("caller binding mismatch", result.reasons)
+
+    def test_other_need_cannot_close_return(self):
+        result = self.qualify(self.evidence(need_id="OTHER-NEED"))
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("Need binding mismatch", result.reasons)
+
+    def test_native_completion_without_observed_effect_holds(self):
+        result = self.qualify(self.evidence(effect_observed=None))
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("effect is not observed", result.reasons)
+
+    def test_missing_exact_caller_endpoint_holds(self):
+        result = self.qualify(self.evidence(caller_endpoint_observed=None))
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("exact caller endpoint is not observed", result.reasons)
+
+    def test_persistence_without_caller_delivery_holds(self):
+        result = self.qualify(self.evidence(return_delivered_observed=False))
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("caller Return delivery is not observed", result.reasons)
+
+    def test_delivery_without_caller_read_holds(self):
+        result = self.qualify(self.evidence(caller_read_observed=False))
+        self.assertEqual(result.disposition, Disposition.CANNOT_HOLD)
+        self.assertIn("caller read is not observed", result.reasons)
+
+    def test_effect_delivery_and_read_close_without_forcing_use(self):
+        result = self.qualify(self.evidence(caller_use_observed=None))
+        self.assertEqual(result.disposition, Disposition.QUIET)
+        self.assertIn("caller Use remains separate", result.reasons[0])
 
 
 class SourceClosureAndReleaseGateTests(unittest.TestCase):
