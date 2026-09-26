@@ -70,9 +70,9 @@ If a pull request conflicts with latest `main`:
 - update or rebase only if the task asks for cleanup;
 - do not overwrite prior merged artifacts.
 
-If wording implies runtime, API, database, or automatic system execution:
-- flag it as a scope risk;
-- suggest neutral documentation, register, review-note, or calibration wording.
+If a proposed runtime, API, database, or automatic-execution change exceeds the explicitly authorized scope, or a claim of operational behavior lacks supporting evidence:
+- identify the specific unauthorized change or unsupported claim and hold only dependent actions;
+- suggest a minimal correction that preserves accurate technical meaning. Mentioning a capability, documenting a non-runtime design, or making an explicitly authorized change is not by itself a scope violation. Apply the Not Allowed rules independently; this distinction grants no new implementation, deployment, or merge authority.
 
 ## Local Blockers and Evidence
 
