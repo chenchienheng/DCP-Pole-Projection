@@ -17,6 +17,7 @@ TEST_MODULES = (
     "test_r2_operational_spine_r01",
     "test_carrier_current_resolver_r01",
     "test_environment_field_r01",
+    "test_integration_drift_r01",
 )
 
 
