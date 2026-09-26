@@ -625,5 +625,12 @@
     "Ideas": 1,
     "total": 12,
     "note": "Current observed open-set count after successor reconciliation and selective evidence absorption."
+  },
+  "head_semantics": {
+    "executable_content_head": "f00a81cb5dca0c0cd286353b2f12fb4a910d56ba",
+    "executable_content_basis": "last observed head carrying the current 9-module/121-definition bounded code/test surface before later environment-manifest-only commits",
+    "control_plane_head_before_this_record": "9456cdfdf776c8d9b3cb2b4bfc12d0f881245d18",
+    "control_plane_rule": "resolve branch head at Need time; metadata-only head movement does not imply executable-content revision",
+    "durable_pointer_rule": "persist executable content identity plus branch/ref; do not force Drive/Library rewrite for every metadata-only commit"
   }
 }
