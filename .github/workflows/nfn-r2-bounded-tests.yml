@@ -29,4 +29,5 @@ jobs:
             test_nfn_resolver_r01 \
             test_field_feedback_r01 \
             test_qualification_budget_r01 \
-            test_resource_effect_accounting_r01
+            test_resource_effect_accounting_r01 \
+            test_r2_operational_spine_r01
