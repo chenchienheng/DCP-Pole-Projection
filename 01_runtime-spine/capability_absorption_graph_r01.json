@@ -17,7 +17,9 @@
         "existence-first lifecycle"
       ],
       "depends_on": [],
-      "disposition": "KEEP_HOLD_INTEGRATION"
+      "disposition": "KEEP_HOLD_INTEGRATION",
+      "covered_by_integration_candidate": 406,
+      "retirement_blocker": "PR406_NOT_EXECUTED_OR_MERGED"
     },
     {
       "pr": 383,
@@ -46,7 +48,9 @@
       "depends_on": [
         324
       ],
-      "disposition": "UNIQUE_LIVE"
+      "disposition": "UNIQUE_LIVE",
+      "covered_by_integration_candidate": 406,
+      "retirement_blocker": "PR406_NOT_EXECUTED_OR_MERGED"
     },
     {
       "pr": 386,
@@ -69,7 +73,9 @@
       "depends_on": [
         324
       ],
-      "disposition": "UNIQUE_LIVE"
+      "disposition": "UNIQUE_LIVE",
+      "covered_by_integration_candidate": 406,
+      "retirement_blocker": "PR406_NOT_EXECUTED_OR_MERGED"
     },
     {
       "pr": 391,
@@ -103,7 +109,9 @@
       "depends_on": [
         324
       ],
-      "disposition": "UNIQUE_LIVE"
+      "disposition": "UNIQUE_LIVE",
+      "covered_by_integration_candidate": 406,
+      "retirement_blocker": "PR406_NOT_EXECUTED_OR_MERGED"
     },
     {
       "pr": 395,
@@ -117,7 +125,9 @@
       "depends_on": [
         324
       ],
-      "disposition": "UNIQUE_LIVE"
+      "disposition": "UNIQUE_LIVE",
+      "covered_by_integration_candidate": 406,
+      "retirement_blocker": "PR406_NOT_EXECUTED_OR_MERGED"
     },
     {
       "pr": 396,
@@ -131,7 +141,9 @@
         324,
         395
       ],
-      "disposition": "UNIQUE_LIVE"
+      "disposition": "UNIQUE_LIVE",
+      "covered_by_integration_candidate": 406,
+      "retirement_blocker": "PR406_NOT_EXECUTED_OR_MERGED"
     },
     {
       "pr": 397,
@@ -148,7 +160,9 @@
         324,
         396
       ],
-      "disposition": "PARTIAL_OVERLAP_HOLD"
+      "disposition": "PARTIAL_OVERLAP_HOLD",
+      "covered_by_integration_candidate": 406,
+      "retirement_blocker": "PR406_NOT_EXECUTED_OR_MERGED"
     },
     {
       "repo": "GLModel",
@@ -180,10 +194,10 @@
     }
   ],
   "next_absorption_order": [
-    "Resolve PR324 kernel substrate integration/acceptance before kernel-dependent leaves.",
-    "After kernel substrate is current-main qualified, reassess 384/387/393/395/396 and then 397 overlap.",
-    "Keep 391 independent: its runtime-spine candidate must not silently substitute for dcp_kernel lineage.",
-    "Reassess 383/GLModel8/Ideas7 family deltas only with successor coverage evidence, not reader supersession alone."
+    "Execute/validate PR406 exact head; do not retire source PRs while successor remains untested/unmerged.",
+    "If PR406 passes and is explicitly accepted/merged, recompute unique-delta coverage before retiring #324/#384/#387/#393/#395/#396/#397.",
+    "Keep PR391 independent: runtime-spine candidate and dcp_kernel successor are complementary, not substitutes.",
+    "Reassess #383/GLModel#8/Ideas#7 mixed family deltas separately."
   ],
   "claim_ceiling": [
     "WORKING_GRAPH",
@@ -191,5 +205,29 @@
     "NOT_CANON",
     "NO_AUTO_MERGE",
     "NO_AUTO_RETIRE"
-  ]
+  ],
+  "kernel_integration_successor": {
+    "pr": 406,
+    "head": "2a38f87449583d93fff6c498408a1cafc580261a",
+    "base_main": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
+    "composition": {
+      "substrate_pr": 324,
+      "leaf_prs": [
+        384,
+        387,
+        393,
+        395,
+        396,
+        397
+      ],
+      "selected_substrate_entries": 127,
+      "leaf_overrides": 15,
+      "changed_files": 138
+    },
+    "state": "DRAFT_OPEN_CLEAN_UNTESTED",
+    "mergeable": true,
+    "workflow_runs": 0,
+    "claim_ceiling": "INTEGRATED_EXECUTABLE_CANDIDATE_NOT_PASS_NOT_RUNTIME",
+    "effect": "consolidates drifting kernel-dependent candidates onto one current-main review surface; does not yet absorb or retire source PRs"
+  }
 }
