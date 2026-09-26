@@ -36,9 +36,11 @@
         "resolver_pointer"
       ],
       "stable_object": "libfile_035693b088488191bef4e17b035dba15",
-      "observed_version": 4,
       "path": "/XuanLing/NFN_CURRENT_REENTRY_R2_20260926.md",
-      "authority_claim": false
+      "authority_claim": false,
+      "observed_version_at_field_creation": 4,
+      "canonical_version_last_verified": 7,
+      "canonical_version_verified_at": "2026-09-27T00:33+08:00"
     }
   ],
   "field_invariants": [
