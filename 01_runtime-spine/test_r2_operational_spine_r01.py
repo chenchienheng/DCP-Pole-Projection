@@ -4,8 +4,11 @@ from field_feedback_r01 import FeedbackDisposition, LocalFieldObservation
 from qualification_budget_r01 import ActionRiskProfile, QualificationDepth, QualificationExecution
 from resource_effect_accounting_r01 import ResourceEffectDisposition, ResourceEffectObservation
 from r2_operational_spine_r01 import (
+    CarrierContinuityDisposition,
+    CarrierObservation,
     RouteCandidate,
     RouteDisposition,
+    assess_carrier_continuity,
     metabolize_field_feedback,
     post_action_account,
     pre_action_gate,
@@ -45,6 +48,39 @@ def risk(**kw):
 
 
 class R2OperationalSpineR01Tests(unittest.TestCase):
+    def test_ui_work_label_does_not_replace_stable_native_identity(self):
+        result = assess_carrier_continuity(
+            CarrierObservation(
+                stable_identity="QINYI_WORLD_MODELING_CONTINUITY",
+                observed_title="World 建造 Chat",
+                observed_ui_mode="Work",
+                backend_mode_proven=False,
+            )
+        )
+        self.assertEqual(
+            result.disposition,
+            CarrierContinuityDisposition.IDENTITY_CONTINUES,
+        )
+        self.assertEqual(result.stable_identity, "QINYI_WORLD_MODELING_CONTINUITY")
+        self.assertIn(
+            "CARRIER_OR_TITLE_CHANGE_DOES_NOT_RENAME_NATIVE_IDENTITY",
+            result.reasons,
+        )
+
+    def test_title_change_without_identity_transition_evidence_keeps_identity(self):
+        result = assess_carrier_continuity(
+            CarrierObservation(
+                stable_identity="QINYI_WORLD_MODELING_CONTINUITY",
+                observed_title="Gmail 自動整理",
+                observed_ui_mode=None,
+                backend_mode_proven=False,
+            )
+        )
+        self.assertEqual(
+            result.disposition,
+            CarrierContinuityDisposition.IDENTITY_CONTINUES,
+        )
+
     def test_discovered_route_hitting_red_line_is_not_executable(self):
         result = qualify_route(route(red_line_hit=True))
         self.assertEqual(result.disposition, RouteDisposition.HOLD)
