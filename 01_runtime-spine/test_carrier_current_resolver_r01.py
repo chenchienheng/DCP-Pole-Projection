@@ -80,6 +80,18 @@ class CarrierCurrentResolverTests(unittest.TestCase):
     def test_navigation_and_evidence_are_separate(self):
         self.assertFalse(qualify_evidence_source(candidate(evidence_authority=False)))
 
+    def test_raw_string_carrier_is_rejected_at_input_boundary(self):
+        with self.assertRaises(TypeError):
+            candidate("MEMORY", "raw-string")
+
+    def test_string_boolean_is_rejected_at_input_boundary(self):
+        with self.assertRaises(TypeError):
+            candidate(mutable_current_authority="false")
+
+    def test_empty_locator_is_rejected_at_input_boundary(self):
+        with self.assertRaises(TypeError):
+            candidate(locator="   ")
+
 
 if __name__ == "__main__":
     unittest.main()
