@@ -271,5 +271,49 @@
     "execution_status": "DEFINITIONS_ONLY_NOT_PASS",
     "effect": "keyword presence no longer qualifies as a current claim without local semantic context",
     "claim_ceiling": "BOUNDED_EXECUTABLE_CANDIDATE_NOT_RUNTIME"
+  },
+  "semantic_promotion_batch": {
+    "observed_at": "2026-09-27T06:30+08:00",
+    "families": [
+      "HISTORICAL_TO_CURRENT",
+      "CANDIDATE_TO_RUNTIME",
+      "RECEIPT_TO_READBACK",
+      "DELIVERY_TO_USE",
+      "CAPABILITY_TO_AUTHORITY"
+    ],
+    "executable_candidate": "01_runtime-spine/entry_surface_verifier_r01.py",
+    "bounded_definition_delta": 16,
+    "entry_verifier_definition_total": 23,
+    "bounded_suite_definition_total": 117,
+    "public_manifest_merges": [
+      {
+        "repo": "DCP-Pole-Projection",
+        "pr": 403,
+        "merge_sha": "f9393900f651d9a930c1c9a18b8181b985847b1f"
+      },
+      {
+        "repo": "GLModel-Pole-Projection",
+        "pr": 21,
+        "merge_sha": "ed2e168eb74750fe7f4d5433e166c5119b1c6fd4"
+      },
+      {
+        "repo": "Ideas-Pole-Projection",
+        "pr": 16,
+        "merge_sha": "951a98f23041d55a6b52415201471289cc3b2712"
+      }
+    ],
+    "public_manifest_readback": {
+      "json_valid": true,
+      "required_fields_preserved": true,
+      "runtime_false_all_three": true,
+      "repo_authority_false_all_three": true,
+      "semantic_gate_family_count": 5
+    },
+    "execution_status": "DEFINITIONS_ONLY_NOT_PASS",
+    "interpretation": [
+      "semantic promotion requires boundary-specific evidence rather than lexical or carrier-local cues",
+      "public manifests expose stable promotion gates without promoting PR391/R2 into doctrine",
+      "format normalization line churn is not treated as semantic progress"
+    ]
   }
 }
