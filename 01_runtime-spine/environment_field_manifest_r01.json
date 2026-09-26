@@ -155,17 +155,17 @@
     "current_disposition": "CLOSED_FOR_THIS_PERSISTENCE_EDGE_AFTER_DELAYED_READBACK"
   },
   "integration_drift_observation": {
-    "observed_at": "2026-09-27T05:54+08:00",
+    "observed_at": "2026-09-27T06:04+08:00",
     "pr": 391,
     "base": "main",
     "compare_status": "diverged",
     "ahead_by": 69,
-    "behind_by": 9,
+    "behind_by": 10,
     "mergeable": true,
     "rebaseable": true,
     "mergeable_state": "clean",
     "merge_base": "fa55045eae1f01d8f6cf450dd71901612d1a6f64",
-    "current_main": "5275834daf1c05cd8f862f1ef2ed02d1e4633a70",
+    "current_main": "ccfb41e83c19d825da7e07c901d8b4f493525fdb",
     "base_delta_paths": [
       ".github/copilot-instructions.md",
       "AGENTS.md",
@@ -222,5 +222,32 @@
     ],
     "r2_or_pr391_promoted_to_common_doctrine": false,
     "automatic_cross_repo_sync_claim": false
+  },
+  "public_entry_reader_metabolism": {
+    "observed_at": "2026-09-27T06:04+08:00",
+    "merged": [
+      {
+        "repo": "DCP-Pole-Projection",
+        "pr": 402,
+        "merge_sha": "ccfb41e83c19d825da7e07c901d8b4f493525fdb",
+        "effect": "README human orientation + manifest Current resolution + STATUS guidance aligned"
+      },
+      {
+        "repo": "GLModel-Pole-Projection",
+        "pr": 20,
+        "merge_sha": "4b6ccafa69e53b883d3447590bee4453ed8d7738",
+        "effect": "stale DCP/M2 STATUS metabolized into current GLModel projection boundary"
+      },
+      {
+        "repo": "Ideas-Pole-Projection",
+        "pr": 15,
+        "merge_sha": "990836588846d42e6ccec0cbf2db67ad63bba613",
+        "effect": "stale DCP/M2 STATUS metabolized into current Ideas projection boundary"
+      }
+    ],
+    "old_pr_pointer_removed": true,
+    "stale_m2_runtime_claim_removed": true,
+    "native_source_deleted": false,
+    "runtime_or_authority_promotion": false
   }
 }
