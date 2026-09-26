@@ -30,7 +30,9 @@ Cross-repository continuity should travel through bounded pointer / receipt / re
 
 ## Current reader entry / 現行讀取入口
 
-Start with `CURRENT-SURFACE-MANIFEST.json`. Legacy root-layer families remain Historical／Compatibility unless explicitly re-admitted; repository location, filename, recency, or searchability does not establish Current.
+Use this README for human orientation, then resolve Current-for-purpose from `CURRENT-SURFACE-MANIFEST.json`. Legacy root-layer families remain Historical／Compatibility unless explicitly re-admitted; repository location, filename, recency, or searchability does not establish Current.
+
+本 README 提供人類入口與倉庫定位；Current-for-purpose 請由 `CURRENT-SURFACE-MANIFEST.json` 解析。
 
 ## Continuity and replaceable carriers / 連續性與可替換載體
 

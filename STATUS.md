@@ -64,9 +64,9 @@ Disclosure and publication controls are specified in `PUBLIC-SURFACE-POLICY.md`.
 
 ## Reading guidance / 閱讀指引
 
-Use `README.md` and this status document to establish repository role, maturity, and disclosure scope. Artifact-specific lifecycle state and evidence scope should then be read from the relevant issue, document, release, or provenance reference.
+Use `README.md` for human orientation, `CURRENT-SURFACE-MANIFEST.json` for Current-for-purpose, and this status document for maturity and disclosure scope. Artifact-specific lifecycle state and evidence scope should then be read from the relevant issue, document, release, or provenance reference.
 
-請先以 `README.md` 與本文件判定 Repository Role、Maturity 與 Disclosure Scope，再依具體 Issue、Document、Release 或 Provenance Reference 判讀各 Artifact 的 Lifecycle State 與 Evidence Scope。
+請以 `README.md` 作人類定位、`CURRENT-SURFACE-MANIFEST.json` 解析 Current-for-purpose，本文件判定 Maturity 與 Disclosure Scope；再依具體 Issue、Document、Release 或 Provenance Reference 判讀各 Artifact 的 Lifecycle State 與 Evidence Scope。
 
 Repository location, filename, branch presence, issue state, search ranking, and modification time are navigation metadata; none establishes architectural truth or operational maturity on its own.
 
