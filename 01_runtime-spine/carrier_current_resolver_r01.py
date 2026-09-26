@@ -34,6 +34,25 @@ class CarrierCurrentCandidate:
     evidence_authority: bool
     observed_at: str | None = None
 
+    def __post_init__(self) -> None:
+        if not isinstance(self.carrier, CarrierKind):
+            raise TypeError("carrier must be CarrierKind")
+        for field_name in ("locator", "stable_referent", "purpose"):
+            value = getattr(self, field_name)
+            if not isinstance(value, str) or not value.strip():
+                raise TypeError(f"{field_name} must be a non-empty string")
+        for field_name in (
+            "declared_current_pointer",
+            "current_for_purpose",
+            "source_observed",
+            "mutable_current_authority",
+            "evidence_authority",
+        ):
+            if type(getattr(self, field_name)) is not bool:
+                raise TypeError(f"{field_name} must be bool")
+        if self.observed_at is not None and not isinstance(self.observed_at, str):
+            raise TypeError("observed_at must be str or None")
+
 
 @dataclass(frozen=True)
 class CurrentResolution:
