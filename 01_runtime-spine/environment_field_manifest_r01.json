@@ -502,6 +502,14 @@
     "mergeable_state": "clean",
     "workflow_runs": 0,
     "disposition": "USE_AS_INTEGRATION_CANDIDATE_HOLD_EXECUTION_AND_ACCEPTANCE",
-    "no_source_pr_retirement_until_successor_accepted": true
+    "no_source_pr_retirement_until_successor_accepted": true,
+    "execution_evidence": {
+      "main_workflow_surface": "NOT_FOUND",
+      "provider_runs": 0,
+      "local_attempt": "BLOCKED_BEFORE_FETCH",
+      "blocker": "isolated local environment had no github.com name resolution",
+      "code_failure_observed": false,
+      "disposition": "HOLD_EXACT_HEAD_EXECUTION_ONLY"
+    }
   }
 }
