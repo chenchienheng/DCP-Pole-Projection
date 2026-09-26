@@ -576,8 +576,15 @@
       "total_paths": 17,
       "exact_absorbed": 0,
       "different_current_successor": 17,
-      "disposition": "HOLD_SEMANTIC_DIFF_REVIEW",
-      "interpretation": "all touched paths still differ from current main; current successor existence cannot be inferred from path presence"
+      "disposition": "HOLD_13_SEMANTIC_DELTAS_AFTER_4_READER_PURPOSE_SUPERSESSIONS",
+      "interpretation": "all touched paths still differ from current main; current successor existence cannot be inferred from path presence",
+      "reader_purpose_superseded": [
+        "README.md",
+        "STATUS.md",
+        "CURRENT-SURFACE-MANIFEST.json",
+        "AGENTS.md"
+      ],
+      "remaining_semantic_delta_paths": 13
     },
     "glmodel8": {
       "pre_absorption": {
