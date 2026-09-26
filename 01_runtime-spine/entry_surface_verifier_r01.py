@@ -22,6 +22,14 @@ class AssertionContext(str, Enum):
     ABSENT = "ABSENT"
 
 
+class SemanticBoundary(str, Enum):
+    HISTORICAL_TO_CURRENT = "HISTORICAL_TO_CURRENT"
+    CANDIDATE_TO_RUNTIME = "CANDIDATE_TO_RUNTIME"
+    RECEIPT_TO_READBACK = "RECEIPT_TO_READBACK"
+    DELIVERY_TO_USE = "DELIVERY_TO_USE"
+    CAPABILITY_TO_AUTHORITY = "CAPABILITY_TO_AUTHORITY"
+
+
 @dataclass(frozen=True)
 class EntrySurfaceEvidence:
     readme_human_orientation: bool
@@ -35,6 +43,27 @@ class EntrySurfaceEvidence:
 class EntryAssessment:
     disposition: EntryDisposition
     reasons: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class SemanticPromotionEvidence:
+    boundary: SemanticBoundary
+    stable_binding: bool = False
+    purpose_qualified: bool = False
+    authority_qualified: bool = False
+    evidence_observed: bool = False
+    explicit_current_pointer: bool = False
+    execution_observed: bool = False
+    runtime_environment_observed: bool = False
+    acceptance_observed: bool = False
+    receipt_observed: bool = False
+    discoverable_observed: bool = False
+    readback_observed: bool = False
+    delivery_observed: bool = False
+    reader_observed: bool = False
+    explicit_use_observed: bool = False
+    capability_observed: bool = False
+    data_boundary_qualified: bool = False
 
 
 NEGATION_CUES = (
@@ -84,4 +113,41 @@ def qualify_entry_surfaces(evidence: EntrySurfaceEvidence) -> EntryAssessment:
     return EntryAssessment(
         EntryDisposition.HOLD if reasons else EntryDisposition.QUALIFIED_CANDIDATE,
         tuple(reasons) if reasons else ("README_MANIFEST_STATUS_ROLES_ARE_BOUNDED_AND_COMPATIBLE",),
+    )
+
+
+PROMOTION_REQUIREMENTS = {
+    SemanticBoundary.HISTORICAL_TO_CURRENT: (
+        "stable_binding", "purpose_qualified", "authority_qualified",
+        "evidence_observed", "explicit_current_pointer",
+    ),
+    SemanticBoundary.CANDIDATE_TO_RUNTIME: (
+        "stable_binding", "purpose_qualified", "authority_qualified",
+        "execution_observed", "runtime_environment_observed", "acceptance_observed",
+    ),
+    SemanticBoundary.RECEIPT_TO_READBACK: (
+        "stable_binding", "receipt_observed", "discoverable_observed", "readback_observed",
+    ),
+    SemanticBoundary.DELIVERY_TO_USE: (
+        "stable_binding", "delivery_observed", "reader_observed", "explicit_use_observed",
+    ),
+    SemanticBoundary.CAPABILITY_TO_AUTHORITY: (
+        "stable_binding", "purpose_qualified", "capability_observed",
+        "authority_qualified", "data_boundary_qualified",
+    ),
+}
+
+
+def qualify_semantic_promotion(evidence: SemanticPromotionEvidence) -> EntryAssessment:
+    """Require boundary-specific evidence before one semantic state can promote to another."""
+    required = PROMOTION_REQUIREMENTS[evidence.boundary]
+    missing = tuple(name for name in required if getattr(evidence, name) is not True)
+    if missing:
+        return EntryAssessment(
+            EntryDisposition.HOLD,
+            tuple("MISSING_" + name.upper() for name in missing),
+        )
+    return EntryAssessment(
+        EntryDisposition.QUALIFIED_CANDIDATE,
+        ("SEMANTIC_PROMOTION_BOUNDARY_QUALIFIED:" + evidence.boundary.value,),
     )
