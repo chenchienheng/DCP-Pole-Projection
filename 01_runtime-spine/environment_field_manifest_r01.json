@@ -182,5 +182,40 @@
       "current repository instructions were freshly read and are compatible with this bounded continuation",
       "exact-head regression remains missing, so integration acceptance is not promoted"
     ]
+  },
+  "public_entry_alignment_candidates": {
+    "observed_at": "2026-09-27T05:49+08:00",
+    "shared_semantics": "replaceable carriers + requalified continuity + affected-edge HOLD + recoverable optionality",
+    "candidates": [
+      {
+        "repo": "DCP-Pole-Projection",
+        "pr": 401,
+        "state": "DRAFT_OPEN_UNMERGED",
+        "scope": [
+          "README.md",
+          "CURRENT-SURFACE-MANIFEST.json"
+        ]
+      },
+      {
+        "repo": "GLModel-Pole-Projection",
+        "pr": 19,
+        "state": "DRAFT_OPEN_UNMERGED",
+        "scope": [
+          "README.md",
+          "CURRENT-SURFACE-MANIFEST.json"
+        ]
+      },
+      {
+        "repo": "Ideas-Pole-Projection",
+        "pr": 14,
+        "state": "DRAFT_OPEN_UNMERGED",
+        "scope": [
+          "README.md",
+          "CURRENT-SURFACE-MANIFEST.json"
+        ]
+      }
+    ],
+    "r2_or_pr391_promoted_to_common_doctrine": false,
+    "merge_authority_inferred": false
   }
 }
