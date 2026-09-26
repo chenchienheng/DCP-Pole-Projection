@@ -155,20 +155,22 @@
     "current_disposition": "CLOSED_FOR_THIS_PERSISTENCE_EDGE_AFTER_DELAYED_READBACK"
   },
   "integration_drift_observation": {
-    "observed_at": "2026-09-27T05:33+08:00",
+    "observed_at": "2026-09-27T05:54+08:00",
     "pr": 391,
     "base": "main",
     "compare_status": "diverged",
     "ahead_by": 69,
-    "behind_by": 8,
+    "behind_by": 9,
     "mergeable": true,
     "rebaseable": true,
     "mergeable_state": "clean",
     "merge_base": "fa55045eae1f01d8f6cf450dd71901612d1a6f64",
-    "current_main": "bfb926f7586e980e1a0e09aea4c6c3a2106ac48c",
+    "current_main": "5275834daf1c05cd8f862f1ef2ed02d1e4633a70",
     "base_delta_paths": [
       ".github/copilot-instructions.md",
-      "AGENTS.md"
+      "AGENTS.md",
+      "README.md",
+      "CURRENT-SURFACE-MANIFEST.json"
     ],
     "candidate_changed_path_overlap": false,
     "instruction_requalified": true,
@@ -184,13 +186,14 @@
     ]
   },
   "public_entry_alignment_candidates": {
-    "observed_at": "2026-09-27T05:49+08:00",
+    "observed_at": "2026-09-27T05:54+08:00",
     "shared_semantics": "replaceable carriers + requalified continuity + affected-edge HOLD + recoverable optionality",
     "candidates": [
       {
         "repo": "DCP-Pole-Projection",
         "pr": 401,
-        "state": "DRAFT_OPEN_UNMERGED",
+        "state": "MERGED_MAIN",
+        "merge_sha": "5275834daf1c05cd8f862f1ef2ed02d1e4633a70",
         "scope": [
           "README.md",
           "CURRENT-SURFACE-MANIFEST.json"
@@ -199,7 +202,8 @@
       {
         "repo": "GLModel-Pole-Projection",
         "pr": 19,
-        "state": "DRAFT_OPEN_UNMERGED",
+        "state": "MERGED_MAIN",
+        "merge_sha": "e8dac59b78b6cea25a82127a60ffb30d5421c5cb",
         "scope": [
           "README.md",
           "CURRENT-SURFACE-MANIFEST.json"
@@ -208,7 +212,8 @@
       {
         "repo": "Ideas-Pole-Projection",
         "pr": 14,
-        "state": "DRAFT_OPEN_UNMERGED",
+        "state": "MERGED_MAIN",
+        "merge_sha": "29e0186d16593bd0b0282c038b53ccc06a0d8565",
         "scope": [
           "README.md",
           "CURRENT-SURFACE-MANIFEST.json"
@@ -216,6 +221,6 @@
       }
     ],
     "r2_or_pr391_promoted_to_common_doctrine": false,
-    "merge_authority_inferred": false
+    "automatic_cross_repo_sync_claim": false
   }
 }
