@@ -511,5 +511,66 @@
       "code_failure_observed": false,
       "disposition": "HOLD_EXACT_HEAD_EXECUTION_ONLY"
     }
+  },
+  "kernel_absorption_batch_20260927": {
+    "observed_at": "2026-09-27T06:52+08:00",
+    "absorbed_to_main": [
+      {
+        "source_pr": 392,
+        "via_pr": 407,
+        "merge_sha": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
+        "coverage": "3/3 source blobs byte-identical on main",
+        "source_state": "CLOSED_RETAIN_HISTORICAL_EVIDENCE"
+      },
+      {
+        "source_pr": 386,
+        "via_pr": 407,
+        "merge_sha": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
+        "coverage": "1/1 source blob byte-identical on main",
+        "source_state": "CLOSED_RETAIN_HISTORICAL_EVIDENCE"
+      }
+    ],
+    "consolidated_successor": {
+      "pr": 408,
+      "head": "f44b83804ec31f807c9805807c3c5810abddf196",
+      "base_main": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
+      "baseline_pr": 324,
+      "baseline_executable_blob_count": 125,
+      "unique_executable_blob_paths_before_manifest": 135,
+      "overlays": [
+        384,
+        387,
+        393,
+        395,
+        396,
+        397
+      ],
+      "overlap_resolution": "PR396 and PR397 reality_intake blobs identical; use once, preserve PR397 unique vision provider",
+      "status": "DRAFT_OPEN_UNMERGED_UNEXECUTED",
+      "workflow_runs": 0,
+      "manifest": "KERNEL_SUCCESSOR_MANIFEST.json",
+      "merge_hold": [
+        "actual test execution",
+        "regression result",
+        "source coverage readback",
+        "fresh main conflict check"
+      ]
+    },
+    "open_pr_effect": {
+      "prior_total": 13,
+      "retired_active_carriers": [
+        386,
+        392
+      ],
+      "new_successor_pr": 408,
+      "resulting_total": 12
+    },
+    "interpretation": [
+      "large historical PR324 is no longer the only carrier of its executable kernel subset",
+      "successor construction is selective and does not import PR324 legacy governance/docs deletion set",
+      "source successor pointer does not close source PR until execution and unique coverage are proven",
+      "two fully absorbed small carriers were safely retired after byte-identical main readback"
+    ],
+    "claim_ceiling": "SUCCESSOR_CANDIDATE_NOT_RUNTIME_NOT_PASS"
   }
 }
