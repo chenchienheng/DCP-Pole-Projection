@@ -39,8 +39,7 @@
       "path": "/XuanLing/NFN_CURRENT_REENTRY_R2_20260926.md",
       "authority_claim": false,
       "observed_version_at_field_creation": 4,
-      "canonical_version_last_verified": 7,
-      "canonical_version_verified_at": "2026-09-27T00:33+08:00"
+      "version_rule": "Resolve current visible version from stable_object/path at Need time; manifest does not chase mutable Library version."
     }
   ],
   "field_invariants": [
@@ -144,7 +143,16 @@
       "Library lag does not invalidate GitHub head or Drive Thin Current",
       "do not retry blindly while the same persistence edge may be converging",
       "do not promote the intended Library content to Current evidence until readback observes it"
-    ]
+    ],
+    "later_readback": {
+      "observed_at": "2026-09-27T05:36+08:00",
+      "canonical_stable_object": "libfile_035693b088488191bef4e17b035dba15",
+      "visible_version": 9,
+      "intended_head_observed": "a10cea837231c0f1476deab5340006cbe9e2cd25",
+      "definitions_observed": 94,
+      "disposition": "READBACK_CONVERGED"
+    },
+    "current_disposition": "CLOSED_FOR_THIS_PERSISTENCE_EDGE_AFTER_DELAYED_READBACK"
   },
   "integration_drift_observation": {
     "observed_at": "2026-09-27T05:33+08:00",
