@@ -36,10 +36,10 @@
     },
     {
       "module": "test_entry_surface_verifier_r01",
-      "definition_count": 23
+      "definition_count": 27
     }
   ],
-  "expected_definition_total": 117,
+  "expected_definition_total": 121,
   "execution_evidence_required": [
     "head_sha",
     "runner_exit_code",
