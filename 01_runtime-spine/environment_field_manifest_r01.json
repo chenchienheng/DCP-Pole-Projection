@@ -569,5 +569,53 @@
       "canonical successor is selected by coverage and regression safety, not by newest PR number"
     ],
     "claim_ceiling": "INTEGRATED_EXECUTABLE_CANDIDATE_NOT_PASS_NOT_RUNTIME"
+  },
+  "broad_pr_coverage_batch_20260927": {
+    "observed_at": "2026-09-27T07:08+08:00",
+    "dcp383": {
+      "total_paths": 17,
+      "exact_absorbed": 0,
+      "different_current_successor": 17,
+      "disposition": "HOLD_SEMANTIC_DIFF_REVIEW",
+      "interpretation": "all touched paths still differ from current main; current successor existence cannot be inferred from path presence"
+    },
+    "glmodel8": {
+      "pre_absorption": {
+        "total_paths": 72,
+        "different_current_successor": 14,
+        "proposed_removals_not_applied_main": 55,
+        "pr_only_unique_additions": 3
+      },
+      "selective_absorption": {
+        "successor_pr": 22,
+        "merge_sha": "af9de782fd941d66bedb0b83c330d5624f5bc3d6",
+        "paths": [
+          "docs/review/carrier-boundary-r1-00-deletion-evidence.md",
+          "tools/check-legacy-hold-deletions.mjs",
+          "tools/check-legacy-hold-deletions.test.mjs"
+        ]
+      },
+      "remaining": "55 removals + 14 differing modifications remain unapproved/unabsorbed",
+      "disposition": "HOLD_BROAD_TRANSITION_AFTER_EVIDENCE_ABSORPTION"
+    },
+    "ideas7": {
+      "pre_absorption": {
+        "total_paths": 69,
+        "proposed_removals_not_applied_main": 55,
+        "different_current_successor": 13,
+        "pr_only_unique_additions": 1
+      },
+      "selective_absorption": {
+        "successor_pr": 17,
+        "merge_sha": "6961794e17cf975794a640c54188e3e170054a6d",
+        "paths": [
+          "docs/review/carrier-boundary-r1-00-deletion-evidence.md"
+        ]
+      },
+      "remaining": "55 removals + 13 differing modifications remain unapproved/unabsorbed",
+      "disposition": "HOLD_BROAD_TRANSITION_AFTER_EVIDENCE_ABSORPTION"
+    },
+    "rule": "Evidence absorption does not approve deletion. Different current blob does not prove semantic successor coverage.",
+    "claim_ceiling": "PARTIAL_ABSORPTION_NOT_RETIREMENT"
   }
 }
