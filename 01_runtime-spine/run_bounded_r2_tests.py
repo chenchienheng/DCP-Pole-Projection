@@ -15,6 +15,7 @@ TEST_MODULES = (
     "test_qualification_budget_r01",
     "test_resource_effect_accounting_r01",
     "test_r2_operational_spine_r01",
+    "test_carrier_current_resolver_r01",
 )
 
 
