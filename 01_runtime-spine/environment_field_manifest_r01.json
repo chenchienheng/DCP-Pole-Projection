@@ -249,5 +249,27 @@
     "stale_m2_runtime_claim_removed": true,
     "native_source_deleted": false,
     "runtime_or_authority_promotion": false
+  },
+  "entry_surface_semantic_verifier": {
+    "observed_at": "2026-09-27T06:15+08:00",
+    "source_counterexample": "GLModel STATUS contains the historical phrase 'M2 Runtime Spine partially implemented' only inside an explicit negation/historical boundary; raw keyword presence produced a false alarm.",
+    "executable_candidate": "01_runtime-spine/entry_surface_verifier_r01.py",
+    "test_candidate": "01_runtime-spine/test_entry_surface_verifier_r01.py",
+    "bounded_definitions": 7,
+    "distinguishes": [
+      "CURRENT_ASSERTION",
+      "NEGATED",
+      "HISTORICAL",
+      "ABSENT"
+    ],
+    "entry_roles": [
+      "README_HUMAN_ORIENTATION",
+      "MANIFEST_CURRENT_FOR_PURPOSE",
+      "STATUS_CLAIM_CEILING_AND_HISTORICAL_BOUNDARY"
+    ],
+    "source_readback": "THREE_REPO_MAIN_ENTRIES_FRESH_READ",
+    "execution_status": "DEFINITIONS_ONLY_NOT_PASS",
+    "effect": "keyword presence no longer qualifies as a current claim without local semantic context",
+    "claim_ceiling": "BOUNDED_EXECUTABLE_CANDIDATE_NOT_RUNTIME"
   }
 }
