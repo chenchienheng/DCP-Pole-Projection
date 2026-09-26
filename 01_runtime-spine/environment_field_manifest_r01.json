@@ -315,5 +315,26 @@
       "public manifests expose stable promotion gates without promoting PR391/R2 into doctrine",
       "format normalization line churn is not treated as semantic progress"
     ]
+  },
+  "search_index_observation": {
+    "observed_at": "2026-09-27T06:33+08:00",
+    "carrier": "GITHUB_CODE_SEARCH",
+    "observation": "code-search hits can reference older indexed main commits after newer direct-main updates have merged",
+    "examples": [
+      {
+        "repo": "GLModel-Pole-Projection",
+        "query": "M2 Runtime Spine partially implemented",
+        "search_hit_commit": "4b6ccafa69e53b883d3447590bee4453ed8d7738",
+        "direct_main_has_later_manifest_merge": "ed2e168eb74750fe7f4d5433e166c5119b1c6fd4"
+      },
+      {
+        "repo": "Ideas-Pole-Projection",
+        "runtime_search_hit_commit": "990836588846d42e6ccec0cbf2db67ad63bba613",
+        "direct_main_has_later_manifest_merge": "951a98f23041d55a6b52415201471289cc3b2712"
+      }
+    ],
+    "disposition": "SEARCH_HIT_IS_NAVIGATION_CUE_NOT_CURRENT_EVIDENCE",
+    "action": "preserve historical files; resolve Current from direct main/current manifest rather than mass-editing indexed lineage",
+    "claim_ceiling": "NO_SEARCH_INDEX_FRESHNESS_SLA_CLAIM"
   }
 }
