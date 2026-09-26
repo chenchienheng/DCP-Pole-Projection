@@ -145,5 +145,34 @@
       "do not retry blindly while the same persistence edge may be converging",
       "do not promote the intended Library content to Current evidence until readback observes it"
     ]
+  },
+  "integration_drift_observation": {
+    "observed_at": "2026-09-27T05:33+08:00",
+    "pr": 391,
+    "base": "main",
+    "compare_status": "diverged",
+    "ahead_by": 69,
+    "behind_by": 8,
+    "mergeable": true,
+    "rebaseable": true,
+    "mergeable_state": "clean",
+    "merge_base": "fa55045eae1f01d8f6cf450dd71901612d1a6f64",
+    "current_main": "bfb926f7586e980e1a0e09aea4c6c3a2106ac48c",
+    "base_delta_paths": [
+      ".github/copilot-instructions.md",
+      "AGENTS.md"
+    ],
+    "candidate_changed_path_overlap": false,
+    "instruction_requalified": true,
+    "instruction_compatibility": "COMPATIBLE_WITH_CURRENT_BOUNDED_USER_AUTHORITY",
+    "exact_head_regression_observed": false,
+    "disposition": "HOLD_INTEGRATION_REGRESSION_ONLY",
+    "no_rebase_merge_close_inferred": true,
+    "interpretation": [
+      "diverged does not mean merge conflict",
+      "clean path mergeability does not prove semantic integration currency",
+      "current repository instructions were freshly read and are compatible with this bounded continuation",
+      "exact-head regression remains missing, so integration acceptance is not promoted"
+    ]
   }
 }
