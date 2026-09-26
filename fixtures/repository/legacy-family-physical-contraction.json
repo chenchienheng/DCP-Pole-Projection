@@ -1,0 +1,61 @@
+{
+  "artifact_role": "LEGACY_FAMILY_PHYSICAL_CONTRACTION_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "families": [
+    {
+      "path": "01_native-board",
+      "remaining_count": 1,
+      "remaining": ["board_index.md"],
+      "remaining_role": "METABOLIZED_HISTORICAL_STUB",
+      "current_control_plane": false
+    },
+    {
+      "path": "02_runtime-ops",
+      "remaining_count": 1,
+      "remaining": ["TASK_TRACE_LINEAGE_SPECIMEN.md"],
+      "remaining_role": "HISTORICAL_LINEAGE",
+      "current_task_authority": false
+    },
+    {
+      "path": "02_translation-layer",
+      "remaining_count": 1,
+      "remaining": ["README.md"],
+      "remaining_role": "LEGACY_PATH_ALIAS",
+      "current_architecture_role": false
+    },
+    {
+      "path": "03_board-orchestration",
+      "remaining_count": 1,
+      "remaining": ["runtime-spine/xuanling-gmail-bridge-intake-gate-contract-2026-04-19-v0-1.md"],
+      "remaining_role": "HISTORICAL_IMPLEMENTATION_SPECIMEN",
+      "current_orchestration_role": false
+    },
+    {
+      "path": "04_interface-layer",
+      "remaining_count": 1,
+      "remaining": ["QINYI_PUBLIC_CORE_VALUE_v0_1.md"],
+      "remaining_role": "PUBLIC_VALUE_PROJECTION_CANDIDATE",
+      "current_interface_authority": false
+    },
+    {
+      "path": "05_XLEN_Reserve_Unenabled",
+      "remaining_count": 1,
+      "remaining": ["02_Gmail_Bridge/.gitkeep"],
+      "remaining_role": "EMPTY_RESERVE_PATH",
+      "native_capability_proven": false
+    }
+  ],
+  "invariants": [
+    "PHYSICAL_FAMILY_PRESENCE_DOES_NOT_CREATE_CURRENT",
+    "SINGLE_LINEAGE_BODY_DOES_NOT_CREATE_A_LIVE_LAYER",
+    "EMPTY_RESERVE_PATH_DOES_NOT_PROVE_DORMANT_CAPABILITY",
+    "POOLED_RECLAIM_REQUIRES_CALLER_REBUILD_POINTER_AND_OWNER_GATES"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "REBUILD_DEPENDENCY_WITHDRAWAL",
+    "POINTER_STABILITY_CHECK",
+    "POOLED_RECLAIM_REVIEW"
+  ]
+}

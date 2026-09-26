@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/activation.schema.json",
+  "title": "DCP Event-driven Activation Candidate",
+  "type": "object",
+  "required": ["event_id", "event_material", "stable_life_id", "current_revision", "authority_available", "gate_known", "affected_scope_known", "return_path_known"],
+  "properties": {
+    "event_id": {"type": "string", "minLength": 1},
+    "event_material": {"type": "boolean"},
+    "stable_life_id": {"type": "string", "minLength": 1},
+    "current_revision": {"type": "string", "minLength": 1},
+    "authority_available": {"type": "boolean"},
+    "gate_known": {"type": "boolean"},
+    "affected_scope_known": {"type": "boolean"},
+    "return_path_known": {"type": "boolean"}
+  },
+  "x-invariants": [
+    "PERSISTENT_STATE_NOT_PERSISTENT_AGENT",
+    "EVENT_IS_WAKE_SIGNAL_NOT_AUTHORITY",
+    "NON_MATERIAL_EVENT_MAY_REMAIN_ASLEEP",
+    "WAKE_REQUIRES_IDENTITY_SCOPE_AUTHORITY_GATE_AND_RETURN_PATH",
+    "WAKE_CANDIDATE_DOES_NOT_GRANT_EXECUTION"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

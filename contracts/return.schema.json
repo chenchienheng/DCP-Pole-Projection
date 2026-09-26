@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.example/contracts/return.schema.json",
+  "title": "DCP Return Closure Candidate Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["return_id", "receiver", "state"],
+  "properties": {
+    "return_id": {"type": "string", "minLength": 1},
+    "receiver": {"type": "string", "minLength": 1},
+    "state": {
+      "enum": [
+        "PRODUCED",
+        "ROUTED",
+        "ACTUAL_READ",
+        "MATERIALITY_RESOLVED",
+        "RECEIVER_NATIVE_DISPOSITION",
+        "RECONCILED",
+        "REBUILD_APPLIED_OR_NO_REBUILD_WITH_REASON",
+        "BEHAVIOR_DELTA_OBSERVED",
+        "RETESTED"
+      ]
+    },
+    "receiver_actual_read": {"type": "boolean"},
+    "native_disposition": {"type": ["string", "null"]},
+    "rebuild_applied": {"type": "boolean"},
+    "no_rebuild_reason": {"type": ["string", "null"]},
+    "behavior_delta_observed": {"type": "boolean"},
+    "retested": {"type": "boolean"},
+    "manual_interventions": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

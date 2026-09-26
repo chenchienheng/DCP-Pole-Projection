@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/schedule-effect.schema.json",
+  "title": "DCP Schedule Effect Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schedule_id",
+    "trigger_class",
+    "receiver",
+    "expected_effect",
+    "effect_evidence_present",
+    "mutation_requested",
+    "action_authority_valid",
+    "action_within_scope",
+    "return_target",
+    "return_reconciled",
+    "stale_or_missed",
+    "stable_schedule_identity_preserved"
+  ],
+  "properties": {
+    "schedule_id": {"type": "string", "minLength": 1},
+    "trigger_class": {
+      "enum": ["EVENT_DRIVEN", "PERIODIC", "CONDITION_WATCH", "MANUAL_GATED"]
+    },
+    "receiver": {"type": ["string", "null"]},
+    "expected_effect": {"type": "string", "minLength": 1},
+    "effect_evidence_present": {"type": "boolean"},
+    "mutation_requested": {"type": "boolean"},
+    "action_authority_valid": {"type": "boolean"},
+    "action_within_scope": {"type": "boolean"},
+    "return_target": {"type": ["string", "null"]},
+    "return_reconciled": {"type": "boolean"},
+    "stale_or_missed": {"type": "boolean"},
+    "carrier_id": {"type": ["string", "null"]},
+    "prior_carrier_id": {"type": ["string", "null"]},
+    "stable_schedule_identity_preserved": {"type": "boolean"}
+  },
+  "x-invariants": [
+    "NAMED_SCHEDULE_IS_NOT_RUNTIME",
+    "CADENCE_IS_NOT_EFFECT_PROOF",
+    "TRIGGER_CLASS_IS_NOT_ACTION_AUTHORITY",
+    "TOOL_LABEL_IS_NOT_SCHEDULER_IDENTITY",
+    "OUTPUT_WITHOUT_RETURN_RECONCILIATION_IS_INCOMPLETE",
+    "CARRIER_REPLACEMENT_MUST_PRESERVE_STABLE_SCHEDULE_IDENTITY"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

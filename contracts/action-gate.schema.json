@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/action-gate.schema.json",
+  "title": "DCP Minimum Necessary Action Gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "transition_id",
+    "required_effect",
+    "proposed_effect",
+    "risk_level",
+    "authority_valid",
+    "explicit_high_risk_authority",
+    "reversible",
+    "recovery_path_present",
+    "affected_scope_resolved",
+    "evidence_sufficient",
+    "responsibility_owner",
+    "return_target"
+  ],
+  "properties": {
+    "transition_id": {"type": "string", "minLength": 1},
+    "required_effect": {"enum": ["NO_ACTION", "OBSERVE", "PREPARE", "BOUNDED_MUTATION", "HIGH_RISK_MUTATION"]},
+    "proposed_effect": {"enum": ["NO_ACTION", "OBSERVE", "PREPARE", "BOUNDED_MUTATION", "HIGH_RISK_MUTATION"]},
+    "risk_level": {"enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+    "authority_valid": {"type": "boolean"},
+    "explicit_high_risk_authority": {"type": "boolean"},
+    "reversible": {"type": "boolean"},
+    "recovery_path_present": {"type": "boolean"},
+    "affected_scope_resolved": {"type": "boolean"},
+    "evidence_sufficient": {"type": "boolean"},
+    "responsibility_owner": {"type": ["string", "null"]},
+    "return_target": {"type": ["string", "null"]}
+  },
+  "x-invariants": [
+    "MINIMUM_NECESSARY_ACTION_OVER_MAXIMUM_AVAILABLE_ACTION",
+    "RESTRAINT_IS_CAPABILITY",
+    "LOCAL_INITIATIVE_DOES_NOT_EXPAND_AUTHORITY",
+    "HIGH_RISK_ACTION_REQUIRES_EXPLICIT_AUTHORITY",
+    "ACTION_RIGHT_REQUIRES_RESPONSIBILITY_AND_RETURN",
+    "GATE_PASS_DOES_NOT_AUTHORIZE_EXECUTION"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

@@ -1,0 +1,115 @@
+{
+  "artifact_role": "ROOT_CONTROL_SURFACE_RETIREMENT_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "destructive_reclaim_authorized": false,
+  "retired_surfaces": [
+    {
+      "path": "MULTI_CHAIN_DISPATCH_GOVERNANCE.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["single unified dispatch controller", "AXIS-bound routing", "central registry return", "human-chain absolute override"],
+      "successor": ["dcp_kernel/decision_chain.py", "dcp_kernel/action_gate.py", "dcp_kernel/platform.py", "dcp_kernel/return_state.py"]
+    },
+    {
+      "path": "REVIEW_CHAIN_MASTER_LAYER.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["review as master axis", "global review controller"],
+      "successor": ["dcp_kernel/evidence.py", "dcp_kernel/judgment.py", "dcp_kernel/return_state.py"]
+    },
+    {
+      "path": "TIME_CHAIN_MASTER_LAYER.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["all runtime bound to time master", "scheduler topology as authority"],
+      "successor": ["dcp_kernel/activation.py", "dcp_kernel/schedule_effect.py", "dcp_kernel/return_state.py"]
+    },
+    {
+      "path": "SPACE_CHAIN_MASTER_LAYER.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["spatial master axis", "folder or placement as required ontology"],
+      "successor": ["dcp_kernel/models.py", "dcp_kernel/resolution.py", "dcp_kernel/reader_policy.py"]
+    },
+    {
+      "path": "XUANLING_OPERATIONAL_MODEL_CORE.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["XuanLing as one operational controller", "Master Axis alignment as semantic authority", "AXIS-05 fallback"],
+      "successor": ["dcp_kernel/judgment.py", "dcp_kernel/coexistence.py", "dcp_kernel/activation.py", "dcp_kernel/platform.py", "dcp_kernel/consequence.py"]
+    },
+    {
+      "path": "MOTHER_TREE_CLEARANCE_REPORT.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["MotherTree as review authority", "merge order as current authority", "registry entry as required completion surface"],
+      "successor": ["dcp_kernel/judgment.py", "dcp_kernel/evidence.py", "dcp_kernel/return_state.py", ".github/pull_request_template.md"]
+    },
+    {
+      "path": "CORETRI_MASTER_CONSOLIDATION_REVIEW.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["valid master control file list", "AXIS-01 through AXIS-05 as permanent control hierarchy", "master-stage Current mapping"],
+      "successor": ["CURRENT-SURFACE-MANIFEST.json", "LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md", "dcp_kernel/resolution.py", "dcp_kernel/retirement.py"]
+    },
+    {
+      "path": "XUANLING_LINGLUO_MASTER_MAP.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["DCP over CoreTri over XuanLing hierarchy", "XuanLing as definitive operational layer", "Qinyi or LingLuo as fixed subordinate identity layers"],
+      "successor": ["dcp_kernel/coexistence.py", "dcp_kernel/carrier_binding.py", "fixtures/repository/tri-repository-life-operation-compatibility.json"]
+    },
+    {
+      "path": "00_mother-law/existence-chain-master-layer.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["existence as permanent master axis", "return_to_00 as global completion route"],
+      "successor": ["dcp_kernel/models.py", "dcp_kernel/resolution.py", "contracts/stable-life.schema.json"]
+    },
+    {
+      "path": "UNIFIED_ARTIFACT_REGISTER.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["single unified durable corpus register", "register as current architecture truth", "fixed family range as ontology"],
+      "successor": ["CURRENT-SURFACE-MANIFEST.json", "dcp_kernel/reader_policy.py", "dcp_kernel/resolution.py", "dcp_kernel/composition.py"]
+    },
+    {
+      "path": "TASK_ORCHESTRATION_BRIDGE_SPEC.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["ChatGPT as permanent coordinator", "Jules as permanent execution node", "GitHub as mandatory completion and return surface", "AXIS-05 failure route"],
+      "successor": ["dcp_kernel/judgment.py", "dcp_kernel/carrier_binding.py", "dcp_kernel/platform.py", "dcp_kernel/write_intent.py", "dcp_kernel/return_state.py"]
+    },
+    {
+      "path": "WORK_OS_CHAIN_INTEGRATION_SPEC.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["Work OS as fixed execution-chain organ", "AXIS-01/03/05 permanent binding", "GitHub PR as universal writeback", "fixed tool role by product name"],
+      "successor": ["dcp_kernel/carrier_binding.py", "dcp_kernel/action_gate.py", "dcp_kernel/judgment.py", "dcp_kernel/platform.py", "dcp_kernel/return_state.py"]
+    },
+    {
+      "path": "WORLD_CHAIN_MASTER_AXIS.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["World Chain as permanent master axis", "all external absorption forced through AXIS-01", "AXIS-05 as global fallback", "unified register as return surface"],
+      "successor": ["dcp_kernel/carrier_binding.py", "dcp_kernel/coexistence.py", "dcp_kernel/judgment.py", "dcp_kernel/platform.py"]
+    },
+    {
+      "path": "AXIS_TO_EXTERNAL_ABSORPTION_HANDOFF.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["five Master Axes as prerequisite topology", "external input must enter through AXIS-01", "AXIS handoff as mandatory execution prerequisite"],
+      "successor": ["dcp_kernel/learning.py", "dcp_kernel/carrier_binding.py", "dcp_kernel/judgment.py", "dcp_kernel/coexistence.py"]
+    },
+    {
+      "path": "FULL_REPOSITORY_TOPOLOGY_ALIGNMENT.md",
+      "physical_state_on_successor_branch": "ABSENT",
+      "retired_semantics": ["fixed User-ChatGPT-Jules-Repository operating topology", "active master control file list", "five-axis topology as current framework", "register set as structural control surface"],
+      "successor": ["CURRENT-SURFACE-MANIFEST.json", "LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md", "dcp_kernel/reader_policy.py", "dcp_kernel/activation.py", "dcp_kernel/retirement.py"]
+    }
+  ],
+  "invariants": [
+    "REMOVED_ROOT_CONTROL_SURFACE_MUST_NOT_BE_RECONSTRUCTED_FROM_FILENAME_OR_HISTORY",
+    "SUCCESSOR_CAPABILITIES_DO_NOT_RECREATE_A_CENTRAL_CONTROLLER",
+    "PERSISTENT_STATE_REPLACES_PERSISTENT_MASTER_OR_AGENT_ASSUMPTIONS",
+    "RETURN_RECONCILES_TO_NATIVE_RECEIVER_NOT_CENTRAL_REGISTRY",
+    "HISTORICAL_MASTER_OR_MOTHERTREE_LANGUAGE_DOES_NOT_REGAIN_AUTHORITY_BY_REENTRY",
+    "CROSS_LAYER_RELATION_DOES_NOT_CREATE_PERMANENT_HIERARCHY",
+    "PRODUCT_OR_AGENT_NAME_DOES_NOT_CREATE_PERMANENT_EXECUTION_ROLE",
+    "REGISTER_OR_GITHUB_PLACEMENT_DOES_NOT_CREATE_CURRENT_OR_COMPLETION",
+    "EXTERNAL_INPUT_DOES_NOT_REQUIRE_A_PERMANENT_WORLD_AXIS",
+    "HISTORICAL_TOPOLOGY_MAP_DOES_NOT_DEFINE_CURRENT_OPERATING_RELATION"
+  ],
+  "claim_boundary": [
+    "PHYSICAL_ABSENCE_DOES_NOT_BY_ITSELF_PROVE_NO_HISTORICAL_CALLER",
+    "SUCCESSOR_BINDING_DOES_NOT_AUTHORIZE_DESTRUCTIVE_RECLAIM_OF_OTHER_ARTIFACTS",
+    "THIS_FIXTURE_IS_RETIREMENT_EVIDENCE_NOT_RUNTIME_OR_PROMOTION"
+  ]
+}

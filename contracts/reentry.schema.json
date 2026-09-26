@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.example/contracts/reentry.schema.json",
+  "title": "DCP Re-entry Candidate Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "stable_life_id",
+    "invariant_core_id",
+    "tri_root_revision",
+    "current_revision",
+    "last_good_revision",
+    "blockers",
+    "pending_returns"
+  ],
+  "properties": {
+    "stable_life_id": {"type": "string", "minLength": 1},
+    "invariant_core_id": {"type": "string", "minLength": 1},
+    "tri_root_revision": {"type": "string", "minLength": 1},
+    "current_revision": {"type": "string", "minLength": 1},
+    "last_good_revision": {"type": "string", "minLength": 1},
+    "active_need": {"type": ["string", "null"]},
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "pending_returns": {"type": "array", "items": {"type": "string"}},
+    "cursor": {"type": ["string", "null"]},
+    "ack_owner": {"type": ["string", "null"]}
+  }
+}

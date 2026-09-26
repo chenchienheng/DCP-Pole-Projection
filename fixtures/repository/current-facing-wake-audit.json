@@ -1,0 +1,38 @@
+{
+  "artifact_role": "CURRENT_FACING_WAKE_AUDIT_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "destructive_reclaim_authorized": false,
+  "observed_surfaces": [
+    {"path":"README.md","normal_legacy_family_wake_observed":false},
+    {"path":"CURRENT-SURFACE-MANIFEST.json","normal_legacy_family_wake_observed":false},
+    {"path":"LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md","normal_legacy_family_wake_observed":false},
+    {"path":"PUBLIC-SURFACE-POLICY.md","normal_legacy_family_wake_observed":false},
+    {"path":"STATUS.md","normal_legacy_family_wake_observed":false},
+    {"path":"AGENTS.md","normal_legacy_family_wake_observed":false},
+    {"path":".github/ISSUE_TEMPLATE/capability_task_packet.md","normal_legacy_family_wake_observed":false},
+    {"path":".github/pull_request_template.md","normal_legacy_family_wake_observed":false},
+    {"path":".github/workflows/dcp-kernel-candidate.yml","normal_legacy_family_wake_observed":false}
+  ],
+  "legacy_family_state": {
+    "01_runtime-spine":"CURRENT_FACING_WAKE_NOT_OBSERVED",
+    "03_field-governance":"CURRENT_FACING_WAKE_NOT_OBSERVED",
+    "04_adapter-layer":"CURRENT_FACING_WAKE_NOT_OBSERVED"
+  },
+  "known_physical_wake_debt": [
+    {
+      "path":".github/ISSUE_TEMPLATE/qinyi_task_packet.md",
+      "semantic_authority":"none",
+      "normal_use":"deprecated",
+      "physical_presence_in_issue_template_directory":true,
+      "physical_wake_withdrawal_proven":false,
+      "disposition":"HOLD_FOR_POOLED_STRUCTURAL_RECLAIM_REVIEW"
+    }
+  ],
+  "claim_boundary": [
+    "CURRENT_FACING_WAKE_NOT_OBSERVED_DOES_NOT_PROVE_FULL_BRANCH_CALLER_ABSENCE",
+    "CURRENT_FACING_WAKE_NOT_OBSERVED_DOES_NOT_PROVE_NON_TEXT_RUNTIME_DEPENDENCY_ABSENCE",
+    "LEGACY_TEMPLATE_SEMANTIC_DEENTITLEMENT_DOES_NOT_PROVE_PHYSICAL_WAKE_WITHDRAWAL",
+    "THIS_AUDIT_DOES_NOT_AUTHORIZE_DELETE_MOVE_MERGE_PROMOTION_OR_RUNTIME"
+  ]
+}

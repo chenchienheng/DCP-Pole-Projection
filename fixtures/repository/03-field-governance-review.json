@@ -1,0 +1,52 @@
+{
+  "fixture_id": "DCP-03-FIELD-GOVERNANCE-REVIEW-001",
+  "family": "03_field-governance",
+  "artifact_count": 22,
+  "listing_complete": true,
+  "current_surface_reference": false,
+  "normal_reader_role": false,
+  "runtime": false,
+  "promotion": false,
+  "destructive_action_authorized": false,
+  "review_state": "SUCCESSOR_REVIEW_COMPLETE_CALLER_REBUILD_PENDING",
+  "artifacts": [
+    {"path":"03_field-governance/ABUNDANCE_UNDER_CONSTRAINT_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/action_gate.py","dcp_kernel/consequence.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/ALL_CLOUD_BOUNDARY_REVIEW_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/action_gate.py","dcp_kernel/carrier_binding.py","dcp_kernel/evidence.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/ANALYSIS_VIEW_MAP_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/evidence.py","dcp_kernel/carrier_binding.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/CAPABILITY_BOUNDARY_CARD_SPECIMEN.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/action_gate.py","dcp_kernel/resolution.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/CLUSTER_INITIATIVE_RHYTHM_PROTOCOL_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/action_gate.py","dcp_kernel/consequence.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/CO_FIELD_DEPENDENCY_MODEL_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/resolution.py","dcp_kernel/action_gate.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/DELEGATION_RETURN_LINEAGE_SPECIMEN.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/action_gate.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/EXPORT_RETURN_PACKET_SCHEMA_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["contracts/return.schema.json","dcp_kernel/return_state.py","dcp_kernel/consequence.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/EXTERNAL_ROUND_LEDGER_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/learning.py","dcp_kernel/return_state.py","dcp_kernel/platform.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/FIELD_CHAIN_MATRIX_MECHANICS_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/resolution.py","dcp_kernel/action_gate.py","dcp_kernel/composition.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/HUGGING_FACE_MODEL_INTAKE_CARD_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/learning.py","dcp_kernel/carrier_binding.py","dcp_kernel/evidence.py","dcp_kernel/action_gate.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/IMPORT_STAGING_AND_STABLE_ID_RULE_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/learning.py","dcp_kernel/resolution.py","dcp_kernel/evidence.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/ISM_STRUCTURAL_INITIATIVE_INTAKE_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/action_gate.py","dcp_kernel/consequence.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/KNOWLEDGE_MOLECULE_MODEL_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/composition.py","dcp_kernel/evidence.py","dcp_kernel/carrier_binding.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/LOCAL_SCOPE_EFFECT_LINEAGE_SPECIMEN.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/action_gate.py","dcp_kernel/resolution.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/MINIMAL_ROUTER_LAUNCHER_QIN_VIEW_GATE_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/reader_policy.py","dcp_kernel/carrier_binding.py","dcp_kernel/action_gate.py","dcp_kernel/evidence.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/RECOMPOSITION_ENGINE_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/composition.py","dcp_kernel/evidence.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/SIGNAL_CAPACITY_BOUNDARY_SPECIMEN.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/action_gate.py","dcp_kernel/resolution.py","dcp_kernel/carrier_binding.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/SOURCE_DEPENDENCY_VIEW_PRIMITIVE_SPECIMEN.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/resolution.py","dcp_kernel/evidence.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/SOURCE_VIEW_GATE_v0_1.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/evidence.py","dcp_kernel/carrier_binding.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/TOOL_CAPABILITY_ROLE_LINEAGE_SPECIMEN.md","state":"SUCCESSOR_COVERED_LINEAGE","successor":["dcp_kernel/carrier_binding.py","dcp_kernel/action_gate.py","dcp_kernel/resolution.py"],"unique_live_body_evidence_required":false},
+    {"path":"03_field-governance/TW_STRATEGY_MOTHERTREE_FEEDBACK_v0_1.md","state":"SUCCESSOR_COVERED_HISTORICAL_RETURN_LINEAGE","successor":["dcp_kernel/learning.py","dcp_kernel/evidence.py","dcp_kernel/return_state.py"],"unique_live_body_evidence_required":false,"provenance_evidence":{"git_history_sufficient":true,"predecessor_commit":"3779bc4f19abdb6db6a618bc0d977315a55dcd0c","reason":"original Taiwan Strategy branch Return is preserved in repository history; live stub is no longer the unique provenance carrier"}}
+  ],
+  "summary": {
+    "successor_covered_lineage_count": 22,
+    "historical_return_lineage_count": 1,
+    "observable_executable_gap_found": 1,
+    "observable_executable_gap_extracted_to": "dcp_kernel/composition.py",
+    "unique_live_body_evidence_pending_count": 0,
+    "provenance_debt_closed_count": 1,
+    "caller_audit_complete": false,
+    "rebuild_dependency_audit_complete": false
+  },
+  "notes": [
+    "All 22 successor-branch artifacts were enumerated from a non-truncated Git tree.",
+    "Successor review does not prove absence of every live caller or rebuild dependency.",
+    "Taiwan Strategy historical Return provenance is independently recoverable from commit 3779bc4f19abdb6db6a618bc0d977315a55dcd0c; the current stub is not unique evidence.",
+    "No file deletion, move, rename, merge, promotion or Runtime claim is authorized by this review."
+  ]
+}
