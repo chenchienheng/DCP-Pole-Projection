@@ -32,6 +32,27 @@ class RouteDisposition(str, Enum):
     HOLD = "HOLD"
 
 
+class CarrierContinuityDisposition(str, Enum):
+    IDENTITY_CONTINUES = "IDENTITY_CONTINUES"
+    CARRIER_EVIDENCE_HOLD = "CARRIER_EVIDENCE_HOLD"
+
+
+@dataclass(frozen=True)
+class CarrierObservation:
+    stable_identity: str
+    observed_title: str | None
+    observed_ui_mode: str | None
+    backend_mode_proven: bool
+    explicit_identity_replacement_authorized: bool = False
+
+
+@dataclass(frozen=True)
+class CarrierContinuityAssessment:
+    disposition: CarrierContinuityDisposition
+    stable_identity: str
+    reasons: tuple[str, ...]
+
+
 @dataclass(frozen=True)
 class RouteCandidate:
     route_id: str
@@ -56,6 +77,32 @@ class PreActionAssessment:
     qualification: QualificationAssessment | None
     executable: bool
     reasons: tuple[str, ...]
+
+
+def assess_carrier_continuity(
+    observation: CarrierObservation,
+) -> CarrierContinuityAssessment:
+    """UI/title/carrier changes do not silently replace Native identity."""
+    if observation.explicit_identity_replacement_authorized:
+        return CarrierContinuityAssessment(
+            CarrierContinuityDisposition.CARRIER_EVIDENCE_HOLD,
+            observation.stable_identity,
+            ("IDENTITY_REPLACEMENT_REQUIRES_SEPARATE_EXPLICIT_TRANSITION_EVIDENCE",),
+        )
+    if observation.observed_ui_mode and not observation.backend_mode_proven:
+        return CarrierContinuityAssessment(
+            CarrierContinuityDisposition.IDENTITY_CONTINUES,
+            observation.stable_identity,
+            (
+                "UI_MODE_OBSERVED_BACKEND_MODE_UNKNOWN",
+                "CARRIER_OR_TITLE_CHANGE_DOES_NOT_RENAME_NATIVE_IDENTITY",
+            ),
+        )
+    return CarrierContinuityAssessment(
+        CarrierContinuityDisposition.IDENTITY_CONTINUES,
+        observation.stable_identity,
+        ("NO_IDENTITY_REPLACEMENT_EVIDENCE",),
+    )
 
 
 def qualify_route(route: RouteCandidate) -> RouteAssessment:
