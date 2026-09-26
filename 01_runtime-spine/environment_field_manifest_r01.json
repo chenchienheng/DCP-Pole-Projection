@@ -481,5 +481,27 @@
     },
     "bounded_suite_definition_total": 121,
     "execution_status": "DEFINITIONS_ONLY_NOT_PASS"
+  },
+  "kernel_integration_successor": {
+    "pr": 406,
+    "head": "2a38f87449583d93fff6c498408a1cafc580261a",
+    "base_main": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
+    "substrate_pr": 324,
+    "leaf_prs": [
+      384,
+      387,
+      393,
+      395,
+      396,
+      397
+    ],
+    "changed_files": 138,
+    "additions": 13345,
+    "deletions": 0,
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "workflow_runs": 0,
+    "disposition": "USE_AS_INTEGRATION_CANDIDATE_HOLD_EXECUTION_AND_ACCEPTANCE",
+    "no_source_pr_retirement_until_successor_accepted": true
   }
 }
