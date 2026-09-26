@@ -1,52 +1,67 @@
-# MotherTree PR Gate
+# DCP Projection PR Boundary / Evidence Gate
 
-## 1. Gate Level
+> This PR template is a review carrier. It is not a MotherTree, Commander, Registry, approval authority, Runtime gate, or Native DCP source.
 
-- [ ] `gate:green` — docs / analysis / candidate only; no workflow, secrets, deploy, billing, or protected-branch risk
-- [ ] `gate:yellow` — code / schema / config / dependency change; requires reviewer and MotherTree return packet
-- [ ] `gate:red` — secrets, billing, deploy, workflows/actions, permissions, branch rules, cloud resources, Qinyi or MotherTree core
+## 1. Stable Change Identity
 
-## 2. Scope
+Stable_Existence_or_Need:
+Change_ID:
+Affected_Receiver:
 
-- [ ] `scope:docs`
-- [ ] `scope:code`
-- [ ] `scope:workflow`
-- [ ] `scope:security`
-- [ ] `scope:billing`
-- [ ] `scope:qinyi`
-- [ ] `scope:mothertree`
+## 2. Change Class
 
-## 3. Safety Check
+- [ ] descriptive / lineage only
+- [ ] machine contract / schema
+- [ ] executable candidate / test / fixture
+- [ ] workflow / permission / security-sensitive carrier
+- [ ] external mutation / deployment / billing / protected resource
 
-- [ ] Does not touch secrets or environment variables
-- [ ] Does not modify GitHub Actions / workflows
-- [ ] Does not trigger deployment or paid runtime
-- [ ] Does not change branch rules, app permissions, or billing settings
-- [ ] If any above is false, mark as `gate:red`
+## 3. Authority / Effect Ceiling
 
-## 4. MotherTree Return Packet
+Authority_Source_or_Pointer:
+Allowed_Effect:
+Forbidden_Effect:
+Claim_Ceiling:
 
-```yaml
-Window:
-Task_ID:
-What_Changed:
-What_Did_Not_Change:
-Risk:
-Pending:
-Next_Action:
-Return_Path:
-```
+- [ ] This change does not infer authority from actor, pole, window, branch, filename, label, or repository placement.
+- [ ] Candidate != Approved; executable != Platform; Platform != Runtime.
 
-## 5. Rollback Path
+## 4. Dependency / Evidence
 
-Describe how to revert this change:
+Affected_Dependency_Cone:
+Current_or_Last_Good_Pointer:
+Evidence_Pointers:
+Known_Holds_or_Conflicts:
 
-```text
-Rollback:
-```
+- [ ] Current is not inferred from latest timestamp / filename / branch.
+- [ ] Historical material is re-entered only for an explicit bounded purpose.
+- [ ] Representation / fixture / projection is not treated as Native reality or Receiver behavior proof.
 
-## 6. Human Approval
+## 5. Return / Rebuild
 
-- [ ] No human approval needed before draft creation
-- [ ] Reviewer approval required before merge
-- [ ] Explicit user/admin approval required before execution
+Return_Target:
+Required_Receiver_State:
+Rebuild_or_Reentry_Impact:
+Retest_Required:
+
+- [ ] Producer does not ACK for Receiver.
+- [ ] Return written != Receiver absorbed.
+- [ ] Behavior changed != Retested.
+
+## 6. Operational Safety
+
+- [ ] No secret or credential material is introduced.
+- [ ] Workflow / permission / external side effects are explicitly identified above.
+- [ ] Any mutation stays inside authorized scope.
+- [ ] Rollback or recovery path is stated where material.
+
+Rollback_or_Recovery:
+
+## 7. Integration State
+
+- [ ] Draft / review only
+- [ ] Integration HOLD exists
+- [ ] Reviewer decision pending
+- [ ] Explicit authority required before merge / release / execution
+
+No checkbox in this template itself authorizes Merge, Promotion, Release, Runtime, Receiver ACK, or destructive reclaim.
