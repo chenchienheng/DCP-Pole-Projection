@@ -513,64 +513,61 @@
     }
   },
   "kernel_absorption_batch_20260927": {
-    "observed_at": "2026-09-27T06:52+08:00",
-    "absorbed_to_main": [
+    "observed_at": "2026-09-27T07:00+08:00",
+    "canonical_absorption": [
       {
         "source_pr": 392,
-        "via_pr": 407,
-        "merge_sha": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
-        "coverage": "3/3 source blobs byte-identical on main",
-        "source_state": "CLOSED_RETAIN_HISTORICAL_EVIDENCE"
+        "successor_pr": 404,
+        "merge_sha": "1269d753746103212e2bc46d118e91c669c2efef",
+        "coverage": "3/3 source blobs absorbed; source closed as active carrier"
       },
       {
         "source_pr": 386,
-        "via_pr": 407,
-        "merge_sha": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
-        "coverage": "1/1 source blob byte-identical on main",
-        "source_state": "CLOSED_RETAIN_HISTORICAL_EVIDENCE"
+        "successor_pr": 405,
+        "merge_sha": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
+        "coverage": "1/1 evidence blob absorbed; source closed as active carrier"
       }
     ],
-    "consolidated_successor": {
-      "pr": 408,
-      "head": "f44b83804ec31f807c9805807c3c5810abddf196",
-      "base_main": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
-      "baseline_pr": 324,
-      "baseline_executable_blob_count": 125,
-      "unique_executable_blob_paths_before_manifest": 135,
-      "overlays": [
-        384,
-        387,
-        393,
-        395,
-        396,
-        397
-      ],
-      "overlap_resolution": "PR396 and PR397 reality_intake blobs identical; use once, preserve PR397 unique vision provider",
+    "duplicate_correction": {
+      "pr407": "MERGED_NO_OP_0_CHANGED_FILES because #404/#405 already carried the same blobs",
+      "pr408": "CLOSED_UNMERGED_DUPLICATE; later and less complete than canonical #406"
+    },
+    "canonical_kernel_successor": {
+      "pr": 406,
+      "head": "2a38f87449583d93fff6c498408a1cafc580261a",
+      "base_main": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
+      "composition": "PR324 executable substrate 127 selected entries + 15 leaf module/test overrides from 384/387/393/395/396/397",
+      "changed_files": 138,
+      "additions": 13345,
+      "deletions": 0,
+      "pr396_init_override": "OMITTED_TO_AVOID_REGRESSING_LATER_SUBSTRATE_EXPORTS",
+      "overlap_resolution": "PR397 reuses PR396 reality_intake and adds unique vision-provider code/tests",
       "status": "DRAFT_OPEN_UNMERGED_UNEXECUTED",
       "workflow_runs": 0,
-      "manifest": "KERNEL_SUCCESSOR_MANIFEST.json",
-      "merge_hold": [
-        "actual test execution",
-        "regression result",
-        "source coverage readback",
-        "fresh main conflict check"
+      "exact_head_execution": "HOLD_EXECUTION_CARRIER_UNAVAILABLE",
+      "required_before_merge": [
+        "exact-head test execution",
+        "failure reconciliation",
+        "current instruction/workflow compatibility",
+        "export/import surface verification",
+        "explicit merge acceptance"
       ]
     },
-    "open_pr_effect": {
-      "prior_total": 13,
-      "retired_active_carriers": [
-        386,
-        392
-      ],
-      "new_successor_pr": 408,
-      "resulting_total": 12
-    },
-    "interpretation": [
-      "large historical PR324 is no longer the only carrier of its executable kernel subset",
-      "successor construction is selective and does not import PR324 legacy governance/docs deletion set",
-      "source successor pointer does not close source PR until execution and unique coverage are proven",
-      "two fully absorbed small carriers were safely retired after byte-identical main readback"
+    "source_prs_remaining_open": [
+      324,
+      384,
+      387,
+      393,
+      395,
+      396,
+      397
     ],
-    "claim_ceiling": "SUCCESSOR_CANDIDATE_NOT_RUNTIME_NOT_PASS"
+    "resulting_open_pr_total": 11,
+    "interpretation": [
+      "fresh durable readback outranked the later duplicate construction",
+      "no-op merge and duplicate successor are preserved as failure/metabolism evidence rather than hidden",
+      "canonical successor is selected by coverage and regression safety, not by newest PR number"
+    ],
+    "claim_ceiling": "INTEGRATED_EXECUTABLE_CANDIDATE_NOT_PASS_NOT_RUNTIME"
   }
 }
