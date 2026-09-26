@@ -562,7 +562,7 @@
       396,
       397
     ],
-    "resulting_open_pr_total": 11,
+    "resulting_open_pr_total": 12,
     "interpretation": [
       "fresh durable readback outranked the later duplicate construction",
       "no-op merge and duplicate successor are preserved as failure/metabolism evidence rather than hidden",
@@ -617,5 +617,13 @@
     },
     "rule": "Evidence absorption does not approve deletion. Different current blob does not prove semantic successor coverage.",
     "claim_ceiling": "PARTIAL_ABSORPTION_NOT_RETIREMENT"
+  },
+  "open_pr_fresh_count_20260927": {
+    "observed_at": "2026-09-27T07:10+08:00",
+    "DCP": 10,
+    "GLModel": 1,
+    "Ideas": 1,
+    "total": 12,
+    "note": "Current observed open-set count after successor reconciliation and selective evidence absorption."
   }
 }
