@@ -74,6 +74,18 @@ class ResourceEffectAccountingR01Tests(unittest.TestCase):
         self.assertEqual(result.disposition, ResourceEffectDisposition.MARGINAL_GAIN_CANDIDATE)
         self.assertGreater(result.marginal_risk_reduction, 0)
 
+    def test_more_resource_with_worse_risk_is_dominated_when_nothing_else_improves(self):
+        baseline = obs("B", resource_units=1.0, risk_after=0.30)
+        candidate = obs(
+            "C",
+            composition_id="COMP-2",
+            resource_units=2.0,
+            risk_after=0.60,
+        )
+        result = assess_resource_effect(candidate, baseline=baseline)
+        self.assertEqual(result.disposition, ResourceEffectDisposition.DOMINATED_CANDIDATE)
+        self.assertLess(result.marginal_risk_reduction, 0)
+
     def test_less_resource_same_effect_is_recorded_without_global_winner_claim(self):
         baseline = obs("B", resource_units=2.0)
         candidate = obs("C", composition_id="COMP-2", resource_units=1.0)
