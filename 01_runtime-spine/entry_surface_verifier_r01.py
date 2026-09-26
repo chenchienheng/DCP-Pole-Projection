@@ -28,6 +28,7 @@ class SemanticBoundary(str, Enum):
     RECEIPT_TO_READBACK = "RECEIPT_TO_READBACK"
     DELIVERY_TO_USE = "DELIVERY_TO_USE"
     CAPABILITY_TO_AUTHORITY = "CAPABILITY_TO_AUTHORITY"
+    ARTIFACT_TO_RETIRED = "ARTIFACT_TO_RETIRED"
 
 
 @dataclass(frozen=True)
@@ -64,6 +65,10 @@ class SemanticPromotionEvidence:
     explicit_use_observed: bool = False
     capability_observed: bool = False
     data_boundary_qualified: bool = False
+    unique_delta_inventoried: bool = False
+    successor_coverage_observed: bool = False
+    evidence_preserved: bool = False
+    retirement_authority_qualified: bool = False
 
 
 NEGATION_CUES = (
@@ -134,6 +139,10 @@ PROMOTION_REQUIREMENTS = {
     SemanticBoundary.CAPABILITY_TO_AUTHORITY: (
         "stable_binding", "purpose_qualified", "capability_observed",
         "authority_qualified", "data_boundary_qualified",
+    ),
+    SemanticBoundary.ARTIFACT_TO_RETIRED: (
+        "stable_binding", "unique_delta_inventoried", "successor_coverage_observed",
+        "evidence_preserved", "retirement_authority_qualified",
     ),
 }
 
