@@ -336,5 +336,97 @@
     "disposition": "SEARCH_HIT_IS_NAVIGATION_CUE_NOT_CURRENT_EVIDENCE",
     "action": "preserve historical files; resolve Current from direct main/current manifest rather than mass-editing indexed lineage",
     "claim_ceiling": "NO_SEARCH_INDEX_FRESHNESS_SLA_CLAIM"
+  },
+  "repository_open_pr_batch_20260927": {
+    "observed_at": "2026-09-27T06:38+08:00",
+    "scope": "all open PRs across DCP/GLModel/Ideas at observation time",
+    "counts": {
+      "DCP": 11,
+      "GLModel": 1,
+      "Ideas": 1
+    },
+    "dispositions": [
+      [
+        "DCP",
+        324,
+        "KEEP_CAPABILITY_LINEAGE_HOLD_INTEGRATION",
+        "large existence-first/kernel lineage with unique code/workflow/specimens"
+      ],
+      [
+        "DCP",
+        383,
+        "HOLD_MIXED_READER_AND_ROUTING_DELTA",
+        "reader cleanup partly superseded; mixed routing/adapter/register delta remains"
+      ],
+      [
+        "DCP",
+        384,
+        "KEEP_EXECUTABLE_CAPABILITY_CANDIDATE",
+        "unique capability activation code/tests"
+      ],
+      [
+        "DCP",
+        386,
+        "KEEP_FALSIFICATION_EVIDENCE",
+        "independent falsification result artifact"
+      ],
+      [
+        "DCP",
+        387,
+        "KEEP_REGRESSION_EVIDENCE_CANDIDATE",
+        "native backlog retest suite"
+      ],
+      [
+        "DCP",
+        391,
+        "ACTIVE_EXECUTABLE_CANDIDATE",
+        "current World NFN substrate"
+      ],
+      [
+        "DCP",
+        392,
+        "KEEP_REUSE_CANDIDATE",
+        "capability-based issue/PR templates"
+      ],
+      [
+        "DCP",
+        393,
+        "KEEP_SCHEMA_DRIFT_FIX_CANDIDATE",
+        "return/re-entry schema fix + regression test"
+      ],
+      [
+        "DCP",
+        395,
+        "KEEP_SEMANTIC_KERNEL_CANDIDATE",
+        "carrier binding + consequence semantics with tests"
+      ],
+      [
+        "DCP",
+        396,
+        "KEEP_REALITY_INTAKE_CANDIDATE",
+        "reality intake code/tests"
+      ],
+      [
+        "DCP",
+        397,
+        "HOLD_OVERLAP_REVIEW",
+        "shares reality_intake with 396 plus unique vision provider"
+      ],
+      [
+        "GLModel",
+        8,
+        "HOLD_BROAD_INTEGRATION",
+        "72-file broad corpus transition plus semantic-core verifier changes; reader correction alone is superseded"
+      ],
+      [
+        "Ideas",
+        7,
+        "HOLD_BROAD_INTEGRATION",
+        "69-file broad corpus transition plus world/placement changes; reader correction alone is superseded"
+      ]
+    ],
+    "retirement_candidates": [],
+    "retirement_action_taken": false,
+    "rule": "Do not retire an open PR merely because one visible purpose was superseded; require all unique capability/evidence deltas to be absorbed or explicitly retired."
   }
 }
