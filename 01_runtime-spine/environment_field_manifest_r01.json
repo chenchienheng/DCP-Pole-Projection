@@ -1,0 +1,226 @@
+{
+  "field_id": "XUANLING_ENVIRONMENT_FIELD_R01_DRIVE_GITHUB_LIBRARY",
+  "status": "BOUNDED_ENVIRONMENT_FIELD_CANDIDATE",
+  "purpose": "Prove that one Need can preserve Current, executable candidate, durable re-entry, evidence and recovery across replaceable carriers without promoting any carrier to Native Identity or Authority.",
+  "stable_need": "QINYI_WORLD_MODELING_CONTINUITY / NFN_R2_REENTRY_INTEGRATED_SPINE_R01",
+  "carriers": [
+    {
+      "carrier": "DRIVE",
+      "roles": [
+        "human_navigation",
+        "thin_current",
+        "shared_return"
+      ],
+      "current_pointer": "1dTEh6eneFGWLGUXN0q6GWeNjGbC-sSahZufyPgolFX8",
+      "navigation_pointer": "1EMsyGifojdKddHBgh7lnoZgRQj-eGJrF-IjmgMMZGko",
+      "authority_claim": false
+    },
+    {
+      "carrier": "GITHUB",
+      "roles": [
+        "versioned_code",
+        "tests",
+        "diff",
+        "review_candidate"
+      ],
+      "repository": "chenchienheng/DCP-Pole-Projection",
+      "pull_request": 391,
+      "authority_claim": false,
+      "head_basis_before_field_manifest": "df2dea6ed91e12df6234fd47a0f18a791b2c97ea"
+    },
+    {
+      "carrier": "LIBRARY",
+      "roles": [
+        "durable_reentry",
+        "artifact_persistence",
+        "resolver_pointer"
+      ],
+      "stable_object": "libfile_035693b088488191bef4e17b035dba15",
+      "path": "/XuanLing/NFN_CURRENT_REENTRY_R2_20260926.md",
+      "authority_claim": false,
+      "observed_version_at_field_creation": 4,
+      "version_rule": "Resolve current visible version from stable_object/path at Need time; manifest does not chase mutable Library version."
+    }
+  ],
+  "field_invariants": [
+    "Identity != Carrier",
+    "Readable != Current",
+    "Capability != Authority",
+    "Persistence != Delivery",
+    "Native completion != caller Return",
+    "Retrieval order/newest timestamp cannot promote Current",
+    "Carrier loss or replacement must not silently replace stable Need/Identity"
+  ],
+  "currently_proven": [
+    "Drive thin Current points to the same World continuity and PR391 executable head basis",
+    "GitHub stores versioned executable candidate/test definitions for the same bounded Need",
+    "Library stable re-entry points to the same current head and named durable sources",
+    "Cross-carrier Current resolver and caller-return guard exist as bounded executable candidates",
+    "Current Library normal path exposes one canonical stable object for this re-entry"
+  ],
+  "not_proven": [
+    "provider CI PASS",
+    "global Runtime",
+    "automatic cross-carrier synchronization",
+    "carrier failover without human/model re-resolution",
+    "measured recovery time or reliability improvement",
+    "Drive/GitHub/Library as mandatory permanent topology"
+  ],
+  "metabolism": [
+    "Keep one normal re-entry pointer per purpose; stale indexed duplicates do not outrank the visible canonical Library path.",
+    "PRs are capability/evidence carriers and must later be classified KEEP/ABSORB/SUPERSEDED_FOR_PURPOSE/HISTORICAL_EVIDENCE/HOLD/MERGE_CANDIDATE/CLOSE_CANDIDATE.",
+    "Historical Drive sections remain lineage; CURRENT OVERRIDE must point to fresh head/evidence.",
+    "Do not delete or close evidence-bearing carriers merely because a successor exists."
+  ],
+  "next_verifiable_output": "Exercise a natural Need across at least two carrier boundaries and prove re-entry/recovery plus exact caller Return without manufacturing a global workflow.",
+  "claim_ceiling": [
+    "CANDIDATE",
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NO_GLOBAL_TOPOLOGY",
+    "NO_PROVIDER_PASS"
+  ],
+  "repository_metabolism_observation": {
+    "observed_at": "2026-09-26T23:55+08:00",
+    "scope": "bounded known DCP lineage only; not all repository PRs",
+    "pull_requests": [
+      {
+        "pr": 324,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "KEEP_CAPABILITY_LINEAGE_HOLD_INTEGRATION",
+        "reason": "still referenced by Architecture as executable/kernel lineage; successor reuse does not prove full absorption"
+      },
+      {
+        "pr": 391,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "ACTIVE_EXECUTABLE_CANDIDATE",
+        "reason": "current World NFN substrate construction surface"
+      },
+      {
+        "pr": 392,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "KEEP_REUSE_CANDIDATE",
+        "reason": "capability-based Issue/PR entry template candidate; main adoption not proven"
+      },
+      {
+        "pr": 395,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "KEEP_SEMANTIC_CANDIDATE",
+        "reason": "carrier choice and Return→Need semantics remain evidence/candidate lineage"
+      },
+      {
+        "pr": 396,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "KEEP_REALITY_INTAKE_CANDIDATE",
+        "reason": "bounded Need compilation remains adjacent capability evidence"
+      },
+      {
+        "pr": 397,
+        "state": "OPEN_DRAFT_UNMERGED",
+        "disposition": "HOLD_OVERLAP_REVIEW",
+        "reason": "vision-provider normalization may overlap adjacent observation normalization; compare contracts before permanent seam"
+      },
+      {
+        "pr": 400,
+        "state": "MERGED",
+        "disposition": "ABSORBED_IN_MAIN_RETAIN_EVIDENCE",
+        "reason": "authority/evidence scope qualification merged; PR remains historical evidence, not active construction surface"
+      }
+    ],
+    "no_close_delete_merge_authority_inferred": true,
+    "next_rule": "Before opening a new adjacent PR, first check whether the capability belongs in an existing active candidate or whether an older PR is superseded-for-purpose."
+  },
+  "natural_field_observation": {
+    "observed_at": "2026-09-27T00:34+08:00",
+    "carrier": "LIBRARY",
+    "event": "re-entry update after environment-field executable qualification",
+    "write_receipt": "SUCCEEDED",
+    "immediate_list_readback": "STALE_V7_VISIBLE",
+    "immediate_search_readback": "NEW_HEAD_NOT_VISIBLE",
+    "disposition": "HOLD_LIBRARY_READBACK_EDGE_ONLY",
+    "interpretation": [
+      "write receipt does not equal discoverability/readback",
+      "Library lag does not invalidate GitHub head or Drive Thin Current",
+      "do not retry blindly while the same persistence edge may be converging",
+      "do not promote the intended Library content to Current evidence until readback observes it"
+    ],
+    "later_readback": {
+      "observed_at": "2026-09-27T05:36+08:00",
+      "canonical_stable_object": "libfile_035693b088488191bef4e17b035dba15",
+      "visible_version": 9,
+      "intended_head_observed": "a10cea837231c0f1476deab5340006cbe9e2cd25",
+      "definitions_observed": 94,
+      "disposition": "READBACK_CONVERGED"
+    },
+    "current_disposition": "CLOSED_FOR_THIS_PERSISTENCE_EDGE_AFTER_DELAYED_READBACK"
+  },
+  "integration_drift_observation": {
+    "observed_at": "2026-09-27T05:54+08:00",
+    "pr": 391,
+    "base": "main",
+    "compare_status": "diverged",
+    "ahead_by": 69,
+    "behind_by": 9,
+    "mergeable": true,
+    "rebaseable": true,
+    "mergeable_state": "clean",
+    "merge_base": "fa55045eae1f01d8f6cf450dd71901612d1a6f64",
+    "current_main": "5275834daf1c05cd8f862f1ef2ed02d1e4633a70",
+    "base_delta_paths": [
+      ".github/copilot-instructions.md",
+      "AGENTS.md",
+      "README.md",
+      "CURRENT-SURFACE-MANIFEST.json"
+    ],
+    "candidate_changed_path_overlap": false,
+    "instruction_requalified": true,
+    "instruction_compatibility": "COMPATIBLE_WITH_CURRENT_BOUNDED_USER_AUTHORITY",
+    "exact_head_regression_observed": false,
+    "disposition": "HOLD_INTEGRATION_REGRESSION_ONLY",
+    "no_rebase_merge_close_inferred": true,
+    "interpretation": [
+      "diverged does not mean merge conflict",
+      "clean path mergeability does not prove semantic integration currency",
+      "current repository instructions were freshly read and are compatible with this bounded continuation",
+      "exact-head regression remains missing, so integration acceptance is not promoted"
+    ]
+  },
+  "public_entry_alignment_candidates": {
+    "observed_at": "2026-09-27T05:54+08:00",
+    "shared_semantics": "replaceable carriers + requalified continuity + affected-edge HOLD + recoverable optionality",
+    "candidates": [
+      {
+        "repo": "DCP-Pole-Projection",
+        "pr": 401,
+        "state": "MERGED_MAIN",
+        "merge_sha": "5275834daf1c05cd8f862f1ef2ed02d1e4633a70",
+        "scope": [
+          "README.md",
+          "CURRENT-SURFACE-MANIFEST.json"
+        ]
+      },
+      {
+        "repo": "GLModel-Pole-Projection",
+        "pr": 19,
+        "state": "MERGED_MAIN",
+        "merge_sha": "e8dac59b78b6cea25a82127a60ffb30d5421c5cb",
+        "scope": [
+          "README.md",
+          "CURRENT-SURFACE-MANIFEST.json"
+        ]
+      },
+      {
+        "repo": "Ideas-Pole-Projection",
+        "pr": 14,
+        "state": "MERGED_MAIN",
+        "merge_sha": "29e0186d16593bd0b0282c038b53ccc06a0d8565",
+        "scope": [
+          "README.md",
+          "CURRENT-SURFACE-MANIFEST.json"
+        ]
+      }
+    ],
+    "r2_or_pr391_promoted_to_common_doctrine": false,
+    "automatic_cross_repo_sync_claim": false
+  }
+}

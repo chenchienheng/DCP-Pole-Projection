@@ -1,0 +1,56 @@
+{
+  "manifest_id": "NFN_R2_BOUNDED_EXECUTION_MANIFEST_R01",
+  "claim_ceiling": "BOUNDED_EXECUTABLE_CANDIDATE_NOT_RUNTIME",
+  "test_modules": [
+    {
+      "module": "test_nfn_resolver_r01",
+      "definition_count": 36
+    },
+    {
+      "module": "test_field_feedback_r01",
+      "definition_count": 6
+    },
+    {
+      "module": "test_qualification_budget_r01",
+      "definition_count": 7
+    },
+    {
+      "module": "test_resource_effect_accounting_r01",
+      "definition_count": 9
+    },
+    {
+      "module": "test_r2_operational_spine_r01",
+      "definition_count": 13
+    },
+    {
+      "module": "test_carrier_current_resolver_r01",
+      "definition_count": 10
+    },
+    {
+      "module": "test_environment_field_r01",
+      "definition_count": 8
+    },
+    {
+      "module": "test_integration_drift_r01",
+      "definition_count": 5
+    }
+  ],
+  "expected_definition_total": 94,
+  "execution_evidence_required": [
+    "head_sha",
+    "runner_exit_code",
+    "tests_run",
+    "failures",
+    "errors",
+    "execution_environment"
+  ],
+  "must_not_infer": [
+    "Runtime",
+    "Canon",
+    "safety guarantee",
+    "resource-saving benchmark",
+    "privacy guarantee",
+    "global interoperability",
+    "provider CI when execution is local"
+  ]
+}
