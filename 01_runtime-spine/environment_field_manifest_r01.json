@@ -1,0 +1,82 @@
+{
+  "field_id": "XUANLING_ENVIRONMENT_FIELD_R01_DRIVE_GITHUB_LIBRARY",
+  "status": "BOUNDED_ENVIRONMENT_FIELD_CANDIDATE",
+  "purpose": "Prove that one Need can preserve Current, executable candidate, durable re-entry, evidence and recovery across replaceable carriers without promoting any carrier to Native Identity or Authority.",
+  "stable_need": "QINYI_WORLD_MODELING_CONTINUITY / NFN_R2_REENTRY_INTEGRATED_SPINE_R01",
+  "carriers": [
+    {
+      "carrier": "DRIVE",
+      "roles": [
+        "human_navigation",
+        "thin_current",
+        "shared_return"
+      ],
+      "current_pointer": "1dTEh6eneFGWLGUXN0q6GWeNjGbC-sSahZufyPgolFX8",
+      "navigation_pointer": "1EMsyGifojdKddHBgh7lnoZgRQj-eGJrF-IjmgMMZGko",
+      "authority_claim": false
+    },
+    {
+      "carrier": "GITHUB",
+      "roles": [
+        "versioned_code",
+        "tests",
+        "diff",
+        "review_candidate"
+      ],
+      "repository": "chenchienheng/DCP-Pole-Projection",
+      "pull_request": 391,
+      "head": "df2dea6ed91e12df6234fd47a0f18a791b2c97ea",
+      "authority_claim": false
+    },
+    {
+      "carrier": "LIBRARY",
+      "roles": [
+        "durable_reentry",
+        "artifact_persistence",
+        "resolver_pointer"
+      ],
+      "stable_object": "libfile_035693b088488191bef4e17b035dba15",
+      "observed_version": 4,
+      "path": "/XuanLing/NFN_CURRENT_REENTRY_R2_20260926.md",
+      "authority_claim": false
+    }
+  ],
+  "field_invariants": [
+    "Identity != Carrier",
+    "Readable != Current",
+    "Capability != Authority",
+    "Persistence != Delivery",
+    "Native completion != caller Return",
+    "Retrieval order/newest timestamp cannot promote Current",
+    "Carrier loss or replacement must not silently replace stable Need/Identity"
+  ],
+  "currently_proven": [
+    "Drive thin Current points to the same World continuity and current PR391 head",
+    "GitHub stores versioned executable candidate/test definitions for the same bounded Need",
+    "Library stable re-entry points to the same current head and named durable sources",
+    "Cross-carrier Current resolver and caller-return guard exist as bounded executable candidates",
+    "Current Library normal path exposes one canonical stable object for this re-entry"
+  ],
+  "not_proven": [
+    "provider CI PASS",
+    "global Runtime",
+    "automatic cross-carrier synchronization",
+    "carrier failover without human/model re-resolution",
+    "measured recovery time or reliability improvement",
+    "Drive/GitHub/Library as mandatory permanent topology"
+  ],
+  "metabolism": [
+    "Keep one normal re-entry pointer per purpose; stale indexed duplicates do not outrank the visible canonical Library path.",
+    "PRs are capability/evidence carriers and must later be classified KEEP/ABSORB/SUPERSEDED_FOR_PURPOSE/HISTORICAL_EVIDENCE/HOLD/MERGE_CANDIDATE/CLOSE_CANDIDATE.",
+    "Historical Drive sections remain lineage; CURRENT OVERRIDE must point to fresh head/evidence.",
+    "Do not delete or close evidence-bearing carriers merely because a successor exists."
+  ],
+  "next_verifiable_output": "Exercise a natural Need across at least two carrier boundaries and prove re-entry/recovery plus exact caller Return without manufacturing a global workflow.",
+  "claim_ceiling": [
+    "CANDIDATE",
+    "NOT_CANON",
+    "NOT_RUNTIME",
+    "NO_GLOBAL_TOPOLOGY",
+    "NO_PROVIDER_PASS"
+  ]
+}
