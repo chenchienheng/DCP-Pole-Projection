@@ -1,5 +1,6 @@
 import unittest
 
+from carrier_current_resolver_r01 import CarrierCurrentCandidate, CarrierKind, CurrentResolutionDisposition
 from field_feedback_r01 import FeedbackDisposition, LocalFieldObservation
 from qualification_budget_r01 import ActionRiskProfile, QualificationDepth, QualificationExecution
 from resource_effect_accounting_r01 import ResourceEffectDisposition, ResourceEffectObservation
@@ -13,6 +14,7 @@ from r2_operational_spine_r01 import (
     post_action_account,
     pre_action_gate,
     qualify_route,
+    resolve_reentry_current,
 )
 
 
@@ -48,6 +50,39 @@ def risk(**kw):
 
 
 class R2OperationalSpineR01Tests(unittest.TestCase):
+    def test_reentry_uses_qualified_drive_current_not_memory_retrieval_order(self):
+        memory = CarrierCurrentCandidate(
+            CarrierKind.MEMORY, "memory-cue", "WORLD", "CONSTRUCTION_CURRENT",
+            True, True, True, False, False, "2026-09-26T15:00:00+08:00"
+        )
+        drive = CarrierCurrentCandidate(
+            CarrierKind.DRIVE, "world-thin", "WORLD", "CONSTRUCTION_CURRENT",
+            True, True, True, True, True, "2026-09-26T14:00:00+08:00"
+        )
+        result = resolve_reentry_current(
+            (memory, drive),
+            stable_referent="WORLD",
+            purpose="CONSTRUCTION_CURRENT",
+        )
+        self.assertEqual(result.disposition, CurrentResolutionDisposition.RESOLVED)
+        self.assertEqual(result.locator, "world-thin")
+
+    def test_reentry_holds_when_two_mutable_current_pointers_compete(self):
+        drive = CarrierCurrentCandidate(
+            CarrierKind.DRIVE, "world-thin", "WORLD", "CONSTRUCTION_CURRENT",
+            True, True, True, True, True
+        )
+        github = CarrierCurrentCandidate(
+            CarrierKind.GITHUB, "pr391", "WORLD", "CONSTRUCTION_CURRENT",
+            True, True, True, True, True
+        )
+        result = resolve_reentry_current(
+            (drive, github),
+            stable_referent="WORLD",
+            purpose="CONSTRUCTION_CURRENT",
+        )
+        self.assertEqual(result.disposition, CurrentResolutionDisposition.HOLD)
+
     def test_ui_work_label_does_not_replace_stable_native_identity(self):
         result = assess_carrier_continuity(
             CarrierObservation(
