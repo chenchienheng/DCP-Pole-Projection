@@ -1,6 +1,6 @@
 {
   "id": "CAPABILITY_ABSORPTION_GRAPH_R01_20260927",
-  "observed_at": "2026-09-27T07:58+08:00",
+  "observed_at": "2026-09-27T08:08+08:00",
   "main_effects": [
     {
       "source_pr": 392,
@@ -31,12 +31,12 @@
     }
   ],
   "integration_candidate": {
-    "pr": 409,
-    "state": "DRAFT_OPEN",
+    "pr": 406,
+    "state": "DRAFT_OPEN_CANONICAL_SUCCESSOR",
     "composition": {
       "base": {
         "pr": 324,
-        "role": "coherent kernel/contracts/tests/fixtures base"
+        "role": "coherent executable substrate"
       },
       "overlays": [
         {
@@ -65,8 +65,8 @@
         }
       ]
     },
-    "changed_files": 136,
-    "exact_head": "3f29645e6d52bc6827c12c915f5e564fd3cb936a",
+    "changed_files": 138,
+    "exact_head": "2a38f87449583d93fff6c498408a1cafc580261a",
     "git_mergeability": "CLEAN_OBSERVED",
     "provider_ci_entry": "AVAILABLE_ON_MAIN_VIA_PR410",
     "provider_ci_effect": "UNPROVEN_NO_RUN_OBSERVED",
@@ -95,5 +95,16 @@
     "NOT_RUNTIME",
     "NOT_CANON",
     "NO_PROVIDER_PASS"
+  ],
+  "superseded_successors": [
+    {
+      "pr": 408,
+      "state": "CLOSED_UNMERGED_DUPLICATE"
+    },
+    {
+      "pr": 409,
+      "state": "CLOSED_UNMERGED_DUPLICATE_INFERIOR",
+      "reason": "canonical PR406 pre-existed; PR410 carries CI entry on main"
+    }
   ]
 }
