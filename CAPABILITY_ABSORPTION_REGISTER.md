@@ -17,7 +17,7 @@ Authority: bounded repository metabolism under current user authorization
 
 PR #406 — `qinyi/kernel-integration-successor-20260927`
 
-Current head at this register update: `eed476e1a1d59b43e341c3e98fd9584c1518656e`.
+Current head at this register update: `9c0ffcec5e4bb9db6ebe2b0107a003191649a2c8`.
 
 Composition:
 - foundation: executable-only substrate from PR #324 (`dcp_kernel/`, `contracts/`, `fixtures/`, `tests/`, `tools/`, `pyproject.toml`);
@@ -117,3 +117,19 @@ Do not blind-retry the same local clone condition. #406 remains:
 `STATIC_STRUCTURE_QUALIFIED / HOLD_EXACT_HEAD_PYTHON_EXECUTION / NOT_PASS / NOT_RUNTIME`.
 
 Provider workflow remains a separate evidence edge; workflow file presence and matched paths do not equal a run.
+
+
+## Selected-source blob coverage readback — 2026-09-27 09:27 +08
+
+Canonical successor #406 now has independent blob-level coverage evidence:
+- #324 selected executable source = 127 blobs; 122 non-overlay blobs are 122/122 exact in #406, with 0 missing / 0 differing. Five foundation paths are intentionally replaced by later leaf deltas.
+- #384 = 4/4 exact leaf blobs.
+- #387 = 1/1 exact leaf blob.
+- #393 = 2/2 exact leaf blobs.
+- #395 = 4/4 exact leaf blobs.
+- #396 = 2/2 exact leaf blobs; whole-file `dcp_kernel/__init__.py` override remains intentionally excluded.
+- #397 = 2/2 unique vision-provider blobs; duplicate reality_intake remains owned by #396.
+
+Disposition: `SELECTED_SOURCE_BLOB_COVERAGE_PROVEN / HOLD_EXACT_HEAD_PYTHON_EXECUTION / NOT_PASS / NOT_RUNTIME`.
+
+Successor coverage is no longer the reason the seven source PRs remain open. Their remaining shared blocker is exact-head #406 Python execution plus failure reconciliation if any and explicit integration acceptance. Source evidence remains readable; no source PR is retired before that gate.
