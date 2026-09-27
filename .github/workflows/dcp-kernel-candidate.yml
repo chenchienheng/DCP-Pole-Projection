@@ -124,6 +124,19 @@ jobs:
         with:
           name: dcp-reference-census-${{ matrix.checkout_scope }}
           path: artifacts/reference-census.json
+      - name: Snapshot all public PRs against pinned common baselines
+        id: baseline
+        if: matrix.checkout_scope == 'candidate-head' && github.event.pull_request.number == 406
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -m tools.snapshot_pr_baseline --output artifacts/pr-common-baseline
+      - name: Preserve common-baseline inventory or acquisition failure
+        if: always() && matrix.checkout_scope == 'candidate-head' && github.event.pull_request.number == 406
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-common-baseline
+          path: artifacts/pr-common-baseline
+          if-no-files-found: error
 
 # Passing this workflow proves only the declared bounded checks.
 # It does not establish Native absorption, Platform Runtime, Promotion,
