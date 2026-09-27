@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import argparse
 import json
-import hashlib
 from collections import Counter
 from pathlib import Path
 
-from dcp_kernel.metabolism import assess_paths, _reader_path_set
+from dcp_kernel.metabolism import assess_paths
+from tools.check_current_surfaces import read_manifest_basis
 
 
 def repository_paths(root: Path) -> list[str]:
@@ -20,44 +20,9 @@ def repository_paths(root: Path) -> list[str]:
 
 
 def load_reader_basis(root: Path, manifest: Path) -> tuple[frozenset[str], dict]:
-    """Read an explicit local manifest; absent/invalid/unresolved inputs fail closed.
-
-    This qualifies only a local structural reader set. Its bytes and declaration
-    are evidence inputs, not proof of external authority or Native admission.
-    """
-    root = root.resolve()
-    requested = manifest if manifest.is_absolute() else root / manifest
-    metadata = {"status": "UNRESOLVED", "manifest": None, "sha256": None}
-    try:
-        resolved = requested.resolve()
-        metadata["manifest"] = resolved.relative_to(root).as_posix()
-        raw = resolved.read_bytes()
-        metadata["sha256"] = hashlib.sha256(raw).hexdigest()
-        def unique_keys(pairs):
-            result = {}
-            for key, value in pairs:
-                if key in result:
-                    raise ValueError("duplicate manifest key")
-                result[key] = value
-            return result
-        data = json.loads(raw, object_pairs_hook=unique_keys)
-        declared = data.get("reader_priority") if isinstance(data, dict) else None
-        if not isinstance(declared, list) or not declared:
-            raise ValueError("reader_priority must be a nonempty list")
-        paths = _reader_path_set(declared)
-        if len(paths) != len(declared):
-            raise ValueError("duplicate reader path")
-        for name in paths:
-            target = (root / name).resolve()
-            target.relative_to(root)
-            if not target.is_file():
-                raise ValueError("declared reader target is absent or not a file")
-        metadata["status"] = "LOCAL_DECLARATION_VALID_NOT_NATIVE_ADMISSION"
-        return paths, metadata
-    except (OSError, ValueError, TypeError) as exc:
-        metadata["status"] = "UNRESOLVED_NO_READER_ELIGIBILITY"
-        metadata["error"] = type(exc).__name__ + ": " + str(exc)
-        return frozenset(), metadata
+    """Compatibility entry using the same structural reader parser as CI."""
+    _data, paths, metadata = read_manifest_basis(root, manifest)
+    return paths, metadata
 
 
 def main() -> None:
