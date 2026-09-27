@@ -36,9 +36,9 @@ structural delta. This means:
 
 ## 4. Shared Coordinate Rule
 
-Nodes must utilize common structural maps (e.g., UNIFIED_ARTIFACT_REGISTER.md)
-to understand the terrain. Nodes must avoid generating distinct contextual
-orientations and instead read from these shared coordinates to instantly align
+Nodes must use `CURRENT-SURFACE-MANIFEST.json` for repository-local routing
+and open only the explicitly re-admitted affected surface. Nodes must avoid
+generating parallel reader orders or treating historical registers as shared coordinates
 their operational framework.
 
 ## 5. Single Review Surface Rule
@@ -78,6 +78,6 @@ halt and direct the failure exactly via:
 
 ## 10. next_single_recommended_action
 
-Append this specification to `UNIFIED_ARTIFACT_REGISTER.md` and
-`REPOSITORY_CORPUS_INDEX.md` to ensure nodes integrate it into their core
-coordinate maps.
+Do not append this specification to a historical register or corpus index.
+If materially affected, route through `CURRENT-SURFACE-MANIFEST.json` and the
+explicitly re-admitted affected surface.

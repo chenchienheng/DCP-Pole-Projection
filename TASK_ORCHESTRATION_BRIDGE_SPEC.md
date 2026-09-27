@@ -61,5 +61,6 @@ Potential execution drift if the Jules node operates without first confirming
 the expected task constraints with the ChatGPT review node.
 
 ## 9. next_single_recommended_action
-Append this definition to `REPOSITORY_CORPUS_INDEX.md` and
-`UNIFIED_ARTIFACT_REGISTER.md` for consistent mapping.
+Do not append this definition to historical indexes or registers. If the
+material is affected, route through `CURRENT-SURFACE-MANIFEST.json` and the
+explicitly re-admitted affected surface.

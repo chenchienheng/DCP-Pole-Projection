@@ -32,7 +32,7 @@ rather than sovereign centers.
 - review hook: Review Chain Master Layer (AXIS-05).
 - return path: Writeback packets or schema adapters.
 - failure route: return_failed -> AXIS-05
-- register surface: UNIFIED_ARTIFACT_REGISTER.md
+- reader/routing surface: `CURRENT-SURFACE-MANIFEST.json` → explicitly re-admitted affected surface
 
 ## 4. Status
 
@@ -48,4 +48,4 @@ rather than sovereign centers.
 - review hook: Required before structural integration.
 - return path: Must return via predefined schema adapters.
 - failure route: return_failed -> AXIS-05
-- register surface: UNIFIED_ARTIFACT_REGISTER.md
+- reader/routing surface: `CURRENT-SURFACE-MANIFEST.json` → explicitly re-admitted affected surface
