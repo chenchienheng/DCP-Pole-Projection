@@ -868,5 +868,38 @@
       "runner/manifest coherence and fixture JSON validity reduce structural uncertainty but do not execute Python",
       "control-plane metadata commits after executable content head do not create a new executable revision"
     ]
+  },
+  "kernel_successor_coverage": {
+    "observed_at": "2026-09-27T09:28+08:00",
+    "canonical_successor_pr": 406,
+    "successor_head": "9c0ffcec5e4bb9db6ebe2b0107a003191649a2c8",
+    "source_prs": [
+      324,
+      384,
+      387,
+      393,
+      395,
+      396,
+      397
+    ],
+    "selected_blob_coverage": "PROVEN",
+    "foundation_non_overlay": "122/122 exact",
+    "leaf_exact": {
+      "384": "4/4",
+      "387": "1/1",
+      "393": "2/2",
+      "395": "4/4",
+      "396": "2/2",
+      "397": "2/2 unique"
+    },
+    "main_register_pr": 418,
+    "main_register_merge": "f61bf2f2383f0520a8dc5f2f015cd0f9e98aa9ac",
+    "remaining_hold": [
+      "exact-head Python execution",
+      "failure reconciliation if any",
+      "explicit integration acceptance"
+    ],
+    "source_retirement": false,
+    "claim_ceiling": "COVERAGE_PROVEN_NOT_PASS_NOT_RUNTIME"
   }
 }
