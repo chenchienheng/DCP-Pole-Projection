@@ -11,5 +11,3 @@ dependencies = []
 
 [tool.setuptools.packages.find]
 include = ["dcp_kernel*"]
-
-# execution-probe: requalify current-main pull_request workflow on exact successor head
