@@ -20,6 +20,7 @@ from urllib.parse import quote, urlparse
 from urllib.request import Request, urlopen
 
 REPOS = ("chenchienheng/DCP-Pole-Projection", "chenchienheng/GLModel-Pole-Projection", "chenchienheng/Ideas-Pole-Projection")
+REPO_IDS = ("1125976757", "1288966886", "1288973859")
 POLICIES = ("README.md", "AGENTS.md", "CURRENT-SURFACE-MANIFEST.json", "SEMANTIC-CONTROL-PLANE.json", "FAILURE-EVOLUTION-POLICY.md", "PUBLIC-SURFACE-POLICY.md", "STATUS.md")
 
 
@@ -51,7 +52,7 @@ class Reader:
     def get(self, path: str):
         url = path if path.startswith("https://") else "https://api.github.com" + path
         parsed = urlparse(url)
-        if parsed.scheme != "https" or parsed.netloc != "api.github.com" or not any(parsed.path.startswith("/repos/" + repo + "/") for repo in REPOS):
+        if parsed.scheme != "https" or parsed.netloc != "api.github.com" or not any(parsed.path.startswith(prefix) for prefix in tuple("/repos/" + repo + "/" for repo in REPOS) + tuple("/repositories/" + rid + "/" for rid in REPO_IDS)):
             raise ValueError("OUTSIDE_PUBLIC_REPOSITORY_ALLOWLIST")
         if len(self.calls) >= 110 or time.monotonic() - self.started > 210:
             raise RuntimeError("BOUNDED_ACQUISITION_BUDGET_EXCEEDED")
