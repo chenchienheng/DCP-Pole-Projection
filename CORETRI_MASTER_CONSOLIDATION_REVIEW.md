@@ -1,5 +1,10 @@
 # CoreTri Master Consolidation Review
 
+> Lifecycle: `HISTORICAL_REFERENCE`
+> Current authority: `false`
+> Runtime: `false`
+> Reader path: `REMOVED`
+
 ## Purpose
 
 Consolidate Issues #1–#39 into a single master-stage review to establish
@@ -73,7 +78,7 @@ of repository files:
   - `SPACE_CHAIN_MASTER_LAYER.md`
   - `REVIEW_CHAIN_MASTER_LAYER.md`
   - `WORLD_CHAIN_MASTER_AXIS.md`
-  - `GITHUB_CHAIN_MASTER_MAP.md`
+  - historical GitHub chain-map lineage (retired from main; see `archive/reentry-node-generation/README.md`)
   - `WINDOW_12_MASTER_TABLE.md`
   - `AXIS_TO_EXTERNAL_ABSORPTION_HANDOFF.md`
   - `EXTERNAL_ECOSYSTEM_ABSORPTION_SCHEMA.md`

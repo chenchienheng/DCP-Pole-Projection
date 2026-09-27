@@ -59,8 +59,9 @@ The relay flow follows a strict 4-stage sequence:
    `Signal`, or `Pending`.
 3. **Semantic Translation (Jules):** Conversion of classified data into
    durable markdown artifacts, ensuring no forbidden semantic promotions.
-4. **Registry Submission (Codex):** Final writeback to `main` and update of
-   `REPOSITORY_CORPUS_INDEX.md` and `UNIFIED_ARTIFACT_REGISTER.md`.
+4. **Affected-surface return:** No automatic main writeback or historical-register
+   update. Route material change through `CURRENT-SURFACE-MANIFEST.json` to an
+   explicitly re-admitted affected surface under the applicable gate.
 
 ---
 

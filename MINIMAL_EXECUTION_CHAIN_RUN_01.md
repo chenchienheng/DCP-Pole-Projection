@@ -61,8 +61,9 @@ routing without modifying any other files.
 
 ## 6. Return-to-Register Check
 
-- **Pending:** Upon merge, this file should be mapped to the tracking
-  registers (`REPOSITORY_CORPUS_INDEX.md`).
+- **Historical note:** No merge or register-update action is active. Any future
+  affected read must route through `CURRENT-SURFACE-MANIFEST.json` and an
+  explicitly re-admitted affected surface.
 
 ---
 
@@ -89,5 +90,6 @@ boundaries without expanding runtime or creating new axes.
 
 ## 10. next_single_recommended_action
 
-Review and merge this minimal execution chain report, then append it to
-`REPOSITORY_CORPUS_INDEX.md` and `UNIFIED_ARTIFACT_REGISTER.md`.
+This historical run carries no active merge or append instruction. If it
+becomes materially affected, route through `CURRENT-SURFACE-MANIFEST.json` and
+the explicitly re-admitted affected surface.

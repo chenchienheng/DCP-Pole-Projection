@@ -181,6 +181,6 @@
   may cause `CLEANUP_QUEUE_REGISTER.md` to bottleneck.
 
 ### 2.3 next_single_recommended_action
-- Review and approve this proposal, then bind the newly established nodes into
-  the active `UNIFIED_ARTIFACT_REGISTER.md` and formalize the missing
-  `AXIS_TO_EXTERNAL_ABSORPTION_HANDOFF.md`.
+- This proposal carries no approval or active-register binding. If materially
+  affected, route through `CURRENT-SURFACE-MANIFEST.json` to an explicitly
+  re-admitted affected surface; any separate handoff remains independently gated.
