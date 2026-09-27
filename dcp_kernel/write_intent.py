@@ -42,6 +42,35 @@ class WriteIntentAssessment:
     reasons: tuple[str, ...]
 
 
+def _input_shape_errors(item: WriteIntentInput) -> tuple[str, ...]:
+    """Reject malformed caller data; annotations alone do not validate inputs.
+
+    Keep the existing write-intent schema's types and enum. Valid JSON action
+    strings remain compatible with MutationKind; never coerce truthy values
+    into authority or silently choose a mutation kind.
+    """
+    errors: list[str] = []
+    for name in ("intent_id", "stable_life_id", "source_identity", "target_carrier_id"):
+        value = getattr(item, name)
+        if not isinstance(value, str) or not value:
+            errors.append(f"{name.upper()}_INVALID")
+    for name in (
+        "authority_valid", "rights_valid", "purpose_valid", "affected_scope_resolved",
+        "fidelity_check_present", "evidence_plan_present", "rollback_or_recovery_present",
+    ):
+        if type(getattr(item, name)) is not bool:
+            errors.append(f"{name.upper()}_INVALID_TYPE")
+    for name in ("expected_revision", "responsibility_owner", "return_target"):
+        value = getattr(item, name)
+        if value is not None and not isinstance(value, str):
+            errors.append(f"{name.upper()}_INVALID_TYPE")
+    if item.target_exists is not None and type(item.target_exists) is not bool:
+        errors.append("TARGET_EXISTS_INVALID_TYPE")
+    if not isinstance(item.mutation_kind, str) or item.mutation_kind not in tuple(MutationKind):
+        errors.append("MUTATION_KIND_INVALID")
+    return tuple(errors)
+
+
 def assess_write_intent(item: WriteIntentInput) -> WriteIntentAssessment:
     """Assess a carrier-neutral mutation intent without granting execution authority.
 
@@ -49,6 +78,15 @@ def assess_write_intent(item: WriteIntentInput) -> WriteIntentAssessment:
     A PASS means only that a bounded mutation candidate may proceed to the legal
     execution surface; it does not prove execution, absorption, Current or release.
     """
+
+    shape_errors = _input_shape_errors(item)
+    if shape_errors:
+        return WriteIntentAssessment(
+            decision=Decision.HOLD,
+            intent_id=item.intent_id if isinstance(item.intent_id, str) else "",
+            mutation_allowed_as_candidate=False,
+            reasons=shape_errors,
+        )
 
     reasons: list[str] = []
 
