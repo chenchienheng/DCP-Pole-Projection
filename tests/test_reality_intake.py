@@ -11,6 +11,20 @@ from dcp_kernel.reality_intake import (
 
 
 class RealityIntakeTests(unittest.TestCase):
+    def test_package_root_preserves_reality_intake_exports(self) -> None:
+        # PR396's public imports must survive composition with the newer substrate.
+        import dcp_kernel
+        from dcp_kernel import reality_intake
+
+        exports = (
+            "IntakeNeed", "ObservationState", "RealityIntakeAssessment",
+            "RealityObservation", "assess_reality_intake",
+        )
+        for name in exports:
+            with self.subTest(export=name):
+                self.assertIn(name, dcp_kernel.__all__)
+                self.assertIs(getattr(dcp_kernel, name), getattr(reality_intake, name))
+
     def test_mixed_chat_images_compile_without_inventing_withdrawn_body(self) -> None:
         result = assess_reality_intake(
             need_id="DOOR-WINDOW-CHECK",
