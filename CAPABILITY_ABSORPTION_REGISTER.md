@@ -1,135 +1,80 @@
-# Capability Absorption Register — 2026-09-27
+# Capability Absorption Register — common comparison basis
 
-State: CURRENT_WORKING_REGISTER
+Recorded: 2026-09-27 (Asia/Taipei)
+State: CURRENT_WORKING_REGISTER_CANDIDATE
 Runtime: false
 Canon: false
-Authority: bounded repository metabolism under current user authorization
+Authority: user-requested bounded PR/context reconciliation; not merge or deletion approval
 
-## Completed carrier absorption / retirement
+## What this register now covers
 
-- PR #392 — exact capability task / legacy compatibility pointer / PR evidence-gate artifacts are on main; source PR CLOSED_UNMERGED_LINEAGE.
-- PR #386 — exact CoreTri R2 falsification experiment is on main; source PR CLOSED_UNMERGED_LINEAGE; experiment remains Runtime=false / Canon=false / Promotion=false.
-- PR #383 — reader purposes superseded; remaining semantic-routing deltas selectively absorbed via PR #411; source PR CLOSED_UNMERGED_LINEAGE.
-- GLModel PR #8 — useful non-removal deltas preserved by bounded successors #22/#23/#24; broad historical removal proposal not promoted; source PR CLOSED_UNMERGED_LINEAGE.
-- Ideas PR #7 — useful non-removal deltas preserved by bounded successors #17/#18; broad historical removal proposal not promoted; source PR CLOSED_UNMERGED_LINEAGE.
+The previous register's blanket zero-execution queue was stale. This revision binds every open PR to the same observation window and its repository's pinned main, while retaining historical source bases, different purposes, derived changes, and unresolved non-executable content. It is a review projection, not central truth, Native Current, a permanent topology or a universal integration order.
 
-## Preferred kernel successor
+Live GET-only snapshot: 2026-09-27T05:47:46.220571Z–05:48:05.132097Z. Sixty-three requests exhausted all PR pages and all open-PR changed-file pages. Recursive trees were not truncated. Revalidation found unchanged main and open-PR head/base bindings within each repository's acquisition window. This does not establish a globally atomic snapshot.
 
-PR #406 — `qinyi/kernel-integration-successor-20260927`
+| Repository | Pinned main | All PR metadata records | Open PRs |
+|---|---|---:|---:|
+| DCP-Pole-Projection | f61bf2f2383f0520a8dc5f2f015cd0f9e98aa9ac | 204 | 10 |
+| GLModel-Pole-Projection | bc0ea081c16f44ae837e4a216b932c4f44eb9c0d | 23 | 1 |
+| Ideas-Pole-Projection | 1638d4e1545d3e0bc2783cb3fd5298863a164f1b | 17 | 0 |
 
-Current head at this register update: `9c0ffcec5e4bb9db6ebe2b0107a003191649a2c8`.
+Total: 244 PR records; 11 open PRs. Historical titles/bodies/status/ref metadata were acquired; this is NOT a semantic review of every closed historical diff. All changed paths and available patches of the open set were acquired. Matching bytes is not semantic acceptance; missing paths are not proof of lost purpose.
 
-Composition:
-- foundation: executable-only substrate from PR #324 (`dcp_kernel/`, `contracts/`, `fixtures/`, `tests/`, `tools/`, `pyproject.toml`);
-- overlays: #384 capability activation; #387 Current/Affected Cone/Return regression; #393 Return→re-entry schema; #395 carrier/consequence; #396 reality intake; #397 unique vision provider;
-- reality_intake overlap is owned once by #396; #397 contributes unique vision-provider delta;
-- broad #324 docs/topology migration is excluded;
-- whole-file PR396 `dcp_kernel/__init__.py` override is intentionally omitted so later foundation exports are not regressed.
+Evidence: [run36298224235](https://github.com/chenchienheng/DCP-Pole-Projection/actions/runs/36298224235), [artifact10924732409](https://github.com/chenchienheng/DCP-Pole-Projection/actions/runs/36298224235/artifacts/10924732409). ZIP716052bytes, independently verified SHA256 `530ec27e44aac49aaf106f53379ba814a9087471eb9184ef36011ae0f30261b8`. `baseline.json` preserves the complete pre-edit PR bodies, pinned source/main relations, patches, policy contents and request hashes. Artifact retention is finite; retain the exported archive for long-term recovery.
 
-Execution state:
-- current main contains `.github/workflows/dcp-kernel-candidate.yml`;
-- pull_request synchronize was retried on matched paths and still produced 0 observed workflow runs;
-- a candidate-branch push-trigger probe was also attempted by temporarily adding the successor branch to the same read-only workflow; exact-head runs remained 0;
-- the temporary branch-specific trigger and no-op probe marker were then reverted, restoring workflow identity with main and clean mergeability;
-- local isolated execution again could not resolve github.com, so repository bytes were not obtained through that carrier;
-- Remote Desktop Commander currently reports no connected device, so no authorized workstation execution carrier is available from this chat;
-- Git tree readback for exact head is available through the GitHub connector and confirms the bounded executable surface is retrievable, but retrieval is not execution;
-- therefore PR #406 remains DRAFT / HOLD_EXACT_HEAD_EXECUTION / NOT_PASS / NOT_RUNTIME. Provider trigger effect and local execution are both independently unproven.
+## Every open PR, classified by purpose rather than PR number
 
-## Duplicate construction metabolized
+DCP selected comparison candidate: existing #406 at audited head `282bf789f7be55d3f4b8ecaa07895ccb1b33d8fd`. Later register/cleanup revisions must not retroactively alter this snapshot.
 
-PR #413 was independently created later for the same purpose. Blob-level selected-surface comparison found:
-- #406 = 138 selected files;
-- #413 = 137;
-- all selected executable blobs match except #406 also carries the successor manifest and preserves foundation `dcp_kernel/__init__.py`.
+| PR | Purpose/current role | Observed relation to comparison candidate | Remaining work |
+|---|---|---|---|
+| DCP #324 | Broad source with executable and non-executable subsets | 307 paths; executable127 present (118exact/9derived); other180 split below | Non-executable purpose/loss review; kernel integration acceptance; no broad merge |
+| DCP #384 | Capability activation source | 4/4 exact blob+mode | #406 integration acceptance, then source lifecycle decision |
+| DCP #387 | Current/Affected Cone/Return regression source | 1/1 exact | Same existing #406; not another active build |
+| DCP #391 | Independent NFN/World orchestration semantics | 36 paths not in main or #406 | Its own review/acceptance and a real caller interface when required |
+| DCP #393 | Return/re-entry schema repair source | 2/2 exact | Same existing #406; old source failure not a current regression |
+| DCP #395 | Carrier choice / next-condition versus next-Need source | 4/4 exact | Same existing #406; no invented selection policy |
+| DCP #396 | Mixed-reality intake source | 2exact; __init__ intentionally derived | Preserve integrated exports; do not overwrite with older whole file |
+| DCP #397 | Replaceable vision-provider bridge source | 3exact, including1 shared reality-intake file | Two unique files plus shared provenance; do not duplicate the shared implementation |
+| DCP #406 | Existing kernel integration candidate | 141 changed paths in snapshot; self-comparison exact | Review/explicit acceptance; real caller/receiver effects, not another execution-discovery cycle |
+| DCP #419 | Current-surface and kernel-present/absent qualification source | 2exact; workflow differs only after the temporary inventory extension | Preserve both routing cases; cleanup restores source workflow; acceptance/lifecycle separate |
+| GLModel #25 | Viewer claim/load-error repair candidate | Own main:2different+1new | Its own acceptance/browser/use scope; never substitute DCP tests |
 
-PR #413 is CLOSED_UNMERGED_DUPLICATE. No unique selected executable capability was discarded.
+## #324: the missing scope split
 
-## Source lineage still open pending #406 execution
+Source #324 head: `00999341ff600a65ab3de641e4ce5615d6e9690d`. Historical base `ba744cb3c385782ee4873f1764850f27d19f3f8d` is not present main.
 
-- #324 — foundation lineage; do not merge broad branch as topology migration.
-- #384 — capability activation source.
-- #387 — regression source.
-- #393 — Return→re-entry schema source.
-- #395 — carrier/consequence source.
-- #396 — reality-intake source.
-- #397 — vision-provider source.
+Selected executable subset: all127 paths exist in #406; 118 exact and9 derived. Nine differences: dcp_kernel/__init__.py, carrier_binding.py, consequence.py, fixtures.py, platform.py; tests/test_carrier_binding.py, test_consequence.py, test_current_surface_alignment.py, test_gui_lu_fixture.py. Earlier122/122 non-overlay coverage belonged to an earlier source/target scope; it is not the current whole-source count.
 
-These source PRs are not retired merely because #406 contains their selected blobs. Reassess only after exact-head execution + successor coverage readback.
+Non-executable/broad subset: 180 paths = 3exact +87different +37absent by path +53proposed deletions not applied. The37 include the candidate lifecycle kernel document, legacy-design disposition, and historical primitive/lineage specimens. The53 retained source paths are not authorized for deletion. Different or absent bytes do not establish a material gap until purpose, newer successors, losses and applicability are reviewed.
 
-## Independent World executable line
+Priority within this subset: assess lifecycle/design-disposition content against current-main Need-relative/carrier-neutral boundaries before any import. Historical fixed lifecycle/role/pole/order formulations must not silently become current instructions. Lineage specimens labelled non-current need not all be installed as live documents. Preserve their original proposals and denied/deferred deletion evidence; do not declare the180 absorbed merely because tests pass.
 
-PR #391 remains a separate World/NFN executable candidate. Kernel absorption does not replace its Current/Authority/Return/environment-field work and does not make either line Runtime.
+## Execution evidence, kept separate from acceptance
 
-## Rules
+- #391 head afca39fc9311762ea67d6ab8eefe80a949a5f0d3: push36293354922 and PR36293357302; original121 R2 tests plus17 preserved World cases on exact head and named provider merge candidate. These are138 cases twice, not276 independent definitions.
+- #406 head9a0f7a9f3e487ef9907b32aacd22c804ef72308e: run36296906394;8surface+255kernel tests in exact-head and provider-merge scopes, with compile/JSON/census/artifact evidence. Source blobs and artifact hashes are recorded in comment5852975822.
+- #406 audit head282bf789f7be55d3f4b8ecaa07895ccb1b33d8fd: run36298224235 completed both jobs successfully; full inventory succeeded. This report does not newly attest unread full logs; the provider job/step outcomes and acquired artifact were directly verified.
+- #419 source0a350bf0dab909e63ca8cb002369df0ea1e9c707: run36296718666 explicitly follows CANDIDATE_ABSENT:NOT_APPLICABLE_NOT_PASS on its no-kernel branch. Kernel steps skipped, not kernel PASS. Its source behavior has separately been used in the complete #406 candidate.
+- GLModel #25 head1c87f644e268ea427d597c2d23653cc19406333b: its recorded Semantic Core Verify run36288540979 is independent viewer/semantic CI evidence, not browser/runtime or DCP acceptance.
 
-- exact blob absorption != semantic acceptance;
-- source PR closure != evidence deletion;
-- candidate composition != PASS;
-- PASS != Runtime/Canon/Native adoption;
-- duplicate successors must be reconciled to one preferred continuation;
-- local blocker holds the affected edge only.
+No whole #324 execution, all-repository semantic equivalence, actual main merge, receiver acceptance, Runtime, Canon or destructive-action approval is inferred.
 
+## Already absorbed/closed lineage, not today's task queue
 
-## Exact-tree static qualification — PR #406 @ eed476e1a1d59b43e341c3e98fd9584c1518656e
+- #392 entry templates → #404; #386 falsification evidence → #405. #407 was a zero-change duplicate merge, not new absorption.
+- #383 reader/semantic deltas → #411; source closed-unmerged with historical evidence retained.
+- GLModel #8 non-removal deltas → #22/#23/#24; Ideas #7 non-removal deltas → #17/#18. Broad deletion was not promoted.
+- #408/#409/#413 remain closed duplicate/inferior kernel successors. Do not recreate them because an old description is encountered.
+- Public entry progression #401/#402/#403, GLModel#19/#20/#21, Ideas#14/#15/#16 remains separate from executable adoption.
+- #410 CI entry, #412 register and #415–#418 execution/static/coverage records are time-bound evidence. Their old zero-run or selected-source counts do not override later exact evidence.
 
-This narrows the execution unknown; it does not substitute for Python test execution.
+## Temporary audit cleanup and recovery
 
-- GitHub recursive tree readback: 138 bounded executable files retrievable.
-- JSON parse qualification: 23/23 contract JSON files valid.
-- JSON parse qualification: 25/25 fixture JSON files valid.
-- implementation-manifest references: 29/29 declared kernel modules present; 20/20 declared machine contracts present.
-- package export surface: 29 relative module imports in `dcp_kernel/__init__.py`; 29/29 target modules present.
-- provider workflow run: still unobserved.
-- Python compile/unittest: still unobserved because available local carrier cannot resolve github.com and no Remote Desktop device is connected.
+The added network inventory is not a standing scheduler or a required kernel dependency. This revision restores `.github/workflows/dcp-kernel-candidate.yml` to exact #419 source blob `30d2345eb5470231438faa0ec12000cb86284955`, removing the temporary baseline acquisition/upload steps. The reusable GET-only `tools/snapshot_pr_baseline.py` remains on demand; it is not auto-invoked by the restored workflow. Existing8surface/255kernel verification, matrix, permissions and census remain.
 
-Disposition: `STATIC_STRUCTURE_QUALIFIED / HOLD_PYTHON_EXECUTION / NOT_PASS / NOT_RUNTIME`.
+The failed first audit run36298026708 is preserved: its URL allowlist rejected GitHub's numeric-repository pagination form, while existing kernel steps succeeded. The bounded fix allowed only the three already-verified repository IDs; no credentials, private repositories or write endpoints were added.
 
+Recover the exact previous register from [this fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/282bf789f7be55d3f4b8ecaa07895ccb1b33d8fd/CAPABILITY_ABSORPTION_REGISTER.md), blob `d94c054086f8f186a958ddd8e254ef413433b7cb`. It contains the full previous static/zero-run/coverage history. Do not copy its historical Next back into current work. Recover pre-edit PR bodies from the archived baseline before reconciling any later edits; never blindly overwrite a newer body.
 
-## Executable-line boundary reconciliation — 2026-09-27 09:12 +08
-
-Fresh PR file inventory:
-- PR #391: 36 changed paths; bounded NFN/World surfaces under `01_runtime-spine/**` plus `.github/workflows/nfn-r2-bounded-tests.yml`.
-- PR #406: 139 changed paths; DCP kernel surfaces under `dcp_kernel/**`, `contracts/**`, `fixtures/**`, `tests/**`, `tools/**`, `pyproject.toml`, plus `.github/workflows/dcp-kernel-candidate.yml`.
-- Exact changed-path intersection: **0**.
-
-Disposition:
-- #391 = independent NFN/World orchestration-semantics executable candidate.
-- #406 = canonical DCP kernel capability-substrate integration candidate.
-- Zero path overlap does not prove semantic independence, but it disproves current file-level duplicate construction.
-- Do not merge the two branches merely to reduce PR count. Cross-line integration requires an explicit Need and interface/effect evidence.
-
-### Source execution/evidence status for #406 lineage
-
-- #324: broad foundation lineage; selected executable blobs are in #406; broad topology/docs migration excluded.
-- #384: source PR records focused capability-activation tests and a clean-container unittest pass on its source branch; this is source evidence, **not #406 exact-head PASS**.
-- #387: regression test surface preserved in #406; no separate exact-#406 execution evidence.
-- #393: Return→re-entry schema regression preserved in #406; no exact-#406 execution evidence.
-- #395: carrier/consequence semantics preserved in #406; no exact-#406 execution evidence.
-- #396: reality-intake implementation/test preserved once in #406.
-- #397: unique vision-provider implementation/test preserved; duplicate reality-intake not duplicated.
-
-### Fresh execution-carrier retry
-
-At 2026-09-27 09:09 +08, a new isolated-container clone attempt for the canonical #406 branch again failed before repository bytes with `Could not resolve host: github.com`. This confirms the local execution carrier is still unavailable under the same network condition; it is not a test failure.
-
-Do not blind-retry the same local clone condition. #406 remains:
-`STATIC_STRUCTURE_QUALIFIED / HOLD_EXACT_HEAD_PYTHON_EXECUTION / NOT_PASS / NOT_RUNTIME`.
-
-Provider workflow remains a separate evidence edge; workflow file presence and matched paths do not equal a run.
-
-
-## Selected-source blob coverage readback — 2026-09-27 09:27 +08
-
-Canonical successor #406 now has independent blob-level coverage evidence:
-- #324 selected executable source = 127 blobs; 122 non-overlay blobs are 122/122 exact in #406, with 0 missing / 0 differing. Five foundation paths are intentionally replaced by later leaf deltas.
-- #384 = 4/4 exact leaf blobs.
-- #387 = 1/1 exact leaf blob.
-- #393 = 2/2 exact leaf blobs.
-- #395 = 4/4 exact leaf blobs.
-- #396 = 2/2 exact leaf blobs; whole-file `dcp_kernel/__init__.py` override remains intentionally excluded.
-- #397 = 2/2 unique vision-provider blobs; duplicate reality_intake remains owned by #396.
-
-Disposition: `SELECTED_SOURCE_BLOB_COVERAGE_PROVEN / HOLD_EXACT_HEAD_PYTHON_EXECUTION / NOT_PASS / NOT_RUNTIME`.
-
-Successor coverage is no longer the reason the seven source PRs remain open. Their remaining shared blocker is exact-head #406 Python execution plus failure reconciliation if any and explicit integration acceptance. Source evidence remains readable; no source PR is retired before that gate.
+This batch changes the existing candidate/register and affected ordinary PR metadata only. Main, source branch bases, PR lifecycle states, account rights, schedules and UI modes are not changed. A local acceptance HOLD does not stop unrelated authorized work.
