@@ -829,5 +829,21 @@
       "total": 9
     },
     "no_runtime_or_pass_claim": true
+  },
+  "kernel_static_check": {
+    "observed_at": "2026-09-27T07:54+08:00",
+    "pr": 406,
+    "head": "eed476e1a1d59b43e341c3e98fd9584c1518656e",
+    "tree_files": 138,
+    "contract_json": "23/23 valid",
+    "fixture_json": "25/25 valid",
+    "declared_modules": "29/29 present",
+    "declared_contracts": "20/20 present",
+    "init_module_targets": "29/29 present",
+    "main_evidence_pr": 416,
+    "main_evidence_sha": "553c25722b0462751807a95785e2756d1fef2e43",
+    "python_test_run": false,
+    "provider_pass": false,
+    "disposition": "STATIC_STRUCTURE_QUALIFIED_HOLD_EXECUTION"
   }
 }
