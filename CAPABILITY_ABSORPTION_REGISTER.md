@@ -84,3 +84,36 @@ This narrows the execution unknown; it does not substitute for Python test execu
 - Python compile/unittest: still unobserved because available local carrier cannot resolve github.com and no Remote Desktop device is connected.
 
 Disposition: `STATIC_STRUCTURE_QUALIFIED / HOLD_PYTHON_EXECUTION / NOT_PASS / NOT_RUNTIME`.
+
+
+## Executable-line boundary reconciliation — 2026-09-27 09:12 +08
+
+Fresh PR file inventory:
+- PR #391: 36 changed paths; bounded NFN/World surfaces under `01_runtime-spine/**` plus `.github/workflows/nfn-r2-bounded-tests.yml`.
+- PR #406: 139 changed paths; DCP kernel surfaces under `dcp_kernel/**`, `contracts/**`, `fixtures/**`, `tests/**`, `tools/**`, `pyproject.toml`, plus `.github/workflows/dcp-kernel-candidate.yml`.
+- Exact changed-path intersection: **0**.
+
+Disposition:
+- #391 = independent NFN/World orchestration-semantics executable candidate.
+- #406 = canonical DCP kernel capability-substrate integration candidate.
+- Zero path overlap does not prove semantic independence, but it disproves current file-level duplicate construction.
+- Do not merge the two branches merely to reduce PR count. Cross-line integration requires an explicit Need and interface/effect evidence.
+
+### Source execution/evidence status for #406 lineage
+
+- #324: broad foundation lineage; selected executable blobs are in #406; broad topology/docs migration excluded.
+- #384: source PR records focused capability-activation tests and a clean-container unittest pass on its source branch; this is source evidence, **not #406 exact-head PASS**.
+- #387: regression test surface preserved in #406; no separate exact-#406 execution evidence.
+- #393: Return→re-entry schema regression preserved in #406; no exact-#406 execution evidence.
+- #395: carrier/consequence semantics preserved in #406; no exact-#406 execution evidence.
+- #396: reality-intake implementation/test preserved once in #406.
+- #397: unique vision-provider implementation/test preserved; duplicate reality-intake not duplicated.
+
+### Fresh execution-carrier retry
+
+At 2026-09-27 09:09 +08, a new isolated-container clone attempt for the canonical #406 branch again failed before repository bytes with `Could not resolve host: github.com`. This confirms the local execution carrier is still unavailable under the same network condition; it is not a test failure.
+
+Do not blind-retry the same local clone condition. #406 remains:
+`STATIC_STRUCTURE_QUALIFIED / HOLD_EXACT_HEAD_PYTHON_EXECUTION / NOT_PASS / NOT_RUNTIME`.
+
+Provider workflow remains a separate evidence edge; workflow file presence and matched paths do not equal a run.
