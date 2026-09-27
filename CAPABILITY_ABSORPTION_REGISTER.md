@@ -1,74 +1,68 @@
-# Capability Absorption Batch — 2026-09-27
+# Capability Absorption Register — 2026-09-27
 
-State: WORKING_ABSORPTION_REGISTER
+State: CURRENT_WORKING_REGISTER
 Runtime: false
 Canon: false
-Merge authority: user-authorized bounded repository metabolism
+Authority: bounded repository metabolism under current user authorization
 
-## Absorbed in this batch
+## Completed carrier absorption / retirement
 
-### PR #392 — capability-based Issue / PR entry
-Target files:
-- .github/ISSUE_TEMPLATE/capability_task_packet.md
-- .github/ISSUE_TEMPLATE/qinyi_task_packet.md
-- .github/pull_request_template.md
+- PR #392 — exact capability task / legacy compatibility pointer / PR evidence-gate artifacts are on main; source PR CLOSED_UNMERGED_LINEAGE.
+- PR #386 — exact CoreTri R2 falsification experiment is on main; source PR CLOSED_UNMERGED_LINEAGE; experiment remains Runtime=false / Canon=false / Promotion=false.
+- PR #383 — reader purposes superseded; remaining semantic-routing deltas selectively absorbed via PR #411; source PR CLOSED_UNMERGED_LINEAGE.
+- GLModel PR #8 — useful non-removal deltas preserved by bounded successors #22/#23/#24; broad historical removal proposal not promoted; source PR CLOSED_UNMERGED_LINEAGE.
+- Ideas PR #7 — useful non-removal deltas preserved by bounded successors #17/#18; broad historical removal proposal not promoted; source PR CLOSED_UNMERGED_LINEAGE.
 
-Absorption condition: exact file content from PR #392 head is carried by this batch branch. After main merge + exact-main readback, PR #392 may be retired as a carrier; its lineage remains in Git history.
+## Preferred kernel successor
 
-### PR #386 — CoreTri R2 DCP falsification return
-Target:
-- experiments/coretri-r2-dcp-native-result.md
+PR #406 — `qinyi/kernel-integration-successor-20260927`
 
-Absorption condition: exact evidence artifact from PR #386 head is carried by this batch branch. It remains EXPERIMENT_RETURN / Runtime=false / Canon=false. After main merge + exact-main readback, PR #386 may be retired as a carrier without promoting the experiment.
+Current head at this register update: `723986878491c43055acd03319f3db28a20fcca1`.
 
-## Kernel absorption queue
+Composition:
+- foundation: executable-only substrate from PR #324 (`dcp_kernel/`, `contracts/`, `fixtures/`, `tests/`, `tools/`, `pyproject.toml`);
+- overlays: #384 capability activation; #387 Current/Affected Cone/Return regression; #393 Return→re-entry schema; #395 carrier/consequence; #396 reality intake; #397 unique vision provider;
+- reality_intake overlap is owned once by #396; #397 contributes unique vision-provider delta;
+- broad #324 docs/topology migration is excluded;
+- whole-file PR396 `dcp_kernel/__init__.py` override is intentionally omitted so later foundation exports are not regressed.
 
-The following are not merged by age or PR number. They depend on a coherent `dcp_kernel` substrate that current main does not yet carry.
+Execution state:
+- current main contains `.github/workflows/dcp-kernel-candidate.yml`;
+- bounded synchronize retry on a matched `contracts/**` path has been issued;
+- exact-head workflow runs observed: 0;
+- local isolated execution could not fetch github.com because DNS/network resolution was unavailable;
+- therefore PR #406 remains DRAFT / HOLD_EXACT_HEAD_EXECUTION / NOT_PASS / NOT_RUNTIME.
 
-1. FOUNDATION_RECONCILE — PR #324
-   - broad existence-first lifecycle/kernel lineage;
-   - source of many shared models/contracts/tests;
-   - too broad and diverged for blind merge;
-   - use as source lineage for a selective current-main kernel package, not as automatic topology migration.
+## Duplicate construction metabolized
 
-2. CAPABILITY_ACTIVATION — PR #384
-   - unique capability_activation.py / capability_activation_decoupled.py + tests;
-   - depends on dcp_kernel.models and Decision semantics.
+PR #413 was independently created later for the same purpose. Blob-level selected-surface comparison found:
+- #406 = 138 selected files;
+- #413 = 137;
+- all selected executable blobs match except #406 also carries the successor manifest and preserves foundation `dcp_kernel/__init__.py`.
 
-3. CURRENT_RETURN_REGRESSION — PR #387
-   - unique test_native_backlog_retest.py;
-   - depends on models/resolution/return_state.
+PR #413 is CLOSED_UNMERGED_DUPLICATE. No unique selected executable capability was discarded.
 
-4. RETURN_REENTRY_SCHEMA — PR #393
-   - platform.py + dedicated schema-drift regression;
-   - depends on action_gate, activation, decision_chain, models, resolution, return_state, transition, write_intent.
+## Source lineage still open pending #406 execution
 
-5. CARRIER_CONSEQUENCE — PR #395
-   - carrier_binding/consequence semantic deltas + tests;
-   - reconcile against #324 base before absorption.
+- #324 — foundation lineage; do not merge broad branch as topology migration.
+- #384 — capability activation source.
+- #387 — regression source.
+- #393 — Return→re-entry schema source.
+- #395 — carrier/consequence source.
+- #396 — reality-intake source.
+- #397 — vision-provider source.
 
-6. REALITY_INTAKE — PR #396
-   - unique reality_intake implementation + tests.
+These source PRs are not retired merely because #406 contains their selected blobs. Reassess only after exact-head execution + successor coverage readback.
 
-7. VISION_PROVIDER — PR #397
-   - overlaps #396 reality_intake and adds unique vision_provider + tests;
-   - absorb reality_intake once, then qualify only the unique vision-provider delta.
+## Independent World executable line
 
-## Broad-transition holds
-
-### PR #383
-Reader/Current cleanup is partly superseded by current main reader/status/manifest work. Mixed routing, adapter, register and legacy-surface deltas remain. Keep HOLD until unique delta is split from already-absorbed entry changes.
-
-### GLModel PR #8
-Ordinary reader/status correction is superseded by current main, but the PR also contains semantic-core verifier/rebuild changes and a broad historical corpus contraction. Keep HOLD; do not infer safe retirement from README/STATUS supersession.
-
-### Ideas PR #7
-Ordinary reader/status correction is superseded by current main, but broad world/placement/corpus deltas remain. Keep HOLD; do not infer safe retirement from README/STATUS supersession.
+PR #391 remains a separate World/NFN executable candidate. Kernel absorption does not replace its Current/Authority/Return/environment-field work and does not make either line Runtime.
 
 ## Rules
 
-- absorbed file != absorbed meaning unless exact-main readback confirms the intended successor;
-- PR retirement != evidence deletion;
-- experiment absorption != Canon/Runtime promotion;
-- no kernel PR is merged until its dependency package and execution evidence are coherent;
-- overlap is reconciled once, not duplicated across successors.
+- exact blob absorption != semantic acceptance;
+- source PR closure != evidence deletion;
+- candidate composition != PASS;
+- PASS != Runtime/Canon/Native adoption;
+- duplicate successors must be reconciled to one preferred continuation;
+- local blocker holds the affected edge only.
