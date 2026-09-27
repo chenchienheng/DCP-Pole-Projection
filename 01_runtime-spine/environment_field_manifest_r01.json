@@ -752,5 +752,36 @@
     ],
     "next_gate": "Observe exact-head bounded execution for PR413; only then reassess source-PR retirement and main absorption.",
     "claim_ceiling": "SELECTIVE_EXECUTABLE_CANDIDATE_NOT_RUNTIME_NOT_CANON"
+  },
+  "kernel_successor_reconcile_20260927": {
+    "observed_at": "2026-09-27T07:54+08:00",
+    "preferred": {
+      "pr": 406,
+      "head": "723986878491c43055acd03319f3db28a20fcca1",
+      "selected_surface_files": 138,
+      "foundation": 324,
+      "overlays": [
+        384,
+        387,
+        393,
+        395,
+        396,
+        397
+      ],
+      "exact_head_runs": 0,
+      "disposition": "HOLD_EXECUTION"
+    },
+    "duplicate": {
+      "pr": 413,
+      "state": "CLOSED_UNMERGED",
+      "selected_surface_files": 137,
+      "reason": "later duplicate; PR406 also has successor manifest and preserves foundation __init__"
+    },
+    "completed_lineage": [
+      "DCP383 closed after selective successor coverage",
+      "GLModel8 closed after bounded successor coverage",
+      "Ideas7 closed after bounded successor coverage"
+    ],
+    "next": "observe exact-head bounded execution for PR406 before main integration or source-PR retirement"
   }
 }
