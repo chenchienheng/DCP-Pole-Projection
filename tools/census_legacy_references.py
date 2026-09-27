@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import hashlib
 from collections import Counter, defaultdict
 from pathlib import Path
 
 from dcp_kernel.reference_census import DependencySignal, scan_text_map
+from tools.check_current_surfaces import read_manifest_basis
 
 
 TEXT_SUFFIXES = {
@@ -37,14 +39,25 @@ def collect_text_files(root: Path) -> dict[str, str]:
             continue
         rel = path.relative_to(root).as_posix()
         try:
-            result[rel] = path.read_text(encoding="utf-8")
+            result[rel] = path.read_bytes().decode("utf-8")
         except UnicodeDecodeError:
             continue
     return result
 
 
 def build_payload(root: Path) -> dict[str, object]:
-    observations = scan_text_map(collect_text_files(root), FAMILIES)
+    files = collect_text_files(root)
+    _, readers, reader_basis = read_manifest_basis(
+        root, Path("CURRENT-SURFACE-MANIFEST.json"))
+    basis_resolved = reader_basis["status"] == "LOCAL_DECLARATION_VALID_NOT_NATIVE_ADMISSION"
+    observations = scan_text_map(files, FAMILIES, current_reader_paths=readers)
+    source_files = [
+        {"path": path, "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest()}
+        for path, text in sorted(files.items())
+    ]
+    source_digest = hashlib.sha256(json.dumps(
+        source_files, ensure_ascii=False, sort_keys=True,
+        separators=(",", ":")).encode("utf-8")).hexdigest()
     by_family: dict[str, Counter[str]] = defaultdict(Counter)
     dependency_by_family: dict[str, Counter[str]] = defaultdict(Counter)
     rows = []
@@ -87,9 +100,9 @@ def build_payload(root: Path) -> dict[str, object]:
             "unknown_hold_count": unknown,
             "rebuild_relevant_reference_count": rebuild_relevant,
             "wake_routing_relevant_reference_count": wake_relevant,
-            "caller_absence_on_scanned_text_surface": live == 0 and unknown == 0,
-            "rebuild_withdrawal_candidate_on_scanned_text_surface": rebuild_relevant == 0,
-            "wake_routing_withdrawal_candidate_on_scanned_text_surface": wake_relevant == 0,
+            "caller_absence_on_scanned_text_surface": basis_resolved and live == 0 and unknown == 0,
+            "rebuild_withdrawal_candidate_on_scanned_text_surface": basis_resolved and rebuild_relevant == 0,
+            "wake_routing_withdrawal_candidate_on_scanned_text_surface": basis_resolved and wake_relevant == 0,
             "reclaim_ready": False,
         }
 
@@ -98,11 +111,22 @@ def build_payload(root: Path) -> dict[str, object]:
         "runtime": False,
         "promotion": False,
         "destructive_action_authorized": False,
+        "reader_basis": reader_basis,
+        "source_snapshot": {
+            "scope": "COLLECTED_UTF8_TEXT_ONLY_NOT_GIT_OR_RUNTIME_VERIFICATION",
+            "file_count": len(source_files),
+            "manifest_of_hashes_sha256": source_digest,
+            "files": source_files,
+        },
         "families": list(FAMILIES),
         "summary": summary,
         "observations": rows,
         "claim_boundary": [
             "SEARCH_HIT_IS_NOT_CURRENT",
+            "EXPLICIT_LOCAL_READER_BASIS_NOT_NATIVE_ADMISSION",
+            "UNRESOLVED_READER_BASIS_CANNOT_PROVE_ABSENCE_OR_WITHDRAWAL",
+            "CENSUS_IMPLEMENTATION_REFERENCES_ARE_AUDIT_NOT_LIVE_CALLERS",
+            "SOURCE_SNAPSHOT_BINDS_SCANNED_TEXT_NOT_ATOMIC_GIT_STATE",
             "AUDIT_REFERENCE_IS_NOT_LIVE_CALLER",
             "UNKNOWN_REFERENCE_IS_HOLD",
             "KEYWORD_RELEVANCE_IS_REVIEW_SIGNAL_NOT_PROVEN_OPERATIONAL_DEPENDENCY",

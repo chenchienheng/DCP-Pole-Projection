@@ -3,6 +3,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import PurePosixPath
+from typing import Iterable
+
+from .metabolism import _reader_path_set
 
 
 class ReferenceClass(str, Enum):
@@ -21,14 +24,6 @@ class DependencySignal(str, Enum):
     UNKNOWN = "UNKNOWN"
 
 
-CURRENT_SURFACES = {
-    "README.md",
-    "CURRENT-SURFACE-MANIFEST.json",
-    "LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md",
-    "PUBLIC-SURFACE-POLICY.md",
-    "STATUS.md",
-}
-
 EXECUTABLE_PREFIXES = (
     "dcp_kernel/",
     "contracts/",
@@ -36,6 +31,7 @@ EXECUTABLE_PREFIXES = (
 )
 
 AUDIT_EXACT_PATHS = {
+    "dcp_kernel/reference_census.py",
     "contracts/implementation-manifest.json",
     "tools/census_legacy_references.py",
     "tests/test_reference_census.py",
@@ -92,16 +88,29 @@ class ReferenceObservation:
     dependency_signal: DependencySignal = DependencySignal.NONE
 
 
-def classify_reference(caller_path: str, target_family: str) -> ReferenceClass:
-    """Classify a reference without equating audit visibility with live dependency."""
-    normalized = PurePosixPath(caller_path).as_posix().lstrip("./")
+def classify_reference(
+    caller_path: str,
+    target_family: str,
+    *,
+    current_reader_paths: Iterable[str] = (),
+) -> ReferenceClass:
+    """Classify a text reference using an explicit local reader basis.
+
+    LIVE_CALLER is a bounded source-review category, not execution evidence.
+    Historical filenames and path normalization never establish reader status.
+    """
+    readers = _reader_path_set(current_reader_paths)
+    try:
+        normalized = next(iter(_reader_path_set((caller_path,))))
+    except (TypeError, ValueError):
+        return ReferenceClass.UNKNOWN_HOLD
     target = target_family.rstrip("/") + "/"
 
     if normalized.startswith(target):
         return ReferenceClass.SELF_REFERENCE
     if normalized in AUDIT_EXACT_PATHS or normalized.startswith(AUDIT_PREFIXES):
         return ReferenceClass.AUDIT_REFERENCE
-    if normalized in CURRENT_SURFACES or normalized.startswith(EXECUTABLE_PREFIXES):
+    if normalized in readers or normalized.startswith(EXECUTABLE_PREFIXES):
         return ReferenceClass.LIVE_CALLER
     if PurePosixPath(normalized).name in LINEAGE_BASENAMES:
         return ReferenceClass.LINEAGE_POINTER
@@ -145,7 +154,13 @@ def classify_dependency_signal(
     return DependencySignal.NONE
 
 
-def scan_text_map(files: dict[str, str], families: tuple[str, ...]) -> tuple[ReferenceObservation, ...]:
+def scan_text_map(
+    files: dict[str, str],
+    families: tuple[str, ...],
+    *,
+    current_reader_paths: Iterable[str] = (),
+) -> tuple[ReferenceObservation, ...]:
+    readers = _reader_path_set(current_reader_paths)
     observations: list[ReferenceObservation] = []
     for caller_path, text in files.items():
         for family in families:
@@ -153,7 +168,8 @@ def scan_text_map(files: dict[str, str], families: tuple[str, ...]) -> tuple[Ref
             if needle not in text:
                 continue
             excerpt = next((line.strip() for line in text.splitlines() if needle in line), needle)
-            classification = classify_reference(caller_path, family)
+            classification = classify_reference(
+                caller_path, family, current_reader_paths=readers)
             observations.append(
                 ReferenceObservation(
                     caller_path=caller_path,
