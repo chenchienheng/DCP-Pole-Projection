@@ -1,0 +1,60 @@
+{
+  "candidate_id": "DCP_SELECTIVE_KERNEL_ABSORPTION_R1_20260927",
+  "state": "EXECUTABLE_CANDIDATE",
+  "runtime": false,
+  "canon": false,
+  "base_main": "67838c3f9e4e3156432eed094a00679acfc68bd0",
+  "foundation": {
+    "pr": 324,
+    "head": "00999341ff600a65ab3de641e4ce5615d6e9690d",
+    "included_prefixes": [
+      "dcp_kernel/",
+      "contracts/",
+      "tests/",
+      "fixtures/"
+    ],
+    "included_file": "pyproject.toml",
+    "excluded": [
+      "broad docs/topology migration",
+      "workflow changes"
+    ]
+  },
+  "overlays": [
+    {
+      "pr": 384,
+      "scope": "capability activation + decoupled activation + tests"
+    },
+    {
+      "pr": 387,
+      "scope": "native backlog regression test"
+    },
+    {
+      "pr": 393,
+      "scope": "platform Return→re-entry schema fix + regression"
+    },
+    {
+      "pr": 395,
+      "scope": "carrier binding + consequence + tests"
+    },
+    {
+      "pr": 396,
+      "scope": "reality intake + test; overlap owner"
+    },
+    {
+      "pr": 397,
+      "scope": "vision provider + test only; duplicate reality_intake excluded"
+    }
+  ],
+  "verification": {
+    "workflow": ".github/workflows/dcp-kernel-candidate.yml from current main",
+    "exact_head_provider_run_observed": false,
+    "local_container_attempt": "CANNOT_DNS_GITHUB_FROM_CONTAINER",
+    "merge_gate": "HOLD_UNTIL_EXACT_HEAD_BOUNDED_CHECKS_OBSERVED"
+  },
+  "claim_ceiling": [
+    "NOT_RUNTIME",
+    "NOT_CANON",
+    "NOT_NATIVE_ABSORPTION",
+    "NOT_RELEASE"
+  ]
+}
