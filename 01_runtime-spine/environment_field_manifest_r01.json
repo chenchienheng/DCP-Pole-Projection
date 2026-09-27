@@ -845,5 +845,28 @@
     "python_test_run": false,
     "provider_pass": false,
     "disposition": "STATIC_STRUCTURE_QUALIFIED_HOLD_EXECUTION"
+  },
+  "world_executable_static_qualification": {
+    "observed_at": "2026-09-27T09:23+08:00",
+    "executable_content_head": "f00a81cb5dca0c0cd286353b2f12fb4a910d56ba",
+    "bounded_manifest": {
+      "modules": 9,
+      "declared_definition_total": 121,
+      "observed_test_definition_total": 121,
+      "per_module_counts_match": true,
+      "runner_module_order_matches_manifest": true
+    },
+    "fixture_json": {
+      "checked": 4,
+      "valid": 4
+    },
+    "execution_observed": false,
+    "provider_workflow_run_observed": false,
+    "disposition": "STATIC_STRUCTURE_QUALIFIED / HOLD_EXECUTION / NOT_PASS / NOT_RUNTIME",
+    "interpretation": [
+      "definition counts are now independently read back from exact executable content rather than trusted from manifest text alone",
+      "runner/manifest coherence and fixture JSON validity reduce structural uncertainty but do not execute Python",
+      "control-plane metadata commits after executable content head do not create a new executable revision"
+    ]
   }
 }
