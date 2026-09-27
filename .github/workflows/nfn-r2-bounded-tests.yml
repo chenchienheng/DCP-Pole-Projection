@@ -26,3 +26,13 @@ jobs:
       - name: Run bounded R2 regression surfaces
         working-directory: 01_runtime-spine
         run: python run_bounded_r2_tests.py
+
+      - name: Run preserved World regression surfaces
+        working-directory: 01_runtime-spine
+        run: >-
+          python -m unittest -v
+          test_nfn_resolver_three_view_subject
+          test_carrier_mode_r01
+          test_portable_transition_r01
+          test_evidence_to_world_r01
+          test_reference_metabolism_r01
