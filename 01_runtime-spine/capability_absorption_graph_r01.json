@@ -1,6 +1,6 @@
 {
   "id": "CAPABILITY_ABSORPTION_GRAPH_R01_20260927",
-  "observed_at": "2026-09-27T08:08+08:00",
+  "observed_at": "2026-09-27T08:25+08:00",
   "main_effects": [
     {
       "source_pr": 392,
@@ -28,6 +28,15 @@
       "successors": [],
       "main_sha": "e775db43a218b07aaa8a9f5c911d800636658489",
       "source_state": "MERGED_MAIN"
+    },
+    {
+      "source_pr": 383,
+      "capability": "13 semantic routing/metabolism deltas",
+      "successors": [
+        411
+      ],
+      "main_sha": "00e8d7da932ec9fb76210889c8f58ec05b359d33",
+      "source_state": "CLOSED_AFTER_13_EXACT_BLOBS_PLUS_4_PURPOSE_SUCCESSORS"
     }
   ],
   "integration_candidate": {
@@ -66,12 +75,12 @@
       ]
     },
     "changed_files": 138,
-    "exact_head": "2a38f87449583d93fff6c498408a1cafc580261a",
+    "exact_head": "0f9175512f5498b238ad882e4e4a95a4b8c11666",
     "git_mergeability": "CLEAN_OBSERVED",
     "provider_ci_entry": "AVAILABLE_ON_MAIN_VIA_PR410",
-    "provider_ci_effect": "UNPROVEN_NO_RUN_OBSERVED",
+    "provider_ci_effect": "UNPROVEN_AFTER_REOPEN_AND_MATCHED_PATH_SYNCHRONIZE",
     "local_execution": "CANNOT_NETWORK_DNS_FROM_CONTAINER",
-    "merge_disposition": "HOLD_EXECUTION_EVIDENCE"
+    "merge_disposition": "HOLD_PROVIDER_EXECUTION_EFFECT"
   },
   "broad_holds": [
     {
@@ -106,5 +115,37 @@
       "state": "CLOSED_UNMERGED_DUPLICATE_INFERIOR",
       "reason": "canonical PR406 pre-existed; PR410 carries CI entry on main"
     }
-  ]
+  ],
+  "cross_repo_effects": [
+    {
+      "repo": "GLModel",
+      "source_pr": 8,
+      "successors": [
+        22,
+        23,
+        24
+      ],
+      "state": "CLOSED_DELETION_NOT_APPROVED",
+      "provider_execution": {
+        "pr": 23,
+        "workflow": "Semantic Core Verify",
+        "conclusion": "success"
+      }
+    },
+    {
+      "repo": "Ideas",
+      "source_pr": 7,
+      "successors": [
+        17,
+        18
+      ],
+      "state": "CLOSED_DELETION_NOT_APPROVED"
+    }
+  ],
+  "open_pr_count": {
+    "DCP": 9,
+    "GLModel": 0,
+    "Ideas": 0,
+    "total": 9
+  }
 }
