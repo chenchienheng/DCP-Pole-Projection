@@ -6,6 +6,7 @@ from typing import Any, Mapping
 from .models import (
     CapabilityBinding,
     CurrentCandidate,
+    Decision,
     InvariantCore,
     LifecycleState,
     Need,
@@ -18,7 +19,7 @@ from .platform import (
     PlatformLoopResult,
     PlatformPlan,
     compile_work_contract,
-    complete_fixture_loop,
+    build_reentry_state,
 )
 from .return_state import ReturnClosure
 
@@ -153,17 +154,29 @@ def run_platform_fixture(payload: Mapping[str, Any]) -> FixtureRun:
         updates = dict(step.get("updates", {}))
         closure = closure.advance(ReturnState(step["state"]), **updates)
 
-    rebuild = payload["rebuild"]
-    loop = complete_fixture_loop(
-        plan=plan,
-        stable_life=stable_life,
-        tri_root=tri_root,
-        closure=closure,
-        receiver_rebuild_revision=rebuild["receiver_rebuild_revision"],
-        receiver_tri_root_revision=rebuild["receiver_tri_root_revision"],
-        cursor=rebuild["cursor"],
-        ack_owner=rebuild["ack_owner"],
-    )
+    if plan.decision is not Decision.PASS or plan.work_contract is None:
+        loop = PlatformLoopResult(
+            plan.decision, plan, closure, None, ("WORK_CONTRACT_NOT_AVAILABLE",),
+        )
+    else:
+        # Preserve the supplied progression. The synthetic full-loop helper would
+        # replace it and manufacture missing receiver/rebuild/retest evidence.
+        rebuild = payload["rebuild"]
+        reentry = build_reentry_state(
+            stable_life=stable_life,
+            tri_root=tri_root,
+            closure=closure,
+            receiver_rebuild_revision=rebuild["receiver_rebuild_revision"],
+            receiver_tri_root_revision=rebuild["receiver_tri_root_revision"],
+            last_good_revision=plan.current.selected_revision,
+            cursor=rebuild["cursor"],
+            ack_owner=rebuild["ack_owner"],
+        )
+        debt = closure.outstanding_debt
+        loop = PlatformLoopResult(
+            Decision.HOLD if debt else Decision.PASS,
+            plan, closure, reentry, debt,
+        )
     return FixtureRun(
         fixture_id=payload["fixture_id"],
         plan=plan,

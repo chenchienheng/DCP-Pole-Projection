@@ -96,5 +96,33 @@
       "explicit integration acceptance"
     ],
     "note": "Blob coverage proves selected successor carriage, not execution/PASS/Runtime."
+  },
+  "initial_observation_scope": {
+    "verification": "Historical 07:54 retry snapshot, not present execution status",
+    "successor_coverage_readback": "Initial composition at 9c0ffcec5e4bb9db6ebe2b0107a003191649a2c8; subsequent derived repairs are not asserted byte-identical to their sources"
+  },
+  "postcomposition_repair": {
+    "need": "Connect existing kernel imports, fixture progression and current-main regression contracts",
+    "preimage_head": "1f11a5e8bcedd0e371e77cf053c15f113ecbf9d9",
+    "failed_provider_evidence": {
+      "run_id": 36295593810,
+      "job_id": 108553721689,
+      "actual_checkout": "82e7a11caa782444bd5514ced83a8785022b322e",
+      "actual_main_from_log_and_ref": "f61bf2f2383f0520a8dc5f2f015cd0f9e98aa9ac",
+      "test_methods": 249,
+      "failed_export_subtests": 5,
+      "errors": 4,
+      "result": "FAILED",
+      "census": "SKIPPED_NOT_PASS"
+    },
+    "derived_repairs": {
+      "dcp_kernel/__init__.py": "Add the five PR396 public exports without replacing or removing the 145 substrate exports",
+      "dcp_kernel/fixtures.py": "Use existing build_reentry_state with supplied closure, manual intervention and selected last-good revision; do not synthesize missing progression",
+      "tests/test_gui_lu_fixture.py": "Preserve original case; add supplied-progression, missing-rebuild, missing-retest and failed-plan regressions",
+      "tests/test_current_surface_alignment.py": "Bind assertions to existing current-main continuity/promotion guards and candidate implementation manifest; retain negative mutation controls; no root manifest mutation",
+      ".github/workflows/dcp-kernel-candidate.yml": "Verify exact candidate head and merge-ref separately; preserve triggers/read permissions/actions; invoke census as module and retain distinct artifacts"
+    },
+    "validation_after_repair": "PENDING_EXACT_COMMIT_PROVIDER_RESULT; resolve run/job logs for the repair commit",
+    "authority_boundary": "No merge, deploy, permission change, source-PR retirement, Native acceptance or Runtime promotion"
   }
 }

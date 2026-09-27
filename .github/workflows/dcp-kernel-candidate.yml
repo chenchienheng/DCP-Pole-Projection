@@ -20,9 +20,16 @@ permissions:
 jobs:
   candidate-kernel:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        checkout_scope: ${{ fromJSON(github.event_name == 'pull_request' && '["candidate-head", "merge-candidate"]' || '["candidate-head"]') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.checkout_scope == 'candidate-head' && (github.event.pull_request.head.sha || github.sha) || github.sha }}
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -44,7 +51,7 @@ jobs:
       - name: Run candidate tests
         run: python -m unittest discover -s tests -p 'test*.py' -v
       - name: Produce bounded legacy caller census
-        run: python tools/census_legacy_references.py --output artifacts/reference-census.json
+        run: python -m tools.census_legacy_references --output artifacts/reference-census.json
       - name: Validate withdrawal census evidence
         run: |
           python - <<'PY'
@@ -82,7 +89,7 @@ jobs:
       - name: Upload bounded census evidence
         uses: actions/upload-artifact@v4
         with:
-          name: dcp-reference-census
+          name: dcp-reference-census-${{ matrix.checkout_scope }}
           path: artifacts/reference-census.json
 
 # Passing this workflow proves only the declared bounded checks.

@@ -27,6 +27,7 @@ from .platform import (
 )
 from .public_encounter import PublicEncounterAssessment, PublicEncounterDisposition, PublicEncounterInput, assess_public_encounter
 from .reader_policy import ReaderAssessment, ReaderDisposition, ReaderRequest, assess_reader_request
+from .reality_intake import IntakeNeed, ObservationState, RealityIntakeAssessment, RealityObservation, assess_reality_intake
 from .reception_gateway import GatewayAssessment, GatewayDisposition, GatewayInput, assess_gateway_request
 from .reference_census import (
     DependencySignal, ReferenceClass, ReferenceObservation, classify_dependency_signal,
@@ -57,6 +58,7 @@ __all__ = [
     "MotionObservation", "MutationKind", "NativeModel", "Need", "OperableBirthAssessment", "OperableBirthInput",
     "OwnerExitAssessment", "OwnerExitEvidence", "PersistentState", "PlatformLoopResult", "PlatformPlan",
     "PublicEncounterAssessment", "PublicEncounterDisposition", "PublicEncounterInput", "ReaderAssessment",
+    "IntakeNeed", "ObservationState", "RealityIntakeAssessment", "RealityObservation",
     "ReaderDisposition", "ReaderRequest", "ReferenceClass", "ReferenceObservation", "ReentryState", "RelationAssessment",
     "RelationInput", "RelationState", "RetirementAssessment", "RetirementInput", "RetirementState", "ReturnClosure",
     "ReturnState", "RiskLevel", "ScheduleEffectAssessment", "ScheduleEffectInput", "ScheduleEffectState", "StableLife",
@@ -65,7 +67,7 @@ __all__ = [
     "assess_action_gate", "assess_activation", "assess_coexistence", "assess_composition", "assess_cross_pole_feedback",
     "assess_decision_chain", "assess_family_metabolism", "assess_gateway_request", "assess_judgment",
     "assess_learning_input", "assess_living_loop", "assess_operable_birth", "assess_owner_exit_evidence",
-    "assess_public_encounter", "assess_reader_request", "assess_relation", "assess_retirement", "assess_schedule_effect",
+    "assess_public_encounter", "assess_reader_request", "assess_reality_intake", "assess_relation", "assess_retirement", "assess_schedule_effect",
     "assess_successor_coverage", "assess_write_intent", "build_reentry_state", "classify_dependency_signal",
     "classify_reference", "compile_action_responsibility", "compile_event_governed_work_contract",
     "compile_governed_work_contract", "compile_meaning", "compile_work_contract", "complete_fixture_loop",
