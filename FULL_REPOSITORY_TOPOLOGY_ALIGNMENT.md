@@ -1,3 +1,20 @@
+# Repository topology alignment — historical issue-scope record
+
+> Applicability: historical reference; not an ordinary Current source or execution instruction.
+> Runtime / Canon / new authority: not established by this document.
+
+The fixed User/ChatGPT/Jules roles, five Master Axes, active-master list, old issue/PR states and required routes below describe the source-era Issue #57 view. They do not define the present ecosystem, current work roster, tool assignment, authority or a new cleanup queue.
+
+Use `CURRENT-SURFACE-MANIFEST.json` for the repository-local reader basis and the exact applicable source for the current Need. Retain older mappings for comparison; shared vocabulary does not establish a live dependency. #324's proposed deletion remains unapplied. No identity/core doctrine or other Native source is redefined by this applicability correction.
+
+## Provenance and preservation
+
+Applicability reviewed against candidate `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3` and its explicit manifest. This is a bounded candidate edit, not main adoption or source retirement.
+Preserved predecessor: same path at `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3`, blob `ffb13a5c42e30cf9a069f46050b604c1948122cd`; SHA256 `25a496f1f610906ecec49872e65def9b05c7c3f23a306962c63fe38cbbd2ee69`.
+
+<details>
+<summary>Complete predecessor text — historical assertions, not current instructions</summary>
+
 # Full Repository Topology Alignment
 
 ## Purpose
@@ -113,3 +130,5 @@ Merged execution traces (retained as structural anchors):
   file states without atomic register updates.
 - **Chain Rebinding Map**: Deferred external node operations need routing
   correctly via AXIS-01 and mapped back to the 5 Core Axes.
+
+</details>

@@ -1,3 +1,23 @@
+# External capability absorption — retained proposal, not provider configuration
+
+> Applicability: historical reference; not an ordinary Current source or execution instruction.
+> Runtime / Canon / new authority: not established by this document.
+
+The earlier provider-to-axis mapping below is a historical proposal, not current account configuration, installed capability, fixed model role, routing rule or authority allocation. Its old absence assertions, provider names and default GitHub precedence are not fresh observations.
+
+Retain useful questions about source identity, intended effect, affected receiver, rights/privacy, input/output losses, applicable resource limits, evidence and failure/return/recovery relations. Resolve them for the actual Need using `CURRENT-SURFACE-MANIFEST.json` and the applicable source; no brand, folder or registry becomes a permanent gateway.
+
+The selected #324 source also contains an ordered successor-chain illustration. That order is not adopted as a mandatory lifecycle or new runtime pipeline. Listed implementation modules require their own exact-version applicability and use evidence; a document pointer is not proof of deployed transport or receiver adoption.
+
+## Provenance and preservation
+
+Applicability reviewed against candidate `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3` and its explicit manifest. This is a bounded candidate edit, not main adoption or source retirement.
+Selected source: #324 at `00999341ff600a65ab3de641e4ce5615d6e9690d`, same path, blob `b8152972abdd18221fe18c8e377f81962a8481f0`. Only the purpose/authority distinction stated above is adopted; no whole-PR import.
+Preserved predecessor: same path at `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3`, blob `e408d1aeb17dc3a3fc4025d8c6919ac3dd02fb53`; SHA256 `f21ee4ca394953e78ccfe242783fe046f1cd1ad8615e52dde388d123e0c4239b`.
+
+<details>
+<summary>Complete predecessor text — historical assertions, not current instructions</summary>
+
 # External Ecosystem Absorption Schema (Proposal)
 
 > Proposal for structurally mapping external nodes (Google ecosystem and agents)
@@ -184,3 +204,5 @@
 - This proposal carries no approval or active-register binding. If materially
   affected, route through `CURRENT-SURFACE-MANIFEST.json` to an explicitly
   re-admitted affected surface; any separate handoff remains independently gated.
+
+</details>

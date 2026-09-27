@@ -1,3 +1,20 @@
+# MotherTree clearance — historical review record
+
+> Applicability: historical reference; not an ordinary Current source or execution instruction.
+> Runtime / Canon / new authority: not established by this document.
+
+The queues, READY/HOLD values, merge order, named review roles, Seal/Keep_Editable lists and checked boxes below belong to the original review context. They are not live PR status, current release acceptance, write authority or a command to merge, close, rebase or delete anything.
+
+Current work resolves the selected original PR/ref and `CURRENT-SURFACE-MANIFEST.json`; retain the original review as provenance where relevant. #324 proposed deleting this file; that deletion is not applied or approved here. A retained review record is not a current control plane.
+
+## Provenance and preservation
+
+Applicability reviewed against candidate `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3` and its explicit manifest. This is a bounded candidate edit, not main adoption or source retirement.
+Preserved predecessor: same path at `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3`, blob `de2ad1b357fe75f881516d4dd5fd174a7831af7f`; SHA256 `befb925ad211f8a2dcecfdefca1cb662ab95fbe7f3c5b2e9a0cbc871db891ec5`.
+
+<details>
+<summary>Complete predecessor text — historical assertions, not current instructions</summary>
+
 # MotherTree Clearance Report: Tri-coupled main upgrade
 
 This report coordinates the repository hygiene and semantic doctrine triage
@@ -81,3 +98,5 @@ required to advance the `main` branch toward a tri-coupled baseline.
 - [x] No external write is activated without authorization.
 - [x] No subsystem replaces the mother architecture.
 - [x] Every merged artifact has return path / registry entry.
+
+</details>

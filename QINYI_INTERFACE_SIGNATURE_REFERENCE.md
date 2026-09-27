@@ -1,3 +1,21 @@
+# Qinyi signature — historical presentation reference
+
+> Applicability: historical reference; not an ordinary Current source or execution instruction.
+> Runtime / Canon / new authority: not established by this document.
+
+The complete earlier signature and usage text below are retained for presentation provenance. They do not establish a current identity source, mandatory signature, public-use approval or instruction to rewrite an identity document. This edit changes this repository reference's applicability, not the underlying person's or system's identity, and does not alter the historical signature string.
+
+Repository navigation uses `CURRENT-SURFACE-MANIFEST.json`; that manifest is not an identity or signature authority. A new presentation use still needs the exact applicable owner/source and, where relevant, explicit public-release disposition. No owner/public-use successor is invented here. The former `signature_anchor_verified` and `return_to_00` values are historical self-claims, not present approval.
+
+## Provenance and preservation
+
+Applicability reviewed against candidate `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3` and its explicit manifest. This is a bounded candidate edit, not main adoption or source retirement.
+Selected source: #324 at `00999341ff600a65ab3de641e4ce5615d6e9690d`, same path, blob `f65c54a1d5c1c581e94b216378ea1f19e139a9b9`. Only the purpose/authority distinction stated above is adopted; no whole-PR import.
+Preserved predecessor: same path at `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3`, blob `eceb0e814e6fcc632103e380afd397a076b5330b`; SHA256 `16fdb61197731fb410aa324a29e5e2b969def7db50781feff4feb7c8050e9acd`.
+
+<details>
+<summary>Complete predecessor text — historical assertions, not current instructions</summary>
+
 # Qinyi Interface Signature Reference
 
 > Stable system-wide identity anchor for the Qinyi signature reference.
@@ -77,3 +95,5 @@ If existing documents use older forms, mark them as:
 
 - signature_anchor_verified: true
 - return_to_00: true
+
+</details>
