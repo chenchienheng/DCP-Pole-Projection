@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.example/contracts/transition.schema.json",
+  "title": "DCP Unified Transition Candidate Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "transition_id",
+    "stable_life_id",
+    "need",
+    "state_before",
+    "proposed_effect",
+    "capability_binding",
+    "source_revision",
+    "motion_observations"
+  ],
+  "properties": {
+    "transition_id": {"type": "string", "minLength": 1},
+    "stable_life_id": {"type": "string", "minLength": 1},
+    "need": {"type": "string", "minLength": 1},
+    "state_before": {"type": "string"},
+    "proposed_effect": {"type": "string", "minLength": 1},
+    "source_revision": {"type": "string", "minLength": 1},
+    "capability_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capability_id",
+        "actor_id",
+        "carrier_id",
+        "authority_granted",
+        "rights_allowed",
+        "evidence_available",
+        "return_target"
+      ],
+      "properties": {
+        "capability_id": {"type": "string", "minLength": 1},
+        "actor_id": {"type": "string", "minLength": 1},
+        "carrier_id": {"type": "string", "minLength": 1},
+        "authority_granted": {"type": "boolean"},
+        "rights_allowed": {"type": "boolean"},
+        "evidence_available": {"type": "boolean"},
+        "native_internalized": {"type": "boolean"},
+        "return_target": {"type": ["string", "null"]}
+      }
+    },
+    "motion_observations": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["transition_id", "motion", "decision", "reasons"],
+        "properties": {
+          "transition_id": {"type": "string", "minLength": 1},
+          "motion": {
+            "enum": [
+              "IDENTITY",
+              "MEANING",
+              "DEPENDENCY",
+              "STATE",
+              "REALITY",
+              "CAPABILITY",
+              "RETURN",
+              "CONTINUITY"
+            ]
+          },
+          "decision": {"enum": ["PASS", "HOLD", "FAIL"]},
+          "reasons": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  },
+  "$comment": "All eight observations belong to one transition. Runtime code and executable tests enforce that every observation transition_id equals the parent transition_id."
+}

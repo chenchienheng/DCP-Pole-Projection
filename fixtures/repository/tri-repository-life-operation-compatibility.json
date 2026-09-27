@@ -1,0 +1,64 @@
+{
+  "artifact_role": "BOUNDED_TRI_REPOSITORY_COMPATIBILITY_EVIDENCE",
+  "observed_date": "2026-08-22",
+  "runtime": false,
+  "promotion": false,
+  "canon": false,
+  "authority_effect": "none",
+  "repositories": {
+    "Ideas-Pole-Projection": {
+      "projection_focus": "Ideas",
+      "native_source_root": false,
+      "repo_is_pole_authority": false,
+      "tri_pole_architecture": true,
+      "shared_belt_is_fourth_pole": false,
+      "shared_belt_is_authority_root": false,
+      "native_body_copy_default": false,
+      "weighting": "meaning_placement_navigation_experience"
+    },
+    "DCP-Pole-Projection": {
+      "projection_focus": "DCP",
+      "native_source_root": false,
+      "repo_is_pole_authority": false,
+      "tri_pole_architecture": true,
+      "shared_belt_is_fourth_pole": false,
+      "shared_belt_is_authority_root": false,
+      "native_body_copy_default": false,
+      "weighting": "dependency_state_authority_return_rebuild"
+    },
+    "GLModel-Pole-Projection": {
+      "projection_focus": "GLModel",
+      "native_source_root": false,
+      "repo_is_pole_authority": false,
+      "tri_pole_architecture": true,
+      "shared_belt_is_fourth_pole": false,
+      "shared_belt_is_authority_root": false,
+      "native_body_copy_default": false,
+      "weighting": "world_object_engineering_evidence_adapter"
+    }
+  },
+  "shared_life_operation_invariants": [
+    "REPOSITORY_IS_CARRIER_NOT_POLE_AUTHORITY",
+    "THREE_REPOSITORIES_ARE_WEIGHTED_PROJECTIONS_NOT_THREE_SEPARATE_LIVES",
+    "SHARED_BELT_IS_NOT_A_FOURTH_POLE_OR_AUTHORITY_ROOT",
+    "NATIVE_BODY_IS_NOT_COPIED_BY_DEFAULT",
+    "OUTER_CAPABILITY_DIFFERENTIATION_MAY_VARY_BY_NEED",
+    "INNER_CONTINUITY_MUST_PRESERVE_IDENTITY_AUTHORITY_EVIDENCE_RETURN_AND_REENTRY",
+    "CROSS_REPOSITORY_LEARNING_REQUIRES_RECEIVER_SPECIFIC_MATERIAL_DELTA",
+    "RETURN_WRITTEN_DOES_NOT_PROVE_RECEIVER_ABSORPTION",
+    "SAME_SOURCE_DOES_NOT_REQUIRE_IDENTITY_OR_AUTHORITY_MERGE"
+  ],
+  "outer_pole_inner_motion_interpretation": {
+    "outer_poles": "need-driven capability expressions; not permanent repository owners",
+    "inner_motions": "observation-distinction-reflection-restraint-action-responsibility-return-rebuild continuity within and across projections; not a second control plane",
+    "three_pole_root": "Meaning / Dependency / World remain generative roots with different projection weighting",
+    "invariant_core": "stable identity, owner meaning, authority boundary, evidence fidelity and continuity cannot be silently replaced by carrier convenience"
+  },
+  "claim_boundary": [
+    "THIS_RECEIPT_DOES_NOT_MODIFY_IDEAS_OR_GLMODEL_NATIVE_STATE",
+    "CROSS_REPOSITORY_COMPATIBILITY_DOES_NOT_PROVE_NATIVE_ABSORPTION",
+    "COMPATIBLE_OPERATION_INVARIANTS_DO_NOT_CREATE_CENTRAL_AUTHORITY",
+    "EIGHT_POLES_AND_EIGHT_MOTIONS_ARE_NOT_REPOSITORY_TAXONOMY",
+    "REPOSITORY_ALIGNMENT_IS_NOT_RUNTIME_OR_AUTONOMY"
+  ]
+}

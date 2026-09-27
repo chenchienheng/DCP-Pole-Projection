@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/judgment.schema.json",
+  "title": "DCP Judgment Candidate",
+  "type": "object",
+  "required": ["judgment_id", "source_classified", "meaning_relevant", "boundary_resolved", "evidence_sufficient", "alternatives_considered", "consequence_assessed", "authority_valid"],
+  "properties": {
+    "judgment_id": {"type": "string", "minLength": 1},
+    "source_classified": {"type": "boolean"},
+    "meaning_relevant": {"type": "boolean"},
+    "boundary_resolved": {"type": "boolean"},
+    "evidence_sufficient": {"type": "boolean"},
+    "alternatives_considered": {"type": "boolean"},
+    "consequence_assessed": {"type": "boolean"},
+    "responsibility_owner": {"type": ["string", "null"]},
+    "return_target": {"type": ["string", "null"]},
+    "rebuild_path_present": {"type": "boolean"},
+    "authority_valid": {"type": "boolean"},
+    "recommendation_present": {"type": "boolean"},
+    "expert_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "model_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "majority_agreement": {"type": "boolean"},
+    "counterexample_channel_open": {"type": "boolean"},
+    "execution_available": {"type": "boolean"},
+    "execution_requested": {"type": "boolean"},
+    "truth_state": {"$ref": "#/$defs/dimensionState"},
+    "scope_state": {"$ref": "#/$defs/dimensionState"},
+    "context_state": {"$ref": "#/$defs/dimensionState"},
+    "goal_state": {"$ref": "#/$defs/dimensionState"},
+    "cost_state": {"$ref": "#/$defs/dimensionState"},
+    "risk_state": {"$ref": "#/$defs/dimensionState"},
+    "relationship_state": {"$ref": "#/$defs/dimensionState"},
+    "time_state": {"$ref": "#/$defs/dimensionState"},
+    "consequence_state": {"$ref": "#/$defs/dimensionState"}
+  },
+  "$defs": {
+    "dimensionState": {
+      "type": "string",
+      "enum": ["SATISFIED", "UNSATISFIED", "UNKNOWN", "NOT_APPLICABLE"]
+    }
+  },
+  "x-invariants": [
+    "CAPABILITY_DOES_NOT_IMPLY_JUDGMENT",
+    "EXPERTISE_DOES_NOT_IMPLY_AUTHORITY",
+    "EXECUTION_DOES_NOT_IMPLY_OWNERSHIP",
+    "RECOMMENDATION_DOES_NOT_IMPLY_DECISION",
+    "OUTPUT_DOES_NOT_IMPLY_TRUTH",
+    "UNKNOWN_MUST_REMAIN_REPRESENTABLE",
+    "TRUTH_SCOPE_CONTEXT_GOAL_AUTHORITY_COST_RISK_RELATIONSHIP_TIME_AND_CONSEQUENCE_MUST_NOT_COLLAPSE_INTO_ONE_RIGHT_WRONG_LABEL",
+    "JUDGMENT_REQUIRES_CONSEQUENCE_RESPONSIBILITY_RETURN_AND_REBUILD"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

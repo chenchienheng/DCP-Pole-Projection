@@ -1,0 +1,47 @@
+{
+  "artifact_role": "DOCS_XUANLING_LINEAGE_ONLY_REVIEW",
+  "runtime": false,
+  "promotion": false,
+  "family": "docs/xuanling",
+  "current_operational_authority": false,
+  "normal_reader_required": false,
+  "remaining_files": [
+    "BOUNDED_OPERATION_FAILURE_LINEAGE_SPECIMEN.md",
+    "CAPABILITY_ROLE_BOUNDARY_LINEAGE_SPECIMEN.md",
+    "DEPENDENCY_CONTINUITY_LINEAGE_SPECIMEN.md",
+    "HISTORICAL_RECEIVER_REVIEW_MODEL_SPECIMEN.md"
+  ],
+  "retired_predecessors": [
+    "XADF_FIRST_ROUND_OPERATION_RETURN_LOG_v0.1.md",
+    "XADF_LEGION_COMMANDER_JD_SPEC_v0.1.md",
+    "XADF_MOTHER_TREE_REVIEW_GATE_v0.1.md",
+    "XUANLING_ALL_TIME_DEPENDENCY_FIELD_OPERATION_MANUAL_v0.1.md"
+  ],
+  "visual_directory_present": false,
+  "retained_primitives": [
+    "bounded work slice and failure memory",
+    "capability/role boundary before tool binding",
+    "dependency continuity across carrier/window changes",
+    "receiver-owned review and escalation"
+  ],
+  "retired_semantics": [
+    "MotherTree as mandatory review hub",
+    "Legion Commander as permanent role topology",
+    "XADF as mandatory lifecycle ontology",
+    "fixed Orchestrator/Commander return hierarchy",
+    "tool-family commanders as architecture organs",
+    "fixed round system as universal control flow"
+  ],
+  "invariants": [
+    "LINEAGE_SPECIMEN_DOES_NOT_CREATE_CURRENT",
+    "FAILURE_MEMORY_DOES_NOT_CREATE_RUNTIME_PROOF",
+    "ROLE_DESCRIPTION_DOES_NOT_GRANT_AUTHORITY",
+    "RECEIVER_REVIEW_DOES_NOT_REQUIRE_A_CENTRAL_REVIEW_HUB",
+    "VISUAL_OR_DOCUMENT_LINEAGE_DOES_NOT_RECREATE_RETIRED_TOPOLOGY"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "POINTER_STABILITY_CHECK",
+    "POOLED_RECLAIM_REVIEW"
+  ]
+}
