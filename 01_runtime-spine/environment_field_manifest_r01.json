@@ -783,5 +783,51 @@
       "Ideas7 closed after bounded successor coverage"
     ],
     "next": "observe exact-head bounded execution for PR406 before main integration or source-PR retirement"
+  },
+  "kernel_execution_reconcile_latest": {
+    "observed_at": "2026-09-27T07:54+08:00",
+    "canonical_successor_pr": 406,
+    "exact_head": "eed476e1a1d59b43e341c3e98fd9584c1518656e",
+    "main_register_merge": "c77344f222179dbbede0dc47e9dbe1aae44e6a72",
+    "git_state": "mergeable_clean",
+    "execution_carriers": [
+      {
+        "carrier": "GITHUB_PULL_REQUEST_WORKFLOW",
+        "effect": "0 observed runs after matched synchronize"
+      },
+      {
+        "carrier": "GITHUB_BRANCH_PUSH_PROBE",
+        "effect": "0 observed runs; temporary branch trigger reverted"
+      },
+      {
+        "carrier": "LOCAL_CONTAINER_CLONE",
+        "effect": "blocked before bytes by github.com DNS resolution"
+      },
+      {
+        "carrier": "REMOTE_DESKTOP",
+        "effect": "no connected device"
+      },
+      {
+        "carrier": "GITHUB_CONNECTOR_TREE",
+        "effect": "exact tree/138 bounded files retrievable; not execution"
+      }
+    ],
+    "disposition": "HOLD_EXACT_HEAD_EXECUTION_ONLY",
+    "source_pr_retirement_blocked": [
+      324,
+      384,
+      387,
+      393,
+      395,
+      396,
+      397
+    ],
+    "open_pr_count": {
+      "DCP": 9,
+      "GLModel": 0,
+      "Ideas": 0,
+      "total": 9
+    },
+    "no_runtime_or_pass_claim": true
   }
 }
