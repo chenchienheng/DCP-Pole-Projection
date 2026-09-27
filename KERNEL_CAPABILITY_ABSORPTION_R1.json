@@ -47,5 +47,11 @@
     "NOT_CANON",
     "NO_PROVIDER_PASS",
     "NO_AUTOMATIC_SOURCE_PR_RETIREMENT"
-  ]
+  ],
+  "provider_ci_entry": {
+    "main_merge": "e775db43a218b07aaa8a9f5c911d800636658489",
+    "pr": 410,
+    "status": "AVAILABLE_ON_MAIN",
+    "workflow": ".github/workflows/dcp-kernel-candidate.yml"
+  }
 }
