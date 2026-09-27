@@ -1,11 +1,33 @@
-name: DCP Kernel Candidate Verification
+name: DCP Current Surface and Kernel Candidate Verification
 
 on:
   push:
     branches:
+      - main
       - ideas/6d-dispatch-projection-20260816
+    paths:
+      - 'README.md'
+      - 'CURRENT-SURFACE-MANIFEST.json'
+      - 'SEMANTIC-CONTROL-PLANE.json'
+      - 'FAILURE-EVOLUTION-POLICY.md'
+      - 'PUBLIC-SURFACE-POLICY.md'
+      - 'STATUS.md'
+      - 'dcp_kernel/**'
+      - 'contracts/**'
+      - 'fixtures/**'
+      - 'tests/**'
+      - 'tools/**'
+      - 'pyproject.toml'
+      - '.github/workflows/dcp-kernel-candidate.yml'
+
   pull_request:
     paths:
+      - 'README.md'
+      - 'CURRENT-SURFACE-MANIFEST.json'
+      - 'SEMANTIC-CONTROL-PLANE.json'
+      - 'FAILURE-EVOLUTION-POLICY.md'
+      - 'PUBLIC-SURFACE-POLICY.md'
+      - 'STATUS.md'
       - 'dcp_kernel/**'
       - 'contracts/**'
       - 'fixtures/**'
@@ -34,9 +56,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Verify surface qualification regression cases
+        run: python -m unittest discover -s tools -p 'test_current_surfaces.py' -v
+      - name: Check current pointers and qualify candidate surface
+        id: surface
+        run: python tools/check_current_surfaces.py
       - name: Compile Python
+        if: steps.surface.outputs.candidate == 'true'
         run: python -m compileall -q dcp_kernel tests tools
       - name: Parse machine contracts and fixtures
+        if: steps.surface.outputs.candidate == 'true'
         run: |
           python - <<'PY'
           import json
@@ -49,10 +78,13 @@ jobs:
                   print(path)
           PY
       - name: Run candidate tests
+        if: steps.surface.outputs.candidate == 'true'
         run: python -m unittest discover -s tests -p 'test*.py' -v
       - name: Produce bounded legacy caller census
+        if: steps.surface.outputs.candidate == 'true'
         run: python -m tools.census_legacy_references --output artifacts/reference-census.json
       - name: Validate withdrawal census evidence
+        if: steps.surface.outputs.candidate == 'true'
         run: |
           python - <<'PY'
           import json
@@ -87,6 +119,7 @@ jobs:
           assert 'RECLAIM_READY_IS_NEVER_INFERRED_BY_THIS_CENSUS' in boundaries
           PY
       - name: Upload bounded census evidence
+        if: steps.surface.outputs.candidate == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: dcp-reference-census-${{ matrix.checkout_scope }}
