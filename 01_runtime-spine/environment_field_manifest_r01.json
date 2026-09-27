@@ -675,5 +675,82 @@
       "Ideas": 0,
       "total": 9
     }
+  },
+  "capability_absorption_batch_20260927": {
+    "observed_at": "2026-09-27T07:54+08:00",
+    "completed_main_absorptions": [
+      {
+        "source_pr": 392,
+        "state": "CLOSED_UNMERGED_LINEAGE",
+        "effect": "exact capability task / compatibility pointer / PR evidence gate blobs now present on main"
+      },
+      {
+        "source_pr": 386,
+        "state": "CLOSED_UNMERGED_LINEAGE",
+        "effect": "exact CoreTri R2 falsification experiment blob now present on main; experiment remains Runtime=false/Canon=false"
+      },
+      {
+        "absorption_register_pr": 412,
+        "state": "MERGED",
+        "merge_sha": "67838c3f9e4e3156432eed094a00679acfc68bd0"
+      }
+    ],
+    "selective_kernel_candidate": {
+      "pr": 413,
+      "head": "6c821b9749bd325b5729e09c7df53651824ea249",
+      "branch": "qinyi/selective-kernel-absorption-20260927",
+      "file_count_from_selective_tree": 137,
+      "foundation_pr": 324,
+      "overlays": [
+        384,
+        387,
+        393,
+        395,
+        396,
+        397
+      ],
+      "overlap_rule": "reality_intake sourced once from 396; 397 contributes unique vision_provider only",
+      "broad_docs_topology_migration_excluded": true,
+      "workflow_changes_excluded": true,
+      "provider_workflow_runs_observed": 0,
+      "local_execution": "CANNOT_DNS_GITHUB_FROM_CONTAINER",
+      "disposition": "HOLD_EXACT_HEAD_EXECUTION"
+    },
+    "partial_successor_holds": [
+      {
+        "repo": "DCP",
+        "pr": 383,
+        "absorbed": "reader/status/current-entry portion",
+        "remaining": "mixed routing/adapter/register delta"
+      },
+      {
+        "repo": "GLModel",
+        "pr": 8,
+        "absorbed": "reader/status boundary",
+        "remaining": "semantic-core verifier/rebuild + broad corpus transition"
+      },
+      {
+        "repo": "Ideas",
+        "pr": 7,
+        "absorbed": "reader/status boundary",
+        "remaining": "world/placement + broad corpus transition"
+      }
+    ],
+    "source_pr_comments_written": [
+      324,
+      384,
+      387,
+      393,
+      395,
+      396,
+      397,
+      383
+    ],
+    "cross_repo_comments_written": [
+      "GLModel#8",
+      "Ideas#7"
+    ],
+    "next_gate": "Observe exact-head bounded execution for PR413; only then reassess source-PR retirement and main absorption.",
+    "claim_ceiling": "SELECTIVE_EXECUTABLE_CANDIDATE_NOT_RUNTIME_NOT_CANON"
   }
 }
