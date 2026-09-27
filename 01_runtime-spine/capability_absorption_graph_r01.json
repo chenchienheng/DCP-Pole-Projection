@@ -1,6 +1,6 @@
 {
   "id": "CAPABILITY_ABSORPTION_GRAPH_R01_20260927",
-  "observed_at": "2026-09-27T08:25+08:00",
+  "observed_at": "2026-09-27T07:54+08:00",
   "main_effects": [
     {
       "source_pr": 392,
@@ -75,29 +75,15 @@
       ]
     },
     "changed_files": 138,
-    "exact_head": "0f9175512f5498b238ad882e4e4a95a4b8c11666",
-    "git_mergeability": "CLEAN_OBSERVED",
+    "exact_head": "eed476e1a1d59b43e341c3e98fd9584c1518656e",
+    "git_mergeability": "CLEAN_AFTER_BRANCH_WORKFLOW_PROBE_REVERT",
     "provider_ci_entry": "AVAILABLE_ON_MAIN_VIA_PR410",
-    "provider_ci_effect": "UNPROVEN_AFTER_REOPEN_AND_MATCHED_PATH_SYNCHRONIZE",
-    "local_execution": "CANNOT_NETWORK_DNS_FROM_CONTAINER",
-    "merge_disposition": "HOLD_PROVIDER_EXECUTION_EFFECT"
+    "provider_ci_effect": "UNPROVEN_AFTER_PULL_REQUEST_SYNCHRONIZE_AND_BRANCH_PUSH_PROBE",
+    "local_execution": "CANNOT_NETWORK_DNS_FROM_CONTAINER; NO_REMOTE_DESKTOP_DEVICE_CONNECTED",
+    "merge_disposition": "HOLD_EXACT_HEAD_EXECUTION_ONLY",
+    "connector_tree_readback": "138 bounded executable files retrievable from exact Git tree; retrieval != execution"
   },
-  "broad_holds": [
-    {
-      "pr": 383,
-      "reason": "reader delta partly superseded; mixed routing/adapter/register unique delta remains"
-    },
-    {
-      "repo": "GLModel",
-      "pr": 8,
-      "reason": "reader delta superseded; broad corpus/verifier transition remains"
-    },
-    {
-      "repo": "Ideas",
-      "pr": 7,
-      "reason": "reader delta superseded; broad corpus/world/placement transition remains"
-    }
-  ],
+  "broad_holds": [],
   "rule": "Retire source carrier only after unique capability/evidence delta is exactly absorbed or explicitly retired; successor existence alone is insufficient.",
   "claim_ceiling": [
     "WORKING_ABSORPTION_GRAPH",
@@ -147,5 +133,10 @@
     "GLModel": 0,
     "Ideas": 0,
     "total": 9
-  }
+  },
+  "completed_broad_lineage": [
+    "DCP383 closed after PR411 exact semantic absorption plus reader-purpose successors",
+    "GLModel8 closed after PR22/23/24 bounded successor coverage; broad deletion not approved",
+    "Ideas7 closed after PR17/18 bounded successor coverage; broad deletion not approved"
+  ]
 }
