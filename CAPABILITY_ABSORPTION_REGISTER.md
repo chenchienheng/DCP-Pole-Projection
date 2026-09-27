@@ -6,11 +6,11 @@ Runtime: false
 Canon: false
 Authority: user-requested bounded PR/context reconciliation; not merge or deletion approval
 
-## Current continuation — reader repair and source-entry disposition
+## Continuation pointers and source-entry disposition
 
 Working review stays on existing #406 (`qinyi/kernel-integration-successor-20260927`); resolve its live head from the PR, not from a historical comparison row. The register on main may be an earlier projection: this branch register does not imply main adoption.
 
-The last directly read implementation evidence is bound to `f6a66622b6df7f6c03b624daf57072e66764589b`, run36306560711: exact-head job108584253034 and merge-candidate job108584253112 (checkout3b22a21f5913eb4441c2404be5ccaf722518d828) each passed8 surface+267 kernel tests. Both full logs were read in the reader-basis repair. This register-only revision reuses that evidence; it does not rerun or expand the proof. New artifact ZIPs were not independently downloaded in that repair.
+Earlier fixed reader-repair evidence is bound to `f6a66622b6df7f6c03b624daf57072e66764589b`, run36306560711: exact-head job108584253034 and merge-candidate job108584253112 (checkout3b22a21f5913eb4441c2404be5ccaf722518d828) each passed8 surface+267 kernel tests. Both full logs were read in the reader-basis repair. That register-only revision reused that evidence; it did not rerun or expand the proof. For later implementation evidence, resolve the ordinary continuation of the existing PR406 and its exact run/checkout bindings; this register does not keep a second mutable execution queue. New artifact ZIPs were not independently downloaded in that repair.
 
 That three-file repair replaces implicit filename-based reader eligibility with an explicit local manifest basis, rejects invalid/missing/escaping reader targets, and stops reporting an unobserved historical source branch. Local reader membership is not Native Current or authority. The 17 focused cases are included in267, not additional tests. Main remains f61bf2f2383f0520a8dc5f2f015cd0f9e98aa9ac at this review.
 
