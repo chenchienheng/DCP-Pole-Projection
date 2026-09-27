@@ -37,13 +37,6 @@ class ProposedDisposition(str, Enum):
     HOLD_UNKNOWN = "HOLD_UNKNOWN"
 
 
-_CURRENT_PATHS = {
-    "README.md",
-    "CURRENT-SURFACE-MANIFEST.json",
-    "PUBLIC-SURFACE-POLICY.md",
-    "STATUS.md",
-    "LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md",
-}
 _AUTHORITY_TERMS = {
     "master",
     "mother",
@@ -129,11 +122,37 @@ def classify_name_risks(
     return tuple(dict.fromkeys(risks)) or (NameRisk.NONE,)
 
 
-def classify_role(path: str) -> ArtifactRole:
+def _reader_path_set(paths: Iterable[str] | None) -> frozenset[str]:
+    """Validate caller-qualified repository-local reader paths, without doing I/O.
+
+    The caller must resolve an applicable manifest. This declaration does not
+    establish Native Current, external rights, runtime or semantic acceptance.
+    """
+    if paths is None:
+        return frozenset()
+    if isinstance(paths, (str, bytes)):
+        raise TypeError("current_reader_paths must be a collection, not a string")
+    result: set[str] = set()
+    for path in paths:
+        if not isinstance(path, str):
+            raise TypeError("reader paths must be strings")
+        parsed = PurePosixPath(path)
+        if (not path or path.strip() != path or parsed.is_absolute()
+                or ".." in parsed.parts or "\\" in path or ":" in path
+                or parsed.as_posix() != path or path == "."):
+            raise ValueError("reader paths must be canonical repository-relative paths")
+        result.add(path)
+    return frozenset(result)
+
+
+def classify_role(
+    path: str, *, current_reader_paths: Iterable[str] | None = None,
+) -> ArtifactRole:
+    """Return a bounded role hint; filenames alone never grant reader eligibility."""
     p = PurePosixPath(path)
     suffix = p.suffix.lower()
 
-    if path in _CURRENT_PATHS:
+    if path in _reader_path_set(current_reader_paths):
         return ArtifactRole.CURRENT_PROJECTION
     if path.startswith("dcp_kernel/") and suffix == ".py":
         return ArtifactRole.EXECUTABLE_CANDIDATE
@@ -162,16 +181,18 @@ def classify_role(path: str) -> ArtifactRole:
     return ArtifactRole.UNKNOWN
 
 
-def assess_artifact(path: str) -> ArtifactAssessment:
-    role = classify_role(path)
+def assess_artifact(
+    path: str, *, current_reader_paths: Iterable[str] | None = None,
+) -> ArtifactAssessment:
+    role = classify_role(path, current_reader_paths=current_reader_paths)
     risks = classify_name_risks(path, role)
     risky = risks != (NameRisk.NONE,)
 
     if role is ArtifactRole.CURRENT_PROJECTION:
         disposition = ProposedDisposition.KEEP_CURRENT_PROJECTION
-        ceiling = "DESCRIPTIVE_OR_MACHINE_CURRENT_PROJECTION"
+        ceiling = "CALLER_DECLARED_REPOSITORY_READER_NOT_NATIVE_ADMISSION"
         reader = True
-        reasons = ("BOUNDED_CURRENT_READER_ENTRY",)
+        reasons = ("EXPLICIT_REPOSITORY_READER_BASIS",)
     elif role is ArtifactRole.EXECUTABLE_CANDIDATE:
         disposition = ProposedDisposition.KEEP_EXECUTABLE_CANDIDATE
         ceiling = "EXECUTABLE_CANDIDATE"
@@ -229,9 +250,11 @@ def assess_artifact(path: str) -> ArtifactAssessment:
 
 
 def assess_paths(
-    paths: Iterable[str],
+    paths: Iterable[str], *, current_reader_paths: Iterable[str] | None = None,
 ) -> tuple[ArtifactAssessment, ...]:
+    # Materialize once: a one-shot iterator must not give different bases per file.
+    reader_paths = _reader_path_set(current_reader_paths)
     return tuple(
-        assess_artifact(path)
+        assess_artifact(path, current_reader_paths=reader_paths)
         for path in sorted(set(paths))
     )
