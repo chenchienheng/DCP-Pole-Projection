@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - ideas/6d-dispatch-projection-20260816
-      - qinyi/kernel-integration-successor-20260927
   pull_request:
     paths:
       - 'dcp_kernel/**'
