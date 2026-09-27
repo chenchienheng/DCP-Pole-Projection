@@ -51,7 +51,14 @@
     "current_main_based": true,
     "workflow_run_observed": false,
     "local_test_execution_observed": false,
-    "provider_ci_pass": false
+    "provider_ci_pass": false,
+    "provider_ci_entry_main": {
+      "pr": 410,
+      "merge_sha": "e775db43a218b07aaa8a9f5c911d800636658489",
+      "workflow": ".github/workflows/dcp-kernel-candidate.yml"
+    },
+    "reopen_after_ci_entry_run_observed": false,
+    "synchronize_retry_reason": "matched contracts/** evidence update after CI entry became available on main"
   },
   "required_before_merge_or_runtime_claim": [
     "execute full candidate test suite on this exact head or successor",
