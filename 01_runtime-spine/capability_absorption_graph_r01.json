@@ -6,20 +6,18 @@
       "source_pr": 392,
       "capability": "capability-based Issue/PR entry templates",
       "successors": [
-        404,
-        407
+        404
       ],
-      "main_sha": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
+      "main_sha": "1269d753746103212e2bc46d118e91c669c2efef",
       "source_state": "CLOSED_AFTER_EXACT_BLOB_ABSORPTION"
     },
     {
       "source_pr": 386,
       "capability": "independent CoreTri R2 DCP falsification evidence",
       "successors": [
-        405,
-        407
+        405
       ],
-      "main_sha": "26c70b58ddf12ec9e8ddb81445c97a624b126103",
+      "main_sha": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
       "source_state": "CLOSED_AFTER_EXACT_BLOB_ABSORPTION"
     },
     {
