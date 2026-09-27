@@ -17,7 +17,7 @@ Authority: bounded repository metabolism under current user authorization
 
 PR #406 — `qinyi/kernel-integration-successor-20260927`
 
-Current head at this register update: `723986878491c43055acd03319f3db28a20fcca1`.
+Current head at this register update: `eed476e1a1d59b43e341c3e98fd9584c1518656e`.
 
 Composition:
 - foundation: executable-only substrate from PR #324 (`dcp_kernel/`, `contracts/`, `fixtures/`, `tests/`, `tools/`, `pyproject.toml`);
@@ -28,10 +28,13 @@ Composition:
 
 Execution state:
 - current main contains `.github/workflows/dcp-kernel-candidate.yml`;
-- bounded synchronize retry on a matched `contracts/**` path has been issued;
-- exact-head workflow runs observed: 0;
-- local isolated execution could not fetch github.com because DNS/network resolution was unavailable;
-- therefore PR #406 remains DRAFT / HOLD_EXACT_HEAD_EXECUTION / NOT_PASS / NOT_RUNTIME.
+- pull_request synchronize was retried on matched paths and still produced 0 observed workflow runs;
+- a candidate-branch push-trigger probe was also attempted by temporarily adding the successor branch to the same read-only workflow; exact-head runs remained 0;
+- the temporary branch-specific trigger and no-op probe marker were then reverted, restoring workflow identity with main and clean mergeability;
+- local isolated execution again could not resolve github.com, so repository bytes were not obtained through that carrier;
+- Remote Desktop Commander currently reports no connected device, so no authorized workstation execution carrier is available from this chat;
+- Git tree readback for exact head is available through the GitHub connector and confirms the bounded executable surface is retrievable, but retrieval is not execution;
+- therefore PR #406 remains DRAFT / HOLD_EXACT_HEAD_EXECUTION / NOT_PASS / NOT_RUNTIME. Provider trigger effect and local execution are both independently unproven.
 
 ## Duplicate construction metabolized
 
