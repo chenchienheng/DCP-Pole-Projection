@@ -1,5 +1,10 @@
 # Discontinuity Register
 
+> Lifecycle: `HISTORICAL_REFERENCE`
+> Current authority: `false`
+> Runtime: `false`
+> Reader path: `REMOVED`
+
 > Initial discontinuity register for repository weaving.
 > This document does not treat every gap as a defect.
 > Some gaps are normal because the broader Xuanling / XLEN system is still being constructed.
@@ -38,9 +43,9 @@ These should be marked honestly, not guessed.
 
 | ID | Gap / Discontinuity | Type | Current Effect | Current Treatment | Status |
 |---|---|---|---|---|---|
-| D-001 | No durable GitHub bootstrap note existed before this session | Harmful Discontinuity | new sessions had higher re-anchor cost | remediated by `CHATGPT_GITHUB_BOOTSTRAP.md` | addressed |
-| D-002 | No single GitHub chain master map existed before this session | Harmful Discontinuity | GitHub role could collapse into flat repo view or vague concept view | remediated by `GITHUB_CHAIN_MASTER_MAP.md` | addressed |
-| D-003 | No initial corpus index existed before this session | Harmful Discontinuity | verified artifacts and gaps were not durably separated | remediated by `REPOSITORY_CORPUS_INDEX.md` | addressed |
+| D-001 | No durable repository re-entry note existed before this historical round | Historical discontinuity | new sessions had higher re-entry cost | superseded by the repository-local Manifest plus a bounded REENTRY_ONLY surface | historical |
+| D-002 | No bounded GitHub role map existed before this historical round | Historical discontinuity | GitHub role could collapse into a flat repository or privileged bone model | former master map retired from main; lineage remains in the existing re-entry archive index | historical |
+| D-003 | No initial corpus index existed before this historical round | Historical discontinuity | verified artifacts and gaps were not durably separated | corpus index retained for lineage/discovery only; it does not establish Current | historical |
 | D-004 | No role classification table existed before this session | Harmful Discontinuity | role drift risk across documents and sessions | remediated by `ROLE_CLASSIFICATION_TABLE.md` | addressed |
 | D-005 | Full historical corpus inventory not yet verified repo-wide | Ambiguous / Unverified Gap | cannot yet claim repository-wide weave completeness | requires full file tree or equivalent inventory source | addressed |
 | D-006 | 200+ historical documents not yet durably woven into one repository-wide index | Normal Construction Gap + Harmful Discontinuity | large body may exist, but cross-session continuity remains weak | continue with staged indexing and mapping | partially_addressed |

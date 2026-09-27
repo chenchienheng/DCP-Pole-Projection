@@ -42,7 +42,7 @@ The 5 Master Axes defining the repository constraints:
 Registers for tracing elements and dependencies:
 
 - `REPOSITORY_CORPUS_INDEX.md`
-- `UNIFIED_ARTIFACT_REGISTER.md`
+- `CURRENT-SURFACE-MANIFEST.json` (repository-local reader entry; affected surfaces require explicit re-admission)
 - `CLEANUP_QUEUE_REGISTER.md`
 - `NAMING_DRIFT_RESOLUTION_REGISTER.md`
 - `BRANCH_TOPOLOGY_AND_CLEANUP_REGISTER.md`
@@ -81,8 +81,9 @@ Merged execution traces (retained as structural anchors):
 - **Issue #43 / #44 duplicate state**: Issue #44 is recognized as the canonical
   master consolidation issue; Issue #43 is a duplicate and needs manual human
   closure.
-- Registers like `REPOSITORY_CORPUS_INDEX.md` and `UNIFIED_ARTIFACT_REGISTER.md`
-  have overlapping logic needing clear boundary separation.
+- Historical registers and corpus indexes had overlapping logic. They no longer
+  own reader order, Current state, or routing; use `CURRENT-SURFACE-MANIFEST.json`
+  and an explicitly re-admitted affected surface.
 
 ## 8. Stale Branch / PR / Issue References
 

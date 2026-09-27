@@ -54,8 +54,9 @@ Jules operates as a bounded execution node within the embedded `Qinyi-1` runtime
 window.
 
 ### 3.1 Mapping to Core Lanes
-- **Lane A:** Updates `UNIFIED_ARTIFACT_REGISTER.md` and
-  `REPOSITORY_CORPUS_INDEX.md`.
+- **Lane A:** Resolves repository-local routing through
+  `CURRENT-SURFACE-MANIFEST.json`, then returns only to an explicitly
+  re-admitted affected surface.
 - **Lane B:** Fixes cross-link drift within the 5 Master Axes.
 - **Lane C:** Normalizes naming and isolates legacy seeds.
 
