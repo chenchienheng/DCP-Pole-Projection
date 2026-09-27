@@ -40,13 +40,18 @@ permissions:
   contents: read
 
 jobs:
-  current-surfaces:
+  candidate-kernel:
     runs-on: ubuntu-latest
-    outputs:
-      candidate: ${{ steps.surface.outputs.candidate }}
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        checkout_scope: ${{ fromJSON(github.event_name == 'pull_request' && '["candidate-head", "merge-candidate"]' || '["candidate-head"]') }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.checkout_scope == 'candidate-head' && (github.event.pull_request.head.sha || github.sha) || github.sha }}
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -55,22 +60,12 @@ jobs:
         run: python -m unittest discover -s tools -p 'test_current_surfaces.py' -v
       - name: Check current pointers and qualify candidate surface
         id: surface
-        run: |
-          python tools/check_current_surfaces.py
-  candidate-kernel:
-    needs: current-surfaces
-    if: needs.current-surfaces.outputs.candidate == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+        run: python tools/check_current_surfaces.py
       - name: Compile Python
+        if: steps.surface.outputs.candidate == 'true'
         run: python -m compileall -q dcp_kernel tests tools
       - name: Parse machine contracts and fixtures
+        if: steps.surface.outputs.candidate == 'true'
         run: |
           python - <<'PY'
           import json
@@ -83,10 +78,13 @@ jobs:
                   print(path)
           PY
       - name: Run candidate tests
+        if: steps.surface.outputs.candidate == 'true'
         run: python -m unittest discover -s tests -p 'test*.py' -v
       - name: Produce bounded legacy caller census
-        run: python tools/census_legacy_references.py --output artifacts/reference-census.json
+        if: steps.surface.outputs.candidate == 'true'
+        run: python -m tools.census_legacy_references --output artifacts/reference-census.json
       - name: Validate withdrawal census evidence
+        if: steps.surface.outputs.candidate == 'true'
         run: |
           python - <<'PY'
           import json
@@ -121,9 +119,10 @@ jobs:
           assert 'RECLAIM_READY_IS_NEVER_INFERRED_BY_THIS_CENSUS' in boundaries
           PY
       - name: Upload bounded census evidence
+        if: steps.surface.outputs.candidate == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: dcp-reference-census
+          name: dcp-reference-census-${{ matrix.checkout_scope }}
           path: artifacts/reference-census.json
 
 # Passing this workflow proves only the declared bounded checks.
