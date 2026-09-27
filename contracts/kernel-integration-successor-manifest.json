@@ -58,7 +58,10 @@
       "workflow": ".github/workflows/dcp-kernel-candidate.yml"
     },
     "reopen_after_ci_entry_run_observed": false,
-    "synchronize_retry_reason": "matched contracts/** evidence update after CI entry became available on main"
+    "synchronize_retry_reason": "matched contracts/** evidence update after CI entry became available on main",
+    "current_main_observed_at_retry": "67838c3f9e4e3156432eed094a00679acfc68bd0",
+    "retry_trigger": "contracts/kernel-integration-successor-manifest.json bounded evidence update",
+    "retry_at": "2026-09-27T07:54+08:00"
   },
   "required_before_merge_or_runtime_claim": [
     "execute full candidate test suite on this exact head or successor",
