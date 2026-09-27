@@ -6,7 +6,67 @@ Runtime: false
 Canon: false
 Authority: user-requested bounded PR/context reconciliation; not merge or deletion approval
 
-## What this register now covers
+## Current continuation — reader repair and source-entry disposition
+
+Working review stays on existing #406 (`qinyi/kernel-integration-successor-20260927`); resolve its live head from the PR, not from a historical comparison row. The register on main may be an earlier projection: this branch register does not imply main adoption.
+
+The last directly read implementation evidence is bound to `f6a66622b6df7f6c03b624daf57072e66764589b`, run36306560711: exact-head job108584253034 and merge-candidate job108584253112 (checkout3b22a21f5913eb4441c2404be5ccaf722518d828) each passed8 surface+267 kernel tests. Both full logs were read in the reader-basis repair. This register-only revision reuses that evidence; it does not rerun or expand the proof. New artifact ZIPs were not independently downloaded in that repair.
+
+That three-file repair replaces implicit filename-based reader eligibility with an explicit local manifest basis, rejects invalid/missing/escaping reader targets, and stops reporting an unobserved historical source branch. Local reader membership is not Native Current or authority. The 17 focused cases are included in267, not additional tests. Main remains f61bf2f2383f0520a8dc5f2f015cd0f9e98aa9ac at this review.
+
+### #324 missing37: ordinary-entry disposition, not37 missing capabilities
+
+Source remains `00999341ff600a65ab3de641e4ce5615d6e9690d`. All37 complete added-file bodies were reconstructed from the preserved baseline patches and matched their source Git blob hashes. Their declared purpose was compared with the current-main reader manifest (blob534de159c64843bdfe333c6808500912e0c03df0), whose six entries do not nominate these documents.
+
+| Group | Count | Disposition in this review | Still not established |
+|---|---:|---|---|
+| Historical, metabolized or lineage-only specimens |34|Retain exact source/Git lineage; do not install as ordinary live documents merely because the target path is absent|Full primitive-by-primitive successor equivalence, unique-evidence loss and deletion eligibility|
+| SIX_DIMENSION_REPOSITORY_PROJECTION.md |1|Optional compatibility reference only; no compulsory six-axis form or reader dependency|Requalification for any actual caller; its nominal lifecycle successor is not an admitted target|
+| LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md |1|Do not import unchanged as Current: section2 calls the chain fixed, section12 fixes cross-pole sequencing/authority descriptions; preserve useful identity, evidence, return, recovery and affected-scope constraints without universalizing that sequence|Need-relative applicability and exact existing successor coverage; no blanket rejection of its useful design|
+| LEGACY-DESIGN-DISPOSITION.json |1|Do not import unchanged: current_successor_kernel/current_projection_candidate and completed_examples describe the source proposal, not verified target adoption; keep retention/reclaim guards|Target-bound successor/lifecycle evidence; it cannot approve renames, deletion or source closure|
+
+Historical specimens also contain nominal successor references, including the differently named `DCP_LIFECYCLE_DEPENDENCY_KERNEL.md`. Treat those as source-era assertions, not an instruction to recreate either filename. Re-entry requires a concrete purpose and a qualified current target. This disposition closes the indiscriminate37-file import question, NOT the entire180-path semantic review.
+
+The34-source set is identified exactly below; no source file is changed, deleted or newly activated:
+
+- `00_mother-law/EXISTENCE_IDENTITY_BOUNDARY_SPECIMEN.md`
+- `01_runtime-spine/BOUNDED_READER_PRIORITY_SPECIMEN.md`
+- `01_runtime-spine/DELTA_TRIGGER_LINEAGE_SPECIMEN.md`
+- `01_runtime-spine/HISTORICAL_WRITE_BOUNDARY_SPECIMEN.md`
+- `02_runtime-ops/TASK_TRACE_LINEAGE_SPECIMEN.md`
+- `03_field-governance/CAPABILITY_BOUNDARY_CARD_SPECIMEN.md`
+- `03_field-governance/DELEGATION_RETURN_LINEAGE_SPECIMEN.md`
+- `03_field-governance/LOCAL_SCOPE_EFFECT_LINEAGE_SPECIMEN.md`
+- `03_field-governance/SIGNAL_CAPACITY_BOUNDARY_SPECIMEN.md`
+- `03_field-governance/SOURCE_DEPENDENCY_VIEW_PRIMITIVE_SPECIMEN.md`
+- `03_field-governance/TOOL_CAPABILITY_ROLE_LINEAGE_SPECIMEN.md`
+- `04_adapter-layer/SOURCE_POINTER_TRACEABILITY_SPECIMEN.md`
+- `05_topology/TOPOLOGY_LINEAGE_SPECIMEN.md`
+- `ARTIFACT_LINEAGE_DISCOVERY_SPECIMEN.md`
+- `BOUNDARY_GATE_LINEAGE_SPECIMEN.md`
+- `CORETRI_RECONCILIATION_LINEAGE_SPECIMEN.md`
+- `EXECUTION_NODE_LINEAGE_SPECIMEN.md`
+- `EXTERNAL_ABSORPTION_LINEAGE_SPECIMEN.md`
+- `HISTORICAL_REVIEW_DECISION_SPECIMEN.md`
+- `LEGACY_CARRIER_RELAY_SPECIMEN.md`
+- `METABOLIZED-PRIMITIVES.md`
+- `OPERATIONAL_DEPENDENCY_LINEAGE_SPECIMEN.md`
+- `PARALLEL_DEPENDENCY_LINEAGE_SPECIMEN.md`
+- `PLACEMENT_CONTEXT_LINEAGE_SPECIMEN.md`
+- `REVIEW_EVIDENCE_LINEAGE_SPECIMEN.md`
+- `TASK_EFFECT_RETURN_LINEAGE_SPECIMEN.md`
+- `TEMPORAL_STATE_LINEAGE_SPECIMEN.md`
+- `WORK_METADATA_LINEAGE_SPECIMEN.md`
+- `WORLD_RELATION_LINEAGE_SPECIMEN.md`
+- `XUANLING_RELATIONSHIP_LINEAGE_SPECIMEN.md`
+- `docs/xuanling/BOUNDED_OPERATION_FAILURE_LINEAGE_SPECIMEN.md`
+- `docs/xuanling/CAPABILITY_ROLE_BOUNDARY_LINEAGE_SPECIMEN.md`
+- `docs/xuanling/DEPENDENCY_CONTINUITY_LINEAGE_SPECIMEN.md`
+- `docs/xuanling/HISTORICAL_RECEIVER_REVIEW_MODEL_SPECIMEN.md`
+
+Next work is the87 differing paths, beginning with the current-facing task templates, AGENTS/readiness/bootstrap entries and corpus navigation. The workflow difference already reconciled through #419 is not a fresh integration blocker. Compare actual current bytes before proposing a change; the3 exact and53 unapplied deletion proposals retain their separate evidence/authority scope. Do not subtract37 from180 and call the remainder or the37 absorbed. Review/explicit acceptance, real caller effects and repeatable recovery remain separate.
+
+## Frozen all-PR acquisition baseline
 
 The previous register's blanket zero-execution queue was stale. This revision binds every open PR to the same observation window and its repository's pinned main, while retaining historical source bases, different purposes, derived changes, and unresolved non-executable content. It is a review projection, not central truth, Native Current, a permanent topology or a universal integration order.
 
@@ -22,7 +82,7 @@ Total: 244 PR records; 11 open PRs. Historical titles/bodies/status/ref metadata
 
 Evidence: [run36298224235](https://github.com/chenchienheng/DCP-Pole-Projection/actions/runs/36298224235), [artifact10924732409](https://github.com/chenchienheng/DCP-Pole-Projection/actions/runs/36298224235/artifacts/10924732409). ZIP716052bytes, independently verified SHA256 `530ec27e44aac49aaf106f53379ba814a9087471eb9184ef36011ae0f30261b8`. `baseline.json` preserves the complete pre-edit PR bodies, pinned source/main relations, patches, policy contents and request hashes. Artifact retention is finite; retain the exported archive for long-term recovery.
 
-## Every open PR, classified by purpose rather than PR number
+## Open-PR relations at the frozen acquisition baseline
 
 DCP selected comparison candidate: existing #406 at audited head `282bf789f7be55d3f4b8ecaa07895ccb1b33d8fd`. Later register/cleanup revisions must not retroactively alter this snapshot.
 
@@ -40,13 +100,13 @@ DCP selected comparison candidate: existing #406 at audited head `282bf789f7be55
 | DCP #419 | Current-surface and kernel-present/absent qualification source | 2exact; workflow differs only after the temporary inventory extension | Preserve both routing cases; cleanup restores source workflow; acceptance/lifecycle separate |
 | GLModel #25 | Viewer claim/load-error repair candidate | Own main:2different+1new | Its own acceptance/browser/use scope; never substitute DCP tests |
 
-## #324: the missing scope split
+## #324: frozen source-to-target scope split
 
 Source #324 head: `00999341ff600a65ab3de641e4ce5615d6e9690d`. Historical base `ba744cb3c385782ee4873f1764850f27d19f3f8d` is not present main.
 
-Selected executable subset: all127 paths exist in #406; 118 exact and9 derived. Nine differences: dcp_kernel/__init__.py, carrier_binding.py, consequence.py, fixtures.py, platform.py; tests/test_carrier_binding.py, test_consequence.py, test_current_surface_alignment.py, test_gui_lu_fixture.py. Earlier122/122 non-overlay coverage belonged to an earlier source/target scope; it is not the current whole-source count.
+Selected core-prefix subset at comparison head282bf: all127 paths exist; 118 exact and9 derived. These byte counts are frozen, not a post-repair recount. Nine differences: dcp_kernel/__init__.py, carrier_binding.py, consequence.py, fixtures.py, platform.py; tests/test_carrier_binding.py, test_consequence.py, test_current_surface_alignment.py, test_gui_lu_fixture.py. Earlier122/122 non-overlay coverage belonged to an earlier source/target scope; it is not the current whole-source count.
 
-Non-executable/broad subset: 180 paths = 3exact +87different +37absent by path +53proposed deletions not applied. The37 include the candidate lifecycle kernel document, legacy-design disposition, and historical primitive/lineage specimens. The53 retained source paths are not authorized for deletion. Different or absent bytes do not establish a material gap until purpose, newer successors, losses and applicability are reviewed.
+Outside that selected core-prefix subset: 180 paths = 3exact +87different +37absent by path +53proposed deletions not applied. The37 include the candidate lifecycle kernel document, legacy-design disposition, and historical primitive/lineage specimens. The53 retained source paths are not authorized for deletion. Different or absent bytes do not establish a material gap until purpose, newer successors, losses and applicability are reviewed.
 
 Priority within this subset: assess lifecycle/design-disposition content against current-main Need-relative/carrier-neutral boundaries before any import. Historical fixed lifecycle/role/pole/order formulations must not silently become current instructions. Lineage specimens labelled non-current need not all be installed as live documents. Preserve their original proposals and denied/deferred deletion evidence; do not declare the180 absorbed merely because tests pass.
 
@@ -69,9 +129,9 @@ No whole #324 execution, all-repository semantic equivalence, actual main merge,
 - Public entry progression #401/#402/#403, GLModel#19/#20/#21, Ideas#14/#15/#16 remains separate from executable adoption.
 - #410 CI entry, #412 register and #415–#418 execution/static/coverage records are time-bound evidence. Their old zero-run or selected-source counts do not override later exact evidence.
 
-## Temporary audit cleanup and recovery
+## Completed temporary audit cleanup and recovery
 
-The added network inventory is not a standing scheduler or a required kernel dependency. This revision restores `.github/workflows/dcp-kernel-candidate.yml` to exact #419 source blob `30d2345eb5470231438faa0ec12000cb86284955`, removing the temporary baseline acquisition/upload steps. The reusable GET-only `tools/snapshot_pr_baseline.py` remains on demand; it is not auto-invoked by the restored workflow. Existing8surface/255kernel verification, matrix, permissions and census remain.
+The added network inventory is not a standing scheduler or a required kernel dependency. The prior6d02da3 revision restored `.github/workflows/dcp-kernel-candidate.yml` to exact #419 source blob `30d2345eb5470231438faa0ec12000cb86284955`, removing the temporary baseline acquisition/upload steps. The reusable GET-only `tools/snapshot_pr_baseline.py` remains on demand; it is not auto-invoked by the restored workflow. The matrix, permissions and census remain. The later reader-basis repair has8surface/267kernel evidence at the fixed implementation head above.
 
 The failed first audit run36298026708 is preserved: its URL allowlist rejected GitHub's numeric-repository pagination form, while existing kernel steps succeeded. The bounded fix allowed only the three already-verified repository IDs; no credentials, private repositories or write endpoints were added.
 
