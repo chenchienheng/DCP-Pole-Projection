@@ -430,38 +430,49 @@
     "rule": "Do not retire an open PR merely because one visible purpose was superseded; require all unique capability/evidence deltas to be absorbed or explicitly retired."
   },
   "capability_absorption_batch": {
-    "observed_at": "2026-09-27T07:59+08:00",
+    "observed_at": "2026-09-27T08:09+08:00",
     "graph": "01_runtime-spine/capability_absorption_graph_r01.json",
     "absorbed_and_retired": [
       {
         "source_pr": 392,
-        "effect": "3 entry-template blobs exact on main",
-        "state": "CLOSED_UNMERGED_AFTER_SUCCESSOR_ABSORPTION"
+        "canonical_successor": 404,
+        "state": "CLOSED_UNMERGED_AFTER_EXACT_BLOB_ABSORPTION"
       },
       {
         "source_pr": 386,
-        "effect": "falsification evidence blob exact on main",
-        "state": "CLOSED_UNMERGED_AFTER_SUCCESSOR_ABSORPTION"
+        "canonical_successor": 405,
+        "state": "CLOSED_UNMERGED_AFTER_EXACT_BLOB_ABSORPTION"
       }
     ],
-    "integration_candidate": {
-      "pr": 409,
-      "files": 136,
-      "head": "3f29645e6d52bc6827c12c915f5e564fd3cb936a",
-      "state": "HOLD_EXECUTION_EVIDENCE"
+    "canonical_kernel_successor": {
+      "pr": 406,
+      "head": "2a38f87449583d93fff6c498408a1cafc580261a",
+      "state": "DRAFT_OPEN_HOLD_EXECUTION",
+      "mergeable": true,
+      "mergeable_state": "clean"
     },
     "ci_entry": {
       "pr": 410,
       "main_sha": "e775db43a218b07aaa8a9f5c911d800636658489",
-      "effect": "provider run not observed"
+      "effect": "AVAILABLE_ON_MAIN_PROVIDER_RUN_NOT_OBSERVED"
     },
-    "open_pr_count_after_retirement": {
+    "superseded_duplicate_successors": [
+      {
+        "pr": 408,
+        "state": "CLOSED_UNMERGED"
+      },
+      {
+        "pr": 409,
+        "state": "CLOSED_UNMERGED"
+      }
+    ],
+    "open_pr_count": {
       "DCP": 10,
       "GLModel": 1,
       "Ideas": 1,
       "total": 12
     },
-    "duplicate_absorption_note": "PR407 re-absorbed content already merged through PR404/405; no capability harm observed, but future batch writer must read current main before opening successor to avoid duplicate carrier churn."
+    "duplicate_absorption_note": "PR407 is merged no-op duplicate after PR404/405; preserve as race/metabolism evidence."
   },
   "kernel_integration_successor": {
     "pr": 406,
