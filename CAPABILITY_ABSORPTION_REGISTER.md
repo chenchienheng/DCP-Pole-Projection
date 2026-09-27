@@ -69,3 +69,18 @@ PR #391 remains a separate World/NFN executable candidate. Kernel absorption doe
 - PASS != Runtime/Canon/Native adoption;
 - duplicate successors must be reconciled to one preferred continuation;
 - local blocker holds the affected edge only.
+
+
+## Exact-tree static qualification — PR #406 @ eed476e1a1d59b43e341c3e98fd9584c1518656e
+
+This narrows the execution unknown; it does not substitute for Python test execution.
+
+- GitHub recursive tree readback: 138 bounded executable files retrievable.
+- JSON parse qualification: 23/23 contract JSON files valid.
+- JSON parse qualification: 25/25 fixture JSON files valid.
+- implementation-manifest references: 29/29 declared kernel modules present; 20/20 declared machine contracts present.
+- package export surface: 29 relative module imports in `dcp_kernel/__init__.py`; 29/29 target modules present.
+- provider workflow run: still unobserved.
+- Python compile/unittest: still unobserved because available local carrier cannot resolve github.com and no Remote Desktop device is connected.
+
+Disposition: `STATIC_STRUCTURE_QUALIFIED / HOLD_PYTHON_EXECUTION / NOT_PASS / NOT_RUNTIME`.
