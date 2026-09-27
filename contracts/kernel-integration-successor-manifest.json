@@ -70,5 +70,31 @@
     "confirm no leaf regression from omitted/overridden exports",
     "explicit merge acceptance"
   ],
-  "claim_ceiling": "INTEGRATED_EXECUTABLE_CANDIDATE_NOT_PASS_NOT_RUNTIME"
+  "claim_ceiling": "INTEGRATED_EXECUTABLE_CANDIDATE_NOT_PASS_NOT_RUNTIME",
+  "successor_coverage_readback": {
+    "observed_at": "2026-09-27T09:27+08:00",
+    "foundation_pr324": {
+      "selected_source_blobs": 127,
+      "non_overlay_blobs": 122,
+      "non_overlay_exact_in_successor": 122,
+      "missing": 0,
+      "differing_non_overlay": 0,
+      "overlay_paths_replaced_by_leaf_deltas": 5
+    },
+    "leaf_deltas": {
+      "pr384": "4/4 exact blobs",
+      "pr387": "1/1 exact blob",
+      "pr393": "2/2 exact blobs",
+      "pr395": "4/4 exact blobs",
+      "pr396": "2/2 exact blobs; whole-file __init__ intentionally excluded",
+      "pr397": "2/2 unique vision-provider blobs; duplicate reality_intake reused from PR396"
+    },
+    "coverage_disposition": "SELECTED_SOURCE_BLOB_COVERAGE_PROVEN",
+    "remaining_integration_hold": [
+      "exact-head Python execution",
+      "reconcile any execution failures",
+      "explicit integration acceptance"
+    ],
+    "note": "Blob coverage proves selected successor carriage, not execution/PASS/Runtime."
+  }
 }
