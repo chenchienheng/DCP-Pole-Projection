@@ -85,6 +85,10 @@ Keep historical records accurate and visibly scoped to their event/version; reco
 
 These rules do not redefine product identity, widen access, override another Native owner's judgment, or authorize runtime conversion, merge, or deployment. The Not Allowed rules remain in force.
 
+## Deliverable Continuity
+
+Use the original authorized deliverable and its acceptance conditions as the unit of completion. For each increment, state which part of that deliverable becomes usable, reusable, or recoverable, and what remains unproven or blocked. Reuse still-applicable accepted results and suitable existing capabilities within the granted scope and authority; recheck only affected assumptions and dependencies. Changed-file counts, test counts, saved settings, or an analysis map alone do not establish the delivered effect. A broad domain inventory is reference material, not a requirement to reload, re-audit, or rebuild every domain before proceeding.
+
 ## Local Blockers and Evidence
 
 A blocker holds only actions that depend on it. Continue already-authorized independent work; do not widen scope or replace a required approval to avoid a blocker.
