@@ -3,8 +3,11 @@ from __future__ import annotations
 import argparse
 import json
 import hashlib
+import os
+import stat
 from collections import Counter, defaultdict
 from pathlib import Path
+from typing import Iterable
 
 from dcp_kernel.reference_census import DependencySignal, scan_text_map
 from tools.check_current_surfaces import read_manifest_basis
@@ -30,26 +33,118 @@ FAMILIES = (
 SKIP_DIRS = {".git", ".venv", "venv", "node_modules", "__pycache__", "artifacts"}
 
 
-def collect_text_files(root: Path) -> dict[str, str]:
+def collect_text_snapshot(
+    root: Path, *, excluded_paths: Iterable[Path] = (),
+) -> tuple[dict[str, str], dict[str, object]]:
+    """Collect a bounded local snapshot, exposing rather than hiding gaps.
+
+    Exclusions are relative to the selected root, not its parent directory
+    names. Symlink files/directories are not followed. This is not an atomic
+    filesystem snapshot, a sandbox, or proof against adversarial directory
+    replacement while scanning.
+    """
+    root = root.resolve()
+    excluded = {
+        Path(os.path.abspath(path if path.is_absolute() else root / path))
+        for path in map(Path, excluded_paths)
+    }
     result: dict[str, str] = {}
-    for path in root.rglob("*"):
-        if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
-            continue
-        if any(part in SKIP_DIRS for part in path.parts):
-            continue
-        rel = path.relative_to(root).as_posix()
+    gaps: list[dict[str, str]] = []
+    policy_skipped: list[str] = []
+    output_skipped = sorted(path.relative_to(root).as_posix()
+                            for path in excluded if path.is_relative_to(root))
+
+    def record_gap(path: Path, reason: str) -> None:
+        # Report only paths in the selected root; never copy a link target or
+        # exception message that might reveal an external filesystem location.
         try:
-            result[rel] = path.read_bytes().decode("utf-8")
-        except UnicodeDecodeError:
-            continue
-    return result
+            rel = path.relative_to(root).as_posix()
+        except ValueError:
+            rel = "."
+        gaps.append({"path": rel, "reason": reason})
+
+    def walk_error(error: OSError) -> None:
+        record_gap(Path(error.filename) if error.filename else root,
+                   "DIRECTORY_READ_ERROR")
+
+    if not root.is_dir():
+        record_gap(root, "ROOT_NOT_DIRECTORY")
+    else:
+        for directory, dirnames, filenames in os.walk(
+                root, topdown=True, onerror=walk_error, followlinks=False):
+            directory = Path(directory)
+            descend = []
+            for name in sorted(dirnames):
+                path = directory / name
+                if name in SKIP_DIRS:
+                    policy_skipped.append(path.relative_to(root).as_posix())
+                elif path.is_symlink():
+                    record_gap(path, "SYMLINK_DIRECTORY_NOT_SCANNED")
+                else:
+                    descend.append(name)
+            dirnames[:] = descend
+            for name in sorted(filenames):
+                path = directory / name
+                if path.suffix.lower() not in TEXT_SUFFIXES:
+                    continue
+                rel = path.relative_to(root).as_posix()
+                if path in excluded:
+                    continue
+                try:
+                    if path.is_symlink():
+                        record_gap(path, "SYMLINK_FILE_NOT_SCANNED")
+                        continue
+                    if not path.resolve(strict=True).is_relative_to(root):
+                        record_gap(path, "OUTSIDE_SELECTED_ROOT")
+                        continue
+                    if not stat.S_ISREG(path.stat().st_mode):
+                        record_gap(path, "NON_REGULAR_TEXT_NOT_SCANNED")
+                        continue
+                    # O_NOFOLLOW also rejects a last-component symlink swap on
+                    # platforms that support it; no global isolation is implied.
+                    descriptor = os.open(path, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
+                    with os.fdopen(descriptor, "rb") as stream:
+                        if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+                            record_gap(path, "NON_REGULAR_TEXT_NOT_SCANNED")
+                            continue
+                        raw = stream.read()
+                    result[rel] = raw.decode("utf-8")
+                except UnicodeDecodeError:
+                    record_gap(path, "NON_UTF8_TEXT_NOT_SCANNED")
+                except (OSError, RuntimeError):
+                    record_gap(path, "TEXT_READ_ERROR")
+
+    return result, {
+        "scope": "SELECTED_LOCAL_TEXT_POLICY_NOT_ATOMIC_OR_RUNTIME",
+        "complete_within_policy": not gaps,
+        "gaps": sorted(gaps, key=lambda item: (item["path"], item["reason"])),
+        "policy_excluded_directories": sorted(policy_skipped),
+        "explicit_output_exclusions": sorted(output_skipped),
+    }
 
 
-def build_payload(root: Path) -> dict[str, object]:
-    files = collect_text_files(root)
+def collect_text_files(root: Path) -> dict[str, str]:
+    """Compatibility view; absence decisions must use build_payload coverage."""
+    files, _coverage = collect_text_snapshot(root)
+    return files
+
+
+def build_payload(root: Path, *, excluded_paths: Iterable[Path] = ()) -> dict[str, object]:
+    root = root.resolve()
+    files, collection = collect_text_snapshot(root, excluded_paths=excluded_paths)
     _, readers, reader_basis = read_manifest_basis(
         root, Path("CURRENT-SURFACE-MANIFEST.json"))
     basis_resolved = reader_basis["status"] == "LOCAL_DECLARATION_VALID_NOT_NATIVE_ADMISSION"
+    missing_readers = sorted(readers.difference(files))
+    manifest_text = files.get(reader_basis.get("manifest"))
+    manifest_matches_snapshot = (
+        basis_resolved and manifest_text is not None
+        and hashlib.sha256(manifest_text.encode("utf-8")).hexdigest() == reader_basis["sha256"]
+    )
+    negative_evidence_eligible = (
+        basis_resolved and collection["complete_within_policy"]
+        and not missing_readers and manifest_matches_snapshot
+    )
     observations = scan_text_map(files, FAMILIES, current_reader_paths=readers)
     source_files = [
         {"path": path, "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest()}
@@ -73,6 +168,7 @@ def build_payload(root: Path) -> dict[str, object]:
                 "classification": classification,
                 "dependency_signal": dependency_signal,
                 "excerpt": item.excerpt,
+                "matched_line_numbers": list(item.matched_line_numbers),
             }
         )
 
@@ -100,9 +196,9 @@ def build_payload(root: Path) -> dict[str, object]:
             "unknown_hold_count": unknown,
             "rebuild_relevant_reference_count": rebuild_relevant,
             "wake_routing_relevant_reference_count": wake_relevant,
-            "caller_absence_on_scanned_text_surface": basis_resolved and live == 0 and unknown == 0,
-            "rebuild_withdrawal_candidate_on_scanned_text_surface": basis_resolved and rebuild_relevant == 0,
-            "wake_routing_withdrawal_candidate_on_scanned_text_surface": basis_resolved and wake_relevant == 0,
+            "caller_absence_on_scanned_text_surface": negative_evidence_eligible and live == 0 and unknown == 0,
+            "rebuild_withdrawal_candidate_on_scanned_text_surface": negative_evidence_eligible and rebuild_relevant == 0,
+            "wake_routing_withdrawal_candidate_on_scanned_text_surface": negative_evidence_eligible and wake_relevant == 0,
             "reclaim_ready": False,
         }
 
@@ -114,6 +210,10 @@ def build_payload(root: Path) -> dict[str, object]:
         "reader_basis": reader_basis,
         "source_snapshot": {
             "scope": "COLLECTED_UTF8_TEXT_ONLY_NOT_GIT_OR_RUNTIME_VERIFICATION",
+            "collection": collection,
+            "missing_declared_readers": missing_readers,
+            "manifest_matches_snapshot": manifest_matches_snapshot,
+            "negative_evidence_eligible": negative_evidence_eligible,
             "file_count": len(source_files),
             "manifest_of_hashes_sha256": source_digest,
             "files": source_files,
@@ -127,6 +227,9 @@ def build_payload(root: Path) -> dict[str, object]:
             "UNRESOLVED_READER_BASIS_CANNOT_PROVE_ABSENCE_OR_WITHDRAWAL",
             "CENSUS_IMPLEMENTATION_REFERENCES_ARE_AUDIT_NOT_LIVE_CALLERS",
             "SOURCE_SNAPSHOT_BINDS_SCANNED_TEXT_NOT_ATOMIC_GIT_STATE",
+            "INCOMPLETE_TEXT_OR_READER_COVERAGE_CANNOT_PROVE_ABSENCE_OR_WITHDRAWAL",
+            "SYMLINKS_NOT_FOLLOWED_NO_SANDBOX_OR_ADVERSARIAL_RACE_PROOF",
+            "DEPENDENCY_SIGNAL_AGGREGATES_ALL_MATCHING_LINES_NOT_ONLY_DISPLAY_EXCERPT",
             "AUDIT_REFERENCE_IS_NOT_LIVE_CALLER",
             "UNKNOWN_REFERENCE_IS_HOLD",
             "KEYWORD_RELEVANCE_IS_REVIEW_SIGNAL_NOT_PROVEN_OPERATIONAL_DEPENDENCY",
@@ -136,6 +239,7 @@ def build_payload(root: Path) -> dict[str, object]:
             "RECLAIM_READY_IS_NEVER_INFERRED_BY_THIS_CENSUS",
         ],
         "required_followup": [
+            "resolve reported text collection and declared-reader coverage gaps",
             "review live and unknown observations",
             "review rebuild/wake relevant observations",
             "confirm non-text/runtime/generated dependencies where applicable",
@@ -153,7 +257,9 @@ def main() -> int:
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parents[1]
-    payload = build_payload(root)
+    # The explicitly selected output is a result, not another input on rerun.
+    output = args.output.absolute() if args.output is not None else None
+    payload = build_payload(root, excluded_paths=(output,) if output is not None else ())
     rendered = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
     if args.output is None:
         print(rendered, end="")

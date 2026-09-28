@@ -4,6 +4,11 @@ import unittest
 import json
 from pathlib import Path
 import tempfile
+import contextlib
+import io
+import shutil
+import sys
+from unittest import mock
 
 from dcp_kernel.reference_census import (
     DependencySignal,
@@ -236,6 +241,180 @@ class CensusReaderIntakeTests(unittest.TestCase):
             self.assertEqual(summary["audit_reference_count"], 1)
             self.assertEqual(summary["live_caller_count"], 0)
             self.assertFalse(summary["reclaim_ready"])
+
+
+
+
+class CensusSnapshotBoundaryTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.outer = Path(self.temp.name)
+        self.root = self.outer / "repo"
+        self.root.mkdir()
+        (self.root / "reader.md").write_text("03_field-governance/ historical mention\n", encoding="utf-8")
+        (self.root / "CURRENT-SURFACE-MANIFEST.json").write_text(
+            json.dumps({"reader_priority": ["reader.md"]}), encoding="utf-8")
+
+    def assert_no_negative_claim(self, payload) -> None:
+        for summary in payload["summary"].values():
+            for key in ("caller_absence_on_scanned_text_surface",
+                        "rebuild_withdrawal_candidate_on_scanned_text_surface",
+                        "wake_routing_withdrawal_candidate_on_scanned_text_surface",
+                        "reclaim_ready"):
+                self.assertFalse(summary[key], key)
+
+    def test_parent_names_cannot_hide_selected_repository(self) -> None:
+        from tools.census_legacy_references import SKIP_DIRS, build_payload
+        expected = build_payload(self.root)
+        for ancestor in sorted(SKIP_DIRS):
+            with self.subTest(ancestor=ancestor):
+                relocated = self.outer / ancestor / "copy"
+                shutil.copytree(self.root, relocated)
+                actual = build_payload(relocated)
+                self.assertEqual(expected, actual)
+
+    def test_declared_reader_inside_excluded_directory_cannot_prove_absence(self) -> None:
+        from tools.census_legacy_references import build_payload
+        (self.root / "artifacts").mkdir()
+        (self.root / "artifacts" / "reader.md").write_text("01_runtime-spine/", encoding="utf-8")
+        (self.root / "CURRENT-SURFACE-MANIFEST.json").write_text(
+            json.dumps({"reader_priority": ["artifacts/reader.md"]}), encoding="utf-8")
+        payload = build_payload(self.root)
+        self.assertEqual(payload["source_snapshot"]["missing_declared_readers"], ["artifacts/reader.md"])
+        self.assert_no_negative_claim(payload)
+
+    def test_non_text_declared_reader_is_reported_not_treated_as_scanned(self) -> None:
+        from tools.census_legacy_references import build_payload
+        (self.root / "reader.bin").write_bytes(b"01_runtime-spine/")
+        (self.root / "CURRENT-SURFACE-MANIFEST.json").write_text(
+            json.dumps({"reader_priority": ["reader.bin"]}), encoding="utf-8")
+        payload = build_payload(self.root)
+        self.assertEqual(payload["source_snapshot"]["missing_declared_readers"], ["reader.bin"])
+        self.assert_no_negative_claim(payload)
+
+    def test_symlink_file_never_imports_outside_content(self) -> None:
+        from tools.census_legacy_references import build_payload
+        sentinel = "SYNTHETIC_OUTSIDE_CONTENT 01_runtime-spine/"
+        outside = self.outer / "outside.md"
+        outside.write_text(sentinel, encoding="utf-8")
+        (self.root / "linked.md").symlink_to(outside)
+        payload = build_payload(self.root)
+        self.assertNotIn(sentinel, json.dumps(payload))
+        self.assertNotIn(str(outside), json.dumps(payload))
+        self.assertIn({"path": "linked.md", "reason": "SYMLINK_FILE_NOT_SCANNED"},
+                      payload["source_snapshot"]["collection"]["gaps"])
+        self.assert_no_negative_claim(payload)
+
+    def test_symlink_directory_gap_is_visible_without_following_it(self) -> None:
+        from tools.census_legacy_references import build_payload
+        outside = self.outer / "outside"
+        outside.mkdir()
+        (outside / "private.md").write_text("SYNTHETIC_DIRECTORY_SENTINEL 00_meta/", encoding="utf-8")
+        (self.root / "linked_dir").symlink_to(outside, target_is_directory=True)
+        payload = build_payload(self.root)
+        self.assertNotIn("SYNTHETIC_DIRECTORY_SENTINEL", json.dumps(payload))
+        self.assertIn({"path": "linked_dir", "reason": "SYMLINK_DIRECTORY_NOT_SCANNED"},
+                      payload["source_snapshot"]["collection"]["gaps"])
+        self.assert_no_negative_claim(payload)
+
+    def test_internal_symlink_remains_an_explicit_unscanned_alias(self) -> None:
+        from tools.census_legacy_references import build_payload
+        (self.root / "alias.md").symlink_to(self.root / "reader.md")
+        payload = build_payload(self.root)
+        paths = {item["path"] for item in payload["source_snapshot"]["files"]}
+        self.assertIn("reader.md", paths)
+        self.assertNotIn("alias.md", paths)
+        self.assert_no_negative_claim(payload)
+
+    def test_undecodable_text_blocks_absence_but_keeps_other_observations(self) -> None:
+        from tools.census_legacy_references import build_payload
+        (self.root / "bad.md").write_bytes(b"\xff 01_runtime-spine/")
+        payload = build_payload(self.root)
+        self.assertGreater(payload["summary"]["03_field-governance"]["live_caller_count"], 0)
+        self.assertIn({"path": "bad.md", "reason": "NON_UTF8_TEXT_NOT_SCANNED"},
+                      payload["source_snapshot"]["collection"]["gaps"])
+        self.assert_no_negative_claim(payload)
+
+    def test_read_error_is_scoped_and_does_not_erase_other_sources(self) -> None:
+        from tools import census_legacy_references as module
+        path = self.root / "unreadable.md"
+        path.write_text("01_runtime-spine/", encoding="utf-8")
+        real_open = module.os.open
+        def controlled_open(requested, *args, **kwargs):
+            if Path(requested) == path:
+                raise PermissionError("synthetic read denial")
+            return real_open(requested, *args, **kwargs)
+        with mock.patch.object(module.os, "open", side_effect=controlled_open):
+            payload = module.build_payload(self.root)
+        self.assertIn({"path": "unreadable.md", "reason": "TEXT_READ_ERROR"},
+                      payload["source_snapshot"]["collection"]["gaps"])
+        self.assertIn("reader.md", {item["path"] for item in payload["source_snapshot"]["files"]})
+        self.assert_no_negative_claim(payload)
+
+    def test_manifest_drift_between_collection_and_basis_read_blocks_negative_claims(self) -> None:
+        from tools import census_legacy_references as module
+        real_read = module.read_manifest_basis
+        def changed_basis(*args, **kwargs):
+            data, readers, metadata = real_read(*args, **kwargs)
+            metadata = dict(metadata, sha256="0" * 64)
+            return data, readers, metadata
+        with mock.patch.object(module, "read_manifest_basis", side_effect=changed_basis):
+            payload = module.build_payload(self.root)
+        self.assertFalse(payload["source_snapshot"]["manifest_matches_snapshot"])
+        self.assert_no_negative_claim(payload)
+
+    def test_cli_output_is_excluded_on_first_run_and_repeat(self) -> None:
+        from tools import census_legacy_references as module
+        output = self.root / "report.json"
+        fake_location = self.root / "tools" / "census_legacy_references.py"
+        with mock.patch.object(module, "__file__", str(fake_location)), \
+                mock.patch.object(sys, "argv", ["census", "--output", str(output)]), \
+                contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(module.main(), 0)
+            first = output.read_bytes()
+            self.assertEqual(module.main(), 0)
+            second = output.read_bytes()
+        self.assertEqual(first, second)
+        payload = json.loads(second)
+        self.assertNotIn("report.json", {item["path"] for item in payload["source_snapshot"]["files"]})
+        self.assertEqual(payload["source_snapshot"]["collection"]["explicit_output_exclusions"], ["report.json"])
+
+    def test_output_exclusion_does_not_silently_exclude_other_json_sources(self) -> None:
+        from tools.census_legacy_references import build_payload, collect_text_files
+        (self.root / "other.json").write_text('{"source":"01_runtime-spine/"}', encoding="utf-8")
+        payload = build_payload(self.root, excluded_paths=(Path("report.json"),))
+        self.assertIn("other.json", {item["path"] for item in payload["source_snapshot"]["files"]})
+        self.assertIsInstance(collect_text_files(self.root), dict)
+        self.assertTrue(payload["source_snapshot"]["negative_evidence_eligible"])
+        self.assertTrue(payload["summary"]["05_topology"]["caller_absence_on_scanned_text_surface"])
+        self.assertFalse(payload["summary"]["01_runtime-spine"]["caller_absence_on_scanned_text_surface"])
+
+    def test_later_matching_lines_preserve_both_dependency_signals(self) -> None:
+        text = ("03_field-governance/history.md\n"
+                "unrelated context\n"
+                "restore from 03_field-governance/source.md\n"
+                "route to 03_field-governance/receiver.md\n")
+        rows = scan_text_map({"dcp_kernel/consumer.py": text}, ("03_field-governance",))
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0].dependency_signal, DependencySignal.REBUILD_AND_WAKE_RELEVANT)
+        self.assertEqual(rows[0].matched_line_numbers, (1, 3, 4))
+        self.assertEqual(rows[0].excerpt, "03_field-governance/history.md")
+        reverse = "\n".join(reversed(text.splitlines()))
+        other = scan_text_map({"dcp_kernel/consumer.py": reverse}, ("03_field-governance",))
+        self.assertEqual(other[0].dependency_signal, rows[0].dependency_signal)
+
+    def test_all_line_scan_keeps_audit_lineage_and_unknown_boundaries(self) -> None:
+        text = "03_field-governance/history.md\nrestore route 03_field-governance/source.md\n"
+        for caller, expected in (
+            ("tools/census_legacy_references.py", DependencySignal.NONE),
+            ("04_adapter-layer/optional.md", DependencySignal.NONE),
+            ("misc/unknown.md", DependencySignal.UNKNOWN),
+        ):
+            with self.subTest(caller=caller):
+                rows = scan_text_map({caller: text}, ("03_field-governance",))
+                self.assertEqual(rows[0].dependency_signal, expected)
+                self.assertEqual(rows[0].matched_line_numbers, (1, 2))
 
 
 if __name__ == "__main__":

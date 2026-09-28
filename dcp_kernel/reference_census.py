@@ -86,6 +86,7 @@ class ReferenceObservation:
     classification: ReferenceClass
     excerpt: str
     dependency_signal: DependencySignal = DependencySignal.NONE
+    matched_line_numbers: tuple[int, ...] = ()
 
 
 def classify_reference(
@@ -167,7 +168,15 @@ def scan_text_map(
             needle = family.rstrip("/") + "/"
             if needle not in text:
                 continue
-            excerpt = next((line.strip() for line in text.splitlines() if needle in line), needle)
+            matches = tuple(
+                (number, line.strip())
+                for number, line in enumerate(text.splitlines(), start=1)
+                if needle in line
+            )
+            # Keep one bounded display excerpt and one row per caller/family,
+            # but inspect every matching line before declaring signal absence.
+            excerpt = matches[0][1]
+            matched_text = "\n".join(line for _number, line in matches)
             classification = classify_reference(
                 caller_path, family, current_reader_paths=readers)
             observations.append(
@@ -179,8 +188,9 @@ def scan_text_map(
                     dependency_signal=classify_dependency_signal(
                         caller_path=caller_path,
                         classification=classification,
-                        excerpt=excerpt,
+                        excerpt=matched_text,
                     ),
+                    matched_line_numbers=tuple(number for number, _line in matches),
                 )
             )
     return tuple(observations)

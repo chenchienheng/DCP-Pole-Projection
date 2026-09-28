@@ -13,6 +13,16 @@ Working review stays on existing #406 (`qinyi/kernel-integration-successor-20260
 
 Follow the genuine source/caller/target-revision/Return need and the remaining purpose/successor/loss review. The task-template/AGENTS/readiness/bootstrap/corpus slice has already received bounded review; unchanged files are not a fresh queue merely because an earlier paragraph said to begin there. Earlier shared-parser, self-inventory,31-pair contextual review and malformed write-intent repairs remain closed only within their recorded scopes.
 
+## Applied implementation repair — collected-source coverage and reference signals
+
+Record: CENSUS_SOURCE_BOUNDARY_REPAIR_20260928. Target parent: #406 `8eed32407cb59ded897ddaa64549e67555852c2a`.
+
+The existing census was actually exercised on its preserved fourteen-file source corpus and synthetic boundary controls. Moving the identical corpus under a parent named `artifacts` yielded zero collected files and unsupported absence flags; an external file symlink imported synthetic outside content, undecodable text disappeared without a coverage gap, the selected JSON output re-entered the next scan, and later matching lines lost rebuild/wake signals. These are executed local counterexamples, not evidence that private files leaked or every earlier repository result was wrong.
+
+The same collector now applies exclusions relative to its selected root, does not follow symlink files/directories, reports text-read/decoding gaps, binds the parsed manifest hash and declared-reader coverage to the collected snapshot, and withholds negative findings when that scope is incomplete. CLI output is excluded explicitly, not by ignoring every JSON file. The existing reference scanner keeps one row/representative excerpt per caller-family while aggregating all matching lines and recording their line numbers. Existing reference categories, reader membership, shared parser, runtime/authority limits and reclamation prohibition remain unchanged. No historical fixture is promoted into a live observation.
+
+Three existing Python files and this original register are changed together. The26 existing reference tests are preserved, with13 new method-level regressions;39 focused methods pass locally. The preserved real corpus yields the same14 source hashes/summary under either parent, repeat CLI output is byte-identical, and a fresh process reproduces the corrected results. Local module-scoped loading is not a full package test; provider CI and exact head evidence are recorded separately on this PR. This is safer reusable intake for existing review/recovery work, not an external writer, filesystem sandbox, atomic snapshot, universal parser, deletion acceptance or Runtime. Full before/after bytes and scope-labelled evidence stay recoverable; previous content uptake is not reopened.
+
 ## Applied content uptake — adapter references
 
 Record: ADAPTER_ROLE_CONTENT_UPTAKE_20260928.
@@ -122,7 +132,7 @@ The source archive is [run36298224235](https://github.com/chenchienheng/DCP-Pole
 
 ## Fixed implementation evidence
 
-The last inspected executable checkpoint is `ca11e6f7e7b2938d4456e8c9735b2ddfb6cec790`; [receipt5855625479](https://github.com/chenchienheng/DCP-Pole-Projection/pull/406#issuecomment-5855625479) binds [run36317231066](https://github.com/chenchienheng/DCP-Pole-Projection/actions/runs/36317231066), exact checkouts and20surface+289kernel methods per scope. This document update does not rerun those tests or claim the new documentation commit was that tested head. write_intent validates supplied declarations, not external ACL, provider revision or execution.
+The earlier write-intent executable checkpoint is `ca11e6f7e7b2938d4456e8c9735b2ddfb6cec790`; [receipt5855625479](https://github.com/chenchienheng/DCP-Pole-Projection/pull/406#issuecomment-5855625479) binds [run36317231066](https://github.com/chenchienheng/DCP-Pole-Projection/actions/runs/36317231066), exact checkouts and20surface+289kernel methods per scope. Those results stay bound to that earlier checkpoint; the census source-boundary repair above has its own resulting commit and execution receipt. write_intent validates supplied declarations, not external ACL, provider revision or execution.
 
 The earlier network-inventory extension was removed and the workflow restored to #419's source blob `30d2345eb5470231438faa0ec12000cb86284955`. tools/snapshot_pr_baseline.py remains on demand, not a mandatory recurring sweep. The failed audit and earlier fixed execution details remain available in the complete predecessor register and original runs.
 
