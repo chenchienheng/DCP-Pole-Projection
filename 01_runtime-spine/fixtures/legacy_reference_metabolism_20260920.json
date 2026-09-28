@@ -1,0 +1,20 @@
+{
+  "fixture_id": "LEGACY-REFERENCE-METABOLISM-20260920",
+  "source": "GitHub current-main bounded search",
+  "artifact": "02_runtime-ops/task_follow_up.md",
+  "observed_references": [
+    {"caller_path":"04_adapter-layer/source_map.md","role":"LINEAGE"},
+    {"caller_path":"01_native-board/board_index.md","role":"LINEAGE"},
+    {"caller_path":"04_adapter-layer/writeback_packet_contract.md","role":"LINEAGE"}
+  ],
+  "candidate_successor": "DCP return/active-state machine surfaces",
+  "successor_status": "CANDIDATE_NOT_PROMOTED",
+  "unique_lineage_evidence": true,
+  "normal_reader_wake_proven": false,
+  "claim_ceiling": "BOUNDED_REFERENCE_METABOLISM_SPECIMEN",
+  "non_claims": [
+    "FULL_REPOSITORY_REFERENCE_SCAN_COMPLETE",
+    "PHYSICAL_DELETE_AUTHORIZED",
+    "SUCCESSOR_PROMOTED_CURRENT"
+  ]
+}

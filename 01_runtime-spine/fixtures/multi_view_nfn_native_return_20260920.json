@@ -1,0 +1,24 @@
+{
+  "subject_id": "MULTI_VIEW_NFN_NATIVE_RETURN_20260920",
+  "need_id": "MULTI_VIEW_NFN_NATIVE_RETURN_20260920::CARRIER_HANDOFF_01",
+  "current": {
+    "source_version": "DRIVE-SUBJECT-REV-20260920",
+    "state": "PEER_CROSS_READ_PROVEN_BOUNDED"
+  },
+  "event": {
+    "event_id": "CARRIER-HANDOFF",
+    "event_type": "MACHINE_HANDOFF",
+    "source_version": "DRIVE-SUBJECT-REV-20260920",
+    "authority_scope": "SHARED-SUBJECT",
+    "affected_candidates": ["Qinyi-Architecture"]
+  },
+  "relevant_receivers": ["Qinyi-Architecture", "Root"],
+  "expected": {
+    "disposition": "AFFECTED_RESOLUTION_REQUIRED",
+    "executable_affected": ["Qinyi-Architecture"],
+    "excluded_from_execution": ["Root"],
+    "runtime_claim": false,
+    "receiver_acceptance_claim": false
+  },
+  "claim_ceiling": "REAL_SUBJECT_MACHINE_ENTRY_FIXTURE_ONLY"
+}
