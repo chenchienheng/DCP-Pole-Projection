@@ -34,6 +34,25 @@ Use this README for human orientation, then resolve Current-for-purpose from `CU
 
 本 README 提供人類入口與倉庫定位；Current-for-purpose 請由 `CURRENT-SURFACE-MANIFEST.json` 解析。
 
+## On-demand artifact receiver / 按需交付接收器
+
+The existing local host and its receiver reconciliation are available from the normal `dcp_kernel` package. For the specific task **verify that downloaded files match an expected delivery**, use `ArtifactDeliveryContract`, `prepare_artifact_delivery` and `receive_artifact_delivery`. This receiver actually opens regular files, checks exact size/SHA256 twice and then reuses the host reconciliation. Producer-provided completion flags are not an input to the receiver.
+
+用途是核對交付位元組，不是認證文件內容、遠端身分或替其他 Native 驗收。`prepare` 只建立待核結果；`receive` 讀回檔案並接續接受驗證結果，不包含原上傳器或重做原操作。原檔不被修改，輸出 JSON 為 create-only。已有人工作用時，請在契約中保留 `manual_interventions`。
+
+Run from a checkout containing this candidate, with Python >=3.11 on a POSIX host supporting directory-relative/no-follow file opens:
+
+```sh
+python -m tools.verify_artifact_delivery prepare --contract expected.json --root ./source --output pending.json
+python -m tools.verify_artifact_delivery receive --contract expected.json --root ./downloaded --pending pending.json --output accepted.json
+```
+
+`expected.json` is a trusted-source input, not a receipt generated from whichever download happened to arrive. Required fields are `delivery_id`, `source_id`, `source_revision`, `receiver`, and a nonempty `artifacts` list. Each entry has a canonical relative `path`, lowercase 64-character `sha256`, and nonnegative integer `size_bytes`. `manual_interventions` is an optional string list. Supply actual expected values from a pinned source. Do not publish private IDs or source bodies in this repository.
+
+Exit status: 0 means the command's own phase succeeded (prepare remains PRODUCED; receive reports its verification result), 3 means unresolved verification, 2 means invalid input or I/O/publication failure. Output files must not already exist or overlap input files. A missing/corrupted file, symbolic link, substituted source/revision/receiver, duplicate JSON key, or second-read difference does not become accepted by asserting `verified=true`.
+
+The trusted connector or local acquisition supplies the resource identity and authorization context. The byte receiver does not independently authenticate that provider, provide an atomic multi-file snapshot, or grant external writes. Unsupported file-open primitives fail closed. This is one reusable verification consumer, not a required pipeline for unrelated work.
+
 ## Continuity and replaceable carriers / 連續性與可替換載體
 
 Repository, model, tool, and storage locations are **replaceable carriers**, not permanent topology. For a bounded Need, continuity depends on re-qualifying Stable Identity / Need, Current-for-purpose, Authority, Evidence, Return and Rebuild relations when a carrier changes. A newer location, successful write, clean merge, or available capability does not by itself prove continuity, admission, delivery, or use.

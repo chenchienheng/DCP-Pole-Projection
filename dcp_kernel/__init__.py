@@ -43,7 +43,22 @@ from .successor import CoverageState, SuccessorCoverageAssessment, SuccessorCove
 from .transition import evaluate_transition
 from .write_intent import MutationKind, WriteIntentAssessment, WriteIntentInput, assess_write_intent
 
+from .substrate_host import (
+    EffectObservation, LocalExecutionRequest, LocalExecutionResult,
+    reconcile_local_result, run_local_cycle,
+)
+from .artifact_receiver import (
+    ArtifactExpectation, ArtifactDeliveryContract, ArtifactDeliveryCheck,
+    contract_from_dict, pending_from_dict, pending_to_dict,
+    prepare_artifact_delivery, receive_artifact_delivery,
+)
+
 __all__ = [
+    "EffectObservation", "LocalExecutionRequest", "LocalExecutionResult",
+    "reconcile_local_result", "run_local_cycle",
+    "ArtifactExpectation", "ArtifactDeliveryContract", "ArtifactDeliveryCheck",
+    "contract_from_dict", "pending_from_dict", "pending_to_dict",
+    "prepare_artifact_delivery", "receive_artifact_delivery",
     "ActionGateAssessment", "ActionGateInput", "ActionResponsibilityContract", "ActivationAssessment", "ActivationInput",
     "ActivationState", "AffectedCone", "BirthDisposition", "CapabilityBinding", "CapabilityResolution", "CarrierCandidate",
     "CarrierClass", "CarrierNeed", "CarrierResolution", "ClaimCeiling", "ClaimEvidence", "CompatibilityState",
