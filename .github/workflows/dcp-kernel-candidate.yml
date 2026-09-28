@@ -125,6 +125,59 @@ jobs:
           name: dcp-reference-census-${{ matrix.checkout_scope }}
           path: artifacts/reference-census.json
 
+      - name: Package and reopen the verified candidate source
+        if: steps.surface.outputs.candidate == 'true' && matrix.checkout_scope == 'candidate-head'
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path, PurePosixPath
+          import stat
+          import subprocess
+          import sys
+          import tempfile
+          import zipfile
+
+          revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          target = Path('artifacts/dcp-source-checkout.zip')
+          subprocess.run(['git', 'archive', '--format=zip', f'--output={target}', revision], check=True)
+          with tempfile.TemporaryDirectory(prefix='dcp-source-reopen-') as directory:
+              restored = Path(directory)
+              with zipfile.ZipFile(target) as archive:
+                  for item in archive.infolist():
+                      path = PurePosixPath(item.filename)
+                      if path.is_absolute() or '..' in path.parts or '\\' in item.filename:
+                          raise ValueError('UNSAFE_ARCHIVE_PATH')
+                      if stat.S_ISLNK(item.external_attr >> 16):
+                          raise ValueError('SOURCE_ARCHIVE_SYMLINK_REQUIRES_EXPLICIT_PACKAGING')
+                  archive.extractall(restored)
+              env = dict(os.environ)
+              env.pop('PYTHONPATH', None)
+              subprocess.run([sys.executable, '-m', 'tools.verify_artifact_delivery', '--help'],
+                             cwd=restored, env=env, check=True)
+              subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests',
+                              '-p', 'test_artifact_delivery_resume.py', '-v'],
+                             cwd=restored, env=env, check=True)
+          raw = target.read_bytes()
+          manifest = {'checkout': revision, 'path': target.name, 'size_bytes': len(raw),
+                      'sha256': hashlib.sha256(raw).hexdigest(),
+                      'scope': 'TRACKED_SOURCE_CHECKOUT_NOT_RELEASE_APPROVAL',
+                      'reopened_normal_package': True, 'network_install_performed': False}
+          Path('artifacts/source-checkout.json').write_text(
+              json.dumps(manifest, sort_keys=True, indent=2) + '\n', encoding='utf-8')
+          print('SOURCE_CHECKOUT_RECEIPT=' + json.dumps(manifest, sort_keys=True))
+          PY
+      - name: Upload verified candidate source
+        if: steps.surface.outputs.candidate == 'true' && matrix.checkout_scope == 'candidate-head'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcp-source-checkout-candidate-head
+          path: |
+            artifacts/dcp-source-checkout.zip
+            artifacts/source-checkout.json
+          if-no-files-found: error
+
 # Passing this workflow proves only the declared bounded checks.
 # It does not establish Native absorption, Platform Runtime, Promotion,
 # autonomy, receiver-owned behavior change, non-text/runtime dependency absence,

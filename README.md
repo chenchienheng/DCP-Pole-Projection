@@ -53,6 +53,19 @@ Exit status: 0 means the command's own phase succeeded (prepare remains PRODUCED
 
 The trusted connector or local acquisition supplies the resource identity and authorization context. The byte receiver does not independently authenticate that provider, provide an atomic multi-file snapshot, or grant external writes. Unsupported file-open primitives fail closed. This is one reusable verification consumer, not a required pipeline for unrelated work.
 
+### Resume and source delivery / 中斷接續與可執行原碼包
+
+The `--pending` input now accepts either `pending.json` or the complete JSON check returned by a previous `receive`. A saved success or HOLD is only re-entry context: the receiver still reopens and verifies the actual received files. Missing files can arrive later without rebuilding the prepared source observation or losing the old HOLD evidence; write the new result to a new output path.
+
+```sh
+python -m tools.verify_artifact_delivery receive --contract expected.json --root ./downloaded --pending accepted.json --output rechecked.json
+python -m tools.verify_artifact_delivery receive --contract expected.json --root ./downloaded --pending accepted.json --output rechecked.json --resume
+```
+
+Without `--resume`, existing output still causes an error. With explicit `--resume`, the CLI rechecks the inputs and reuses only a regular, unchanged, byte-identical output. Different evidence, input overlap, symlinks and special files remain blocked; no existing result is overwritten. This recovers a lost publication response, not a global exactly-once protocol or a promise that source files never change.
+
+Successful candidate-head CI now also produces `dcp-source-checkout-candidate-head`: an exact tracked Git source archive plus its checkout/hash receipt. The archive is reopened in a temporary directory and the normal CLI and resume tests run there without installing dependencies. Extract `dcp-source-checkout.zip`, then run the commands above from that source directory. This is a candidate source delivery, not a main merge, deployment or release approval. The original census artifact, triggers and token permissions remain unchanged.
+
 ## Continuity and replaceable carriers / 連續性與可替換載體
 
 Repository, model, tool, and storage locations are **replaceable carriers**, not permanent topology. For a bounded Need, continuity depends on re-qualifying Stable Identity / Need, Current-for-purpose, Authority, Evidence, Return and Rebuild relations when a carrier changes. A newer location, successful write, clean merge, or available capability does not by itself prove continuity, admission, delivery, or use.

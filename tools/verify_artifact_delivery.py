@@ -11,6 +11,7 @@ from dataclasses import asdict
 import json
 import os
 from pathlib import Path
+import stat
 import sys
 import tempfile
 
@@ -41,7 +42,47 @@ def _load(path):
     return data
 
 
-def _save_new(path, value, protected):
+def _saved_pending(data):
+    """Read a prepared result or this CLI's saved check; never trust its flags."""
+    if "result" in data:
+        if (set(data) != {"result", "observations", "scope"}
+                or data["scope"] != "BYTE_DELIVERY_ONLY_NOT_SEMANTIC_OR_NATIVE_ACCEPTANCE"
+                or not isinstance(data["observations"], list)
+                or not isinstance(data["result"], dict)):
+            raise ValueError("INVALID_SAVED_CHECK_ENVELOPE")
+        data = data["result"]
+    return pending_from_dict(data)
+
+
+def _same_existing_output(path, raw):
+    """Inspect, never replace, a prior output during an explicit resume.
+
+    A regular, unchanged, byte-identical output can close an interrupted
+    publication receipt. Parent directories remain caller-controlled.
+    """
+    if not hasattr(os, "O_NOFOLLOW"):
+        raise ValueError("RESUME_NOFOLLOW_UNSUPPORTED")
+    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+    try:
+        before = os.fstat(fd)
+        if not stat.S_ISREG(before.st_mode) or before.st_size != len(raw):
+            return False
+        chunks = []
+        remaining = len(raw) + 1
+        while remaining:
+            block = os.read(fd, min(remaining, 1024 * 1024))
+            if not block:
+                break
+            chunks.append(block)
+            remaining -= len(block)
+        after = os.fstat(fd)
+        identity = lambda s: (s.st_dev, s.st_ino, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
+        return identity(before) == identity(after) and b"".join(chunks) == raw
+    finally:
+        os.close(fd)
+
+
+def _save_new(path, value, protected, *, resume=False):
     resolved = path.resolve()
     if any(resolved == other.resolve() for other in protected):
         raise ValueError("OUTPUT_OVERLAPS_INPUT")
@@ -54,7 +95,13 @@ def _save_new(path, value, protected):
             stream.write(raw)
             stream.flush()
             os.fsync(stream.fileno())
-        os.link(temporary, path)
+        try:
+            os.link(temporary, path)
+        except FileExistsError:
+            if not resume:
+                raise
+            if not _same_existing_output(path, raw):
+                raise ValueError("EXISTING_OUTPUT_CONFLICT")
     finally:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
@@ -69,6 +116,8 @@ def main(argv=None):
     parser.add_argument("--pending", type=Path)
     parser.add_argument("--output", type=Path, required=True,
                         help="New JSON output path; no overwrite.")
+    parser.add_argument("--resume", action="store_true",
+                        help="Re-read inputs and reuse only byte-identical existing output; never overwrite.")
     args = parser.parse_args(argv)
     try:
         contract = contract_from_dict(_load(args.contract))
@@ -83,11 +132,11 @@ def main(argv=None):
             if args.pending is None:
                 raise ValueError("RECEIVE_REQUIRES_SAVED_PENDING")
             protected.append(args.pending)
-            pending = pending_from_dict(_load(args.pending))
+            pending = _saved_pending(_load(args.pending))
             checked = receive_artifact_delivery(contract, pending, args.root)
             value = asdict(checked)
             exit_code = 0 if checked.result.decision is Decision.PASS else 3
-        _save_new(args.output, value, protected)
+        _save_new(args.output, value, protected, resume=args.resume)
         print(args.output)
         return exit_code
     except (OSError, ValueError, TypeError, KeyError) as exc:
