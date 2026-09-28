@@ -7,6 +7,8 @@ This directory contains capability references, compatibility specimens and write
 
 | Existing reference | Use | Boundary |
 |---|---|---|
+| [source_map.md](source_map.md) | Original-to-view correspondence and exact target/version questions | No universal GitHub primary, newest-tag rule or automatic writeback |
+| [replit_relay_spec.md](replit_relay_spec.md) | Interactive board/task/log forms with source-bound actions | Historical ready rows and UI success are not execution permission or persistence |
 | [activation_order.md](activation_order.md) | Retained capability-selection questions | No fixed GitHub/Gamma/Replit/Lovable order or permanent W0 writer |
 | [drive-adapter.md](drive-adapter.md) | Source, projection and carrier correspondence | Drive can carry a lawful native body; no universal GitHub/ClickUp precedence |
 | [calendar-adapter.md](calendar-adapter.md) | Temporal representation, revision and change trace | Calendar entry, scheduled occurrence and observed outcome remain distinct |

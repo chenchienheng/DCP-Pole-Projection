@@ -77,6 +77,20 @@ Historical exact bodies and every original form/example are recoverable from thi
 
 Validation belongs to the new exact commit and its own receipt; prior tests are not relabelled as new tests. These are documentation/source-content changes, not new provider executors, permission checks, deployment, paid resources or runtime. Continue the original authorized deliverable's genuinely affected source/implementation/use and recovery needs, not another copy of the already-existing five-document creation sequence.
 
+## Applied coherent batch — board/source/return continuity
+
+Record: BOARD_SOURCE_RETURN_CONTINUITY_20260928. Target before this batch: #406 `b8e60f54bbbb8546a36952d0458318c4f70a7664`.
+
+Thirteen existing asset/board/pulse/linking/follow-up/translation/source-map/interactive-relay references were inspected as one connected use path. The old normal text both required a GitHub-only trigger and promoted one successful writeback log into active_sync; source_map still made GitHub primary, picked the newest tag and required writeback for every view. Dated blocker and task tables still called themselves active/current. These contradict the existing manifest's Need-relative carriers, purpose qualification and save/delivery/use separation.
+
+The references now preserve concrete identifiers, binding fields, packet forms, view inputs/outputs and unchanged historical task/blocker rows, without those operational assumptions. No fixed00–07/W0/provider/AXIS ownership, duplicate read-order list, one-activation cap or relay-flag authority governs current use. Source-map and board links now agree on their optional view status; missing historical log paths are not presented as verified current targets. Related existing runtime/translation/adapter README entries are updated together. No identity-core, AGENTS, executable, schema, fixture, workflow or manifest change is made.
+
+The #324 frozen delta includes both modified-source references and deletion proposals here. All paths are retained. Full before bytes were reconstructed only where their Git blob hash matched the present pinned tree, otherwise read from the pinned source; the complete historical material and predecessor register remain in the same evidence package and fixed parent. This is selective purpose correction, not acceptance of the53 deletions or the whole180-path remainder.
+
+Static before/after checks retain all selected paths, the historical task/blocker row data and required compatibility fields, and resolve authored relative links against the pinned repository path basis. They do not prove provider execution, caller absence, receiver use or product acceptance. Existing reader/scanner/retirement code and the historical fixture role were inspected; no new audit engine or arbitrary parser rule is introduced just to increase test counts. Validation on the new commit is recorded separately.
+
+Earlier batches and recovered delivery remain closed in their original scopes. Continue the genuine original deliverable and remaining purpose-specific content, not the old April task queue. Private data, cloud account configuration, billing, sending, scheduling, deletion, main merge and deployment are outside this edit.
+
 ## Frozen all-PR comparison — retained scope, not today's counts
 
 Acquisition: 2026-09-27T05:47:46.220571Z–05:48:05.132097Z.63 GET-only requests exhausted all PR and open-file pages; trees were not truncated. Revalidation was per repository, not a globally atomic snapshot.
