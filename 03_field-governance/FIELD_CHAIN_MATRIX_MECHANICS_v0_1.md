@@ -1,121 +1,31 @@
-# Field Chain Matrix Mechanics v0.1
+# Field action mechanics — relate events, work and results without a fixed pipeline
+
+Status: CANDIDATE_REFERENCE / NOT_RUNTIME / NO_NEW_AUTHORITY.
+Batch: BATCH_FIELD_CONTINUITY_UPTAKE_20260928 (Asia/Taipei).
 
 ## Purpose
+Trace how a genuine need becomes an authorized action and a usable outcome. Signal, task, contributor, tool, artifact, log and receiver are different relationships, not seven compulsory steps through a fixed hierarchy.
 
-Define 場域鏈 as the operational mechanics connecting communication channels, task governance, base tools, commander / soldier routing, useful logs, and return paths back to XuanLing.
+## Event and task binding
+A received signal is input to assess, not an instruction to obey. It may update existing work, provide evidence, require no action or justify a new task within scope. Not every event creates a new Task_ID, and possession of a Task_ID does not grant rights. Preserve a stable task when several contributions concern the same effect.
 
-This is not only communication. It is how signals become tasks, tasks call tools, tools produce artifacts, artifacts produce useful logs, and useful logs strengthen the field.
+## Capability and responsibility
+Separate capability availability, actual selected function, semantic ownership, mechanical execution and permission. Commander/captain/soldier or vendor labels from the earlier diagram are not permanent allocations. A tool or window may be replaced without transferring the source owner's decision or expanding access.
 
-## Core Chain
+## Coherent batch mechanics
+Inspect the affected definitions, consumers and source versions together. Prepare related changes, verify the resulting behavior and persist their evidence as one sufficient unit. Where independent work is authorized, a local blocked edge or pending receipt does not stop it. Where a shared target can race, re-read its current version before writing and preserve intervening changes.
 
-```yaml
-Field_Chain:
-  Signal: channel event / user instruction / PR event / task event
-  Task: Linear / ClickUp / Asana task or issue
-  Dispatch: commander / captain / soldier routing
-  Tool: GitHub / Google / Notion / Slack / Hugging Face / Codex / Jules
-  Artifact: file / PR / doc / sheet / report / comment / return packet
-  Useful_Log: structured state, not passive transcript
-  Return: MotherTree / Registry / Closure Gate
-  Reinforcement: updated matrix, molecule, protocol, or decision map
-```
+Do not interpret latest-log text as the present task queue. Successful execution, saved output, returned receipt, accepted effect and recoverable state require distinct evidence. The appropriate return is the original deliverable and affected receiver, not a universal Root or platform.
 
-## Field Matrix Mechanics
+## Useful log content
+Retain the existing Useful_Log form below: it describes a selected action or batch, not a requirement for every sentence. Bind changed artifacts and result claims to observed versions, keep failed attempts and unresolved conditions, and distinguish record time from execution/receiver time. Unknown values stay unknown. Counted files or test methods do not measure the original deliverable's usefulness.
 
-```yaml
-Field_Matrix_Mechanics:
-  Node:
-    Meaning: tool, model, window, person, document, task, or channel
+## Related references
+Use [dependency](CO_FIELD_DEPENDENCY_MODEL_v0_1.md), [initiative](CLUSTER_INITIATIVE_RHYTHM_PROTOCOL_v0_1.md) and [round continuity](EXTERNAL_ROUND_LEDGER_v0_1.md) as complementary views only. No event bus, scheduler, fixed roster, required new ledger or runtime executor is introduced by these references.
 
-  Link:
-    Meaning: a traceable relation between nodes through task, artifact, message, or source
+## Retained compatibility forms
 
-  Flow:
-    Meaning: movement from signal to task to artifact to log to return
-
-  Coverage:
-    Meaning: known range of nodes currently reachable by the field
-
-  Boundary:
-    Meaning: allowed action, scope, risk, privacy, cost, or authority limit
-
-  Return_Path:
-    Meaning: route by which the result comes back to MotherTree / Registry / Closure Gate
-```
-
-## Coverage Range
-
-```yaml
-Cluster_Coverage_Range:
-  Communication:
-    - Slack
-    - Gmail
-    - Calendar
-
-  Task_Governance:
-    - Linear
-    - ClickUp
-    - Asana
-
-  Structure_Governance:
-    - GitHub
-    - PR
-    - Issue
-    - Branch
-
-  Knowledge_Relay:
-    - Notion
-    - Google Docs
-    - Google Sheets
-    - Google Slides
-
-  Model_Intake:
-    - Hugging Face
-    - peer-tree relay
-
-  Execution:
-    - Codex
-    - Jules
-    - local / cloud build tools when scoped
-```
-
-## Role Mapping
-
-```yaml
-Roles:
-  Commander:
-    Function: receives intent, creates task, owns return path
-    Examples: Linear, GitHub, MotherTree
-
-  Captain:
-    Function: routes, summarizes, organizes, relays
-    Examples: Slack, Notion, Google Docs, ClickUp
-
-  Soldier:
-    Function: executes bounded action
-    Examples: Codex, Jules, converters, specific tool actions
-
-  Carrier:
-    Function: holds artifact or state
-    Examples: Google Drive, GitHub repo, Notion page, Slack thread
-```
-
-## Support Modes
-
-```yaml
-Support_Modes:
-  Combat: direct task execution or blocker removal
-  Defense: risk gate, boundary check, privacy protection
-  Repair: fix broken PR, stale branch, malformed log, wrong artifact
-  Bridge: connect tools, create relay, map channels
-  Paving: create SOP, protocol, template, schema
-  Scouting: scan models, sources, markets, tools
-  Supply: provide source ledger, reference, file, dataset, task packet
-  Review: check evidence, risk, drift, completeness
-  Reconstruction: rebuild broken chain or migrate state
-```
-
-## Useful Log Schema
+These uninstantiated source forms preserve compatible field names for a selected profile, not a required global schema or action grant. BASE/QIN, Window/Rank, named tables, mandatory_fields and destinations apply only to that explicitly chosen profile; do not create resources or infer approval to fill a form.
 
 ```yaml
 Useful_Log:
@@ -137,69 +47,6 @@ Useful_Log:
   Status:
 ```
 
-## Rule
+## Source and recovery
 
-Passive logs are not useful.
-
-A log becomes useful only when it can answer:
-
-```text
-What changed?
-What can this support?
-What can it not support?
-What is the next action?
-Where does it return?
-```
-
-## Operating Flow
-
-```yaml
-Operating_Flow:
-  1_Capture_Signal:
-    - receive instruction, event, PR change, task change, or relay return
-
-  2_Bind_Task:
-    - assign Task_ID
-    - lock current action
-    - define expected output
-
-  3_Dispatch_Node:
-    - choose commander / captain / soldier / carrier
-    - check boundary and scope
-
-  4_Execute:
-    - produce bounded artifact
-    - do not change task type without return
-
-  5_Log:
-    - write Useful_Log
-    - include return path
-
-  6_Return:
-    - route back to MotherTree / Registry / Closure Gate
-
-  7_Reinforce:
-    - update matrix, protocol, task status, or evidence map
-```
-
-## Anti-Drift
-
-```yaml
-Anti_Drift:
-  - do not treat communication as completion
-  - do not treat passive log as useful state
-  - do not treat subscription as entry ticket
-  - do not make any external platform the core
-  - do not let one node redefine the chain
-  - do not proceed without Task_ID and Return_Path
-  - do not execute destructive or public action without explicit scope
-```
-
-## Status
-
-```yaml
-Status: Draft_v0_1
-Layer: Field Governance
-Core_Status: Non_Core
-Gate_Color: Yellow
-```
+Selectively adapts [#324 fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/03_field-governance/FIELD_CHAIN_MATRIX_MECHANICS_v0_1.md) (blob `413df7e36b8058c17f5acce1d82e1beecf3ca98e`). [Complete predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/66099050d54a5ad533464cb4f28918fb04aadccb/03_field-governance/FIELD_CHAIN_MATRIX_MECHANICS_v0_1.md) (blob `24808098f33210eafac221b23c5da7bd652f5766`) and the existing evidence package preserve every original form, example and dated decision. Historical labels/arrows are not current tasks, permission or a universal sequence. No source deletion, runtime, deployment or new authority follows. Restore only after checking newer changes; ordinary entry selection remains the [existing manifest](../CURRENT-SURFACE-MANIFEST.json).

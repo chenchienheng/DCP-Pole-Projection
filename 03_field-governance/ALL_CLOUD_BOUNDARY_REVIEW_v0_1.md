@@ -1,106 +1,31 @@
-# All-Cloud Boundary and No-Billing Feasible Domain Expert Review
+# Cloud use and cost boundary — review questions, not a verified no-charge guarantee
 
-> **Decision:** Conditional Pass
-> **Version:** v0.1
-> **Status:** Expert Review Completed; Pending MotherTree Decision
+Status: CANDIDATE_REFERENCE / NOT_RUNTIME / NO_NEW_AUTHORITY.
+Batch: BATCH_FIELD_CONTINUITY_UPTAKE_20260928 (Asia/Taipei).
 
----
+## Purpose and corrected assessment
+The predecessor is an expert-review draft, not evidence of an audit of all linked cloud accounts. Its Conditional Pass, hard safety ceiling and pending MotherTree decision belong to that proposal. This maintenance performed no account, billing, permission, sandbox or infrastructure audit.
 
-## 1. All_Cloud_Boundary_Review
+Withdraw from current use the claims that absence of a payment instrument makes charges technically impossible, that a fixed subscription establishes an unlimited safe ceiling, that all connector scopes form a sandbox preventing lateral movement, or that a budget alert is a hard spending cap. Those conclusions cannot be obtained from the document or a platform name. No current provider billing or security behavior is asserted here.
 
-### 1.1 Decision
-**Conditional Pass**
-The model is structurally sound and aligns with the MotherTree constraint-first philosophy. It provides a high-coordination environment while maintaining a hard safety ceiling against financial and runtime expansion risks.
+## Distinctions to preserve
+Subscription access, metered resource consumption, quotas, external transmission, mutation, deployment and publication are separate concerns. A plan or connector may expose operations; the actual task and account rights determine which may be used. Do not infer read permission from nominally low risk, or generic compute access from an application connector.
 
-### 1.2 Valid Distinctions
-- **subscription_access_vs_metered_execution**: Correctly distinguishes between predictable, pre-paid access (SaaS) and open-ended, usage-based billing (PaaS/IaaS).
-- **connector_surface_vs_runtime_execution**: Correctly identifies that app connectors (Slack/Notion/Drive) are restricted to application-level logic and do not authorize generic compute or infrastructure changes.
-- **review_draft_proposal_vs_deploy_write_execute**: Correctly separates the "thinking/coordinating" phase from the "acting/committing" phase in cloud environments.
+A spend alert, an enforced usage limit, an approval requirement and a disabled resource are different controls. For any real resource commitment, identify the actual account/project, relevant plan and charge path, configured enforcement, remaining uncertainty and evidence time. An old $0/$1 suggestion is neither a current setting nor proof of a cap.
 
-### 1.3 Expert Lens Analysis
-- **Cloud billing / platform-cost boundary**: The absence of a linked billing account is the primary firewall. Fixed subscriptions provide a known cost "floor" without the risk of an "infinite ceiling."
-- **Security / permission boundary**: Connector permissions are scoped to specific app data, creating a sandbox that prevents lateral movement into cloud infrastructure management (IAM/Compute).
-- **Connector / MCP-like routing boundary**: Treats external platforms as "surfaces" rather than "runtimes," ensuring the system logic remains platform-agnostic.
-- **Systems architecture / cloud-over-cloud topology**: Reinforces the "Over-Cloud" position, where XuanLing coordinates between clouds without becoming dependent on the internal runtime of any single provider.
-- **Data governance / source-of-truth boundary**: GitHub remains the primary spine; other surfaces are transient coordination nodes.
-- **Legal-compliance / unauthorized-charge boundary**: Technologically enforced "No-Payment" paths provide the highest level of protection against unauthorized charges.
-- **Operational governance / Red-Yellow-Green gate design**: Correctly maps financial and runtime risks to the Red Gate.
+## Purpose-bound review questions
+Ask only what the proposed action materially depends on: which resource and operation; whose authorization; what data may leave; what verified limits apply; whether usage or retries create costs; how failure is detected; how the operation stops; and where its result and restoration evidence return. Unknown answers constrain the dependent action, not every other authorized activity.
 
----
+Access tokens, billing identifiers and private data must not be copied into this public reference. Actual configuration and source evidence stay in their authorized domain. Do not open all cloud consoles or modify budgets/OAuth scopes merely because the old checklist proposed it.
 
-## 2. Review Questions & Answers
+## Action categories, not automatic permissions
+Reading, drafting, shared-data mutation, sending, deployment, linking a billing account and enabling a paid API have different effects. The predecessor's green/yellow/red colors can describe an explicitly selected local policy, but green is not a grant and yellow is not an instruction to seek a new subscription. Payment, access expansion, irreversible changes and disclosure require their actual approvals.
 
-1.  **Does the distinction between subscription access and metered cloud execution hold?**
-    Yes. Subscriptions are access-granting instruments; metered execution is an infrastructure-consumption instrument. They operate on different financial and technical layers.
-2.  **Is no-billing / no-payment-path a valid hard Red Gate?**
-    Yes. It is a technical impossibility to incur metered charges without an active payment instrument or billing project linkage.
-3.  **Which platforms might still create hidden usage, quota, or plan-limit risks without billing?**
-    GitHub Actions (minutes), Notion (block counts), Gmail (sending limits), and ChatGPT (rate limits/token caps). These result in "service denial" rather than "financial charge."
-4.  **Which actions must always remain Red Gate?**
-    Linking credit cards, creating Google Cloud Billing projects, enabling API Pay-as-you-go, and authorizing any auto-scaling infrastructure.
-5.  **Which connector actions are safe under review-only / draft-only mode?**
-    Read-only access to Drive/Notion/Linear, drafting content (Gmail/Notion), and structural mapping of external data.
-6.  **How should MotherTree state the rule without overclaiming legal certainty?**
-    The rule should be phrased as a "Structural Constraint" and "Technical Hard Limit" rather than a legal guarantee.
-7.  **What should be checked manually before any runtime/deploy/API/billing expansion?**
-    Review of Organization-wide billing dashboards, setting of strict budget alerts ($1 hard cap), and secondary human approval of the billing-linkage task.
-8.  **Does this model correctly avoid being trapped inside any single cloud domain?**
-    Yes, by treating all clouds as "Adapter Layers" (Group C) and never "Mother-Law" (Group A).
+GitHub can hold repository evidence; Drive or another permitted carrier can hold an authoritative native body for its own source domain. No cloud name establishes universal source priority or a permanent coordinating layer.
 
----
+## Historical return
+R1I_ALL_CLOUD_BOUNDARY_NO_BILLING_REVIEW remains the predecessor's task identifier. Its reported no-billing/no-deployment statements describe that earlier review, not a fresh check of today's accounts. Do not restart its old rule-adoption task or infer a live service exists. A real authorized cloud use should return its own observed effect, costs where measured, unknowns and recovery conditions.
 
-## 3. Gate Actions
+## Source and recovery
 
-### 3.1 Red Gate (Blocked)
-- Attaching credit cards or bank accounts.
-- Enabling Google Cloud "Billing Account" links.
-- Creating Cloudflare Workers/Pages with paid limits.
-- Authorizing any "Pay-as-you-go" API key generation.
-- Connecting external MCP servers that lack defined cost boundaries.
-
-### 3.2 Yellow Gate (Review Required)
-- Connecting new App Connectors (OAuth).
-- Synchronizing large datasets across Drive/Notion.
-- Modifying shared permission sets in external apps.
-- Automating "Send" actions in Gmail or Slack.
-
-### 3.3 Green Gate (Safe)
-- Reading existing files and tasks.
-- Creating drafts and candidates.
-- Generating structural review notes.
-- Internal coordination within the repository.
-
----
-
-## 4. Recommended Rule Text (Draft)
-
-> All external platforms are cloud domains, not operating cores. Platform subscriptions and app connectors provide access, storage, review, draft, and coordination surfaces, but they do not by themselves authorize metered runtime, API billing, deployment, database, worker, or cloud compute execution. No attached payment method, no linked billing account, and no explicit user approval constitute a hard Red Gate. XuanLing operates above cloud domains through gates, hooks, task cards, connector permissions, and return packets; it must not chase, mirror, or become dependent on any single cloud's internal content flow.
-
----
-
-## 5. Manual Checklist Before Any Expansion
-- [ ] Confirm no existing billing accounts are hidden in "Free Trial" or "Promotional" states.
-- [ ] Set $0 budget alerts on all active cloud consoles.
-- [ ] Audit all OAuth scopes to ensure no "Billing" or "Admin" permissions are granted.
-- [ ] Verify that the user has explicitly authorized the transition from "Subscription Surface" to "Metered Runtime."
-
----
-
-## 6. MotherTree Notes
-- This review establishes the "No-Billing Feasible Domain" as the standard operating environment for the current development phase.
-- Expansion into metered cloud execution requires a new structural intake and a Red Gate upgrade.
-
----
-
-## 7. Return Packet
-- **Window:** MotherTree / All-Cloud Boundary Expert Review
-- **Task_ID:** R1I_ALL_CLOUD_BOUNDARY_NO_BILLING_REVIEW
-- **What_Changed:**
-  - Formulated expert review of the all-cloud boundary and no-billing feasible domain.
-  - Defined Red/Yellow/Green gate actions for cloud coordination.
-- **What_Did_Not_Change:**
-  - No billing enabled.
-  - No runtime/deploy/API/database connected.
-- **Risk:** Subscription surfaces may be confused with runtime authority; requires clear documentation (this file).
-- **Next_Action:** MotherTree final decision and rule adoption.
-- **Return_Path:** GitHub issue -> Jules/Codex review -> MotherTree decision -> optional rule packet
+Selectively adapts [#324 fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/03_field-governance/ALL_CLOUD_BOUNDARY_REVIEW_v0_1.md) (blob `ce82b1f166c10f66a1e4d35083ffedec4d5a3371`). [Complete predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/66099050d54a5ad533464cb4f28918fb04aadccb/03_field-governance/ALL_CLOUD_BOUNDARY_REVIEW_v0_1.md) (blob `a9927d55dc2cf3abf30537839e8410885524bd82`) and the existing evidence package preserve every original form, example and dated decision. Historical labels/arrows are not current tasks, permission or a universal sequence. No source deletion, runtime, deployment or new authority follows. Restore only after checking newer changes; ordinary entry selection remains the [existing manifest](../CURRENT-SURFACE-MANIFEST.json).

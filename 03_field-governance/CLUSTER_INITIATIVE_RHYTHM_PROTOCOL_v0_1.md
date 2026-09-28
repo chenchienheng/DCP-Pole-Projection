@@ -1,141 +1,30 @@
-# Cluster Initiative Rhythm Protocol v0.1
+# Initiative and cadence — scope actions without a fixed activation ladder
+
+Status: CANDIDATE_REFERENCE / NOT_RUNTIME / NO_NEW_AUTHORITY.
+Batch: BATCH_FIELD_CONTINUITY_UPTAKE_20260928 (Asia/Taipei).
 
 ## Purpose
+Support proactive continuation of an already authorized need without giving a model or tool autonomous authority. Report, prepare, act, return and calibrate are distinguishable functions; they are not a compulsory five-stage loop or an approval request after every small edit.
 
-Define a safe rhythm for clustered commander initiative.
+## Batching and triggers
+Group changes that complete the same dependency or deliverable: source review, affected definitions, consumer references, verification and persistence can form one coherent batch. Do not split independent eligible work solely to obtain another human continue message. Conversely, batching does not grant broader access or permit unrelated changes.
 
-The goal is not autonomous wandering. The goal is coordinated reporting, bounded activation, and return-path discipline.
+A material source change, an actual outstanding obligation, an observed failure or the user's request may justify another operation. Mere participation, a receipt, search visibility or an old next-step paragraph does not dispatch it. Preserve task identity when contributions converge; do not create duplicate tasks for the same effect.
 
-## Boundary
+## Risk and authority
+Observation, drafting, candidate writes, external mutation and irreversible action need different qualification. The predecessor's L0-L5 labels and Requires_User flags are not standing permissions. Low risk, reversibility and a return path are useful considerations but never replace actual scope or prior approval when required.
 
-- non-core
-- no unrestricted autonomy
-- no deletion authority
-- no secret handling
-- no cross-platform mutation without explicit scope
-- no replacement of MotherTree / CoreTri / user sovereignty
+No fixed GitHub/Linear/Hugging Face/Codex/Gamma/Replit commander assignment is established. Select available capabilities for the effect, retaining source, authority and failure boundaries if a carrier changes.
 
-## Core Idea
+## Cadence and local stop
+Daily rotation and weekly revolution were explanatory examples, not schedules. Reading this document neither creates a recurring task nor changes an existing one. If a necessary input, access or decision is missing, hold only the dependent action; keep eligible unrelated construction moving. Do not infer no work or a successful quiet run from silence.
 
-A cluster becomes powerful when commanders report, prepare, and activate in rhythm.
+## Return
+Use the original deliverable's acceptance conditions. The preserved Cluster_Return_Packet form can summarize a batch's trigger, actions, unchanged scope, unresolved risks and next condition. Commander and Initiative_Level are descriptive fields in that selected record, not permanent identities. A completed batch is not automatically a release, merge or receiver acceptance.
 
-```text
-Report -> Prepare -> Activate -> Return -> Calibrate
-```
+## Retained compatibility forms
 
-This creates rotational motion across the topology sphere without letting any node drift from the invariant core.
-
-## Motion Analogy
-
-```yaml
-Topology_Sphere_Motion:
-  Rotation:
-    Meaning: local task execution and daily node movement
-    Example: PR check, issue update, model intake, document packaging
-
-  Revolution:
-    Meaning: long-cycle return to MotherTree / CoreTri
-    Example: weekly convergence, closure gate, architecture review
-
-  Axis:
-    Meaning: invariant core
-    Rule: no node may redefine the axis
-```
-
-## Initiative Levels
-
-```yaml
-Initiative_Levels:
-  L0_Observe:
-    Action: read status, detect change, no mutation
-    Requires_User: false
-
-  L1_Report:
-    Action: summarize status, flag risk, produce return packet
-    Requires_User: false
-
-  L2_Prepare:
-    Action: draft task card, draft PR comment, draft file content
-    Requires_User: conditional
-
-  L3_Bounded_Activate:
-    Action: create low-risk issue, branch, single non-core file, or review comment
-    Requires_User: prior declared scope
-
-  L4_Escalate:
-    Action: ask for decision before high-risk action
-    Requires_User: true
-
-  L5_Fail_Stop:
-    Action: stop, hold, or reject action
-    Requires_User: true if continuation is needed
-```
-
-## Commander Rhythm
-
-```yaml
-Commander_Rhythm:
-  GitHub:
-    Report: open PRs, mergeability, diff risk, stale branches
-    Prepare: review notes, cleanup recommendation, safe PR body
-    Activate: create branch, create non-core file, open PR, comment, merge only under explicit scope
-
-  Linear:
-    Report: open issues, blockers, stale tasks, initiative status
-    Prepare: task queue, acceptance criteria, owner/ETA proposal
-    Activate: create/update issue only under declared task scope
-
-  Hugging_Face:
-    Report: model/dataset/paper candidates, license risk, capability fit
-    Prepare: model intake card, capability matrix, comparison note
-    Activate: no deployment by default; jobs only under explicit scope
-
-  Codex_Jules:
-    Report: execution result, diff, errors, blocked state
-    Prepare: patch plan, test plan, cleanup plan
-    Activate: repo work only inside assigned branch / issue
-
-  Interface_Tools:
-    Report: output readiness, public/private boundary risk
-    Prepare: copy, deck, image, PDF, AEO format
-    Activate: publish/export only under explicit scope
-
-  Communication_Tools:
-    Report: notification needs and review requests
-    Prepare: message draft, status update, meeting note
-    Activate: send only under explicit scope
-```
-
-## Trigger Rules
-
-```yaml
-Can_Start_Without_User:
-  - read-only status scan
-  - stale PR detection
-  - low-risk summary
-  - next-task card generation
-  - return packet drafting
-
-Can_Prepare_Without_User:
-  - non-public draft
-  - issue body draft
-  - PR review checklist
-  - model intake summary
-
-Requires_User_Or_Explicit_Scope:
-  - merge PR
-  - close issue
-  - delete file
-  - publish public content
-  - send external message
-  - run paid compute job
-  - touch sensitive/company/private data
-  - change core doctrine
-```
-
-## Return Packet
-
-Every activated commander must return:
+These uninstantiated source forms preserve compatible field names for a selected profile, not a required global schema or action grant. BASE/QIN, Window/Rank, named tables, mandatory_fields and destinations apply only to that explicitly chosen profile; do not create resources or infer approval to fill a form.
 
 ```yaml
 Cluster_Return_Packet:
@@ -151,23 +40,6 @@ Cluster_Return_Packet:
   Return_Path:
 ```
 
-## Anti-Drift Rules
+## Source and recovery
 
-```yaml
-Anti_Drift:
-  - no node acts as core
-  - no commander redefines system purpose
-  - no tool decides its own authority
-  - no output becomes formal without return path
-  - no model hub becomes doctrine
-  - no interface layer exposes private source
-```
-
-## Status
-
-```yaml
-Status: Draft_v0_1
-Layer: Field Governance
-Core_Status: Non_Core
-Gate_Color: Yellow
-```
+Selectively adapts [#324 fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/03_field-governance/CLUSTER_INITIATIVE_RHYTHM_PROTOCOL_v0_1.md) (blob `048dda8283e6ac4fd2f9d15ea9d0bcd359310a4c`). [Complete predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/66099050d54a5ad533464cb4f28918fb04aadccb/03_field-governance/CLUSTER_INITIATIVE_RHYTHM_PROTOCOL_v0_1.md) (blob `472376ef61ed7699081c9109978c3f9db574adc7`) and the existing evidence package preserve every original form, example and dated decision. Historical labels/arrows are not current tasks, permission or a universal sequence. No source deletion, runtime, deployment or new authority follows. Restore only after checking newer changes; ordinary entry selection remains the [existing manifest](../CURRENT-SURFACE-MANIFEST.json).

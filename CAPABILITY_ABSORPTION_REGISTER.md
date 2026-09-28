@@ -45,6 +45,38 @@ The separate live main ref was observed at `303482894b099d071d2d62f7fd5cba9a3287
 
 Full previous references and register remain at fixed parent `08eddfc06cbea9f6884200a247b21df83d8e39c3`. Directory entry distinguishes reference, code history, usable deliverable requirements and installed execution. Public maintenance does not publish private source locations or adopt real provider limits. Actual APIs, authority, transport and receiver use remain separate.
 
+## Applied coherent batch — field-reference continuity and existing main recovery
+
+Record: BATCH_FIELD_CONTINUITY_UPTAKE_20260928. Target before this batch: #406 `66099050d54a5ad533464cb4f28918fb04aadccb`.
+
+Sixteen existing references in 03_field-governance are treated together because their source/view, import/identity, analysis, export/return, routing, initiative, dependency and ledger assumptions reference one another. Selective adaptation of #324 source `00999341ff600a65ab3de641e4ce5615d6e9690d` preserves concrete field forms, domain-specific intake and complete predecessor evidence. It does not copy source stubs blindly or claim their nominal successor chain was admitted.
+
+The batch removes the fixed BASE/QIN five-gate pipeline and stale create-next-document queue, latest-round/one-next-task restriction, vendor/rank authority, automatic low-risk action permission and universal source-label weighting from ordinary applicability. Source correction, scope, identity, field/unit fidelity, receiver effects and recovery remain substantive requirements. Historical cloud billing/sandbox guarantees and the dated company branch's reported database changes are no longer treated as fresh observations. No live cloud account or company data was audited or mutated. The Hugging Face card remains a useful specialist profile, not retired merely for mentioning a provider. Existing compatible forms are preserved as optional profiles; no new global ontology is defined.
+
+Exact selected paths:
+- `03_field-governance/ABUNDANCE_UNDER_CONSTRAINT_v0_1.md`
+- `03_field-governance/ALL_CLOUD_BOUNDARY_REVIEW_v0_1.md`
+- `03_field-governance/ANALYSIS_VIEW_MAP_v0_1.md`
+- `03_field-governance/CLUSTER_INITIATIVE_RHYTHM_PROTOCOL_v0_1.md`
+- `03_field-governance/CO_FIELD_DEPENDENCY_MODEL_v0_1.md`
+- `03_field-governance/EXPORT_RETURN_PACKET_SCHEMA_v0_1.md`
+- `03_field-governance/EXTERNAL_ROUND_LEDGER_v0_1.md`
+- `03_field-governance/FIELD_CHAIN_MATRIX_MECHANICS_v0_1.md`
+- `03_field-governance/HUGGING_FACE_MODEL_INTAKE_CARD_v0_1.md`
+- `03_field-governance/IMPORT_STAGING_AND_STABLE_ID_RULE_v0_1.md`
+- `03_field-governance/ISM_STRUCTURAL_INITIATIVE_INTAKE_v0_1.md`
+- `03_field-governance/KNOWLEDGE_MOLECULE_MODEL_v0_1.md`
+- `03_field-governance/MINIMAL_ROUTER_LAUNCHER_QIN_VIEW_GATE_v0_1.md`
+- `03_field-governance/RECOMPOSITION_ENGINE_v0_1.md`
+- `03_field-governance/SOURCE_VIEW_GATE_v0_1.md`
+- `03_field-governance/TW_STRATEGY_MOTHERTREE_FEEDBACK_v0_1.md`
+
+The already-merged #421 source at actual main `28609979dcaa9060d018b504894c535e6e1197e6` supplies its complete 21-path recovery/correction as source content: five ordinary public references, four archive READMEs and twelve restored historical bodies. Candidate archive directories previously contained only their existing README; there is no candidate-only body overwritten in those four directories. This reuses accepted source changes rather than redoing them. It does not merge main into the branch, merge this PR into main, or accept historical assertions as current instructions. Existing #420 AGENTS is identical and remains unchanged.
+
+Historical exact bodies and every original form/example are recoverable from this batch's fixed parent and preserved evidence. Original paths remain; no53 proposed source deletions, broad #324 acceptance or source retirement is inferred. The 307-path frozen comparison remains a baseline, not a completion percentage. Prior adapter/media/GAS and executable repair scopes stay closed as recorded; the GAS live-writer flaws remain unrepaired.
+
+Validation belongs to the new exact commit and its own receipt; prior tests are not relabelled as new tests. These are documentation/source-content changes, not new provider executors, permission checks, deployment, paid resources or runtime. Continue the original authorized deliverable's genuinely affected source/implementation/use and recovery needs, not another copy of the already-existing five-document creation sequence.
+
 ## Frozen all-PR comparison — retained scope, not today's counts
 
 Acquisition: 2026-09-27T05:47:46.220571Z–05:48:05.132097Z.63 GET-only requests exhausted all PR and open-file pages; trees were not truncated. Revalidation was per repository, not a globally atomic snapshot.
