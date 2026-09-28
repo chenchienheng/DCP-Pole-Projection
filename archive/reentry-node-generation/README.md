@@ -32,3 +32,9 @@ Full historical content remains recoverable from Git history.
 3. current `EXTERNAL_NODE_ONCHAIN_SPEC.md` external node/carrier contract
 4. `THREE_COUPLING_RUNTIME_MAP.md` continuity coupling contract
 5. private semantic-core carrier/pointer/authority/return/rebuild surfaces
+
+## Downloadable historical bodies
+
+These snapshots are included in source exports without requiring a Git checkout. Each records its immutable source commit and original blob. Historical instructions remain inactive; restoring their text does not restore their authority.
+
+- [GITHUB_CHAIN_MASTER_MAP.md](GITHUB_CHAIN_MASTER_MAP.md) — source `246928876c8053b46e28a1e841322bf4638cb46b`, original blob `b8d81395e1bf37db7ab766a2a68036607b4e6bd4`.

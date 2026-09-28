@@ -21,6 +21,7 @@ A material node binding should be representable with:
 - `node_or_carrier_id`
 - `provider_or_implementation`
 - `capability_profile`
+- `structural_role`
 - `source_or_subject_refs`
 - `receiver_or_owner`
 - `input_boundary`
@@ -34,6 +35,8 @@ A material node binding should be representable with:
 - `reconciliation_requirement`
 - `rebuild_or_exit_refs`
 - `last_verified_revision_or_time`
+
+`structural_role` states the node's bounded function in this particular binding. It is separate from available capabilities, semantic ownership and action authority; it does not establish a permanent role, fixed owner window or permission to act. A changed binding must re-evaluate the applicable role and boundaries.
 
 ## 3. Replaceability rule
 A node should not become a hidden architecture root. Replacement readiness requires enough stable identity, interface expectation, evidence, return semantics, and rebuild/exit information to substitute or disable the carrier without redefining the governed object.
