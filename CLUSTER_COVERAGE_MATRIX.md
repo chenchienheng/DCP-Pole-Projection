@@ -10,7 +10,7 @@ Purpose: measure whether a bounded existence, capability, carrier binding, or wo
 ## 1. Core rule
 A subject is meaningfully covered only when the relevant parts of its life chain can be resolved without inventing missing state.
 
-Recommended axes:
+Recommended reference axes for a bounded evaluation (not new semantic-core axes or a mandatory global gate):
 - `identity_resolution` — Stable subject identity is known;
 - `source_resolution` — lawful Native Source / source pointer can be located;
 - `dependency_resolution` — affected prerequisites/receivers are known;
@@ -61,4 +61,4 @@ A low score should produce a named gap, not pressure to invent completion. Typic
 A corpus becomes closer to an executable world when its relevant subjects can be instantiated and changed through Stable Identity + Dependency + State + Authority + Evidence + Effect + Return/Reconciliation + Rebuild, with purpose-fit representations. Prose may explain this, but prose order is not the execution model.
 
 ## 6. Historical compatibility
-Earlier versions used reachability/bindability/window/chain-face/writeback scores and named GitHub, legacy seed, scheduling and dynamic corpus database as Current clusters. Those were stage measurements. Current evaluation should use the axes above and machine-readable semantic-core evidence where available.
+Earlier versions used reachability/bindability/window/chain-face/writeback scores and named GitHub, legacy seed, scheduling and dynamic corpus database as Current clusters. Those were stage measurements. The reference axes above may support a bounded evaluation when applicable to its purpose and accepted scope. They do not replace semantic-core definitions, authorize a migration, or require every task to complete a global checklist. Machine-readable evidence must retain its own source, scope and acceptance status.
