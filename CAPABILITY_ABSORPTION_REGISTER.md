@@ -32,6 +32,19 @@ This is four-path content uptake in the candidate, not four newly installed adap
 
 The top-level EXTERNAL_ECOSYSTEM_ABSORPTION_SCHEMA.md had already been corrected, while this directory retained incompatible fixed-role text. Fixing the directory does not require rewriting that already-correct top-level source again.
 
+## Applied content uptake — media, messaging and table draft
+
+Record: MEDIA_MESSAGE_TABLE_CONTENT_UPTAKE_20260928.
+Target before this uptake: #406 `08eddfc06cbea9f6884200a247b21df83d8e39c3`. Original #324 source remains `00999341ff600a65ab3de641e4ce5615d6e9690d`.
+
+Four further existing references (gamma_entry_spec, line_entry_chain_spec, VIDEO_OUTPUT_NODE_SPEC, gemini_gas_sheet_bridge_spec) now retain their concrete inputs/outputs and source relationships without fixed W0/provider/AXIS/duration claims. They are selective adaptations, not exact source-blob reuse. The prior four-file group stays closed; nothing here declares all adapters implemented or the180-path review complete.
+
+The table draft's complete original code and sample payload were extracted before replacement, with original Markdown blob8c6f20be4a52e7b3dd926a6f6dcdeb7359f00c6a verified. Six offline synthetic/mock checks yielded four unsafe-use counterexamples (older weighted status, duplicate display names, active-sheet fallback, lost concurrent edit) and two positive controls (report-only and formula restoration). Original code is preserved, not repaired or deployed. Old merge/safety assertions no longer direct ordinary readers.
+
+The separate live main ref was observed at `303482894b099d071d2d62f7fd5cba9a32878c34`, not the PR metadata's older base SHA. Its already-merged #420 AGENTS.md correction, blob `fd698cdcd0323b1d077ccbb9d16caf0e9be965d0`, is reused exactly in this candidate: authorized construction/iteration and deliverable continuity are not limited to repeated minimal repairs. No core doctrine or permission is added here; main and this candidate retain separate acceptance states.
+
+Full previous references and register remain at fixed parent `08eddfc06cbea9f6884200a247b21df83d8e39c3`. Directory entry distinguishes reference, code history, usable deliverable requirements and installed execution. Public maintenance does not publish private source locations or adopt real provider limits. Actual APIs, authority, transport and receiver use remain separate.
+
 ## Frozen all-PR comparison — retained scope, not today's counts
 
 Acquisition: 2026-09-27T05:47:46.220571Z–05:48:05.132097Z.63 GET-only requests exhausted all PR and open-file pages; trees were not truncated. Revalidation was per repository, not a globally atomic snapshot.
@@ -69,7 +82,7 @@ The earlier network-inventory extension was removed and the workflow restored to
 
 ## Remaining work and recovery
 
-Review remaining content only for a genuine affected purpose. Other adapter-directory references, including gamma_entry_spec.md, gemini_gas_sheet_bridge_spec.md, line_entry_chain_spec.md and VIDEO_OUTPUT_NODE_SPEC.md, are not qualified by this four-file review. Their listing does not mandate activation, edits or deletion.
+Review remaining content only for a genuine affected purpose. The named presentation/message/video/table reference slice is now reviewed and its ordinary text adjusted; do not requeue it as unread from earlier wording. Its historical table-code defects are retained unresolved for any future authorized live table use, not a compulsory new implementation task. Other files and consumers are not qualified merely because they share the directory.
 
 Actual external permission/transport/revision checks, receiver use, repeatable recovery, full180-path semantic acceptance,53 deletion proposals and explicit integration acceptance remain separate. No new source PR, main merge, branch retarget, account permission, schedule, mode or deployment follows.
 

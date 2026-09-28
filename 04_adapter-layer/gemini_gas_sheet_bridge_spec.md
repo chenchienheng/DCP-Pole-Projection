@@ -1,267 +1,39 @@
-# Gemini to Google Sheet Bridge Spec
+# External table import reference — preserved GAS draft, not an approved writer
 
-- Department: Adapter Layer
-- Node ID: ADP-GBS-01
-- Version: v0.1
-- Status: Engineering Draft
+Status: HISTORICAL_CODE_RETAINED / LIVE_USE_NOT_QUALIFIED / NO_EXECUTABLE_AUTHORITY.
+Purpose: preserve the useful import draft, payload and failure evidence while preventing its old safety and merge claims from becoming current operating instructions.
 
----
+## Preserved implementation, not discarded capability
 
-## 1. Overview
+The complete original JavaScript fence, JSON payload, formula-restoration logic and dated PR127/139 assessment remain in [the fixed predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/08eddfc06cbea9f6884200a247b21df83d8e39c3/04_adapter-layer/gemini_gas_sheet_bridge_spec.md), blob `8c6f20be4a52e7b3dd926a6f6dcdeb7359f00c6a`. The original code and sample payload were separately extracted and retained in the existing evidence package before this edit; no deployed script was inspected, changed, enabled or removed by this task.
 
-This spec defines a safe bridge for ingesting point-cloud delta data from Gemini
-into Google Sheets via Google Apps Script (GAS). It prioritizes data integrity
-and non-destructive updates.
+The #324 source explicitly keeps reclaim on hold until unique implementation evidence is extracted. This review preserves that evidence; it does not infer physical deletion eligibility, source retirement or a replacement production adapter.
 
-## 2. Safety Boundaries
+## Behavior examined on 2026-09-28
 
-- **No Deletion:** The script must never delete rows or clear the sheet.
-- **Report-Only by Default:** Live writes require `AUTHORIZED_WRITE = true`.
-- **Strength-Based Update:** Only update fields if the new data is "stronger"
-  (e.g., Fact > Radar) or more recent.
-- **No Private Data:** Payloads must not contain company-sensitive information.
+Six offline checks executed the exact extracted draft in Node v22.16.0 with synthetic rows and a mock SpreadsheetApp. No provider SDK, network, account, credential or real sheet was used. The live-write flag was changed only inside the isolated mock to inspect write behavior; the preserved source is unchanged.
 
-## 3. GAS Code Draft
+| Check | Observed result | Meaning |
+|---|---|---|
+| Default report-only | Zero mock writes; result says success with planned added count and DRY_RUN_REPORT | The explicit dry-run label works; status/count alone is not evidence of a performed mutation |
+| Older Fact versus newer Radar | Older incoming value overwrote newer stored value in the mock | Fixed label weight wins before date comparison; label strings are not verified source quality or applicability |
+| Duplicate Entity_Name | Incoming entity B changed the first matching row A, including its ID | Display name matching does not establish stable entity identity |
+| Missing target_path | Draft selected the active sheet | Exact target binding is not required by this implementation |
+| Existing formula | Formula string survived the mocked setValues call | Formula restoration is useful, but this is not real Sheets or full-workbook validation |
+| Concurrent unrelated edit | Whole-range write replaced the intervening value with its older snapshot | No version/conflict check protected that mock write |
 
-```javascript
-/**
- * Gemini to Google Sheet Bridge (GAS)
- * Safety: Report-only until AUTHORIZED_WRITE = true
- */
+Four checks expose counterexamples to safe current use; two preserve positive behavior. They are not six repaired-code tests, a deployed service audit or proof that real user data was corrupted. The actual function is `getUpdateMode`; the predecessor's suggested `shouldUpdate` test referred to a different name.
 
-const AUTHORIZED_WRITE = false; // Set to true to enable live writes
+## Use and unresolved conditions
 
-function doPost(e) {
-  try {
-    const packet = JSON.parse(e.postData.contents);
-    const result = processPacket(packet);
-    return ContentService.createTextOutput(JSON.stringify(result))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch (err) {
-    return ContentService.createTextOutput(JSON.stringify({
-      error: err.toString(),
-      status: "failed"
-    })).setMimeType(ContentService.MimeType.JSON);
-  }
-}
+Retain non-destructive intent, formula preservation, payload provenance, scoped error reporting and explicit report-only operation as reusable requirements. Do not retain a universal Fact/Signal/Radar ranking, name-only matching, active-sheet fallback, AXIS-05 return, or the instruction that toggling a constant is sufficient to authorize live mutation.
 
-function processPacket(packet) {
-  const stats = { added: 0, updated: 0, skipped: 0, errors: [] };
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = packet.target_path ?
-      ss.getSheetByName(packet.target_path) : ss.getActiveSheet();
+The old design_complete, Stale_Overwrite_Prevented and Recommended_Action: Merge claims are historical assertions, not current acceptance. A future real table use must qualify identity and exact target, source applicability/conflicts, actual authority, concurrency/revision handling, formula and field fidelity, result/readback and recovery for that use. Merely avoiding row deletion does not establish non-destructive semantics.
 
-  if (!sheet) {
-    throw new Error(`Target sheet not found: ${packet.target_path}`);
-  }
+The existing [writeback packet](writeback_packet_contract.md) and [write-intent assessment](writeback_gate_spec.md) distinguish declaration from action; they do not authenticate a Sheets account or supply the missing transport/version checks. No new table adapter or universal schema is introduced here. API versions, permissions, quota and costs remain unverified for a future integration; private/company payloads are not authorized for external use by this reference.
 
-  let data = sheet.getDataRange().getValues();
-  const formulas = sheet.getDataRange().getFormulas();
-  const headers = data[0];
+## Source uptake and recovery
 
-  const entityNameIdx = headers.indexOf("Entity_Name");
-  const statusIdx = headers.indexOf("Evidence_Status");
-  const updatedAtIdx = headers.indexOf("Updated_At");
+Selectively adopts the purpose/authority distinctions in [the existing #324 source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/04_adapter-layer/gemini_gas_sheet_bridge_spec.md), blob `898e2b2c596e3d8a51642b57c40f9ca197e01967`. It is not an exact whole-file import or whole-source acceptance. The complete predecessor remains at [the fixed parent](https://github.com/chenchienheng/DCP-Pole-Projection/blob/08eddfc06cbea9f6884200a247b21df83d8e39c3/04_adapter-layer/gemini_gas_sheet_bridge_spec.md); restore only after checking newer changes.
 
-  if (entityNameIdx === -1 || statusIdx === -1 || updatedAtIdx === -1) {
-    throw new Error(
-        "Required headers missing (Entity_Name, Evidence_Status, Updated_At)");
-  }
-
-  const entityIndexMap = new Map();
-  for (let i = 1; i < data.length; i++) {
-    const entityName = data[i][entityNameIdx];
-    if (!entityIndexMap.has(entityName)) {
-      entityIndexMap.set(entityName, i);
-    }
-  }
-
-  packet.payload.rows.forEach(newRow => {
-    try {
-      let existingRowIdx = entityIndexMap.has(newRow["Entity_Name"]) ?
-          entityIndexMap.get(newRow["Entity_Name"]) : -1;
-
-      if (existingRowIdx === -1) {
-        const rowData = headers.map((h, colIdx) => {
-          if (h === "Payload_ID") return packet.payload.payload_id;
-          if (h === "Source_Batch") return packet.payload.source_batch;
-          return newRow[h] === undefined ? "" : newRow[h];
-        });
-        data.push(rowData);
-        if (!entityIndexMap.has(rowData[entityNameIdx])) {
-          entityIndexMap.set(rowData[entityNameIdx], data.length - 1);
-        }
-        stats.added++;
-      } else {
-        const existingStatus = data[existingRowIdx][statusIdx];
-        const newStatus = newRow["Evidence_Status"];
-        const existingUpdate = data[existingRowIdx][updatedAtIdx];
-        const newUpdate = newRow["Updated_At"] || null;
-
-        const mode = getUpdateMode(existingStatus, newStatus,
-            existingUpdate, newUpdate);
-
-        if (mode !== "SKIP") {
-          headers.forEach((h, colIdx) => {
-            // Formulas are never overwritten by bridge
-            if (formulas[existingRowIdx] && formulas[existingRowIdx][colIdx]) {
-              return;
-            }
-
-            let newVal = newRow[h];
-            if (h === "Payload_ID") newVal = packet.payload.payload_id;
-            if (h === "Source_Batch") newVal = packet.payload.source_batch;
-
-            if (newVal !== undefined && newVal !== "") {
-              if (mode === "OVERWRITE" || data[existingRowIdx][colIdx] === "") {
-                data[existingRowIdx][colIdx] = newVal;
-              }
-            }
-          });
-          stats.updated++;
-        } else {
-          stats.skipped++;
-        }
-      }
-    } catch (err) {
-      stats.errors.push(`Row failed: ${newRow["Entity_Name"]} - ${err}`);
-    }
-  });
-
-  if (AUTHORIZED_WRITE) {
-    // Restore formulas before setValues to avoid formula-to-value conversion
-    const numRows = formulas.length;
-    for (let r = 0; r < numRows; r++) {
-      const formulaRow = formulas[r];
-      // Fast skip if the entire row has no formulas
-      if (!formulaRow.some(String)) continue;
-
-      const dataRow = data[r];
-      const numCols = formulaRow.length;
-      for (let c = 0; c < numCols; c++) {
-        const formula = formulaRow[c];
-        if (formula !== "") {
-          dataRow[c] = formula;
-        }
-      }
-    }
-    sheet.getRange(1, 1, data.length, headers.length).setValues(data);
-  }
-
-  return {
-    status: stats.errors.length > 0 ? "partial_success" : "success",
-    Asset_ID: "TBD",
-    Location_Link: ss.getUrl(),
-    Return_Path: "AXIS-05",
-    stats: stats,
-    legion_log: {
-      Round_ID: packet.payload.payload_id,
-      Node: packet.node_id,
-      Action: AUTHORIZED_WRITE ? "LIVE_WRITE" : "DRY_RUN_REPORT",
-      Output: `Added: ${stats.added}, Updated: ${stats.updated}, ` +
-              `Skipped: ${stats.skipped}, Errors: ${stats.errors.length}`,
-      Next_Action: "Review report and authorize live write if needed",
-      Risk_or_Blocker: stats.errors.length > 0 ?
-          "Row processing errors" : "None",
-      Return_Path: "AXIS-05"
-    }
-  };
-}
-
-function getUpdateMode(oldStatus, newStatus, oldUpdate, newUpdate) {
-  const weights = { "Fact": 3, "Signal": 2, "Radar": 1, "Pending": 0 };
-  const newWeight = weights[newStatus] || 0;
-  const oldWeight = weights[oldStatus] || 0;
-
-  if (newWeight > oldWeight) return "OVERWRITE";
-  if (newWeight < oldWeight) return "SKIP";
-
-  // Weights are equal, check recency
-  if (!oldUpdate) return "OVERWRITE";
-  if (!newUpdate) return "SKIP";
-
-  if (new Date(newUpdate) > new Date(oldUpdate)) {
-    return "MERGE_EMPTY_ONLY"; // Equal strength, newer data: only fill gaps
-  }
-  return "SKIP";
-}
-```
-
-## 4. Test Payload Format
-
-Aligned with `Writeback Packet Contract` (v0.1).
-
-```json
-{
-  "department": "Adapter Layer",
-  "node_id": "Gemini_Scout_Node",
-  "action": "update",
-  "target_path": "Point_Cloud_Log",
-  "payload": {
-    "payload_id": "PCD-TEST-001",
-    "source_batch": "Gemini_Batch_001",
-    "rows": [
-      {
-        "Entity_Name": "Example Entity",
-        "Entity_Type": "Owner / Demand Node",
-        "Chain_Position": "Owner",
-        "Region": "North",
-        "Possible_Facility_Link": "Data Center",
-        "Evidence_Status": "Radar",
-        "Source_or_Search_Lead": "public search lead only",
-        "Can_Support": "May be relevant to market point-cloud",
-        "Cannot_Support": "Does not prove project opportunity",
-        "Next_Verification_Needed": "official source / filing",
-        "Updated_At": "2026-04-22T00:00:00Z"
-      }
-    ]
-  }
-}
-```
-
-## 5. Return Contract
-
-The GAS bridge returns a JSON object with:
-
-- **stats:** counts for added, updated, skipped, errors.
-- **legion_log:**
-  - **Round_ID:** from packet payload.
-  - **Node:** from packet node_id.
-  - **Action:** LIVE_WRITE or DRY_RUN_REPORT.
-  - **Output:** summary string.
-  - **Next_Action:** instructions for next step.
-  - **Risk_or_Blocker:** row processing errors or None.
-  - **Return_Path:** AXIS-05 (Review Chain).
-
-## 6. GitHub Action Plan (Optional)
-
-A workflow to validate the bridge logic using a mock spreadsheet service.
-
-1. **Trigger:** Push to `04_adapter-layer/`.
-2. **Setup:** Install Node.js dependencies (e.g., `jest`).
-3. **Test:**
-   - Validate payload schema.
-   - Run unit tests for `shouldUpdate` logic.
-   - Mock GAS `SpreadsheetApp` to verify append/update behavior.
-
-## 7. Status & Tracking
-
-- design_complete: true
-- gas_draft_included: true
-- report_only_enabled: true
-- registered_in_corpus: true
-
----
-
-## 8. PR Refresh Result
-
-```yaml
-PR_127_Post_139_Result:
-  Base_Updated_Against_Main: Yes
-  Mergeable_After_Update: Yes
-  Writeback_Contract_Aligned: Yes
-  Stale_Overwrite_Prevented: Yes
-  Formula_Preservation: Yes
-  Diff_Scope: Clean
-  Recommended_Action: Merge
-```
+These references do not install tools, grant access, change a live service, or authorize publication, merge, deletion or deployment. [Directory entry](README.md) and the [existing register](../CAPABILITY_ABSORPTION_REGISTER.md) retain the scope; source-era successor arrows are not a compulsory runtime pipeline.

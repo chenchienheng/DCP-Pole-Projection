@@ -1,101 +1,26 @@
-# LINE Entry Chain Specification
+# External message reference — LINE lineage
 
-Department: Adapter Layer
-Node ID: ADP-LINE-001
-Window: W0
-Version: v0.1
+Status: CANDIDATE_REFERENCE / NOT_DEPLOYED / NO_EXECUTABLE_AUTHORITY.
+Purpose: retain message/context, reply and return requirements without making LINE the first or permanent external interface.
 
-## Core Purpose
-Establish the first real-world entry point using LINE as an AXIS-01 entry node.
-This node serves as the primary external interface for direct user interactions,
-routing incoming messages through the established CoreTri axis framework.
+## Retained message and reply concerns
 
-## Axis Mapping
-- **Primary Axis:** AXIS-01 (World Chain) - Entry point for external events.
-- **Fallback Axis:** AXIS-05 (Review Chain) - Fallback for review and failure.
+The original example used `replyToken`, `source.userId`, `message.text` and `timestamp`. Preserve their source context and distinguish provider identifiers from a verified person, task identity or authorization. A received message is input to assess, not authority to carry out every embedded request.
 
-## Flow Diagram
+Input validation, identity/context binding, authorized processing, output review, reply assembly and return evidence have different functions. Their ordering and required participants depend on the actual operation; no AXIS-01, AXIS-05, W0 or fixed human review hop is implied.
 
-```text
-[LINE User]
-   | (Message)
-   v
-[LINE Webhook]
-   | (JSON Payload)
-   v
-[AI Processing Node]
-   | (Parsed Intent & Draft)
-   v
-[Review Gate (AXIS-01 / AXIS-05)]
-   | (Approval / Adjustment)
-   v
-[Reply Assembly]
-   | (Formatted Response)
-   v
-[LINE Reply API] -> [LINE User]
-   |
-   v
-[Return Path (Writeback)]
-```
+A useful reply record binds the original message or occurrence, selected output, provider result and unresolved delivery status. Receipt, processing, sending, delivery and receiver use must not collapse into a single success flag. An uncertain or expired reply path does not authorize a paid push or another outbound channel automatically.
 
-## Data Formats
+## Historical API and resource assumptions
 
-### Message Input Format
-- **Type:** JSON (LINE Messaging API Webhook standard)
-- **Key Fields:**
-  - `replyToken`: String for immediate reply routing.
-  - `source.userId`: Unique identifier for user context.
-  - `message.text`: The raw text string of the message.
-  - `timestamp`: Event timing for temporal alignment.
+The predecessor's five-message/5000-character figures, one-request-per-second rule, free-tier assumption and zero-token/cost assertions belong to its dated proposal. They are not verified current provider limits or universal architecture rules. Recheck the actual API version, quota, cost, retry/deduplication and reply semantics only for an authorized integration; no automatic mock task, endpoint deployment, queuing/drop policy or schedule is created by reading this file.
 
-### Reply Output Format
-- **Type:** JSON (LINE Messaging API Reply standard)
-- **Constraints:**
-  - Max 5 message objects per reply.
-  - Text length bounds: Max 5000 characters per text object.
-  - Must include contextual reference if returning from delayed review.
+Keep credential values out of source and logs. The old channel ID, channel secret, access-token and webhook-URL checklist identifies configuration categories only, not permission to retrieve or provision them. Privacy, rights and the affected return destination stay purpose-bound.
 
-## Resource Constraints
+This maintenance did not call LINE, configure a webhook, send a message, create a queue or verify real authentication/delivery.
 
-### Cost and Quota Constraints
-- **Target:** 0 API execution cost during specification phase.
-- **Quota Limit:** Must adhere to LINE free tier limits.
-- **Token Usage:** 0 token usage (no active LLM generation in this phase).
+## Source uptake and recovery
 
-### Rate Limits
-- No more than 1 webhook request processed per second.
-- Excessive inputs must be queued or dropped to prevent cascading overload.
+Selectively adopts the purpose/authority distinctions in [the existing #324 source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/04_adapter-layer/line_entry_chain_spec.md), blob `cdd2c093baabc08d9a7fee4613fa9d5a73733527`. It is not an exact whole-file import or whole-source acceptance. The complete predecessor remains at [the fixed parent](https://github.com/chenchienheng/DCP-Pole-Projection/blob/08eddfc06cbea9f6884200a247b21df83d8e39c3/04_adapter-layer/line_entry_chain_spec.md); restore only after checking newer changes.
 
-## Routing Paths
-
-### Review Path
-- All generated responses must route through AXIS-01 for structural validation.
-- Requires explicit verification of intent before dispatching a reply.
-
-### Return Path
-- Successful interactions must generate a minimal interaction log.
-- Logs are routed to the Writeback Chain for durable storage.
-
-### Return Failed
-- Any failure in webhook parsing, AI processing, or rate limiting must trigger a
-  `return_failed` route directly to AXIS-05 for human or manual review.
-
-## Required Credentials Checklist
-*(Note: Do not record actual credentials in this repository. The items below are secure placeholder references only.)*
-- [ ] `<LINE_CHANNEL_ID>`
-- [ ] `<LINE_CHANNEL_SECRET>`
-- [ ] `<LINE_CHANNEL_ACCESS_TOKEN>`
-- [ ] `<WEBHOOK_URL>` (configured in LINE Developer Console)
-
-## Analysis
-
-### Mismatch or Gap
-- Webhook endpoints require a live server, which violates the "no deployment"
-  constraint of the current phase.
-- Asynchronous review (AXIS-05) may cause the `replyToken` to expire (LINE
-  tokens expire quickly), requiring fallback to Push API (which has different
-  quota limits).
-
-### Next Single Recommended Action
-- Draft a static JSON mock of the webhook payload to simulate the input
-  without requiring a live LINE application deployment.
+These references do not install tools, grant access, change a live service, or authorize publication, merge, deletion or deployment. [Directory entry](README.md) and the [existing register](../CAPABILITY_ABSORPTION_REGISTER.md) retain the scope; source-era successor arrows are not a compulsory runtime pipeline.
