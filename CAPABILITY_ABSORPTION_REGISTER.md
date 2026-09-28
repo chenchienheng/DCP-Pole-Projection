@@ -1,7 +1,7 @@
 # Capability Absorption Register — common comparison basis
 
 Recorded baseline: 2026-09-27 (Asia/Taipei)
-Ordinary-entry maintenance: 2026-09-28 (Asia/Taipei)
+Ordinary-entry maintenance: 2026-09-29 (Asia/Taipei)
 State: CURRENT_WORKING_REGISTER_CANDIDATE
 Runtime: false
 Canon: false
@@ -13,7 +13,17 @@ Continue the authorized deliverable on existing #406 (`qinyi/kernel-integration-
 
 Use existing source/caller/target-revision/effect/Return/recovery capabilities for a genuine task. Keep earlier closed work closed in its recorded scope. A local HOLD or missing receipt does not suspend independent lawful work. File/test counts are not product completion, receiver adoption, deletion permission or Runtime.
 
-## Artifact receiver delivery and interrupted-call recovery
+## External method uptake — portable, inactive receiver proposal
+
+Record: OPENCLAW_METHOD_UPTAKE_AND_MATURITY_20260929. Target parent: `ebfd104e5efa8a573b615ca22f4367c242ca6e43`; the existing receiver, CLI resume, source packaging and their historical evidence are retained. No duplicate receiver or new controller is introduced.
+
+The OpenClaw [Skill Workshop](https://docs.openclaw.ai/tools/skill-workshop) documentation supplies a concrete support-directory/proposal/revision-review interface. The new exporter binds a separately acquired source archive to explicit expected checkout/hash, packages unchanged normal-package code and CLI with a source manifest, and creates `PROPOSAL.md` rather than a live skill. Source and output restrictions are checked before normal publication; an I/O failure can leave an incomplete inactive export and does not authorize automatic cleanup elsewhere. This is a reusable export tool, not a substitute for host scanner, exact workspace/agent qualification or apply permission.
+
+The local proposal test suite covers fixed source bytes, normal-package CLI invocation from a separate working directory/process, strict receipt and source binding, rejected corrupt/duplicate/escaping/hidden/binary/link/executable-mode inputs, bounded resource use, create-only output, reproducible payloads and saved-result resume. Synthetic test inputs are marked as such. Real source acquisition, exact source ZIP reopening, actual existing delivery use and this increment's later CI/readback are separately recorded in the original PR and private delivery, not pre-certified here.
+
+Method differences remain explicit: shared-agent ownership is not tenant isolation; session change notices are best-effort and can have a history gap; accepted tool work and human-response delivery are separate. A named OpenClaw host has not been installed, authenticated, imported, scanned, invoked or configured by this export. No existing Qinyi plugin is modified. Upstream approval defaults and age-based autocapture cleanup are not silently imported as NFN authority. Native browser/geometry/semantic acceptance still requires its own exact evidence; local packaging does not make the entire system production-ready.
+
+## Preserved predecessor — artifact receiver delivery and interrupted-call recovery
 
 Record: ARTIFACT_RECEIVER_CLI_RESUME_AND_SOURCE_DELIVERY_20260928.
 Target parent: #406 `44cf87dea2ad0a5f24edeaae0f2062a479bb68f4`.
@@ -22,7 +32,7 @@ The real byte receiver and normal package exports already exist at the parent; t
 
 `--pending` accepts either a prepared result or the precisely scoped saved-check envelope. Prior observations/approval labels cannot substitute for fresh file reads. `--resume` reuses only a regular, unchanged, byte-identical output after the command rechecks its inputs. The default remains create-only; conflicting output, protected input overlap, symlinks and special files are not overwritten. A saved HOLD can be used after a missing file arrives, while the earlier HOLD is retained at its original path. The receiver, local host and shared protocols are unchanged.
 
-Ten local resume regressions pass, including fresh-process CLI re-entry, preservation of manual evidence, missing-file recovery and unchanged output bytes/mtime. The parent fails the new recovery cases; that does not invalidate its earlier byte checks. Local preparatory execution uses an explicitly reduced receiver module profile. Full normal-package and exported-source execution need their own subsequent CI and download evidence.
+Ten local resume regressions pass, including fresh-process CLI re-entry, preservation of manual evidence, missing-file recovery and unchanged output bytes/mtime. The parent fails the new recovery cases; that does not invalidate its earlier byte checks. Local preparatory execution uses an explicitly reduced receiver module profile. At that earlier commit time, full normal-package and exported-source execution still required subsequent CI and download evidence. The present uptake independently acquired artifact10980781351 from run36445353226, verified its outer and inner hashes, and ran the complete exported source plus the new proposal tests; the exact current records are on the original PR.
 
 The existing verification workflow additionally packages tracked public Git source at the candidate-head checkout, reopens that archive, runs the normal CLI and the same resume tests, and uploads a named candidate-source artifact with an exact checkout/hash receipt. Existing triggers, contents-read permissions, candidate/merge checks and the census artifact remain intact. No new schedule, deployment, subscription or remote writer is introduced. The package is an executable source candidate, not release approval or another Native's semantic acceptance. Actual run, artifact and restored-use results are recorded on the original PR after they occur.
 
@@ -50,4 +60,4 @@ The full per-PR table, selected-path exceptions and earlier comparison evidence 
 
 Finish only genuinely affected purpose/successor/loss and original-deliverable gaps. The parent Library acquisition and local byte receiver have recorded use; do not label them blanket UNKNOWN. Other external ACL/target-revision/transport, independent Native semantic use/recovery, full180-path semantic acceptance,53 deletion proposals and explicit integration acceptance retain their own scope. Do not activate a table service or create a task merely to empty this list. Local source/receiver evidence does not make external systems connected.
 
-Restore only required files from the pinned parent after fresh head/diff checks; do not overwrite newer work. The full original register and host sources are recoverable in fixed Git and the same evidence ZIP. This change does not alter identity-core doctrine, manifest, schemas, fixtures, shared protocol or AGENTS; the workflow adds only the source-delivery steps described above; it does not merge main, create a branch/PR, delete a source, deploy, pay, change accounts/permissions/schedules/mode, or publish private source material.
+Restore only required files from the pinned parent after fresh head/diff checks; do not overwrite newer work. The full original register and host sources are recoverable in fixed Git and the same evidence ZIP. This change does not alter identity-core doctrine, manifest, schemas, fixtures, shared protocol or AGENTS; the existing workflow retains its predecessor source-delivery steps and is not changed by the proposal exporter; this increment does not merge main, create a branch/PR, delete a source, deploy, pay, change accounts/permissions/schedules/mode, or publish private source material.

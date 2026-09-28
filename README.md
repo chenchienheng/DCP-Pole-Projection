@@ -66,6 +66,21 @@ Without `--resume`, existing output still causes an error. With explicit `--resu
 
 Successful candidate-head CI now also produces `dcp-source-checkout-candidate-head`: an exact tracked Git source archive plus its checkout/hash receipt. The archive is reopened in a temporary directory and the normal CLI and resume tests run there without installing dependencies. Extract `dcp-source-checkout.zip`, then run the commands above from that source directory. This is a candidate source delivery, not a main merge, deployment or release approval. The original census artifact, triggers and token permissions remain unchanged.
 
+### Export for reviewed skill uptake / 待審查的技能接用包
+
+`tools.build_artifact_receiver_proposal` exports this existing receiver, its complete normal Python package and its unchanged CLI as an **inactive** `PROPOSAL.md` support directory. It requires a separately acquired candidate source ZIP/receipt and explicit trusted checkout/hash. No model call, network installation, OpenClaw host call, live `SKILL.md`, permission change or application is performed.
+
+```sh
+python -m tools.build_artifact_receiver_proposal --source-archive dcp-source-checkout.zip --source-receipt source-checkout.json --expected-checkout EXACT_CHECKOUT --expected-archive-sha256 TRUSTED_SHA256 --output proposal
+python -I proposal/scripts/verify_delivery.py --help
+```
+
+The exported source files remain byte-identical to the selected source archive; the proposal manifest records each source and payload digest. The output is create-only, UTF-8/no-NUL, uses documented support directories, and does not follow archive links or package executable-mode files. Export is not atomic or a hostile-filesystem sandbox. Review and host admission remain separate from local export or test success. The unchanged source README, including its license notice, accompanies the package; upstream method reuse does not relicense this repository.
+
+本增量把既有交付驗證器接成可攜、可檢查的技能候選，而不是重寫驗證核心或另建代理平台。可在另一個程序以完整套件執行原驗證與 `--resume`；輸入來源、權限、原操作與接收判斷仍分開。沒有指定且合格的 OpenClaw host/agent，就不宣稱已匯入、掃描、啟用或完成平台整合。
+
+Method source: [OpenClaw Skill Workshop](https://docs.openclaw.ai/tools/skill-workshop). Its documented proposal/support-file/revision review pattern is the adopted packaging target, not runtime proof. Its scope is workspace skills, not existing plugin-owned skills. Proposal state alone is not an execution permission barrier; upstream agent apply/reject/quarantine do not universally require a new approval prompt. Operator-reviewed policy must be explicitly qualified on the chosen host. Shared-agent labels do not establish tenant isolation; best-effort session notices do not establish durable cross-process delivery. Do not import autocapture age rules as general source-retirement authority.
+
 ## Continuity and replaceable carriers / 連續性與可替換載體
 
 Repository, model, tool, and storage locations are **replaceable carriers**, not permanent topology. For a bounded Need, continuity depends on re-qualifying Stable Identity / Need, Current-for-purpose, Authority, Evidence, Return and Rebuild relations when a carrier changes. A newer location, successful write, clean merge, or available capability does not by itself prove continuity, admission, delivery, or use.
