@@ -1,0 +1,349 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/chenchienheng/DCP-Pole-Projection/EXTERNAL-LEARNING-SPECIMEN.schema.json",
+  "title": "External Learning Specimen R2",
+  "description": "Proposal schema. Whole-specimen learning before CoreTri/NFN mapping; no Native adoption or authority implied.",
+  "type": "object",
+  "required": [
+    "specimen_id",
+    "source_boundary",
+    "native_world",
+    "anti_confirmation",
+    "mapping",
+    "disposition"
+  ],
+  "properties": {
+    "specimen_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_boundary": {
+      "type": "object",
+      "required": [
+        "sources",
+        "actual_read_status"
+      ],
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "locator",
+              "source_kind"
+            ],
+            "properties": {
+              "locator": {
+                "type": "string"
+              },
+              "source_kind": {
+                "enum": [
+                  "USER_SUPPLIED",
+                  "PRIMARY",
+                  "SECONDARY",
+                  "OFFICIAL",
+                  "UNKNOWN"
+                ]
+              },
+              "observed_at": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "actual_read_status": {
+          "enum": [
+            "ACTUAL_READ",
+            "PARTIAL",
+            "UNVERIFIED",
+            "UNKNOWN"
+          ]
+        },
+        "unsupported_fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "native_world": {
+      "type": "object",
+      "required": [
+        "original_problem",
+        "action_chain",
+        "success_mechanism",
+        "tradeoffs"
+      ],
+      "properties": {
+        "original_problem": {
+          "type": "string"
+        },
+        "user_operator_context": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "action_chain": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "representation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "interaction": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "execution": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verification": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "recovery_stopping": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "authority_security_privacy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "success_mechanism": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "tradeoffs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "anti_confirmation": {
+      "type": "object",
+      "required": [
+        "missing_in_xuanling",
+        "external_more_mature",
+        "refutes_or_replaces",
+        "confirmation_risk"
+      ],
+      "properties": {
+        "missing_in_xuanling": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "external_more_mature": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "refutes_or_replaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "loss_if_not_adopted": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "adoption_cost_risk_lockin": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reuse_before_rebuild": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confirmation_risk": {
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        }
+      }
+    },
+    "mapping": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "dimension",
+          "comparison",
+          "evidence"
+        ],
+        "properties": {
+          "dimension": {
+            "enum": [
+              "REALITY",
+              "NEED",
+              "IDENTITY",
+              "AUTHORITY",
+              "EVIDENCE",
+              "REPRESENTATION",
+              "SKILLS",
+              "CARRIER",
+              "ACTION",
+              "EFFECT",
+              "RETURN",
+              "REENTRY_RECOVERY",
+              "RESOURCE_COST",
+              "HUMAN_INTERACTION"
+            ]
+          },
+          "comparison": {
+            "enum": [
+              "SAME",
+              "PARTIAL",
+              "DIFFERENT",
+              "SUPERIOR_EXTERNAL",
+              "SUPERIOR_XUANLING",
+              "UNKNOWN"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "candidate_deltas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "candidate_type",
+          "change",
+          "bounded_experiment"
+        ],
+        "properties": {
+          "candidate_type": {
+            "enum": [
+              "REPRESENTATION_WORKBENCH",
+              "ACTION_COMPOSITION",
+              "STRUCTURAL_CORE",
+              "REUSE_REPLACE",
+              "REJECT"
+            ]
+          },
+          "change": {
+            "type": "string"
+          },
+          "bounded_experiment": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "authority_required": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "human_model_handoff": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "object",
+        "required": [
+          "model_progress",
+          "stall_reason",
+          "human_hypothesis",
+          "resulting_effect"
+        ],
+        "properties": {
+          "model_progress": {
+            "type": "string"
+          },
+          "stall_reason": {
+            "type": "string"
+          },
+          "human_hypothesis": {
+            "type": "string"
+          },
+          "hypothesis_evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resumed_action": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resulting_effect": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "disposition": {
+      "enum": [
+        "OBSERVE",
+        "EXPERIMENT",
+        "REUSE",
+        "REPLACE_LOCAL",
+        "STRUCTURAL_NUTRIENT_CANDIDATE",
+        "REJECT",
+        "HOLD"
+      ]
+    },
+    "claim_ceiling": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "NOT_RUNTIME",
+          "NOT_CANON",
+          "NOT_NATIVE_ADOPTION",
+          "NOT_PUBLIC_APPROVED"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}
