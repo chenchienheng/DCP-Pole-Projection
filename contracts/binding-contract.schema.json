@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/binding-contract.schema.json",
+  "title": "NFN Executable Binding Contract Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_identity",
+    "source_version",
+    "stable_referent",
+    "receiver",
+    "purpose",
+    "effect_id",
+    "receiver_affected",
+    "material_delta",
+    "ideas_meaning_preserved",
+    "dcp_action_authority_valid",
+    "glmodel_effect_observed",
+    "current_status",
+    "carrier_decision",
+    "successor_state",
+    "reader_disposition",
+    "schedule_state",
+    "metabolism_disposition",
+    "durable_persisted",
+    "durable_readback"
+  ],
+  "properties": {
+    "source_identity": {"type": "string", "minLength": 1},
+    "source_version": {"type": "string", "minLength": 1},
+    "stable_referent": {"type": "string", "minLength": 1},
+    "receiver": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "effect_id": {"type": "string", "minLength": 1},
+    "receiver_affected": {"type": "boolean"},
+    "material_delta": {"type": "boolean"},
+    "ideas_meaning_preserved": {"type": "boolean"},
+    "dcp_action_authority_valid": {"type": "boolean"},
+    "glmodel_effect_observed": {"type": "boolean"},
+    "current_status": {"enum": ["CURRENT", "STALE_PENDING_REVIEW", "CONFLICT", "HOLD"]},
+    "carrier_decision": {"enum": ["PASS", "HOLD", "FAIL"]},
+    "successor_state": {
+      "enum": [
+        "COVERED",
+        "COVERED_EVIDENCE_ONLY",
+        "EVIDENCE_ONLY_NO_SUCCESSOR",
+        "PARTIAL_READER_WITHDRAWAL",
+        "AUDIT_INCOMPLETE",
+        "GAP",
+        "ZOMBIE_DEPENDENCY",
+        "HOLD"
+      ]
+    },
+    "reader_disposition": {
+      "enum": ["READ_CURRENT", "READ_AFFECTED_SLICE", "ESCALATE_BOUNDED", "HISTORICAL_REENTRY", "NO_WAKE", "HOLD"]
+    },
+    "schedule_state": {
+      "enum": [
+        "EFFECTIVE",
+        "HOLD_MISSING_EFFECT_EVIDENCE",
+        "HOLD_RETURN_INCOMPLETE",
+        "HOLD_STALE_OR_MISSED",
+        "HOLD_RECEIVER_UNRESOLVED",
+        "HOLD_ACTION_AUTHORITY",
+        "FAIL_SCOPE_VIOLATION",
+        "FAIL_IDENTITY_DRIFT"
+      ]
+    },
+    "metabolism_disposition": {
+      "enum": [
+        "KEEP_CURRENT_PROJECTION",
+        "KEEP_EXECUTABLE_CANDIDATE",
+        "KEEP_MACHINE_CONTRACT",
+        "KEEP_TEST_OR_FIXTURE_EVIDENCE",
+        "EVIDENCE_ONLY",
+        "SUCCESSOR_COVERAGE_REVIEW",
+        "BOUNDED_CLASSIFICATION_REQUIRED",
+        "HOLD_UNKNOWN"
+      ]
+    },
+    "durable_persisted": {"type": "boolean"},
+    "durable_readback": {"type": "boolean"},
+    "duplicate_receipt": {"type": "boolean", "default": false},
+    "prior_locked_binding_key": {"type": ["string", "null"]}
+  },
+  "x-output-states": [
+    "NOT_APPLICABLE",
+    "FAILED",
+    "PARTIAL",
+    "PERSISTENCE_UNVERIFIED",
+    "LOCKED",
+    "DUPLICATE_CONVERGED"
+  ],
+  "x-invariants": [
+    "IDEAS_MEANING_PRECEDES_DCP_ACTION_AUTHORITY",
+    "DCP_ACTION_AUTHORITY_PRECEDES_GLMODEL_WORLD_EFFECT",
+    "LATER_POLE_EVIDENCE_CANNOT_REPAIR_EARLIER_POLE_FAILURE",
+    "SCHEDULE_OR_OUTPUT_DOES_NOT_PROVE_DURABLE_EFFECT",
+    "LOCK_REQUIRES_DURABLE_PERSISTENCE_AND_READBACK",
+    "EXACT_SOURCE_VERSION_RECEIVER_PURPOSE_EFFECT_DUPLICATES_CONVERGE"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

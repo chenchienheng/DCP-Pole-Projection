@@ -30,6 +30,7 @@
     ],
     "carrier_and_execution": [
       "dcp_kernel/carrier_binding.py",
+      "dcp_kernel/binding_contract.py",
       "dcp_kernel/write_intent.py",
       "dcp_kernel/platform.py",
       "dcp_kernel/schedule_effect.py"
@@ -72,6 +73,7 @@
     "contracts/write-intent.schema.json",
     "contracts/owner-exit-evidence.schema.json",
     "contracts/schedule-effect.schema.json",
+    "contracts/binding-contract.schema.json",
     "contracts/successor-coverage.schema.json",
     "contracts/family-metabolism.schema.json",
     "contracts/meaning-compilation.schema.json",

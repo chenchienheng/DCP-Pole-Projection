@@ -1,6 +1,7 @@
 from .action_gate import ActionGateAssessment, ActionGateInput, EffectClass, RiskLevel, assess_action_gate
 from .activation import ActivationAssessment, ActivationInput, ActivationState, PersistentState, assess_activation
 from .carrier_binding import CarrierCandidate, CarrierClass, CarrierNeed, CarrierResolution, resolve_carrier_binding, validate_carrier_substitution
+from .binding_contract import BindingContractAssessment, BindingContractInput, BindingProgressState, TrianglePole, assess_binding_contract
 from .coexistence import CompatibilityState, CoexistenceAssessment, CoexistenceInput, NativeModel, assess_coexistence
 from .composition import CompositionAssessment, CompositionInput, CompositionUnit, UnitDisposition, UnitState, assess_composition
 from .consequence import ActionResponsibilityContract, ConsequenceAssessment, ConsequenceInput, compile_action_responsibility, derive_next_condition
@@ -61,7 +62,8 @@ __all__ = [
     "prepare_artifact_delivery", "receive_artifact_delivery",
     "ActionGateAssessment", "ActionGateInput", "ActionResponsibilityContract", "ActivationAssessment", "ActivationInput",
     "ActivationState", "AffectedCone", "BirthDisposition", "CapabilityBinding", "CapabilityResolution", "CarrierCandidate",
-    "CarrierClass", "CarrierNeed", "CarrierResolution", "ClaimCeiling", "ClaimEvidence", "CompatibilityState",
+    "BindingContractAssessment", "BindingContractInput", "BindingProgressState", "CarrierClass", "CarrierNeed",
+    "CarrierResolution", "ClaimCeiling", "ClaimEvidence", "CompatibilityState", "TrianglePole",
     "CoexistenceAssessment", "CoexistenceInput", "CompositionAssessment", "CompositionInput", "CompositionUnit",
     "ConsequenceAssessment", "ConsequenceInput", "CoverageState", "CrossPoleFeedbackAssessment", "CrossPoleFeedbackInput",
     "CurrentCandidate", "CurrentResolution", "CurrentResolutionStatus", "Decision", "DecisionChainAssessment",
@@ -79,7 +81,8 @@ __all__ = [
     "ReturnState", "RiskLevel", "ScheduleEffectAssessment", "ScheduleEffectInput", "ScheduleEffectState", "StableLife",
     "SuccessorCoverageAssessment", "SuccessorCoverageInput", "Transition", "TransitionEvaluation", "TriRootState",
     "TriggerClass", "UnitDisposition", "UnitState", "WorkContract", "WriteIntentAssessment", "WriteIntentInput",
-    "assess_action_gate", "assess_activation", "assess_coexistence", "assess_composition", "assess_cross_pole_feedback",
+    "assess_action_gate", "assess_activation", "assess_binding_contract", "assess_coexistence", "assess_composition",
+    "assess_cross_pole_feedback",
     "assess_decision_chain", "assess_family_metabolism", "assess_gateway_request", "assess_judgment",
     "assess_learning_input", "assess_living_loop", "assess_operable_birth", "assess_owner_exit_evidence",
     "assess_public_encounter", "assess_reader_request", "assess_reality_intake", "assess_relation", "assess_retirement", "assess_schedule_effect",
