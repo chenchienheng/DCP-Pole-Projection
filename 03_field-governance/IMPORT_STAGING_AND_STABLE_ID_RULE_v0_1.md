@@ -1,41 +1,32 @@
-# Import Staging and Stable ID Rule v0.1
+# Import and stable identity — qualify mappings without forcing a new data store
 
-> Status: Candidate / usable baseline
-> Placement: `03_field-governance/`
-> Related issues: #213
-> Related Linear: QIN-118, QIN-119, QIN-130, QIN-144, QIN-162, QIN-163, QIN-164
-> Upstream: `BASE_FIELD_CORE_v0_1.md`, `SOURCE_VIEW_GATE_v0_1.md`
-> Purpose: define how imported or user-collected data enters staging, receives or matches stable IDs, passes review gates, and only then feeds governed BASE views.
+Status: CANDIDATE_REFERENCE / NOT_RUNTIME / NO_NEW_AUTHORITY.
+Batch: BATCH_FIELD_CONTINUITY_UPTAKE_20260928 (Asia/Taipei).
 
----
+## Purpose and staging
+An import is received material; staging describes its unqualified or pending use, not necessarily a physical Import_Staging table. Data can remain at its authorized source with a pointer and scoped review. Do not copy a private dataset into another carrier merely to satisfy a schema.
 
-## 0. Core
+## Stable identity and conflicts
+A proposed identifier is a proposed mapping, not a confirmed entity. Preserve source identity and revision, distinguish aliases from different subjects, and avoid name-only matching. Same display name does not prove identity; different carrier IDs do not necessarily prove different real objects. A correction to one mapping must preserve affected references or an explicit migration path.
 
-Imported data enters staging first. Staging is not production BASE. Proposed IDs are not confirmed stable IDs. Only reviewed, matched, and gate-passed records may feed governed views.
+The retained record and ID state forms below preserve original fields and vocabulary for compatible consumers. Stable_ID_Families is an optional profile, not a universal ontology. Do not mint IDs, create registries or promote records simply to fill every field. The actual source domain determines the legitimate identity and accepted changes.
 
-This rule prevents user spreadsheets, tool extracts, model summaries, and collected notes from being treated as source-of-truth records before review.
+## Evidence and admission
+Source categories and evidence labels can help organize a review, but they cannot universally rank truth, supersede a newer valid source, or establish applicability. Separate a source's claim from a calculated or inferred result. Retain duplicates, conflicting versions and missing evidence until a purpose-specific disposition is justified.
 
-```text
-Import = received external, internal, user-collected, or tool-generated material.
-Staging = safe landing zone before production BASE exposure.
-Stable ID = durable identifier after review, matching, or creation.
-Governed BASE = reviewed source-to-decision foundation available to views.
-```
+Promotion to a selected fact/view/production use requires its actual conditions: qualified identity, applicable evidence, legitimate write authority, target/version, fidelity and receiver acceptance where required. These are related questions, not a compulsory database pipeline. A label such as reviewed or confirmed is not independent proof.
 
----
+## Non-destructive effects and recovery
+Before a real mutation, bind the exact target rather than an active-sheet/default fallback. Protect applicable revisions and distinguish planned changes from performed changes. Preserve formulas, types, units, non-target data and concurrent edits where relevant; no-deletion alone does not prove no semantic loss. Retain before-state and observed result sufficient for recovery. This document does not supply or enable such a writer.
 
-## 1. Import Staging Rule
+## Interface and examples
+An interface submission is not authority to import everything in it. Label diagnostics and proposed mappings clearly. The four original examples retained below illustrate dataset, company-name spreadsheet, extracted PDF table and interface intake concerns; they are not executed provider tests or authorization to use company records here.
 
-```yaml
-Import_Staging_Rule:
-  Landing_Table: Import_Staging
-  Rule:
-    - all imported data enters staging first
-    - staging records may be reviewed, matched, rejected, or promoted
-    - staging records must not feed production strategy, market, governance, public, or export views before review
-```
+[Source/view](SOURCE_VIEW_GATE_v0_1.md), [analysis](ANALYSIS_VIEW_MAP_v0_1.md) and [export/return](EXPORT_RETURN_PACKET_SCHEMA_v0_1.md) already exist. Their relevant constraints can be composed in the actual task; the old create-next-Analysis_View_Map instruction is not outstanding work.
 
-Minimum staging record:
+## Retained compatibility forms
+
+These uninstantiated source forms preserve compatible field names for a selected profile, not a required global schema or action grant. BASE/QIN, Window/Rank, named tables, mandatory_fields and destinations apply only to that explicitly chosen profile; do not create resources or infer approval to fill a form.
 
 ```yaml
 Import_Staging_Record:
@@ -69,12 +60,6 @@ Import_Staging_Record:
     - Change_Log_ID
 ```
 
----
-
-## 2. Stable ID Rule
-
-Stable IDs are durable identifiers used by BASE, Views, QIN surfaces, exports, and return packets.
-
 ```yaml
 Stable_ID_Families:
   Source_ID: source identity
@@ -87,17 +72,6 @@ Stable_ID_Families:
   Opportunity_ID: opportunity candidate after evidence and gate review
   Return_Packet_ID: return/closure/version-traceable packet identity
 ```
-
-Rule:
-
-```text
-A proposed ID is only a proposed anchor.
-A confirmed ID requires review, matching, creation, or explicit acceptance.
-```
-
----
-
-## 3. Proposed ID vs Confirmed ID
 
 ```yaml
 ID_State_Model:
@@ -123,12 +97,6 @@ ID_State_Model:
       - export packet when boundary is included
 ```
 
-Do not rename a Proposed_ID into a Confirmed_ID without a review decision.
-
----
-
-## 4. Duplicate / Alias / Conflict Handling
-
 ```yaml
 Duplicate_Alias_Conflict_Rule:
   Duplicate_Candidate:
@@ -144,32 +112,6 @@ Duplicate_Alias_Conflict_Rule:
     condition: record is irrelevant, untraceable, or not source-safe
     action: retain reject reason without production exposure
 ```
-
-Conflict does not mean the new record is false. It means production exposure is blocked until review resolves the conflict.
-
----
-
-## 5. Evidence Level Assignment
-
-```yaml
-Evidence_Level:
-  A_Official:
-    examples: official government source, regulator, statutory filing, official company source when used within scope
-  B_Reliable_Secondary:
-    examples: reputable database, established industry report, verified secondary material
-  C_Media_or_Signal:
-    examples: article, market signal, commentary, unverified market mention
-  D_Unverified:
-    examples: raw import, unsourced note, unreviewed tool extraction
-  Internal_Controlled:
-    examples: internal task, review note, decision log, verification result
-```
-
-Evidence level assigned in staging is provisional until reviewed.
-
----
-
-## 6. Review Status Vocabulary
 
 ```yaml
 Review_Status:
@@ -195,67 +137,6 @@ Review_Decision:
   - Needs_Human_Verification
 ```
 
-Review status describes the staging state. Review decision describes what happened after review.
-
----
-
-## 7. Promotion from Staging to Governed BASE
-
-```yaml
-Promotion_Requirements:
-  - Review_Status must be Accepted or explicitly mapped to a terminal decision
-  - Proposed IDs must be matched, created, or rejected
-  - Confirmed stable IDs must be assigned where required
-  - Evidence level must be reviewed
-  - Source/View boundary must be declared
-  - QA_Gate_ID must be recorded when gate status changes
-  - Change_Log_ID must be recorded for production BASE mutation
-  - Return_Path must be available
-```
-
-Promotion target examples:
-
-```yaml
-Promotion_Targets:
-  Source_Ledger: Confirmed_Source_ID
-  Entity_Master: Confirmed_Entity_ID
-  Project_Asset_Master: Confirmed_Project_ID
-  Evidence_Index: Confirmed_Evidence_ID
-  Relation_Bridge: Confirmed_Relation_ID
-  Capability_Ledger: Capability_ID
-  Constraint_Gate: Constraint_ID
-  Return_Packet_Index: Return_Packet_ID
-```
-
----
-
-## 8. QIN/View Intake Rule
-
-QIN and View surfaces can collect input, but collected input must enter staging first.
-
-```yaml
-QIN_View_Intake_Rule:
-  QIN_Can:
-    - collect user-submitted rows
-    - accept uploaded spreadsheets or notes
-    - route unclear items to review
-    - show import status
-    - ask for missing source/evidence
-    - return review results
-  QIN_Cannot:
-    - write imported data directly into production BASE
-    - treat user input as verified evidence
-    - convert Proposed_ID to Confirmed_ID automatically
-    - expose unreviewed staging rows to strategy dashboards
-    - let generated summaries overwrite source fields
-```
-
-QIN improves usability. It does not bypass staging.
-
----
-
-## 9. Failure Modes
-
 ```yaml
 Failure_Modes:
   Direct_To_BASE_Import:
@@ -274,12 +155,6 @@ Failure_Modes:
     risk: imported data cannot be corrected or audited
 ```
 
----
-
-## 10. Examples
-
-### 10.1 Public database import
-
 ```yaml
 Input: downloaded public dataset
 Staging: Import_Staging
@@ -288,8 +163,6 @@ Gate: source identity review + duplicate check
 Promotion: Source_Ledger / Entity_Master after review
 Return: Change_Log + QA_Gate
 ```
-
-### 10.2 User-collected company list
 
 ```yaml
 Input: spreadsheet of company names and notes
@@ -301,8 +174,6 @@ Forbidden: treating company list as market base without review
 Return: Decision_Log / Return_Packet_Index
 ```
 
-### 10.3 Tool extraction from PDF
-
 ```yaml
 Input: extracted table from PDF
 Staging: Import_Staging
@@ -313,8 +184,6 @@ Forbidden: treating extraction as original source
 Return: QA_Gate / Change_Log
 ```
 
-### 10.4 QIN intake form
-
 ```yaml
 Input: user submits candidate source or row through QIN
 Staging: Import_Staging
@@ -324,47 +193,6 @@ Promotion: governed BASE only after review decision
 Return: QIN task result + Return_Packet_Index
 ```
 
----
+## Source and recovery
 
-## 11. Do Not
-
-```yaml
-Do_Not:
-  - do not approve doctrine
-  - do not mutate Drive or Sheets
-  - do not approve ERP product scope
-  - do not create production database
-  - do not implement UI wireframes
-  - do not include company-sensitive or private data
-  - do not treat imported spreadsheets as governed BASE
-  - do not turn Proposed_ID into Confirmed_ID without review
-  - do not turn Pending into Fact
-  - do not let QIN/View intake bypass staging
-  - do not let generated summaries overwrite source records
-```
-
----
-
-## 12. Current Decision
-
-```yaml
-Decision: Conditional_Go
-Status: Candidate_Usable_Baseline
-Reason:
-  - Import staging and stable ID rules are required after BASE_FIELD_CORE and SOURCE_VIEW_GATE.
-  - The rule prevents unreviewed imports from entering production BASE or governed views.
-  - It preserves proposed/confirmed ID separation.
-  - It supports QIN/View intake without bypassing BASE review.
-What_This_Does_Not_Do:
-  - does not approve doctrine
-  - does not merge itself
-  - does not mutate Drive or Sheets
-  - does not approve ERP product scope
-  - does not create production database
-  - does not implement UI wireframes
-Next_Action:
-  - review PR manually
-  - confirm candidate wording remains visible
-  - decide whether Analysis_View_Map should become the next split-out file
-Return_Path: Issue #213 -> PR -> MotherTree review -> later Analysis_View_Map split-out
-```
+Selectively adapts [#324 fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/03_field-governance/IMPORT_STAGING_AND_STABLE_ID_RULE_v0_1.md) (blob `60d17baad82e016618fd06c3b3a6735491407861`). [Complete predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/66099050d54a5ad533464cb4f28918fb04aadccb/03_field-governance/IMPORT_STAGING_AND_STABLE_ID_RULE_v0_1.md) (blob `d370b5a25a73e8c2d5ab2d21e8c54015fab3bb4c`) and the existing evidence package preserve every original form, example and dated decision. Historical labels/arrows are not current tasks, permission or a universal sequence. No source deletion, runtime, deployment or new authority follows. Restore only after checking newer changes; ordinary entry selection remains the [existing manifest](../CURRENT-SURFACE-MANIFEST.json).

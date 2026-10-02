@@ -1,0 +1,52 @@
+{
+  "artifact_role": "LEGACY_ROUTING_CONTROL_RETIREMENT_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "destructive_reclaim_authorized": false,
+  "retired_absent": [
+    {
+      "path": "02_translation-layer/CLOUD_OVER_CLOUD_CONTROL_CENTER_SPEC.md",
+      "retired_semantics": ["Gemini Scout / Jules Semantic Bridge / Codex Repo Bridge permanent roles", "strict four-stage relay", "AXIS-01/05 binding", "registry submission to main"],
+      "successor": ["dcp_kernel/carrier_binding.py", "dcp_kernel/judgment.py", "dcp_kernel/coexistence.py", "dcp_kernel/write_intent.py", "dcp_kernel/return_state.py"]
+    },
+    {
+      "path": "03_board-orchestration/README.md",
+      "retired_semantics": ["Board Orchestration as permanent routing family", "daily alignment as folder organ"],
+      "successor": ["dcp_kernel/activation.py", "dcp_kernel/reader_policy.py", "dcp_kernel/platform.py"]
+    },
+    {
+      "path": "03_board-orchestration/window_binding_registry_01_07.md",
+      "retired_semantics": ["01-07 windows as permanent execution topology", "ChatGPT as platform writer", "S-state ceiling by window", "target-path-bound authority"],
+      "successor": ["dcp_kernel/activation.py", "dcp_kernel/resolution.py", "dcp_kernel/write_intent.py", "dcp_kernel/platform.py"]
+    },
+    {
+      "path": "03_board-orchestration/runtime-spine/xuanling-calendar-time-window-adapter-contract-2026-04-19-v0-1.md",
+      "retired_semantics": ["Calendar as second intake organ", "mother-gate reuse as topology", "fixed routing-log paths", "00 consolidation return", "fixed Gmail/Contacts/control-plane sync routes"],
+      "successor": ["dcp_kernel/activation.py", "dcp_kernel/schedule_effect.py", "dcp_kernel/carrier_binding.py", "dcp_kernel/return_state.py"]
+    }
+  ],
+  "retained_deentitled": [
+    {
+      "path": "03_board-orchestration/runtime-spine/xuanling-gmail-bridge-intake-gate-contract-2026-04-19-v0-1.md",
+      "role": "HISTORICAL_IMPLEMENTATION_SPECIMEN_PRIMITIVES_RETAINED",
+      "current_authority": false,
+      "normal_reader_required": false,
+      "retained_primitives": ["source/context identification", "purpose/scope classification", "rights/privacy/risk screen", "materiality", "hold/no-action separation", "receiver return"],
+      "retired_assumptions": ["Gmail as mother gate", "return_to_00", "fixed routing-log path", "fixed reserve path", "fixed control-plane/consolidation route"]
+    }
+  ],
+  "invariants": [
+    "ROUTING_CAPABILITY_DOES_NOT_REQUIRE_PERMANENT_ORCHESTRATION_FAMILY",
+    "WINDOW_NUMBER_DOES_NOT_CREATE_AUTHORITY",
+    "PLATFORM_WRITER_LABEL_DOES_NOT_CREATE_WRITE_AUTHORITY",
+    "INTAKE_CARRIER_DOES_NOT_BECOME_MOTHER_GATE",
+    "SCHEDULE_OR_MESSAGE_CARRIER_DOES_NOT_DEFINE_LIFE_TOPOLOGY",
+    "RETURN_TARGET_IS_RECEIVER_BOUND_NOT_RETURN_TO_00_BY_DEFAULT"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "NON_TEXT_RUNTIME_DEPENDENCY_AUDIT",
+    "REBUILD_DEPENDENCY_WITHDRAWAL",
+    "LEGACY_QINYI_TEMPLATE_PHYSICAL_WAKE"
+  ]
+}

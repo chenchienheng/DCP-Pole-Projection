@@ -1,73 +1,26 @@
-# Video Output Node Specification
+# Video output reference — storyboard and publication continuity
 
-> Durable specification for binding short video output generation into the
-> runtime. Purpose: Define how 60-second short videos are generated from
-> storyboard, key images, subtitles, and narration using external tools.
+Status: CANDIDATE_REFERENCE / NO_GENERATION_OR_PUBLICATION_BY_THIS_FILE.
+Purpose: retain a usable media brief and output trace, without a fixed video node, tool roster, duration or AXIS return route.
 
----
+## Retained production content
 
-## 1. Scope
+Input can contain a storyboard, key images, subtitles, narration and applicable visual-identity references. Use the actual authorized assets, their versions and usage rights; a historical signature pointer does not itself permit current identity or public use.
 
-This specification applies to the following tools and platforms for video
-generation and editing:
-- Sora
-- Canva
-- Adobe Express
-- Gamma / PPT-like video
-- Future video tools
+For a shot/frame breakdown, retain sequence, visual description and key-image reference, subtitle text, narration/audio cue and transition instructions. The necessary granularity depends on the deliverable. The original 60-second brief remains a historical example, not the duration of every future output.
 
-## 2. Node Definition
+Output should bind the rendered file and media metadata to the input version, actual tool/model/version where observable, transformation or loss record, review state and intended audience. Separate a successful render/export, saved deliverable and approved publication. Missing metadata remains unknown rather than invented.
 
-- **Node Role:** Interaction Surface / Output Generation
-- **Primary Axis:** AXIS-01 (World Chain)
-- **Secondary Axis:** AXIS-05 (Review Chain fallback)
+## Tool, review and failure scope
 
-## 3. Input & Output
+The predecessor's Sora, Canva, Adobe Express, Gamma and future-tool list illustrates replaceable production capabilities, not installed availability, permanent roles or blanket data-transfer permission. Select a suitable tool for the real task and its current limits.
 
-### 3.1 Input
-- Storyboard structure
-- Key images (visual anchors)
-- Subtitles
-- Narration script
-- Brand/visual identity guidelines (e.g., signature reference)
+Check the produced media against the applicable storyboard and identity constraints. Drift or generation failure invalidates the affected output or transformation, not unrelated work or the source identity. Preserve useful inputs and a recovery path; reusing an existing asset is not permission to disclose it.
 
-### 3.2 Output
-- 60-second short video
-- Video metadata (tool used, generation date, storyboard version)
+Return the result to the authorized deliverable and receiver. There is no mandatory primary repository, AXIS-05 escalation, return_to_00 state or universal review roster. No video generation, API call, publication, render acceptance or runtime integration was performed by this document maintenance.
 
-## 4. Storyboard Structure
+## Source uptake and recovery
 
-The storyboard must provide a frame-by-frame breakdown including:
-- Frame sequence number
-- Visual description / Key image reference
-- Subtitle text
-- Narration audio cue
-- Transition instructions
+Selectively adopts the purpose/authority distinctions in [the existing #324 source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/04_adapter-layer/VIDEO_OUTPUT_NODE_SPEC.md), blob `a17120d924521f14a74c4187d172d5c0f0b30a6d`. It is not an exact whole-file import or whole-source acceptance. The complete predecessor remains at [the fixed parent](https://github.com/chenchienheng/DCP-Pole-Projection/blob/08eddfc06cbea9f6884200a247b21df83d8e39c3/04_adapter-layer/VIDEO_OUTPUT_NODE_SPEC.md); restore only after checking newer changes.
 
-## 5. Execution Boundaries
-
-- **No Video Generation:** This specification does not execute video generation.
-- **No API Execution:** This specification does not integrate or trigger APIs.
-- **No Runtime Expansion:** This specification defines structure only.
-
-## 6. Paths
-
-### 6.1 Review Path
-All video outputs must pass through a review stage to ensure alignment with
-visual identity anchors and storyboard constraints before finalization.
-
-### 6.2 Return Path
-Approved video outputs and their metadata must be logged and written back to the
-primary structural repository or designated storage adapter.
-
-### 6.3 Failure Cases & AXIS-05 Fallback
-If video generation fails, the tool drifts from the storyboard, or visual
-identity constraints are violated:
-- Stop the generation/editing process.
-- Route the failure record to AXIS-05 (Review Chain).
-- Escalate for manual review and correction.
-
-## 7. Status
-
-- video_output_node_spec_created: true
-- return_to_00: true
+These references do not install tools, grant access, change a live service, or authorize publication, merge, deletion or deployment. [Directory entry](README.md) and the [existing register](../CAPABILITY_ABSORPTION_REGISTER.md) retain the scope; source-era successor arrows are not a compulsory runtime pipeline.

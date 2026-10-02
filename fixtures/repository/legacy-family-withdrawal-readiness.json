@@ -1,0 +1,80 @@
+{
+  "artifact_role": "LEGACY_FAMILY_WITHDRAWAL_READINESS_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "destructive_reclaim_authorized": false,
+  "families": {
+    "01_runtime-spine": {
+      "artifact_count": 5,
+      "body_review_complete": true,
+      "successor_review_complete": true,
+      "unique_provenance_debt_count": 0,
+      "current_reader_role": false,
+      "caller_census_complete": false,
+      "rebuild_dependency_census_complete": false,
+      "wake_routing_withdrawal_proven": false,
+      "state": "CALLER_REBUILD_WAKE_PENDING"
+    },
+    "03_field-governance": {
+      "artifact_count": 22,
+      "body_review_complete": true,
+      "successor_review_complete": true,
+      "unique_provenance_debt_count": 0,
+      "current_reader_role": false,
+      "caller_census_complete": false,
+      "rebuild_dependency_census_complete": false,
+      "wake_routing_withdrawal_proven": false,
+      "state": "CALLER_REBUILD_WAKE_PENDING",
+      "provenance_closed_by_git_history": [
+        "3779bc4f19abdb6db6a618bc0d977315a55dcd0c"
+      ]
+    },
+    "04_adapter-layer": {
+      "artifact_count": 13,
+      "body_review_complete": true,
+      "successor_review_complete": true,
+      "unique_provenance_debt_count": 0,
+      "current_reader_role": false,
+      "caller_census_complete": false,
+      "rebuild_dependency_census_complete": false,
+      "wake_routing_withdrawal_proven": false,
+      "state": "CALLER_REBUILD_WAKE_PENDING",
+      "provenance_closed_by_git_history": [
+        "37ef230d2ba68772012919f12b7a79413d8324ed",
+        "73b1c672449a1b465545a2d7a41bca9815bd8bdf",
+        "ddecd99d9e73088483d9e4b309922d77d2fb5bcd",
+        "d9f12587e6d2b6de2193cea912a0a56df12af150"
+      ]
+    }
+  },
+  "current_facing_observation": {
+    "reader_surface_reviewed": true,
+    "legacy_family_as_normal_reader_entry_observed": false,
+    "scope": [
+      "README.md",
+      "CURRENT-SURFACE-MANIFEST.json",
+      "LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md",
+      "PUBLIC-SURFACE-POLICY.md",
+      "STATUS.md",
+      "AGENTS.md",
+      ".github/ISSUE_TEMPLATE/capability_task_packet.md",
+      ".github/pull_request_template.md"
+    ]
+  },
+  "known_wake_debt": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/qinyi_task_packet.md",
+      "semantic_authority": "none",
+      "lifecycle": "HISTORICAL_COMPATIBILITY",
+      "physical_wake_withdrawal_proven": false,
+      "action": "HOLD_FOR_STRUCTURAL_RECLAIM_REVIEW"
+    }
+  ],
+  "claim_boundary": [
+    "BODY_REVIEW_COMPLETE_DOES_NOT_PROVE_CALLER_ABSENCE",
+    "PROVENANCE_IN_GIT_HISTORY_DOES_NOT_AUTHORIZE_DELETION",
+    "CURRENT_READER_WITHDRAWAL_DOES_NOT_PROVE_NON_TEXT_RUNTIME_DEPENDENCY_ABSENCE",
+    "RECLAIM_REQUIRES_CALLER_REBUILD_WAKE_AND_STRUCTURAL_REVIEW",
+    "LEGACY_TEMPLATE_SEMANTIC_DEENTITLEMENT_DOES_NOT_PROVE_PHYSICAL_WAKE_WITHDRAWAL"
+  ]
+}

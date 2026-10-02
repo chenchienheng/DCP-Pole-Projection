@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.example/contracts/cross-pole-learning.schema.json",
+  "title": "DCP Bounded Cross-Pole Learning Candidate Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "source_revision",
+    "receiver",
+    "affected_receivers",
+    "material_delta",
+    "equivalent_receipt_exists",
+    "historical",
+    "native_body_copy_requested",
+    "authority_in_scope"
+  ],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 1},
+    "source_revision": {"type": "string", "minLength": 1},
+    "receiver": {"type": "string", "minLength": 1},
+    "affected_receivers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "material_delta": {"type": "boolean"},
+    "equivalent_receipt_exists": {"type": "boolean"},
+    "historical": {"type": "boolean"},
+    "reentry_purpose": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "PROVENANCE",
+        "AUDIT",
+        "FAILURE_LEARNING",
+        "REGRESSION",
+        "REBUILD",
+        "SUCCESSOR_VALIDATION"
+      ]
+    },
+    "native_body_copy_requested": {"type": "boolean"},
+    "authority_in_scope": {"type": "boolean"}
+  },
+  "$comment": "Receiver-specific affected-slice learning only. Equivalent receipt reuse prevents repropagation; historical re-entry requires an explicit purpose; Native Body copy is prohibited."
+}

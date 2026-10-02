@@ -1,127 +1,32 @@
-# Analysis View Map v0.1
+# Analysis views — preserve meaning from source to usable representation
 
-> Status: Candidate / usable baseline
-> Placement: `03_field-governance/`
-> Related issues: #215
-> Related Linear: QIN-118, QIN-119, QIN-130, QIN-132, QIN-133, QIN-144, QIN-162, QIN-163, QIN-164, QIN-165
-> Upstream: `BASE_FIELD_CORE_v0_1.md`, `SOURCE_VIEW_GATE_v0_1.md`, `IMPORT_STAGING_AND_STABLE_ID_RULE_v0_1.md`
-> Purpose: define how charts, trends, matrices, dashboards, and strategy views may read governed views / fact tables without reading raw staging or upgrading evidence through presentation.
+Status: CANDIDATE_REFERENCE / NOT_RUNTIME / NO_NEW_AUTHORITY.
+Batch: BATCH_FIELD_CONTINUITY_UPTAKE_20260928 (Asia/Taipei).
 
----
+## Purpose
+An analysis view is a purpose- and audience-specific interpretation or visualization. Its layout, file format and source table names do not make it authoritative. Select the actual source, applicable version, right to use it, and claim being evaluated. A source can support different views without forcing every view through one BASE/QIN database.
 
-## 0. Core
+## Input and evidence suitability
+Governed views and reviewed fact tables are useful inputs when their review covers the present claim. A raw import may be inspected in a clearly labelled diagnostic or review view, but must not silently become confirmed facts in an executive dashboard. Proposed IDs and unresolved aliases stay proposed until matching is justified. A company capability statement does not establish willingness to cooperate, and policy or investment news alone does not establish a project opportunity.
 
-Analysis views read governed views or fact tables. Analysis views must not read raw staging as fact. Charts, trends, matrices, and dashboards do not upgrade evidence level. A useful visualization is still only a view.
+Source-class labels are not universal quality scores. Evidence level, date, scope and conflicts must be interpreted against the question. A newer timestamp is not automatic precedence; an attractive chart or matrix score is not a decision or approval.
 
-```text
-Analysis View = role-specific interpretation or visualization surface.
-Governed View = reviewed view with source, evidence level, gate, and return path.
-Fact Table = structured record intended for aggregation, trend, metric, or dashboard use.
-Raw Staging = imported or collected data before review and stable ID confirmation.
-```
+## Chart, trend, matrix and dashboard behavior
+Retain source references and material omissions. A trend needs a stated period, comparable units and a justified comparison basis. A matrix needs its chosen criteria, interpretation and uncertainty; weights must not silently change a candidate into fact. A dashboard distinguishes reported, pending, observed and accepted states and identifies stale observations. Never average incompatible evidence categories merely to produce one number.
 
-The purpose of analysis is to make BASE readable, not to replace BASE.
+The compatibility forms below preserve the original chart metadata, view map and worked examples. Policy_Event_Fact, Market_Signal_Fact, Entity_Master, Relation_Bridge and other named tables are examples from one implementation profile, not required global databases. A reader may use an appropriate source through another representation without changing its identity or rights.
 
----
+## Interface, change and return
+QIN is a historical interface label, not a permanent model, writer or authority. Separate reading, deriving, saving, mutating a source and publishing. A presentation must not rewrite its source merely to tell a cleaner story; an authorized source correction is a separate versioned action with evidence and propagation to affected views.
 
-## 1. Analysis View Rule
+Bind the saved view or export to the original deliverable, source versions and actual receiver. Saving a dashboard does not prove receiver use. Preserve the last valid representation and enough transformation context to correct or regenerate it.
 
-```yaml
-Analysis_View_Rule:
-  Must_Read:
-    - governed views
-    - reviewed fact tables
-    - source-backed evidence indexes
-    - confirmed stable IDs
-  Must_Not_Read_As_Fact:
-    - raw import staging
-    - unreviewed user spreadsheets
-    - unresolved proposed IDs
-    - unverified model extraction
-    - media signals without evidence boundary
-```
+## Existing related references, not a new task queue
+[Source/view](SOURCE_VIEW_GATE_v0_1.md), [import/identity](IMPORT_STAGING_AND_STABLE_ID_RULE_v0_1.md), [export/return](EXPORT_RETURN_PACKET_SCHEMA_v0_1.md) and [routing](MINIMAL_ROUTER_LAUNCHER_QIN_VIEW_GATE_v0_1.md) already exist. Use only their relevant questions. The old request to decide or create the next split-out document is superseded by those existing artifacts; no mandatory order, all-view review or new dashboard task is created here. The examples below are design examples, not executed tests or present business decisions.
 
-Analysis views can guide attention and support judgment. They cannot approve facts, opportunities, cooperation, doctrine, or strategy by presentation alone.
+## Retained compatibility forms
 
----
-
-## 2. View Input Classes
-
-```yaml
-View_Input_Classes:
-  Governed_View:
-    meaning: reviewed projection with declared source/view boundary
-    allowed_for: charts, dashboards, matrices, strategy views
-  Fact_Table:
-    meaning: structured, reviewable records designed for aggregation
-    allowed_for: metrics, trends, comparisons, time series
-  Evidence_Index:
-    meaning: source-backed evidence object and pointer resolution
-    allowed_for: evidence carry, citation, claim support
-  Relation_Bridge:
-    meaning: reviewed relation between source, entity, project, capability, constraint, or opportunity
-    allowed_for: network maps, entity/project maps, relationship views
-  Import_Staging:
-    meaning: safe landing zone before review
-    allowed_for: import review only
-    not_allowed_for: production dashboards or executive strategy views
-```
-
----
-
-## 3. Fact Table / Governed View Sources
-
-```yaml
-Allowed_Analysis_Sources:
-  Policy_Event_Fact:
-    use: policy timeline, regulatory trend, national strategy signal
-  Market_Signal_Fact:
-    use: market observation and trend candidate
-  Metric_TimeSeries_Fact:
-    use: chartable metrics and KPI trends
-  Entity_Master:
-    use: entity dimension after stable ID confirmation
-  Project_Asset_Master:
-    use: project or asset dimension after stable ID confirmation
-  Relation_Bridge:
-    use: relationship and dependency maps
-  Capability_Ledger:
-    use: capability view, not cooperation willingness
-  Constraint_Gate:
-    use: legal, tax, trade, certification, internal-control boundary views
-  Evidence_Index:
-    use: evidence carry and claim support
-  Decision_Log:
-    use: decision lineage and interpretation history
-  Return_Packet_Index:
-    use: closure and version traceability
-```
-
-Allowed does not mean automatically approved. Each view still needs evidence level, gate, and boundary.
-
----
-
-## 4. Forbidden Analysis Reads
-
-```yaml
-Forbidden_Analysis_Reads:
-  Raw_Staging_To_Executive_Dashboard:
-    reason: unreviewed import may contain duplicate, alias, conflict, or unsupported claims
-  Proposed_ID_To_Entity_Map:
-    reason: proposed IDs are not confirmed stable IDs
-  Media_Signal_To_Confirmed_Trend:
-    reason: signal is not validation
-  Tool_Output_To_Fact_Table:
-    reason: extraction or generation is not original evidence
-  Matrix_Score_To_Approved_Recommendation:
-    reason: scoring is interpretation, not approval
-  Dashboard_State_To_Source_Fact:
-    reason: dashboard is a view, not the source
-```
-
----
-
-## 5. Chart / Trend / Matrix / Dashboard Rule
+These uninstantiated source forms preserve compatible field names for a selected profile, not a required global schema or action grant. BASE/QIN, Window/Rank, named tables, mandatory_fields and destinations apply only to that explicitly chosen profile; do not create resources or infer approval to fill a form.
 
 ```yaml
 Visualization_Rule:
@@ -134,20 +39,6 @@ Visualization_Rule:
   Dashboard:
     must_carry: view state, data freshness, pending/confirmed/rejected counts, return path
 ```
-
-A chart may be persuasive. It is not therefore authoritative.
-
-A trend may be useful. It is not therefore market validation.
-
-A matrix may rank candidates. It is not therefore an approved recommendation.
-
-A dashboard may show state. It is not therefore the source of truth.
-
----
-
-## 6. Evidence-Level Carry Rule
-
-Evidence level must travel with analysis outputs.
 
 ```yaml
 Evidence_Level_Carry:
@@ -164,12 +55,6 @@ Evidence_Level_Carry:
     - upgrade weak evidence through visualization design
     - remove cannot-support statements from decision views
 ```
-
-If evidence level cannot be carried into the view, the view is not decision-safe.
-
----
-
-## 7. Strategy / Market / Governance / Development View Map
 
 ```yaml
 Analysis_View_Map:
@@ -235,34 +120,6 @@ Analysis_View_Map:
     boundary: opportunity candidate is not opportunity pipeline
 ```
 
----
-
-## 8. QIN/View Analysis Surface Rule
-
-QIN/View surfaces make analysis usable. They do not make analysis authoritative.
-
-```yaml
-QIN_View_Analysis_Surface:
-  QIN_Can:
-    - show filtered dashboards
-    - display charts and trends from governed views
-    - ask follow-up questions about evidence level and boundary
-    - route unclear signals to micro-check tasks
-    - export analysis packets with disclaimers
-    - write decision feedback to Decision_Log or Return_Packet_Index
-  QIN_Cannot:
-    - read raw staging as fact
-    - hide evidence level
-    - convert charts into approved decisions
-    - turn trend signal into market validation
-    - write dashboard state back as source fact
-    - bypass Source_View_Gate or Import_Staging_and_Stable_ID_Rule
-```
-
----
-
-## 9. Failure Modes
-
 ```yaml
 Failure_Modes:
   Pretty_Dashboard_Thin_BASE:
@@ -281,12 +138,6 @@ Failure_Modes:
     risk: analysis cannot be corrected or audited
 ```
 
----
-
-## 10. Examples
-
-### 10.1 Policy trend chart
-
 ```yaml
 Input: Policy_Event_Fact + Official_Source records
 View: Policy_Trend_View
@@ -295,8 +146,6 @@ Forbidden: claim confirmed project opportunity from policy alone
 Gate: Evidence_Level_Carry + Source_View_Gate
 Return: Decision_Log / Return_Packet_Index
 ```
-
-### 10.2 Market signal matrix
 
 ```yaml
 Input: Market_Signal_Fact + Evidence_Index
@@ -307,8 +156,6 @@ Gate: Evidence_Boundary + Analysis_View_Rule
 Return: QA_Gate / Change_Log
 ```
 
-### 10.3 Entity project relation map
-
 ```yaml
 Input: Entity_Master + Project_Asset_Master + Relation_Bridge
 View: Entity_Project_Map
@@ -317,8 +164,6 @@ Forbidden: infer cooperation willingness without evidence
 Gate: Relation_Bridge review + Source_View_Gate
 Return: Decision_Log
 ```
-
-### 10.4 Governance dashboard
 
 ```yaml
 Input: QA_Gate + Change_Log + Return_Packet_Index
@@ -329,8 +174,6 @@ Gate: Return_Gate
 Return: Change_Log / Return_Packet_Index
 ```
 
-### 10.5 QIN analysis request
-
 ```yaml
 Input: user asks QIN for market trend chart
 View: QIN analysis surface
@@ -340,48 +183,6 @@ Gate: QIN_BASE_Six_Question_Gate + Analysis_View_Rule
 Return: Decision_Log or micro-check task
 ```
 
----
+## Source and recovery
 
-## 11. Do Not
-
-```yaml
-Do_Not:
-  - do not approve doctrine
-  - do not mutate Drive or Sheets
-  - do not approve ERP product scope
-  - do not create production database
-  - do not implement UI wireframes
-  - do not include company-sensitive or private data
-  - do not treat dashboards as source of truth
-  - do not turn trend signal into confirmed fact
-  - do not turn matrix score into approved recommendation
-  - do not turn Pending into Fact
-  - do not hide evidence level in analysis output
-  - do not let QIN analysis bypass governed views
-```
-
----
-
-## 12. Current Decision
-
-```yaml
-Decision: Conditional_Go
-Status: Candidate_Usable_Baseline
-Reason:
-  - Analysis View Map is required after import/staging and source/view boundaries.
-  - It prevents charts, trends, dashboards, and matrices from upgrading evidence through presentation.
-  - It defines which views may read which governed sources and fact tables.
-  - It supports QIN analysis surfaces while preserving BASE boundaries.
-What_This_Does_Not_Do:
-  - does not approve doctrine
-  - does not merge itself
-  - does not mutate Drive or Sheets
-  - does not approve ERP product scope
-  - does not create production database
-  - does not implement UI wireframes
-Next_Action:
-  - review PR manually
-  - confirm candidate wording remains visible
-  - decide whether Export_Return_Packet_Schema should become the next split-out file
-Return_Path: Issue #215 -> PR -> MotherTree review -> later Export_Return_Packet_Schema split-out
-```
+Selectively adapts [#324 fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/03_field-governance/ANALYSIS_VIEW_MAP_v0_1.md) (blob `61c67d967dd8405985f38406cd0b6a234660f37a`). [Complete predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/66099050d54a5ad533464cb4f28918fb04aadccb/03_field-governance/ANALYSIS_VIEW_MAP_v0_1.md) (blob `690d3b603cdacbd748b48ab796a3f66977e9632a`) and the existing evidence package preserve every original form, example and dated decision. Historical labels/arrows are not current tasks, permission or a universal sequence. No source deletion, runtime, deployment or new authority follows. Restore only after checking newer changes; ordinary entry selection remains the [existing manifest](../CURRENT-SURFACE-MANIFEST.json).

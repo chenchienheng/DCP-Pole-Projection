@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/family-metabolism.schema.json",
+  "title": "DCP Legacy Family Metabolism Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "family",
+    "artifact_count",
+    "classified_count",
+    "successor_covered_count",
+    "caller_audit_complete",
+    "rebuild_audit_complete",
+    "normal_reader_wake",
+    "current_routing_reference",
+    "unique_evidence_unreviewed_count"
+  ],
+  "properties": {
+    "family": {"type": "string", "minLength": 1},
+    "artifact_count": {"type": "integer", "minimum": 0},
+    "classified_count": {"type": "integer", "minimum": 0},
+    "successor_covered_count": {"type": "integer", "minimum": 0},
+    "caller_audit_complete": {"type": "boolean"},
+    "rebuild_audit_complete": {"type": "boolean"},
+    "normal_reader_wake": {"type": "boolean"},
+    "current_routing_reference": {"type": "boolean"},
+    "unique_evidence_unreviewed_count": {"type": "integer", "minimum": 0}
+  },
+  "x-invariants": [
+    "LEGACY_LABEL_IS_NOT_METABOLISM_COMPLETE",
+    "FAMILY_RECLAIM_REQUIRES_SUCCESSOR_COVERAGE",
+    "FAMILY_RECLAIM_REQUIRES_READER_WITHDRAWAL",
+    "UNIQUE_EVIDENCE_MUST_BE_REVIEWED_BEFORE_RECLAIM",
+    "DESTRUCTIVE_ACTION_REQUIRES_SEPARATE_AUTHORITY"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

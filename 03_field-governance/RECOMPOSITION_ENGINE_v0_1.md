@@ -1,30 +1,30 @@
-# Recomposition Engine v0.1
+# Recomposition method — retain useful inputs without claiming a running engine
 
-## Purpose
+Status: CANDIDATE_REFERENCE / NOT_RUNTIME / NO_NEW_AUTHORITY.
+Batch: BATCH_FIELD_CONTINUITY_UPTAKE_20260928 (Asia/Taipei).
 
-Define the minimal recomposition engine that turns Knowledge Molecules into usable outputs.
+## Purpose and input
+Compose lawful, purpose-fit source units into a usable result. The filename is historical: this reference is not an installed engine, universal workflow, new core module or proof of runtime execution. Task_Vector, Role_Context, Boundary and Molecule_Set below are optional representation fields, not mandatory global objects.
 
-This engine connects Knowledge Molecule, Co-Field Dependency, Linear task queue, GitHub PR chain, and Interface outputs.
+## Method and dependencies
+Establish the intended effect and select appropriate sources, versions, rights and capabilities. Compare claims in context, retain meaningful conflicts and account for transformation loss. Useful partial evidence can remain a candidate; a missing condition holds its dependent use rather than erasing the source or stopping every parallel action.
 
-## Boundary
+The earlier fixed filter/rank/vector/assemble sequence is not the execution order of every task. Weight_Profile can rank eligible candidates only under a stated method; it does not establish factual strength. Candidate/Hardened/Conditional_Hardened labels are dispositions requiring their evidence, not credentials that automatically permit formal use.
 
-- non-core
-- schema and routing only
-- no database implementation
-- no runtime automation requirement
-- no secret storage
-- no formal conclusion without evidence boundary
-- no public output without interface review
+## Outputs and acceptance
+Reports, structured tables, task packets, review notes and interface representations have different purposes. Preserve their actual input/output fields, uncertainty and original deliverable. A report must not convert capability into willingness, investment into a deal source, weak signal into fact, or inference into approved direction. Selecting a tool does not create a permanent vendor role.
 
-## Core Idea
+Construction should complete a sufficient related unit instead of repeatedly preparing another candidate plan. Reuse applicable accepted results; do not rerun closed diagnostics or duplicate an existing artifact merely because the current window changed.
 
-Knowledge is not used by volume. Knowledge is recomposed by constraints.
+## Return and rebuild
+Keep the contributing and held source units, actual transformations, output version, affected receiver and unresolved conditions. A saved result is not receiver adoption. Preserve a valid checkpoint and the accepted deltas needed for reconstruction, including losses or conflicts that prevent full recovery.
 
-```text
-Task vector + role context + boundary + verified molecules -> structured output + return path
-```
+## Related references and successor limits
+[Knowledge units](KNOWLEDGE_MOLECULE_MODEL_v0_1.md), [dependency](CO_FIELD_DEPENDENCY_MODEL_v0_1.md), [initiative](CLUSTER_INITIATIVE_RHYTHM_PROTOCOL_v0_1.md) and [round records](EXTERNAL_ROUND_LEDGER_v0_1.md) are complementary methods, not a compulsory stack. The #324 specimen's nominal LIFECYCLE_DEPENDENCY_CHAIN_KERNEL.md pointer was not admitted as a current target by the existing review. Do not recreate it, import its fixed sequence, or claim successor equivalence merely to close this file. Existing executable behavior and external transport require their own exact-source evidence.
 
-## Input Schema
+## Retained compatibility forms
+
+These uninstantiated source forms preserve compatible field names for a selected profile, not a required global schema or action grant. BASE/QIN, Window/Rank, named tables, mandatory_fields and destinations apply only to that explicitly chosen profile; do not create resources or infer approval to fill a form.
 
 ```yaml
 Recomposition_Input:
@@ -46,41 +46,6 @@ Recomposition_Input:
       Verification_Status:
   Return_Path:
 ```
-
-## Process
-
-```yaml
-Recomposition_Process:
-  1_Filter:
-    - remove molecules outside boundary
-    - hold molecules with missing Source_ID
-    - separate Pending from formal use
-
-  2_Rank:
-    - rank by Weight_Profile
-    - prefer official / primary source where required
-    - downgrade weak signal instead of deleting it
-
-  3_Assemble:
-    - group by Role_ID
-    - group by Vector_ID
-    - connect Dependency_Link where available
-    - preserve Can_Support and Cannot_Support
-
-  4_Verify:
-    - check evidence level
-    - check role boundary
-    - check no overclaim
-    - check return path exists
-
-  5_Output:
-    - produce target format
-    - attach Source_ID
-    - attach Boundary_Level
-    - attach Return_Path
-```
-
-## Output Types
 
 ```yaml
 Recomposition_Output_Types:
@@ -105,62 +70,6 @@ Recomposition_Output_Types:
     Requires: public/private boundary and no private source exposure
 ```
 
-## Compatibility Map
-
-```yaml
-Compatibility:
-  Knowledge_Molecule_Model:
-    Provides: Molecule_Set and evidence boundaries
-
-  Co_Field_Dependency_Model:
-    Provides: Node, Field, Dependency, Matrix, Return_Path
-
-  Cluster_Initiative_Rhythm:
-    Provides: Report / Prepare / Activate / Return / Calibrate rhythm
-
-  Commander_Hierarchy:
-    Provides: node rank and routing authority
-
-  External_Round_Ledger:
-    Provides: cross-window continuity and next-round prompt
-
-  AEO_Interface_Adapter:
-    Receives: Interface_Output
-
-  Linear_Task_Queue:
-    Receives: Task_Card
-
-  GitHub_PR_Chain:
-    Receives: PR_Draft and evidence record
-```
-
-## Formal Use Gate
-
-```yaml
-Formal_Use_Gate:
-  Can_Formalize_When:
-    - Source_ID exists
-    - Can_Support is explicit
-    - Cannot_Support is explicit
-    - Boundary_Level permits formal use
-    - Verification_Status is Hardened or Conditional_Hardened
-
-  Must_Downgrade_When:
-    - source is media-only
-    - claim is inferred
-    - role boundary is unclear
-    - source cannot support proposed conclusion
-    - verification is pending
-
-  Must_Reject_When:
-    - claim lacks source
-    - claim exposes private source
-    - claim changes core doctrine without review
-    - output lacks return path
-```
-
-## Return Packet
-
 ```yaml
 Recomposition_Return_Packet:
   Task_Vector:
@@ -175,24 +84,6 @@ Recomposition_Return_Packet:
   Return_Path:
 ```
 
-## Anti-Drift Rules
+## Source and recovery
 
-```yaml
-Anti_Drift:
-  - do not turn weak signal into fact
-  - do not turn capability into willingness
-  - do not turn investment into deal source
-  - do not expose private source in interface output
-  - do not use Pending as formal conclusion
-  - do not delete Radar nodes solely because they are weak
-  - do not let output format override evidence boundary
-```
-
-## Status
-
-```yaml
-Status: Draft_v0_1
-Layer: Field Governance
-Core_Status: Non_Core
-Gate_Color: Yellow
-```
+Selectively adapts [#324 fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/03_field-governance/RECOMPOSITION_ENGINE_v0_1.md) (blob `9eb2d7fb07ffa25c1d1f7ef484ae83ab8cb86389`). [Complete predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/66099050d54a5ad533464cb4f28918fb04aadccb/03_field-governance/RECOMPOSITION_ENGINE_v0_1.md) (blob `365044245e7edace19281c44fbe1910067b6b4a2`) and the existing evidence package preserve every original form, example and dated decision. Historical labels/arrows are not current tasks, permission or a universal sequence. No source deletion, runtime, deployment or new authority follows. Restore only after checking newer changes; ordinary entry selection remains the [existing manifest](../CURRENT-SURFACE-MANIFEST.json).

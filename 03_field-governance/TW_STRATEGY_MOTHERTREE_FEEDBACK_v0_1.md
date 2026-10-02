@@ -1,3 +1,22 @@
+# Taiwan strategy feedback — historical branch return, not present company state
+
+Status: CANDIDATE_REFERENCE / NOT_RUNTIME / NO_NEW_AUTHORITY.
+Batch: BATCH_FIELD_CONTINUITY_UPTAKE_20260928 (Asia/Taipei).
+
+## Scope of this record
+This is the dated TW-STRATEGY-FEEDBACK-001 return concerning TW-STRATEGY-REFRAME-001. Its reported database additions, branch decisions, Conditional Pass and next artifacts are historical assertions by that return, not observations of today's company systems or a current instruction to resume them. No company database, ERP or business relationship was inspected or changed in this maintenance.
+
+## Retained lesson, not transferred data or authority
+Preserve the distinction between source claims, usable knowledge, strategy framing and a decision. Capability does not prove willingness to cooperate; investment does not prove a deal source; a media signal does not become fact merely because it appears in a matrix. A company-specific branch can use a method without copying private data or transferring its decision authority into the common core.
+
+Capture / Converge / Harden and the proposed GM-view lane counts belong to that task's profile, not a fixed lifecycle or mandatory number for every domain. The original named tables and artifacts below remain source locators within the historical account; their names do not establish current existence, acceptance or access.
+
+## Continuing work
+Do not create Strategic_Relationship_Matrix_v01, GM_View_v01 or a new task merely because the historical Next_Action says so. A real company request must resolve its own current source, scope, permissions and acceptance. The original complete report is retained below unchanged so no reported output, limitation or context is lost. This preserved block must not supply present-day instructions or public approval.
+
+<details>
+<summary>Complete original branch return — historical reported content</summary>
+
 # Taiwan Strategy MotherTree Feedback v0.1
 
 ## Purpose
@@ -150,3 +169,9 @@ Layer: Field Governance
 Core_Status: Non_Core
 Gate_Color: Yellow
 ```
+
+</details>
+
+## Source and recovery
+
+Selectively adapts [#324 fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/03_field-governance/TW_STRATEGY_MOTHERTREE_FEEDBACK_v0_1.md) (blob `0200f6326bd0f8b0df3b5c343fa85a634db6302d`). [Complete predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/66099050d54a5ad533464cb4f28918fb04aadccb/03_field-governance/TW_STRATEGY_MOTHERTREE_FEEDBACK_v0_1.md) (blob `4203c645e1c183e6a6d23469be47023976347243`) and the existing evidence package preserve every original form, example and dated decision. Historical labels/arrows are not current tasks, permission or a universal sequence. No source deletion, runtime, deployment or new authority follows. Restore only after checking newer changes; ordinary entry selection remains the [existing manifest](../CURRENT-SURFACE-MANIFEST.json).

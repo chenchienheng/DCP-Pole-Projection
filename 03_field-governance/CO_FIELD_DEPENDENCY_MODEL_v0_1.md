@@ -1,146 +1,29 @@
-# Co-Field Dependency Model v0.1
+# Co-field dependency — shared relationships without mandatory centralization
+
+Status: CANDIDATE_REFERENCE / NOT_RUNTIME / NO_NEW_AUTHORITY.
+Batch: BATCH_FIELD_CONTINUITY_UPTAKE_20260928 (Asia/Taipei).
 
 ## Purpose
+Make the material dependencies of a specific need visible across tools, sources, artifacts and responsible parties. Sharing a field or carrier does not prove that every participant is currently dependent, subscribed, authorized or active. Neither a universal center nor disconnected islands are required.
 
-Define 共場依存 as the upper field model for XuanLing's clustered operation.
+## Dependency and identity
+Record which input, result, resource, decision or recovery condition actually connects the selected subjects. Preserve their separate native sources, versions and authority. A changed representation, tool or window need not create a new subject; similar names or co-location do not prove two subjects are the same.
 
-This model describes how many tools, models, windows, documents, and task chains can operate inside the same dependency field without becoming either centralized command objects or drifting decentralized fragments.
+Field, Rank, Orbit and Commander in the predecessor are optional descriptive vocabulary, not an invariant hierarchy. Rank does not grant rights; field placement is not a prerequisite for every action. The idea of returning to an invariant core means preserving applicable constraints, not sending every output to one CoreTri/MotherTree endpoint.
 
-## Boundary
+## Matrix use
+A dependency row should explain its Node_ID, required input/output, applicable boundary, state and return relation for the present use. Unknown or disputed links stay visible. The compatibility matrix below keeps the old field names without requiring every row to be populated or every node to be placed in one global matrix.
 
-- non-core
-- field-governance model only
-- no mystical term without operational fields
-- no authority expansion
-- no replacement of MotherTree, CoreTri, or user sovereignty
-- no external platform becomes core
+Dependencies can be asymmetric, conditional and time-dependent. One local failure blocks what depends on it, not every contributor. Observe existing outcomes before rerunning work; an old projection is not a renewed instruction.
 
-## Core Definition
+## Collaboration and completion
+Internal/external and named provider groupings are context-specific descriptions, not fixed ownership. Compose only the parties and capabilities required to complete the authorized outcome. Shared understanding may need a result projection even without a new construction assignment; delivery, reading, use and acceptance remain distinct.
 
-```yaml
-Co_Field_Dependency:
-  Name: 共場依存
-  Definition: full-time dependency-space chain coverage matrix topology
-  Constraint: invariant cluster core
-  Function:
-    - hold multiple nodes in the same operating field
-    - prevent commander drift
-    - preserve orbit and return path
-    - allow local initiative without core replacement
-    - keep outputs traceable and calibratable
-```
+Use [the existing continuity coupling reference](../THREE_COUPLING_RUNTIME_MAP.md) where applicable. It does not replace native judgments or require a new engine. Preserve actionable source-to-target and recovery relations rather than counting how many nodes are connected.
 
-Short form:
+## Retained compatibility forms
 
-```text
-Nodes do not need to share one center, but they must share one field.
-Nodes do not need to receive one command, but they must remain dependency-linked.
-Nodes do not need to move together, but they must return to the invariant core.
-```
-
-## Not Centralization / Not Decentralization
-
-```yaml
-Not_Centralization:
-  Reason:
-    - the axis does not execute every task
-    - commanders may rotate locally within scope
-    - edge nodes may prepare and report without waiting for every small instruction
-
-Not_Decentralization:
-  Reason:
-    - nodes are not free-floating
-    - every action requires orbit, boundary, and return path
-    - no node can redefine the invariant core
-
-Is:
-  - axis-bound
-  - orbit-governed
-  - dependency-linked
-  - matrix-covered
-  - return-calibrated
-```
-
-## Operational Fields
-
-```yaml
-Operational_Fields:
-  Node:
-    Meaning: tool, model, window, document, commander, captain, soldier, or carrier
-
-  Field:
-    Meaning: shared operating space where nodes interact under declared law
-
-  Dependency:
-    Meaning: relation that makes one node's output, risk, or state relevant to another
-
-  Matrix:
-    Meaning: coverage map of nodes, dependencies, boundaries, and return paths
-
-  Orbit:
-    Meaning: declared operating path for a task chain
-
-  Boundary:
-    Meaning: allowed scope, public/private edge, risk limit, or stop point
-
-  Return_Path:
-    Meaning: route back to MotherTree / CoreTri / closure gate / task ledger
-
-  Invariant_Core:
-    Meaning: non-replaceable calibration nucleus that prevents semantic, role, and task drift
-```
-
-## Relation to Existing Models
-
-```yaml
-Model_Relations:
-  Orbit_Axis_Law:
-    Relation: provides axis, orbit, rotation, revolution, and stop boundary
-
-  Cluster_Initiative_Rhythm:
-    Relation: provides report, prepare, activate, return, and calibrate rhythm
-
-  Commander_Hierarchy:
-    Relation: provides rank and routing authority
-
-  Knowledge_Molecule_Model:
-    Relation: provides decomposed knowledge units for recomposition
-
-  External_Round_Ledger:
-    Relation: preserves cross-window time continuity
-```
-
-## Three-Coupling Mapping
-
-```yaml
-Three_Coupling_World:
-  Internal_Coordination:
-    Nodes:
-      - GitHub
-      - Linear
-      - Notion
-      - Round Ledger
-    Function: keep records, tasks, PRs, and branch states coherent
-
-  External_Coordination:
-    Nodes:
-      - Slack
-      - Gmail
-      - Microsoft
-      - Google
-      - Hugging Face
-    Function: exchange signals, sources, model nutrients, and collaboration events
-
-  Internal_External_Adhesion:
-    Nodes:
-      - Qinyi Interface
-      - AEO Adapter
-      - Distribution Anchor
-      - Commander Cards
-    Function: convert internal structure into external-readable and reviewable output
-```
-
-## Dependency Matrix Skeleton
+These uninstantiated source forms preserve compatible field names for a selected profile, not a required global schema or action grant. BASE/QIN, Window/Rank, named tables, mandatory_fields and destinations apply only to that explicitly chosen profile; do not create resources or infer approval to fill a form.
 
 ```yaml
 Dependency_Matrix_Row:
@@ -156,32 +39,6 @@ Dependency_Matrix_Row:
   Current_State:
 ```
 
-## Operating Law
-
-```yaml
-Operating_Law:
-  Before_Action:
-    - identify node rank
-    - identify field
-    - identify dependency links
-    - identify orbit
-    - identify boundary
-    - identify return path
-
-  During_Action:
-    - stay inside orbit
-    - preserve boundary
-    - report changed artifact
-    - avoid cross-layer contamination
-
-  After_Action:
-    - produce return packet
-    - update task ledger if needed
-    - return to MotherTree / closure gate
-```
-
-## Return Packet Requirement
-
 ```yaml
 Co_Field_Return_Packet:
   Node_ID:
@@ -196,25 +53,6 @@ Co_Field_Return_Packet:
   Return_Path:
 ```
 
-## Anti-Drift Rules
+## Source and recovery
 
-```yaml
-Anti_Drift:
-  - no node acts without field placement
-  - no field operates without invariant core
-  - no action proceeds without orbit and boundary
-  - no output becomes formal without return path
-  - no external tool becomes core
-  - no model hub becomes doctrine
-  - no interface layer exposes private source
-  - no communication layer becomes memory core
-```
-
-## Status
-
-```yaml
-Status: Draft_v0_1
-Layer: Field Governance
-Core_Status: Non_Core
-Gate_Color: Yellow
-```
+Selectively adapts [#324 fixed source](https://github.com/chenchienheng/DCP-Pole-Projection/blob/00999341ff600a65ab3de641e4ce5615d6e9690d/03_field-governance/CO_FIELD_DEPENDENCY_MODEL_v0_1.md) (blob `46908d49cd564a1a0719f005adad52e09e91ef84`). [Complete predecessor](https://github.com/chenchienheng/DCP-Pole-Projection/blob/66099050d54a5ad533464cb4f28918fb04aadccb/03_field-governance/CO_FIELD_DEPENDENCY_MODEL_v0_1.md) (blob `fcafa6dc4f79e6faf0d838c53e038c170ef59137`) and the existing evidence package preserve every original form, example and dated decision. Historical labels/arrows are not current tasks, permission or a universal sequence. No source deletion, runtime, deployment or new authority follows. Restore only after checking newer changes; ordinary entry selection remains the [existing manifest](../CURRENT-SURFACE-MANIFEST.json).

@@ -1,3 +1,28 @@
+# Write intent representation — purpose-bound compatibility reference
+
+> Historical packet retained; not an active W0 protocol or universal transport shape.
+
+## Existing candidate representation
+
+Use `WriteIntentInput` in `dcp_kernel/write_intent.py` with `contracts/write-intent.schema.json`; qualification behavior is described in `writeback_gate_spec.md`. This is one existing candidate representation, not a requirement that every provider adopt its transport format.
+
+Preserve intent/subject/source/target identities, mutation kind, applicable purpose/rights/authority, affected scope, revision where sensitive, fidelity/evidence plan, responsibility, recovery and receiver-specific return. Do not translate historical Department, Agent Block, W0 or ChatGPT fields into present identity or authority. GitHub is not a mandatory return destination.
+
+Action names and booleans retain the existing schema's exact types: a string such as `"false"` is not a boolean authority assertion; an unknown action is not a supported mutation. A declared assertion is not verified permission. The packet does not authenticate external evidence, execute a write or prove receiver use.
+
+## Selective source uptake
+
+The same-path #324 source at `00999341ff600a65ab3de641e4ce5615d6e9690d` supplies the carrier-neutral intent distinction. Its three successor paths — module, schema and `tests/test_write_intent.py` — were checked in candidate `54cf305a89d9bcde2b88f1faa9a7566795c7155a`. This batch repairs input qualification in that module; it does not create a new adapter or import the whole source PR.
+
+Ordinary reader membership still comes from `CURRENT-SURFACE-MANIFEST.json`; this compatibility reference is not added to that reader set. Current/public approval, deletion and external execution remain independently qualified.
+
+## Provenance and complete predecessor
+
+Selected source blob: `2eed504e1d1a452cc899e15db902b0d261f6f6fe`. Preserved predecessor at `54cf305a89d9bcde2b88f1faa9a7566795c7155a`: blob `b1d175745a9a08fe5129e4ab4a0702d0a909652f`, SHA256 `03e9076cd85f4b02496aa842fae79c4dde0edcfb4957bae65d4946741363d300`.
+
+<details>
+<summary>Complete historical predecessor — not current instructions</summary>
+
 # Writeback Packet Contract
 
 Department: Adapter Layer
@@ -57,3 +82,5 @@ Reject packet if any required field is missing.
 
 ## Return Rule
 Successful writeback must append one log entry after write completes.
+
+</details>

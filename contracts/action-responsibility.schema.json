@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xuanling.local/contracts/action-responsibility.schema.json",
+  "title": "DCP Action Responsibility Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "transition_id",
+    "stable_life_id",
+    "actor_id",
+    "responsibility_owner",
+    "consequence_summary",
+    "blast_radius",
+    "return_target",
+    "rebuild_target",
+    "state"
+  ],
+  "properties": {
+    "transition_id": {"type": "string", "minLength": 1},
+    "stable_life_id": {"type": "string", "minLength": 1},
+    "actor_id": {"type": "string", "minLength": 1},
+    "responsibility_owner": {"type": "string", "minLength": 1},
+    "consequence_summary": {"type": "string", "minLength": 1},
+    "blast_radius": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "return_target": {"type": "string", "minLength": 1},
+    "rebuild_target": {"type": "string", "minLength": 1},
+    "state": {"const": "CANDIDATE"}
+  },
+  "x-invariants": [
+    "ACTION_RIGHT_REQUIRES_CONSEQUENCE_RESPONSIBILITY",
+    "BLAST_RADIUS_MUST_BACKMAP_TO_AFFECTED_CONE",
+    "RETURN_AND_REBUILD_TARGETS_ARE_REQUIRED",
+    "CONTRACT_DOES_NOT_GRANT_EXECUTION_AUTHORITY"
+  ],
+  "x-runtime": false,
+  "x-promotion": false
+}

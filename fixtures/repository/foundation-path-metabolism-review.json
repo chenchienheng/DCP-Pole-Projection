@@ -1,0 +1,59 @@
+{
+  "artifact_role": "FOUNDATION_PATH_METABOLISM_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "paths": ["00_meta", "00_mother-law"],
+  "path_order_creates_authority": false,
+  "zero_prefix_creates_priority": false,
+  "mother_law_label_creates_current_law": false,
+  "observed": [
+    {
+      "path": "00_mother-law/README.md",
+      "state": "LEGACY_PATH_ALIAS",
+      "normal_reader": false,
+      "current_ontology_role": "NONE"
+    },
+    {
+      "path": "00_mother-law/EXISTENCE_IDENTITY_BOUNDARY_SPECIMEN.md",
+      "state": "HISTORICAL_COMPATIBILITY_SPECIMEN",
+      "current_as_master_axis": false
+    },
+    {
+      "path": "00_mother-law/existence-consistency-rule.md",
+      "state": "RETAINED_PRIMITIVE_REINTERPRETED",
+      "current_as_admission_rule": false,
+      "retained": ["carrier presence", "effective state", "continuity path"]
+    },
+    {
+      "path": "00_mother-law/mother-architecture-registry-v0-1.md",
+      "state": "SUCCESSOR_COVERED_LINEAGE_ONLY",
+      "current_eligibility": false,
+      "authority": false
+    },
+    {
+      "path": "00_meta/FULL_LIFECYCLE_ASSET_MATRIX.md",
+      "state": "RETIRED_TO_LINEAGE",
+      "current_eligibility": false,
+      "retired": ["S1-S5 universal lifecycle", "W0/Wx ontology", "merge-to-main equals Active", "fixed agent roles"]
+    },
+    {
+      "path": "00_meta/user_identity_anchor.md",
+      "state": "OWNER_ALIGNMENT_PROJECTION_HISTORICAL_COMPATIBILITY",
+      "native_identity_source": false,
+      "repository_copy_is_source_of_truth": false
+    }
+  ],
+  "invariants": [
+    "HISTORICAL_ROOT_DOES_NOT_CREATE_AUTHORITY_ROOT",
+    "REPOSITORY_IDENTITY_PROJECTION_DOES_NOT_BECOME_OWNER_IDENTITY_SOURCE",
+    "EXISTENCE_CONTINUITY_DOES_NOT_BYPASS_AUTHORITY_EVIDENCE_OR_RECEIVER_GATES",
+    "REGISTRY_ENTRY_DOES_NOT_CREATE_CURRENT",
+    "PATH_PREFIX_DOES_NOT_CREATE_READER_PRIORITY",
+    "RETURN_TO_00_IS_NOT_A_GLOBAL_RETURN_RULE"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "POINTER_STABILITY_CHECK",
+    "POOLED_RECLAIM_REVIEW"
+  ]
+}

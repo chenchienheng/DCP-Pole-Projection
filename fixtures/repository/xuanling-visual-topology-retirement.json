@@ -1,0 +1,30 @@
+{
+  "artifact_role": "NON_TEXT_VISUAL_TOPOLOGY_RETIREMENT_EVIDENCE",
+  "runtime": false,
+  "promotion": false,
+  "source_family": "docs/xuanling/figures",
+  "directory_present_on_successor_branch": false,
+  "retired_visual_carriers": [
+    "Fig-01_XuanLing_All-Time_Dependency_Field_v0.2.png",
+    "Fig-02_Legion_Commander_Matrix_v0.2.png",
+    "Fig-03_All-Time_Dependency_Space_Chain_v0.2.png",
+    "Fig-04_Round-Based_Operation_Method_v0.2.png"
+  ],
+  "retired_semantics": [
+    "All-Time Dependency Field as current system body",
+    "Legion Commander Matrix as current role topology",
+    "fixed synchronous projection map as current operating topology",
+    "fixed round method as universal control flow"
+  ],
+  "successor_principles": [
+    "VISUAL_REPRESENTATION_DOES_NOT_CREATE_WORLD_OR_AUTHORITY",
+    "LEGACY_DIAGRAM_DOES_NOT_REGAIN_CURRENT_BY_VISUAL_REENTRY",
+    "MANY_PROJECTIONS_MAY_SHARE_ONE_STABLE_EXISTENCE",
+    "NON_TEXT_CARRIER_RETIREMENT_IS_PART_OF_METABOLISM"
+  ],
+  "claim_boundary": [
+    "DIRECTORY_ABSENCE_DOES_NOT_PROVE_ALL_NON_TEXT_DEPENDENCIES_ARE_GONE",
+    "GIT_HISTORY_RETAINS_LINEAGE",
+    "THIS_DOES_NOT_AUTHORIZE_DESTRUCTIVE_RECLAIM_ELSEWHERE"
+  ]
+}

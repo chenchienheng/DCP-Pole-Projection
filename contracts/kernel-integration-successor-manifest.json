@@ -1,0 +1,128 @@
+{
+  "artifact_id": "DCP_KERNEL_INTEGRATION_SUCCESSOR_R01_20260927",
+  "lifecycle_state": "CANDIDATE",
+  "runtime": false,
+  "promotion": false,
+  "native_source_root": false,
+  "repo_is_authority_root": false,
+  "base_main": "3abc1ef9e3852bc730a75be8ab6149f2aaebdda0",
+  "substrate": {
+    "pr": 324,
+    "head": "00999341ff600a65ab3de641e4ce5615d6e9690d",
+    "selected_executable_entries": 127
+  },
+  "leaf_deltas": [
+    {
+      "pr": 384,
+      "capability": "capability activation + decoupled stewardship/authority",
+      "paths": 4
+    },
+    {
+      "pr": 387,
+      "capability": "Current/Affected Cone/Return regression",
+      "paths": 1
+    },
+    {
+      "pr": 393,
+      "capability": "Return→re-entry schema drift fix",
+      "paths": 2
+    },
+    {
+      "pr": 395,
+      "capability": "carrier binding + consequence/next-condition semantics",
+      "paths": 4
+    },
+    {
+      "pr": 396,
+      "capability": "reality intake",
+      "paths": 2,
+      "note": "__init__.py whole-file override intentionally omitted to avoid regressing later substrate exports"
+    },
+    {
+      "pr": 397,
+      "capability": "vision-provider adapter",
+      "paths": 2,
+      "note": "reality_intake duplicate reused from PR396"
+    }
+  ],
+  "composition_rule": "substrate tree first; leaf module/test overrides only; no whole-branch merge; no old __init__ regression",
+  "verification": {
+    "structural_composition_observed": true,
+    "current_main_based": true,
+    "workflow_run_observed": false,
+    "local_test_execution_observed": false,
+    "provider_ci_pass": false,
+    "provider_ci_entry_main": {
+      "pr": 410,
+      "merge_sha": "e775db43a218b07aaa8a9f5c911d800636658489",
+      "workflow": ".github/workflows/dcp-kernel-candidate.yml"
+    },
+    "reopen_after_ci_entry_run_observed": false,
+    "synchronize_retry_reason": "matched contracts/** evidence update after CI entry became available on main",
+    "current_main_observed_at_retry": "67838c3f9e4e3156432eed094a00679acfc68bd0",
+    "retry_trigger": "contracts/kernel-integration-successor-manifest.json bounded evidence update",
+    "retry_at": "2026-09-27T07:54+08:00"
+  },
+  "required_before_merge_or_runtime_claim": [
+    "execute full candidate test suite on this exact head or successor",
+    "reconcile any failing tests against current-main semantics",
+    "review workflow/instruction compatibility",
+    "confirm no leaf regression from omitted/overridden exports",
+    "explicit merge acceptance"
+  ],
+  "claim_ceiling": "INTEGRATED_EXECUTABLE_CANDIDATE_NOT_PASS_NOT_RUNTIME",
+  "successor_coverage_readback": {
+    "observed_at": "2026-09-27T09:27+08:00",
+    "foundation_pr324": {
+      "selected_source_blobs": 127,
+      "non_overlay_blobs": 122,
+      "non_overlay_exact_in_successor": 122,
+      "missing": 0,
+      "differing_non_overlay": 0,
+      "overlay_paths_replaced_by_leaf_deltas": 5
+    },
+    "leaf_deltas": {
+      "pr384": "4/4 exact blobs",
+      "pr387": "1/1 exact blob",
+      "pr393": "2/2 exact blobs",
+      "pr395": "4/4 exact blobs",
+      "pr396": "2/2 exact blobs; whole-file __init__ intentionally excluded",
+      "pr397": "2/2 unique vision-provider blobs; duplicate reality_intake reused from PR396"
+    },
+    "coverage_disposition": "SELECTED_SOURCE_BLOB_COVERAGE_PROVEN",
+    "remaining_integration_hold": [
+      "exact-head Python execution",
+      "reconcile any execution failures",
+      "explicit integration acceptance"
+    ],
+    "note": "Blob coverage proves selected successor carriage, not execution/PASS/Runtime."
+  },
+  "initial_observation_scope": {
+    "verification": "Historical 07:54 retry snapshot, not present execution status",
+    "successor_coverage_readback": "Initial composition at 9c0ffcec5e4bb9db6ebe2b0107a003191649a2c8; subsequent derived repairs are not asserted byte-identical to their sources"
+  },
+  "postcomposition_repair": {
+    "need": "Connect existing kernel imports, fixture progression and current-main regression contracts",
+    "preimage_head": "1f11a5e8bcedd0e371e77cf053c15f113ecbf9d9",
+    "failed_provider_evidence": {
+      "run_id": 36295593810,
+      "job_id": 108553721689,
+      "actual_checkout": "82e7a11caa782444bd5514ced83a8785022b322e",
+      "actual_main_from_log_and_ref": "f61bf2f2383f0520a8dc5f2f015cd0f9e98aa9ac",
+      "test_methods": 249,
+      "failed_export_subtests": 5,
+      "errors": 4,
+      "result": "FAILED",
+      "census": "SKIPPED_NOT_PASS"
+    },
+    "derived_repairs": {
+      "dcp_kernel/__init__.py": "Add the five PR396 public exports without replacing or removing the 145 substrate exports",
+      "dcp_kernel/fixtures.py": "Use existing build_reentry_state with supplied closure, manual intervention and selected last-good revision; do not synthesize missing progression",
+      "tests/test_gui_lu_fixture.py": "Preserve original case; add supplied-progression, missing-rebuild, missing-retest and failed-plan regressions",
+      "tests/test_current_surface_alignment.py": "Bind assertions to existing current-main continuity/promotion guards and candidate implementation manifest; retain negative mutation controls; no root manifest mutation",
+      ".github/workflows/dcp-kernel-candidate.yml": "Verify exact candidate head and merge-ref separately; preserve triggers/read permissions/actions; invoke census as module and retain distinct artifacts"
+    },
+    "validation_after_repair": "PENDING_EXACT_COMMIT_PROVIDER_RESULT; resolve run/job logs for the repair commit",
+    "authority_boundary": "No merge, deploy, permission change, source-PR retirement, Native acceptance or Runtime promotion"
+  }
+}

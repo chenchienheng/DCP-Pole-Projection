@@ -1,0 +1,35 @@
+{
+  "artifact_role": "RESERVE_ZOMBIE_CAPABILITY_REVIEW",
+  "runtime": false,
+  "promotion": false,
+  "destructive_reclaim_authorized": false,
+  "observed": [
+    {
+      "path": "05_XLEN_Reserve_Unenabled/02_Gmail_Bridge/",
+      "physical_contents": [".gitkeep"],
+      "body_present": false,
+      "runtime_evidence_present": false,
+      "current_contract_present": false,
+      "native_capability_proven": false,
+      "state": "RECLAIM_ELIGIBLE_CANDIDATE_PENDING_FINAL_REVIEW",
+      "risk": "PATH_NAME_CAN_IMPLY_ZOMBIE_CAPABILITY"
+    }
+  ],
+  "successor": [
+    "03_board-orchestration/runtime-spine/xuanling-gmail-bridge-intake-gate-contract-2026-04-19-v0-1.md as historical implementation specimen",
+    "dcp_kernel/carrier_binding.py",
+    "dcp_kernel/judgment.py",
+    "dcp_kernel/platform.py"
+  ],
+  "invariants": [
+    "RESERVE_PATH_EXISTENCE_DOES_NOT_PROVE_CAPABILITY",
+    "UNENABLED_NAME_DOES_NOT_CREATE_DORMANT_RUNTIME",
+    "EMPTY_DIRECTORY_DOES_NOT_REQUIRE_PERMANENT_RETENTION",
+    "DELETE_REQUIRES_CALLER_POINTER_RETENTION_AND_OWNER_REVIEW"
+  ],
+  "remaining_debt": [
+    "FULL_BRANCH_CALLER_CENSUS",
+    "POINTER_STABILITY_CHECK",
+    "POOLED_RECLAIM_REVIEW"
+  ]
+}

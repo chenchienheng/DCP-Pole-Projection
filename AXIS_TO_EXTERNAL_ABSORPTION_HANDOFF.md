@@ -1,3 +1,20 @@
+# Axis handoff — historical #35 to #37 relation
+
+> Applicability: historical reference; not an ordinary Current source or execution instruction.
+> Runtime / Canon / new authority: not established by this document.
+
+The mandatory AXIS-01 entry, five-axis sequence, runtime/time-chain binding and instruction to start Issue #37 below are retained as the historical #35-to-#37 handoff. They are not universal prerequisites, a present dispatch, proof of runtime or a reason to recreate a missing master-axis document.
+
+For current work, resolve the actual Need, explicit repository reader basis in `CURRENT-SURFACE-MANIFEST.json`, applicable source/authority and receiver-specific evidence/return relation. Input, output and failure-recovery questions remain useful without reinstating a permanent routing hierarchy. #324's proposed deletion is not applied or approved.
+
+## Provenance and preservation
+
+Applicability reviewed against candidate `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3` and its explicit manifest. This is a bounded candidate edit, not main adoption or source retirement.
+Preserved predecessor: same path at `a53ea529e237f5a7e281c6cbb5d7380ca55f07e3`, blob `cafe7b22622466c0b81a6984b07ed4682bbcd3be`; SHA256 `f9b2510494aec40e515213c106dd927868b8316ce366c1bc9bdd8c6edee0ad46`.
+
+<details>
+<summary>Complete predecessor text — historical assertions, not current instructions</summary>
+
 # Axis Reconciliation to External Absorption Handoff
 
 > Bridge Document
@@ -84,3 +101,5 @@ Rule defined in Section 3 and align with the existing 5 Master Axes.
 - Issue #37 should proceed with defining the external ecosystem absorption
   framework, explicitly referencing this handoff document and complying with
   the defined Bridge Rule.
+
+</details>
