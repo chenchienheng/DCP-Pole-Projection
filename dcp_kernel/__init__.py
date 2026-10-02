@@ -1,7 +1,11 @@
 from .action_gate import ActionGateAssessment, ActionGateInput, EffectClass, RiskLevel, assess_action_gate
 from .activation import ActivationAssessment, ActivationInput, ActivationState, PersistentState, assess_activation
 from .carrier_binding import CarrierCandidate, CarrierClass, CarrierNeed, CarrierResolution, resolve_carrier_binding, validate_carrier_substitution
-from .binding_contract import BindingContractAssessment, BindingContractInput, BindingProgressState, TrianglePole, assess_binding_contract
+from .binding_contract import (
+    AuthorityBasis, AuthorityLeaseState, BindingContractAssessment,
+    BindingContractInput, BindingProgressState, TrianglePole,
+    assess_binding_contract,
+)
 from .coexistence import CompatibilityState, CoexistenceAssessment, CoexistenceInput, NativeModel, assess_coexistence
 from .composition import CompositionAssessment, CompositionInput, CompositionUnit, UnitDisposition, UnitState, assess_composition
 from .consequence import ActionResponsibilityContract, ConsequenceAssessment, ConsequenceInput, compile_action_responsibility, derive_next_condition
@@ -62,7 +66,7 @@ __all__ = [
     "prepare_artifact_delivery", "receive_artifact_delivery",
     "ActionGateAssessment", "ActionGateInput", "ActionResponsibilityContract", "ActivationAssessment", "ActivationInput",
     "ActivationState", "AffectedCone", "BirthDisposition", "CapabilityBinding", "CapabilityResolution", "CarrierCandidate",
-    "BindingContractAssessment", "BindingContractInput", "BindingProgressState", "CarrierClass", "CarrierNeed",
+    "AuthorityBasis", "AuthorityLeaseState", "BindingContractAssessment", "BindingContractInput", "BindingProgressState", "CarrierClass", "CarrierNeed",
     "CarrierResolution", "ClaimCeiling", "ClaimEvidence", "CompatibilityState", "TrianglePole",
     "CoexistenceAssessment", "CoexistenceInput", "CompositionAssessment", "CompositionInput", "CompositionUnit",
     "ConsequenceAssessment", "ConsequenceInput", "CoverageState", "CrossPoleFeedbackAssessment", "CrossPoleFeedbackInput",

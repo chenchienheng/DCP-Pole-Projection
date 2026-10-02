@@ -88,6 +88,9 @@
     "birth_regression": "BIRTH_REGRESSION",
     "public_candidate_is_release": false,
     "understanding_transfers_authority": false,
+    "capability_authentication_connection_or_delivery_transfers_authority": false,
+    "exact_duplicate_bypasses_current_revocation": false,
+    "declared_release_or_recovery_can_be_assumed": false,
     "single_success_is_maturity": false,
     "non_material_event_wakes_everyone": false
   },

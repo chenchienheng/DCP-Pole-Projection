@@ -17,6 +17,22 @@ class TrianglePole(str, Enum):
     GLMODEL_EFFECT = "GLMODEL_EFFECT"
 
 
+class AuthorityBasis(str, Enum):
+    EXPLICIT_SOURCE_BOUND = "EXPLICIT_SOURCE_BOUND"
+    CAPABILITY_ONLY = "CAPABILITY_ONLY"
+    AUTHENTICATION_ONLY = "AUTHENTICATION_ONLY"
+    CONNECTION_ONLY = "CONNECTION_ONLY"
+    DELIVERY_ONLY = "DELIVERY_ONLY"
+    MISSING = "MISSING"
+
+
+class AuthorityLeaseState(str, Enum):
+    ACTIVE_BOUNDED = "ACTIVE_BOUNDED"
+    MISSING = "MISSING"
+    EXPIRED = "EXPIRED"
+    REVOKED = "REVOKED"
+
+
 class BindingProgressState(str, Enum):
     NOT_APPLICABLE = "NOT_APPLICABLE"
     FAILED = "FAILED"
@@ -49,6 +65,12 @@ class BindingContractInput:
     durable_readback: bool
     duplicate_receipt: bool = False
     prior_locked_binding_key: str | None = None
+    authority_basis: AuthorityBasis = AuthorityBasis.EXPLICIT_SOURCE_BOUND
+    authority_lease_state: AuthorityLeaseState = AuthorityLeaseState.ACTIVE_BOUNDED
+    release_required: bool = False
+    release_observed: bool = False
+    recovery_required: bool = False
+    recovery_observed: bool = False
 
     def __post_init__(self) -> None:
         for field_name in (
@@ -72,9 +94,17 @@ class BindingContractInput:
             "durable_persisted",
             "durable_readback",
             "duplicate_receipt",
+            "release_required",
+            "release_observed",
+            "recovery_required",
+            "recovery_observed",
         ):
             if type(getattr(self, field_name)) is not bool:
                 raise TypeError(f"{field_name} must be bool")
+        if not isinstance(self.authority_basis, AuthorityBasis):
+            raise TypeError("authority_basis must be AuthorityBasis")
+        if not isinstance(self.authority_lease_state, AuthorityLeaseState):
+            raise TypeError("authority_lease_state must be AuthorityLeaseState")
 
     @property
     def binding_key(self) -> str:
@@ -120,6 +150,12 @@ _FAIL_SCHEDULE_STATES = {
     ScheduleEffectState.FAIL_SCOPE_VIOLATION,
     ScheduleEffectState.FAIL_IDENTITY_DRIFT,
 }
+_TRANSITIVE_AUTHORITY_BASES = {
+    AuthorityBasis.CAPABILITY_ONLY,
+    AuthorityBasis.AUTHENTICATION_ONLY,
+    AuthorityBasis.CONNECTION_ONLY,
+    AuthorityBasis.DELIVERY_ONLY,
+}
 
 
 def assess_binding_contract(item: BindingContractInput) -> BindingContractAssessment:
@@ -133,27 +169,6 @@ def assess_binding_contract(item: BindingContractInput) -> BindingContractAssess
     """
 
     key = item.binding_key
-
-    if item.duplicate_receipt:
-        if item.prior_locked_binding_key == key:
-            return BindingContractAssessment(
-                decision=Decision.PASS,
-                state=BindingProgressState.DUPLICATE_CONVERGED,
-                binding_key=key,
-                locked=True,
-                write_required=False,
-                first_unresolved_pole=None,
-                reasons=("EXACT_SOURCE_VERSION_RECEIVER_PURPOSE_EFFECT_ALREADY_LOCKED",),
-            )
-        return BindingContractAssessment(
-            decision=Decision.FAIL,
-            state=BindingProgressState.FAILED,
-            binding_key=key,
-            locked=False,
-            write_required=False,
-            first_unresolved_pole=None,
-            reasons=("DUPLICATE_CLAIM_DOES_NOT_MATCH_PRIOR_LOCKED_BINDING_KEY",),
-        )
 
     if not item.receiver_affected or not item.material_delta:
         return BindingContractAssessment(
@@ -188,6 +203,39 @@ def assess_binding_contract(item: BindingContractInput) -> BindingContractAssess
             reasons=("DCP_ACTION_AUTHORITY_UNRESOLVED",),
         )
 
+    if item.authority_basis in _TRANSITIVE_AUTHORITY_BASES:
+        return BindingContractAssessment(
+            decision=Decision.FAIL,
+            state=BindingProgressState.FAILED,
+            binding_key=key,
+            locked=False,
+            write_required=False,
+            first_unresolved_pole=TrianglePole.DCP_AUTHORITY,
+            reasons=(f"AUTHORITY_IS_NON_TRANSITIVE_{item.authority_basis.value}",),
+        )
+
+    if item.authority_basis is AuthorityBasis.MISSING:
+        return BindingContractAssessment(
+            decision=Decision.HOLD,
+            state=BindingProgressState.PARTIAL,
+            binding_key=key,
+            locked=False,
+            write_required=True,
+            first_unresolved_pole=TrianglePole.DCP_AUTHORITY,
+            reasons=("EXPLICIT_SOURCE_BOUND_AUTHORITY_MISSING",),
+        )
+
+    if item.authority_lease_state is not AuthorityLeaseState.ACTIVE_BOUNDED:
+        return BindingContractAssessment(
+            decision=Decision.HOLD,
+            state=BindingProgressState.PARTIAL,
+            binding_key=key,
+            locked=False,
+            write_required=True,
+            first_unresolved_pole=TrianglePole.DCP_AUTHORITY,
+            reasons=(f"AUTHORITY_LEASE_{item.authority_lease_state.value}",),
+        )
+
     if not item.glmodel_effect_observed:
         return BindingContractAssessment(
             decision=Decision.HOLD,
@@ -197,6 +245,22 @@ def assess_binding_contract(item: BindingContractInput) -> BindingContractAssess
             write_required=True,
             first_unresolved_pole=TrianglePole.GLMODEL_EFFECT,
             reasons=("GLMODEL_WORLD_EFFECT_UNOBSERVED",),
+        )
+
+    unfinished_exit: list[str] = []
+    if item.release_required and not item.release_observed:
+        unfinished_exit.append("BOUNDED_LEASE_RELEASE_UNVERIFIED")
+    if item.recovery_required and not item.recovery_observed:
+        unfinished_exit.append("RECOVERY_UNVERIFIED")
+    if unfinished_exit:
+        return BindingContractAssessment(
+            decision=Decision.HOLD,
+            state=BindingProgressState.PARTIAL,
+            binding_key=key,
+            locked=False,
+            write_required=True,
+            first_unresolved_pole=None,
+            reasons=tuple(unfinished_exit),
         )
 
     if item.schedule_state in _FAIL_SCHEDULE_STATES:
@@ -233,6 +297,27 @@ def assess_binding_contract(item: BindingContractInput) -> BindingContractAssess
             write_required=True,
             first_unresolved_pole=None,
             reasons=tuple(missing),
+        )
+
+    if item.duplicate_receipt:
+        if item.prior_locked_binding_key == key:
+            return BindingContractAssessment(
+                decision=Decision.PASS,
+                state=BindingProgressState.DUPLICATE_CONVERGED,
+                binding_key=key,
+                locked=True,
+                write_required=False,
+                first_unresolved_pole=None,
+                reasons=("EXACT_SOURCE_VERSION_RECEIVER_PURPOSE_EFFECT_ALREADY_LOCKED",),
+            )
+        return BindingContractAssessment(
+            decision=Decision.FAIL,
+            state=BindingProgressState.FAILED,
+            binding_key=key,
+            locked=False,
+            write_required=False,
+            first_unresolved_pole=None,
+            reasons=("DUPLICATE_CLAIM_DOES_NOT_MATCH_PRIOR_LOCKED_BINDING_KEY",),
         )
 
     if not item.durable_persisted or not item.durable_readback:

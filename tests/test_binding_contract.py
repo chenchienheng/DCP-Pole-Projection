@@ -3,6 +3,8 @@ from __future__ import annotations
 import unittest
 
 from dcp_kernel.binding_contract import (
+    AuthorityBasis,
+    AuthorityLeaseState,
     BindingContractInput,
     BindingProgressState,
     TrianglePole,
@@ -41,6 +43,12 @@ def ready(**overrides: object) -> BindingContractInput:
 
 
 class BindingContractTests(unittest.TestCase):
+    def test_authority_fields_reject_untyped_strings(self) -> None:
+        with self.assertRaisesRegex(TypeError, "authority_basis"):
+            ready(authority_basis="AUTHENTICATION_ONLY")
+        with self.assertRaisesRegex(TypeError, "authority_lease_state"):
+            ready(authority_lease_state="REVOKED")
+
     def test_unaffected_or_nonmaterial_edge_is_not_applicable(self) -> None:
         result = assess_binding_contract(ready(receiver_affected=False))
         self.assertEqual(result.decision, Decision.PASS)
@@ -63,6 +71,45 @@ class BindingContractTests(unittest.TestCase):
         result = assess_binding_contract(ready(glmodel_effect_observed=False))
         self.assertEqual(result.state, BindingProgressState.PARTIAL)
         self.assertEqual(result.first_unresolved_pole, TrianglePole.GLMODEL_EFFECT)
+
+    def test_authenticated_carrier_does_not_transitively_grant_authority(self) -> None:
+        result = assess_binding_contract(
+            ready(authority_basis=AuthorityBasis.AUTHENTICATION_ONLY)
+        )
+        self.assertEqual(result.decision, Decision.FAIL)
+        self.assertEqual(result.state, BindingProgressState.FAILED)
+        self.assertEqual(result.first_unresolved_pole, TrianglePole.DCP_AUTHORITY)
+        self.assertIn("AUTHORITY_IS_NON_TRANSITIVE_AUTHENTICATION_ONLY", result.reasons)
+
+    def test_expired_bounded_lease_holds_only_authority_edge(self) -> None:
+        result = assess_binding_contract(
+            ready(authority_lease_state=AuthorityLeaseState.EXPIRED)
+        )
+        self.assertEqual(result.decision, Decision.HOLD)
+        self.assertEqual(result.state, BindingProgressState.PARTIAL)
+        self.assertEqual(result.first_unresolved_pole, TrianglePole.DCP_AUTHORITY)
+        self.assertIn("AUTHORITY_LEASE_EXPIRED", result.reasons)
+
+    def test_required_release_and_recovery_must_be_observed(self) -> None:
+        result = assess_binding_contract(
+            ready(release_required=True, recovery_required=True)
+        )
+        self.assertEqual(result.decision, Decision.HOLD)
+        self.assertEqual(result.state, BindingProgressState.PARTIAL)
+        self.assertIn("BOUNDED_LEASE_RELEASE_UNVERIFIED", result.reasons)
+        self.assertIn("RECOVERY_UNVERIFIED", result.reasons)
+
+    def test_required_release_and_recovery_can_lock_when_observed(self) -> None:
+        result = assess_binding_contract(
+            ready(
+                release_required=True,
+                release_observed=True,
+                recovery_required=True,
+                recovery_observed=True,
+            )
+        )
+        self.assertEqual(result.decision, Decision.PASS)
+        self.assertEqual(result.state, BindingProgressState.LOCKED)
 
     def test_existing_primitive_hold_remains_partial(self) -> None:
         result = assess_binding_contract(
@@ -119,6 +166,20 @@ class BindingContractTests(unittest.TestCase):
         )
         self.assertEqual(result.decision, Decision.FAIL)
         self.assertEqual(result.state, BindingProgressState.FAILED)
+
+    def test_exact_duplicate_cannot_bypass_revoked_lease(self) -> None:
+        first = assess_binding_contract(ready())
+        duplicate = assess_binding_contract(
+            ready(
+                duplicate_receipt=True,
+                prior_locked_binding_key=first.binding_key,
+                authority_lease_state=AuthorityLeaseState.REVOKED,
+            )
+        )
+        self.assertEqual(duplicate.decision, Decision.HOLD)
+        self.assertEqual(duplicate.state, BindingProgressState.PARTIAL)
+        self.assertFalse(duplicate.locked)
+        self.assertIn("AUTHORITY_LEASE_REVOKED", duplicate.reasons)
 
 
 if __name__ == "__main__":
