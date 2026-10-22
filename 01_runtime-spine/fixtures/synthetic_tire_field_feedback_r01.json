@@ -1,0 +1,45 @@
+{
+  "specimen_id": "SYNTHETIC_TIRE_FIELD_FEEDBACK_R01",
+  "status": "SYNTHETIC_ONLY_NOT_REAL_CUSTOMER_DATA",
+  "purpose": "Demonstrate two distinct local Reality histories forming a generalized nutrient candidate without exporting local subject identities or raw histories.",
+  "observations": [
+    {
+      "observation_id": "O1",
+      "local_subject_id": "LOCAL_ONLY_A",
+      "product_family": "TIRE-FAMILY-X",
+      "configuration_class": "SIZE-A/PRESSURE-BAND-1",
+      "environment_class": "WET/URBAN/MODERATE-TEMP",
+      "effect_name": "wear_rate",
+      "effect_value": 0.9,
+      "effect_unit": "mm_per_10000km",
+      "outcome_class": "NORMAL_WEAR"
+    },
+    {
+      "observation_id": "O2",
+      "local_subject_id": "LOCAL_ONLY_B",
+      "product_family": "TIRE-FAMILY-X",
+      "configuration_class": "SIZE-A/PRESSURE-BAND-1",
+      "environment_class": "WET/URBAN/MODERATE-TEMP",
+      "effect_name": "wear_rate",
+      "effect_value": 1.1,
+      "effect_unit": "mm_per_10000km",
+      "outcome_class": "NORMAL_WEAR"
+    }
+  ],
+  "expected_generalized_projection": {
+    "product_family": "TIRE-FAMILY-X",
+    "configuration_class": "SIZE-A/PRESSURE-BAND-1",
+    "environment_class": "WET/URBAN/MODERATE-TEMP",
+    "effect_name": "wear_rate",
+    "effect_unit": "mm_per_10000km",
+    "outcome_class": "NORMAL_WEAR",
+    "sample_count": 2,
+    "mean_effect_value": 1.0
+  },
+  "must_not_return": [
+    "local_subject_id",
+    "raw trip history",
+    "precise location history",
+    "personal identity"
+  ]
+}
