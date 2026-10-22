@@ -1,5 +1,7 @@
 # XuanLing-LingLuo Master Map
 
+> Historical reference. This document preserves an earlier design or index snapshot, not current runtime, authority, writer assignment, or verified operational status. Terms such as “Active”, “current”, and “verified” below belong to that historical context. Consult the repository’s [current surface manifest](CURRENT-SURFACE-MANIFEST.json) for present source qualification. Historical content is retained unchanged; reuse requires current evidence.
+
 ## 1. Core Definition
 This document serves strictly as a mapping artifact to clarify the structural
 and conceptual relationships between DCP, CoreTri, XuanLing, Qinyi, and
