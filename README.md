@@ -4,6 +4,12 @@
 **Operational status / 運作狀態：** Non-production  
 **Authority model / 權限模型：** Repository ≠ Pole Authority; no implicit runtime, promotion, or decision authority
 
+## 整體名稱與本倉用途 / Ecosystem names and repository scope
+
+NFN 指整體架構，XuanLing 指核心模型；CoreTri 的核心邏輯、Qinmo.Ocean 的整體生態與 Root 的協調校準是不同作用，不構成上下統治關係。本倉是其中有界的公開投影，不代表整個翾靈生態或 Native 權限配置。Living.QO 與 Falcon.VL 保持不同責任；GLModel-Pole-Projection 保留既有倉庫與歷史投影名稱，不表示兩者合併，也不等於其 Native 原件。DCP／Ideas／GLModel 在本文作為三倉投影重心使用；倉名、可讀內容與公開位置不授予 Current、Runtime 或 Authority。以上為名稱與設計作用對照，不表示各能力已完成實作或可獨立運行。
+
+NFN names the overall architecture and XuanLing the core model. CoreTri core logic, the Qinmo.Ocean ecosystem, and Root coordination/calibration describe distinct functions, not a hierarchy of authority. This repository is a bounded public projection, not the whole ecosystem or a Native authority map. Living.QO and Falcon.VL retain distinct responsibilities. GLModel-Pole-Projection preserves an existing repository and historical projection name; it neither merges those responsibilities nor denotes their Native sources. DCP / Ideas / GLModel name repository projection emphases here; names, readable content, and public placement do not grant Current, Runtime, or Authority. This is a naming and design-role mapping, not a claim that every capability is implemented or independently operational.
+
 ## Overview / 概述
 
 This repository is a GitHub projection surface shaped by the CoreTri architecture. It is **not** the DCP pole itself and does not replace the lawful DCP Native Source Root.
